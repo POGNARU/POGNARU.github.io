@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프린키피아 — 자연철학자 뉴턴을 만나는 지도 · 포근나루</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBEF;
+    --apricot:#FBE7C9;
+    --terra:#A9532A;
+    --terra-deep:#A96A44;
+    --brown:#3C2415;
+    --brown-soft:#5C4433;
+    --line:#E4D3B8;
+    --ink-faint:rgba(60,36,21,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--brown);
+    font-family:"Nanum Myeongjo","Gowun Batang",serif;
+    line-height:1.85;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px;}
+
+  /* ── 히어로: 표지 오마주 ── */
+  .hero{
+    position:relative;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:80px 26px 66px;
+  }
+  .hero .orbits{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    pointer-events:none;
+    opacity:.5;
+  }
+  .hero-inner{position:relative;max-width:820px;margin:0 auto;text-align:center;z-index:2;}
+  .kicker{
+    font-family:"EB Garamond",serif;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--terra-deep);
+    margin-bottom:30px;
+  }
+  .latin{
+    font-family:"EB Garamond",serif;
+    color:var(--brown);
+    line-height:1.05;
+  }
+  .latin .l1{font-size:clamp(32px,7vw,58px);letter-spacing:.06em;font-weight:500;}
+  .latin .l2{font-size:clamp(15px,3vw,22px);letter-spacing:.44em;margin:6px 0 2px;}
+  .latin .l3{font-size:clamp(40px,9vw,74px);letter-spacing:.05em;font-weight:500;}
+  .latin .l4{font-size:clamp(22px,5vw,38px);letter-spacing:.14em;}
+  .rule{width:60%;max-width:360px;height:1px;background:var(--brown);margin:22px auto;opacity:.7;}
+  .hangul-title{
+    font-family:"Gowun Batang",serif;
+    font-size:clamp(26px,6vw,40px);
+    letter-spacing:.16em;
+    margin:4px 0 8px;
+  }
+  .byline{font-size:14px;color:var(--ink-faint);letter-spacing:.08em;}
+  .hero-sub{
+    margin-top:34px;
+    font-size:15px;
+    color:var(--brown-soft);
+    letter-spacing:.02em;
+  }
+  .cover-note{
+    margin-top:30px;
+    display:inline-block;
+    font-size:12px;
+    color:var(--ink-faint);
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:7px 14px;
+    letter-spacing:.02em;
+  }
+
+  /* ── 인트로 ── */
+  .intro{padding:56px 26px 20px;}
+  .intro .lead{
+    font-size:20px;
+    line-height:1.9;
+    color:var(--brown);
+  }
+  .intro .lead b{color:var(--terra-deep);font-weight:700;}
+
+  /* ── 섹션 ── */
+  section{padding:40px 0;}
+  .sec-num{
+    font-family:"EB Garamond",serif;
+    font-size:13px;
+    letter-spacing:.34em;
+    color:var(--terra-deep);
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:10px;
+  }
+  h2{
+    font-family:"Gowun Batang",serif;
+    font-size:clamp(23px,4.4vw,30px);
+    line-height:1.4;
+    margin:0 0 20px;
+    letter-spacing:.01em;
+  }
+  h3{
+    font-family:"Gowun Batang",serif;
+    font-size:19px;
+    margin:34px 0 12px;
+    color:var(--brown);
+  }
+  p{margin:0 0 18px;}
+  .divider{
+    max-width:820px;margin:0 auto;
+    height:1px;background:var(--line);
+  }
+  .quote{
+    font-family:"Gowun Batang",serif;
+    font-size:19px;
+    line-height:1.8;
+    color:var(--brown);
+    border-left:3px solid var(--terra);
+    background:linear-gradient(90deg,rgba(251,231,201,.4),transparent);
+    padding:16px 24px;
+    margin:24px 0;
+    font-style:italic;
+  }
+  .quote .attr{
+    display:block;font-style:normal;font-size:13px;
+    color:var(--ink-faint);margin-top:10px;letter-spacing:.04em;
+  }
+  em.latin-inline{font-family:"EB Garamond",serif;font-style:italic;color:var(--terra-deep);}
+
+  /* ── 네 개의 문 ── */
+  .gates{display:grid;gap:16px;margin-top:8px;}
+  .gate{
+    display:flex;gap:18px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 22px;
+  }
+  .gate .g-num{
+    font-family:"EB Garamond",serif;
+    font-size:34px;
+    color:var(--terra);
+    line-height:1;
+    flex-shrink:0;
+    width:38px;
+  }
+  .gate h4{
+    font-family:"Gowun Batang",serif;
+    font-size:17px;margin:2px 0 8px;
+  }
+  .gate p{font-size:15px;margin:0;color:var(--brown-soft);line-height:1.75;}
+  .gate .where{
+    display:inline-block;font-size:12px;color:var(--terra-deep);
+    letter-spacing:.04em;margin-bottom:6px;
+  }
+
+  /* ── 표 ── */
+  .table-scroll{overflow-x:auto;margin:20px 0;-webkit-overflow-scrolling:touch;}
+  table{
+    border-collapse:collapse;width:100%;min-width:520px;
+    font-size:15px;background:#fff;
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  }
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);}
+  th{
+    background:var(--apricot);color:var(--brown);
+    font-family:"Gowun Batang",serif;font-weight:700;
+    font-size:14px;letter-spacing:.03em;
+  }
+  td:first-child{font-family:"EB Garamond",serif;font-weight:500;color:var(--terra-deep);white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  .att-read{color:var(--terra-deep);font-weight:700;}
+  .att-skip{color:var(--ink-faint);}
+  .row-heart{background:rgba(251,231,201,.5);}
+
+  /* 별점 지형 */
+  .dense{color:var(--terra);letter-spacing:2px;}
+  .dense .off{color:var(--line);}
+
+  /* ── 강조 박스 ── */
+  .callout{
+    background:var(--apricot);
+    border-radius:16px;
+    padding:26px 28px;
+    margin:24px 0;
+  }
+  .callout.soft{background:#fff;border:1px solid var(--line);}
+  .callout h3{margin-top:0;}
+  .callout p:last-child{margin-bottom:0;}
+
+  /* ── 분업 카드(바다의 제안) ── */
+  .badge{
+    display:inline-block;background:var(--terra);color:#fff;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    padding:5px 12px;border-radius:20px;
+    font-family:"EB Garamond",serif;margin-bottom:14px;
+  }
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0;}
+  .role{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;position:relative;
+  }
+  .role .sym{font-size:26px;margin-bottom:8px;}
+  .role h4{font-family:"Gowun Batang",serif;font-size:18px;margin:0 0 4px;}
+  .role .tag{font-size:12px;color:var(--terra-deep);letter-spacing:.06em;margin-bottom:14px;}
+  .role ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--brown-soft);line-height:1.7;}
+  .role ul li{margin-bottom:7px;}
+  .role .q{
+    margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+    font-size:13.5px;color:var(--brown);font-style:italic;
+  }
+  .rhythm{list-style:none;padding:0;margin:20px 0 0;counter-reset:r;}
+  .rhythm li{
+    position:relative;padding:12px 0 12px 46px;
+    border-bottom:1px solid var(--line);font-size:15px;line-height:1.7;
+  }
+  .rhythm li:last-child{border-bottom:none;}
+  .rhythm li::before{
+    counter-increment:r;content:counter(r);
+    position:absolute;left:0;top:11px;
+    width:30px;height:30px;border-radius:50%;
+    background:var(--terra);color:#fff;
+    font-family:"EB Garamond",serif;font-size:15px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ── 토론 질문 ── */
+  .disc{
+    background:linear-gradient(135deg,rgba(200,132,90,.1),rgba(251,231,201,.35));
+    border-left:3px solid var(--terra);
+    border-radius:0 12px 12px 0;
+    padding:16px 22px;margin:22px 0 4px;
+    font-size:15.5px;
+  }
+  .disc .label{
+    display:block;font-family:"EB Garamond",serif;font-size:12px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--terra-deep);
+    margin-bottom:6px;
+  }
+
+  /* ── 마무리 ── */
+  footer{
+    background:var(--brown);color:var(--cream);
+    text-align:center;padding:50px 26px;margin-top:50px;
+  }
+  footer .f-mark{font-family:"Gowun Batang",serif;font-size:20px;letter-spacing:.2em;margin-bottom:10px;}
+  footer .f-quote{font-family:"EB Garamond",serif;font-style:italic;font-size:16px;opacity:.85;line-height:1.7;max-width:520px;margin:0 auto 16px;}
+  footer .f-meta{font-size:12px;opacity:.55;letter-spacing:.08em;}
+
+  @media(max-width:600px){
+    body{font-size:16px;}
+    .roles{grid-template-columns:1fr;}
+    .gate{flex-direction:column;gap:8px;}
+    .gate .g-num{width:auto;}
+  }
+  @media print{
+    .hero .orbits{opacity:.25;}
+    body{font-size:12pt;}
+    section{padding:20px 0;}
+    .gate,.role,table{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<a href="/reading/" style="display:block;max-width:820px;margin:0 auto;padding:18px 26px 0;font-family:'Gowun Dodum','Nanum Myeongjo',sans-serif;font-size:13px;letter-spacing:.04em;color:#A96A44;text-decoration:none;">← 독서 자료</a>
+
+<!-- ══════════ 히어로 ══════════ -->
+<header class="hero">
+  <svg class="orbits" viewBox="0 0 820 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#3C2415" stroke-width="1">
+      <circle cx="230" cy="180" r="240"/>
+      <circle cx="250" cy="150" r="150"/>
+      <ellipse cx="560" cy="130" rx="230" ry="230"/>
+      <circle cx="150" cy="470" r="190"/>
+      <circle cx="650" cy="470" r="150"/>
+      <ellipse cx="410" cy="300" rx="330" ry="200" transform="rotate(-12 410 300)"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div class="kicker">고전 함께 읽기 · 토론 자료</div>
+    <div class="latin">
+      <div class="l1">PHILOSOPHIÆ</div>
+      <div class="l2">NATURALIS</div>
+      <div class="l3">PRINCIPIA</div>
+      <div class="l4">MATHEMATICA</div>
+    </div>
+    <div class="rule"></div>
+    <div class="hangul-title">프린키피아</div>
+    <div class="byline">아이작 뉴턴 지음 · 박병철 옮김 · 1687</div>
+    <p class="hero-sub">증명을 정복하러 가는 길이 아니라,<br>뉴턴이 세계를 바라본 그 <b style="color:var(--terra-deep)">눈</b>을 만나러 가는 지도</p>
+    <div class="cover-note">✎ 이 자리에 실제 표지 사진을 넣고 싶으시면 말씀만 주세요 — 상단 조판을 사진으로 바로 교체합니다</div>
+  </div>
+</header>
+
+<!-- ══════════ 인트로 ══════════ -->
+<div class="wrap">
+<div class="intro">
+  <p class="lead">다현씨의 목적은 뉴턴의 증명을 정복하는 것이 아니라, 그의 <b>연구 자료 속에서 그가 세계를 어떻게 보았는지</b>를 만나는 것입니다. 그렇다면 이 책은 수학책이기 이전에 <b>선언문</b>입니다. 제목 한 줄에서부터요.</p>
+  <p style="color:var(--brown-soft);font-size:16px;">순독하시는 방식은 옳습니다. 유클리드를 1년에 걸쳐 통독하신 분이니까요. 책이 스스로 정한 순서에는 그 책만의 논리가 있고, 발췌독은 그 논리를 잃는 대가로 속도를 얻는 일입니다. 그러니 1장을 건너뛰지 않되, <b style="color:var(--terra-deep)">1장에 대한 기대치를 조정</b>하는 것으로 지도를 그렸습니다.</p>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 1. 제목이라는 선언 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅰ · 제목</span>
+  <h2>제목이 이미 도전장이다</h2>
+  <p>1644년, 데카르트가 『<em class="latin-inline">Principia Philosophiae</em>(철학의 원리)』를 냈습니다. 우주는 물질로 가득 차 있고, <b>소용돌이(vortex)</b>가 행성을 밀어 나른다는 그림이었죠. 유럽 지성계를 40년간 지배한 체계입니다.</p>
+  <p>뉴턴은 그 제목을 거의 그대로 가져오면서, 딱 한 단어를 끼워 넣습니다.</p>
+  <div class="quote" style="text-align:center;font-size:26px;">Mathematica.
+    <span class="attr">— 자연철학의 <b>수학적</b> 원리</span>
+  </div>
+  <p>예의 바른 오마주가 아니라 도전장입니다. <b>"당신의 자연철학은 그럴듯한 이야기였다. 나는 수학으로 하겠다."</b> 실제로 2권 마지막에서 뉴턴은 소용돌이 이론이 케플러 법칙과 양립할 수 없음을 계산으로 보여주고, 조용히 데카르트를 매장합니다.</p>
+  <p>제목만으로도 뉴턴이 세계를 어떤 눈으로 보려 했는지가 드러나요. <b>이야기가 아니라 측정으로, 원인의 사변이 아니라 현상의 수학으로.</b></p>
+  <div class="disc">
+    <span class="label">함께 나눌 질문</span>
+    데카르트는 "왜(why) 행성이 도는가"를 이야기로 설명하려 했고, 뉴턴은 "어떻게(how) 도는가"를 수로 재려 했다. 우리는 세계를 이해할 때 어느 쪽을 '설명했다'고 느끼는가?
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 2. 네 개의 문 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅱ · 네 개의 문</span>
+  <h2>자연철학자 뉴턴을 만나는 네 곳</h2>
+  <p>증명은 필요할 때 다시 와도 됩니다. 자연철학자 뉴턴을 만나려면, 이 네 곳을 정독하세요.</p>
+  <div class="gates">
+    <div class="gate">
+      <div class="g-num">Ⅰ</div>
+      <div>
+        <span class="where">저자 서문 (1686)</span>
+        <h4>뉴턴의 기획 선언</h4>
+        <p>자연철학의 과제는 운동 현상에서 힘을 알아내고, 다시 그 힘으로 다른 현상을 밝히는 것이라고 직접 말합니다. 그리고 덧붙이죠 — 나머지 자연 현상도 같은 방식으로 역학 원리에서 이끌어낼 수 있기를 바란다고. 책 한 권이 아니라 <b>세계를 읽는 프로그램</b>의 선언입니다.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <div class="g-num">Ⅱ</div>
+      <div>
+        <span class="where">정의 8개 + 그 뒤의 주해 · 여기가 진짜</span>
+        <h4>절대시간 · 절대공간 · 물통</h4>
+        <p>1편 1장 바로 앞입니다. 뉴턴이 절대시간·절대공간·절대운동을 정의하는 대목. 관측할 수 없는 것을 존재한다고 선언하는, 물리학이 아니라 <b>형이상학</b>이에요. 라이프니츠가 격분한 지점이고, 200년 뒤 마흐가 비판하고 아인슈타인이 무너뜨린 토대입니다. 같은 주해에 <b>물통 실험</b>이 나옵니다.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <div class="g-num">Ⅲ</div>
+      <div>
+        <span class="where">3권 서두 · 철학에서 추론하는 규칙 4가지</span>
+        <h4>뉴턴의 인식론</h4>
+        <p>① 참되고 충분한 원인 외에는 인정하지 말 것 — 자연은 헛된 것을 좋아하지 않으니까. ② 같은 결과엔 같은 원인을. ③ 실험으로 확인되는 성질은 모든 물체의 보편적 성질로. ④ 귀납으로 얻은 명제는 반대 사례가 나타나기 전까지 참으로 간주할 것.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <div class="g-num">Ⅳ</div>
+      <div>
+        <span class="where">3권 끝 · 일반 주해 (2판, 1713 추가)</span>
+        <h4>"나는 가설을 짓지 않는다"</h4>
+        <p>가장 유명한 문장 <em class="latin-inline">Hypotheses non fingo</em>가 여기 있습니다. 그런데 이 주해의 절반 이상은 <b>신</b>에 관한 이야기예요. 태양계의 아름다운 질서는 지적이고 강력한 존재의 계획에서 나왔다고 쓰고, 신을 "판토크라토르(우주의 주재자)"라 부릅니다. 뉴턴에게 자연 연구는 <b>신의 솜씨를 읽는 일</b>이었습니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="quote">
+    절대적이고 참되며 수학적인 시간은, 그 자체로 또 그 본성에 따라, 외부의 어떤 것과도 관계없이 균일하게 흐른다.
+    <span class="attr">— 정의 뒤의 주해</span>
+  </div>
+  <p style="font-size:15.5px;color:var(--brown-soft);"><b>물통 실험.</b> 줄에 매단 물통을 돌리면 처음엔 물이 가만있다가, 나중에 함께 돌며 수면이 오목해집니다. 물이 물통에 대해 정지한 순간에도 수면은 휘어 있다 — 그러니 이 회전은 <b>무언가 절대적인 것에 대한 회전</b>이다. 뉴턴의 논증이자, 실제로 해본 실험입니다.</p>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 3. 1장 순독 가이드 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅲ · 1장 순독</span>
+  <h2>1장에서 붙잡을 것과 흘려보낼 것</h2>
+  <p>보조정리 11개는 무게가 다 다릅니다. 균등하게 힘을 쏟으면 지쳐요. <b class="att-read">굵게 표시한 넷</b>만 붙잡으면 1장의 뜻은 다 얻습니다.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>보조정리</th><th>내용</th><th>태도</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>차이가 임의로 작아지면 같다</td><td class="att-read">정독 — 나머지의 근거</td></tr>
+      <tr><td>2·3</td><td>곡선 아래 넓이 = 내접·외접 도형의 극한</td><td class="att-skip">그림만 보고 지나가기</td></tr>
+      <tr><td>4</td><td>두 도형의 넓이 비</td><td class="att-skip">지나가기</td></tr>
+      <tr><td>5</td><td>닮은 도형의 변·넓이 비</td><td class="att-skip">지나가기</td></tr>
+      <tr><td>6</td><td>현과 접선 사이 각이 사라짐</td><td class="att-skip">7의 준비</td></tr>
+      <tr class="row-heart"><td>7</td><td>호 : 현 : 접선 = 1 : 1 : 1</td><td class="att-read">정독 — 1장의 심장</td></tr>
+      <tr><td>8</td><td>삼각형들이 궁극에 닮음</td><td class="att-skip">7의 확장</td></tr>
+      <tr><td>9</td><td>넓이가 변의 제곱에 비례</td><td class="att-skip">10의 준비</td></tr>
+      <tr class="row-heart"><td>10</td><td>처음 작용하는 힘이 만드는 거리 ∝ 시간²</td><td class="att-read">정독 — 유일하게 물리적</td></tr>
+      <tr><td>11</td><td>사지트 ∝ 현² (곡률)</td><td class="att-skip">훑기</td></tr>
+      <tr class="row-heart"><td>주해</td><td>뉴턴의 방법론 변호</td><td class="att-read">정독 — 자연철학의 핵심</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="disc">
+    <span class="label">함께 정할 것</span>
+    이 표를 그대로 따를지, 아니면 우리 둘의 호흡으로 '정독/훑기'를 다시 배분할지 — 첫 만남에서 합의하고 시작하기.
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 4. 보조정리 10 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅳ · 보조정리 10</span>
+  <h2>11개 중 유일하게 물리가 사는 곳</h2>
+  <p>나머지가 순수 기하인데, 여기만 <b>힘과 시간</b>이 등장합니다. 물체가 힘을 받아 움직이기 시작할 때, 아주 처음 순간에 이동한 거리는 <b>시간의 제곱에 비례</b>한다. 갈릴레오가 빗면 실험으로 얻은 낙하 법칙(s ∝ t²)이죠. 뉴턴은 이걸 중력에 한정하지 않고 <b>모든 힘에 대해 성립하는 원리</b>로 끌어올립니다.</p>
+  <div class="callout">
+    <h3>왜 이게 필요했을까</h3>
+    <p>뉴턴에게는 <b>F = ma라는 공식이 없습니다.</b> 그가 힘을 재는 방법은 이겁니다 —</p>
+    <p style="font-family:'Gowun Batang',serif;color:var(--terra-deep);border-left:3px solid var(--terra);padding-left:16px;">물체가 직선으로 갔다면 있었을 자리와, 실제로 있는 자리 사이의 거리를 잰다. 그 거리를 시간의 제곱으로 나눈 것이 힘이다.</p>
+    <p style="margin-bottom:0;">보조정리 10이 없으면 이 측정법이 정당화되지 않아요. 그래서 명제 1(면적속도 일정), 명제 4(원운동), 명제 6(구심력의 일반 측정), 명제 11(타원 궤도에서 역제곱)까지 — <b>1권의 뼈대 전체가 이 하나에 얹혀 있습니다.</b></p>
+  </div>
+  <p style="font-size:15.5px;color:var(--brown-soft);">1장을 읽으며 "여기 물리가 하나도 없네" 싶을 때, 보조정리 10에서 딱 한 번 물리가 얼굴을 내밉니다. 놓치지 마세요.</p>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 5. 주해 — 흐르는 세계 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅴ · 1장 끝의 주해</span>
+  <h2>진짜 목적지는 흐르는 세계다</h2>
+  <p>자연철학이 관심사라면, 1장에서 가장 중요한 텍스트는 보조정리가 아니라 그 뒤에 붙은 <b>주해(Scholium)</b>입니다. 여기서 뉴턴은 수학자의 옷을 벗고 자기 방법을 변호해요.</p>
+  <div class="quote">
+    궁극의 비란 사라지기 전의 비도 아니고 사라진 후의 비도 아니라, 바로 사라지는 그 순간의 비다.
+  </div>
+  <p>그리고 이런 비유를 듭니다. 어떤 물체가 어느 지점에 도착해 멈춘다면, 그 물체에는 <b>궁극의 속도</b>가 있다. 도착하기 전의 속도도, 도착한 후의 속도(=0)도 아닌, <b>도착하는 바로 그 순간의 속도</b>가.</p>
+  <p>"사라지는 순간"이라는 이 기묘한 시점이 뉴턴 자연철학의 시간관과 직결됩니다. 앞의 정의 주해에서 절대시간이 <b>"균일하게 흐른다(<em class="latin-inline">fluit</em>)"</b>고 했잖아요. 뉴턴의 미적분을 <b>유율법(method of fluxions)</b>이라 부르는 것도 같은 뿌리예요. <em class="latin-inline">fluere</em>, 흐르다. 그에게 양은 정적으로 놓인 게 아니라 <b>시간 속에서 생성되며 흐르는 것</b>입니다.</p>
+  <div class="callout soft">
+    <p style="margin-bottom:0;">그러니까 1장은 겉보기엔 기하학 연습장이지만, 실은 <b>"흐르는 세계를 어떻게 붙잡을 것인가"</b>에 대한 뉴턴의 답입니다. 다현씨가 찾으시는 그 눈이 여기 있어요. <br><br>덧붙이면, 뉴턴은 이 방법이 고대인의 소진법보다 낫다고 주장합니다. 소진법은 매번 이중 귀류법으로 길게 돌아가야 하는데, 자기 방법은 한 번에 끝낸다고요. <b>유클리드를 읽으신 분이라면 이 자부심이 정확히 무엇에 대한 것인지 아실 거예요.</b></p>
+  </div>
+  <div class="disc">
+    <span class="label">함께 나눌 질문</span>
+    뉴턴은 시간을 "밖에서 균일하게 흐르는 것"으로 밀어냈다. 아우구스티누스는 시간을 "마음 안의 늘어짐"으로 끌어당겼다. 우리가 매일 아침 더듬는 시간은 둘 중 어느 쪽에 가까운가?
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 6. 다현씨에게 닿는 지점 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅵ · 닿는 지점</span>
+  <h2>이 책이 당신을 건드리는 두 곳</h2>
+
+  <h3>ⓐ 아우구스티누스와의 정면충돌</h3>
+  <p>『고백록』 11권에서 아우구스티누스는 시간을 붙잡으려다 결국 <b>영혼의 늘어짐(distentio animi)</b>으로 봅니다. 시간은 재는 것이 아니라 <b>기억하고 기다리는 마음 안에</b> 있다고요. 뉴턴은 정확히 반대편에 섭니다 — 시간은 마음과 무관하게, 혼자서 균일하게 흐른다고.</p>
+  <p>두 사람 다 그리스도인이고, 둘 다 시간을 신과 연결지어 사유했어요. 그런데 한 사람은 <b>안으로 파고들고</b>, 한 사람은 <b>밖으로 밀어냈습니다.</b> 이 대비 하나만으로도 글 한 편이 나올 것 같아요. 매일 5시 50분에 깨어 시간의 결을 더듬는 사람에게는 특히요.</p>
+
+  <h3>ⓑ 케인스가 발견한 '마지막 마법사'</h3>
+  <p>1936년, 경제학자 케인스가 소더비 경매에서 뉴턴의 미출간 원고 뭉치를 사들였어요. 열어보니 대부분이 <b>연금술과 성서 연대기, 삼위일체 반대 신학</b>이었습니다.</p>
+  <div class="quote">
+    뉴턴은 이성의 시대의 첫 인물이 아니었다. 그는 마지막 마법사였다.
+    <span class="attr">— J. M. 케인스</span>
+  </div>
+  <p>『프린키피아』를 쓰던 그 손이 밤에는 연금술 용광로를 지켰어요. 그는 자연을 <b>신이 남긴 암호문</b>으로 여겼고, 수학과 연금술과 성서 해석이 모두 그 암호를 푸는 작업이었습니다. 융을 읽으시는 다현씨라면 — 융 자신이 『심리학과 연금술』을 썼죠 — 이 뉴턴에게 훨씬 강하게 끌리실 것 같아요.</p>
+
+  <h3>곁들여 읽을 것</h3>
+  <p>뉴턴의 『광학(Opticks)』 끝에 붙은 <b>「질문들(Queries)」</b>을 권합니다. 여기선 뉴턴이 수학의 갑옷을 벗고 훨씬 자유롭게 사변해요. 빛이 입자인지, 공간이 신의 감각기관인지, 물질의 궁극 입자가 무엇인지 — <b>자연철학자로서의 그가 가장 벌거벗은 채로 드러나는 텍스트</b>입니다.</p>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 7. 전체 지형 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅶ · 앞길의 지형</span>
+  <h2>이 책 전체의 지형</h2>
+  <p>1권이 가장 길고 가장 건조합니다. 순독하면 여기서 오래 머무르게 돼요. <b>각오하되, 절망하지 마세요.</b> 3권에 닿으면 완전히 다른 책이 됩니다.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>부분</th><th>성격</th><th>자연철학적 밀도</th></tr></thead>
+    <tbody>
+      <tr><td>정의 + 주해</td><td>형이상학</td><td><span class="dense">★★★★★</span></td></tr>
+      <tr><td>공리(운동 3법칙) + 주해</td><td>물리학의 기초</td><td><span class="dense">★★★★<span class="off">★</span></span></td></tr>
+      <tr><td>1권</td><td>수학적 골격 (14개 장)</td><td><span class="dense">★★<span class="off">★★★</span></span></td></tr>
+      <tr><td>2권</td><td>유체 저항, 데카르트 논파</td><td><span class="dense">★★★<span class="off">★★</span></span></td></tr>
+      <tr><td>3권</td><td>세계의 체계</td><td><span class="dense">★★★★★</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:15.5px;color:var(--brown-soft);">3권에서 뉴턴은 달의 운동·조수·혜성 궤도·세차운동을 다루며 자기가 만든 수학을 실제 세계에 던집니다. 그리고 「일반 주해」에서 신에 대해 이야기하며 끝나요. <b>1권을 지나기 전에 둘이서 "3권 서두의 추론 규칙 4개"를 미리 한 번 읽어두는 것</b>도 방법입니다. 순독을 어기는 게 아니라, 목적지를 한 번 보고 오는 답사예요. 뉴턴이 무엇을 향해 이 긴 수학을 쌓는지 알면 1권이 훨씬 견딜 만해집니다.</p>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 8. 바다의 제안: 분업 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">Ⅷ · 둘이서 읽는 법</span>
+  <span class="badge">바다의 제안</span>
+  <h2>수식과 맥락을 나누어 지는 두 자리</h2>
+  <p>프린키피아는 두 사람이 <b>각자 다른 층위에서 이해하고도 대화가 겉돌 수 있는</b> 책입니다. 한 사람은 "증명을 따라갔다"를 이해로 보고, 다른 사람은 "뉴턴이 왜 이걸 하려는지 알겠다"를 이해로 볼 수 있거든요. 둘 다 정당한데, 합의가 없으면 서로 답답해집니다. 그래서 <b>역할을 나눠 지되, 정기적으로 바꿔 메는</b> 방식을 제안합니다.</p>
+
+  <div class="roles">
+    <div class="role">
+      <div class="sym">📐</div>
+      <h4>따라가는 이</h4>
+      <div class="tag">수식 · 구조 담당 — "무엇을 증명했는가"</div>
+      <ul>
+        <li>보조정리·명제마다 <b>주장 한 줄</b>로 요약: "이건 무엇을 성립시켰다"</li>
+        <li>그 증명이 <b>어떤 앞의 도구에 기대는지</b> 짚기 (예: 명제 1은 보조정리 10에 얹힘)</li>
+        <li>그림·기호의 뜻을 풀어 상대가 헤매지 않게 다리 놓기</li>
+        <li>"여기서 물리가 나온다"는 지점(보조정리 10 같은 곳) 표시</li>
+      </ul>
+      <div class="q">준비 질문: 이 명제는 무엇을 증명했고, 그러려면 앞의 무엇이 필요했나?</div>
+    </div>
+    <div class="role">
+      <div class="sym">🧭</div>
+      <h4>캐묻는 이</h4>
+      <div class="tag">철학 · 맥락 담당 — "왜 이것이 필요한가"</div>
+      <ul>
+        <li>그 명제가 <b>뉴턴의 세계상에서 차지하는 자리</b>를 말로 옮기기</li>
+        <li>바깥 사상과의 연결: 데카르트·갈릴레오·아우구스티누스·라이프니츠</li>
+        <li>뉴턴이 <b>방법을 변호하는 대목</b>(주해)에서 그의 속내 읽기</li>
+        <li>"이 수학은 결국 무엇을 향하는가"라는 목적지 질문을 계속 되던지기</li>
+      </ul>
+      <div class="q">준비 질문: 뉴턴은 왜 굳이 이걸 했나? 이게 없으면 그의 세계상에 어떤 구멍이 생기나?</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>만남의 리듬</h3>
+    <ul class="rhythm">
+      <li><b>각자 준비</b> — 만나기 전, 같은 범위를 읽되 자기 렌즈로만 노트를 만든다. 따라가는 이는 '뼈대'를, 캐묻는 이는 '자리'를.</li>
+      <li><b>뼈대 먼저</b> — 만남에서 따라가는 이가 먼저 "이 장이 무엇을 세웠는지" 골격을 세운다.</li>
+      <li><b>살 붙이기</b> — 캐묻는 이가 그 위에 "그게 왜 필요하고 어디로 향하는지" 맥락을 입힌다.</li>
+      <li><b>역할 교대</b> — 격주로(또는 한 장마다) 두 자리를 맞바꾼다. 한쪽에 갇히지 않게. 결국 두 사람 다 양쪽 눈을 갖는 것이 목표다.</li>
+      <li><b>'이해했다'의 합의 기준</b> — <i>"이 명제가 뉴턴의 세계상에서 어떤 자리를 차지하는가를 서로에게 말할 수 있으면 통과."</i> 증명을 다 못 따라갔어도, 이걸 말할 수 있으면 우리는 읽은 것이다.</li>
+    </ul>
+  </div>
+
+  <div class="callout soft">
+    <h3>결이 비슷한 두 사람이라면</h3>
+    <p style="margin-bottom:0;">굳이 강점으로 가르지 않아도 됩니다. 그럴 땐 <b>자리를 매번 번갈아 맡는 것</b>만으로 충분해요. 오늘은 내가 따라가는 이, 다음엔 네가. 중요한 건 강점의 분배가 아니라 <b>두 개의 눈이 매 장마다 다 작동하는 것</b>이니까요. 한 사람이 "무엇을"을 맡고 다른 사람이 "왜"를 맡는 이 구조 자체가, 뉴턴이라는 사람을 입체로 세워줍니다.</p>
+  </div>
+</section>
+</div>
+
+<!-- ══════════ 읽는 순서 요약 ══════════ -->
+<div class="wrap">
+<section>
+  <span class="sec-num">한눈에 · 읽는 순서</span>
+  <h2>그래서, 이 순서로</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>순서</th><th>읽을 곳</th><th>만나게 되는 것</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>저자 서문</td><td>뉴턴의 기획 선언</td></tr>
+      <tr><td>2</td><td>정의 8개 + 뒤의 주해</td><td>절대시간 · 절대공간 · 물통</td></tr>
+      <tr><td>3</td><td>공리(운동 3법칙)와 그 주해</td><td>갈릴레오 · 호이겐스에 대한 태도</td></tr>
+      <tr class="row-heart"><td>4</td><td>1편 1장 — 순독 (표대로 완급 조절)</td><td>흐르는 세계를 붙잡는 법 · 보조정리 10 · 주해</td></tr>
+      <tr><td>5</td><td>3권 서두 「추론 규칙」</td><td>뉴턴의 방법론</td></tr>
+      <tr><td>6</td><td>3권 「일반 주해」</td><td>신, 그리고 "가설을 짓지 않는다"</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="f-mark">고요히, 마음에 머무는 글</div>
+  <div class="f-quote">"나는 바닷가에서 노는 소년이었을 뿐이다.<br>진리의 큰 바다는 온통 발견되지 않은 채 내 앞에 펼쳐져 있었다."</div>
+  <div class="f-meta">— 아이작 뉴턴 · 프린키피아 함께 읽기 토론 자료 · 2026.07.26 · 포근나루</div>
+</footer>
+
+</body>
+</html>

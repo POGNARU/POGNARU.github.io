@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>절창 — 읽히기를 원한 사람, 물러선 손 · 포근나루</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lav-deep:#6f6a8e;
+    --lav:#9b95b8;
+    --lav-mist:#c6c0d6;
+    --lav-pale:#ece9f2;
+    --amber:#d98b45;
+    --amber-deep:#b56a2c;
+    --amber-glow:#f5c98a;
+    --ink:#2e2a36;
+    --ink-soft:#5b5468;
+    --paper:#faf8f5;
+    --serif:'Nanum Myeongjo','Gowun Batang',serif;
+    --serif-title:'Gowun Batang','Nanum Myeongjo',serif;
+    --sans:'Gowun Dodum',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+    line-height:1.9;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased;}
+
+  /* ── 표지 ── */
+  .cover{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden;
+    background:
+      radial-gradient(120% 80% at 62% 42%, rgba(224,208,190,.55) 0%, rgba(224,208,190,0) 55%),
+      linear-gradient(168deg,#b3adc9 0%,#a9a3c0 28%,#b6afc6 55%,#9e99b7 82%,#8f8aa9 100%);}
+  .grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;pointer-events:none;}
+  .crack{position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);
+    background:linear-gradient(180deg,
+      rgba(255,255,255,.85) 0%, rgba(120,100,90,.9) 6%, var(--amber-deep) 22%,
+      var(--amber-glow) 38%, rgba(90,75,70,.9) 52%, var(--amber) 63%,
+      var(--amber-glow) 72%, rgba(80,66,62,.85) 86%, rgba(200,150,100,.9) 96%,
+      rgba(255,255,255,0) 100%);filter:blur(.2px);}
+  .crack::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:70px;transform:translateX(-50%);
+    background:linear-gradient(180deg,rgba(245,201,138,0) 0%,rgba(245,201,138,.35) 30%,
+      rgba(245,201,138,.45) 60%,rgba(245,201,138,.15) 90%,transparent 100%);filter:blur(18px);}
+  .drop{position:absolute;left:50%;bottom:6%;width:9px;height:13px;transform:translateX(-50%);
+    border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:radial-gradient(circle at 35% 30%,#ffe6bd,var(--amber-deep));
+    box-shadow:0 0 14px rgba(245,201,138,.7);}
+  .cover-inner{position:relative;z-index:2;width:min(1080px,92vw);margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;padding:4rem 0;}
+  .cover-left{align-self:end;padding-bottom:2rem;}
+  .cover-right{text-align:right;}
+  .title-ko{font-family:var(--serif-title);font-size:clamp(3.4rem,9vw,6.4rem);line-height:1.05;
+    color:#fff;margin:0;text-shadow:0 2px 18px rgba(60,50,70,.28);letter-spacing:.04em;}
+  .title-hanja{font-family:var(--serif-title);font-size:clamp(1.5rem,3.4vw,2.4rem);
+    color:rgba(255,255,255,.92);letter-spacing:.5em;margin:.7rem 0 0;padding-right:.5em;}
+  .byline{font-family:var(--serif-title);color:rgba(255,255,255,.9);font-size:1.05rem;
+    letter-spacing:.35em;writing-mode:vertical-rl;margin:0;}
+  .cover-meta{position:absolute;z-index:2;left:0;right:0;bottom:1.6rem;text-align:center;
+    font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;color:rgba(255,255,255,.8);}
+
+  /* ── 본문 ── */
+  main{width:min(760px,90vw);margin:0 auto;padding:5rem 0 7rem;}
+  section{margin-bottom:5rem;}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;color:var(--amber-deep);margin:0 0 .7rem;}
+  h2{font-family:var(--serif-title);font-size:1.85rem;font-weight:700;margin:0 0 1.6rem;
+    color:var(--ink);letter-spacing:-0.02em;}
+  h2 .han{color:var(--lav);font-size:.62em;margin-left:.5rem;letter-spacing:.1em;font-weight:400;}
+  h3{font-family:var(--serif-title);font-size:1.12rem;margin:0 0 .5rem;color:var(--ink);}
+  p{margin:0 0 1.15rem;color:var(--ink-soft);}
+  main strong{color:var(--ink);font-weight:800;}
+  .lead{font-size:1.16rem;color:var(--ink);border-left:2px solid var(--amber);padding-left:1.4rem;}
+
+  /* 인물 */
+  .people{display:grid;gap:1rem;}
+  .person{background:#fff;border:1px solid var(--lav-pale);border-left:3px solid var(--lav);
+    border-radius:3px;padding:1.2rem 1.4rem;}
+  .person.accent{border-left-color:var(--amber);}
+  .person p{margin:0;font-size:.96rem;}
+  .person .tag{font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;color:var(--lav-deep);
+    display:block;margin-bottom:.35rem;}
+
+  /* 열쇠 */
+  .keys{counter-reset:k;}
+  .keys .key{display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding:1.5rem 0;border-top:1px solid var(--lav-pale);}
+  .keys .key:last-child{border-bottom:1px solid var(--lav-pale);}
+  .keys .key::before{counter-increment:k;content:counter(k,decimal-leading-zero);font-family:var(--sans);
+    font-size:.8rem;color:var(--amber-deep);letter-spacing:.05em;padding-top:.35rem;}
+  .keys .key p{margin:0 0 .6rem;font-size:.97rem;}
+  .keys .key p:last-child{margin-bottom:0;}
+
+  /* 손의 이동 */
+  .hands{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;
+    background:#fff;border:1px solid var(--lav-pale);border-radius:4px;padding:1.6rem 1.4rem;}
+  .hand{text-align:center;}
+  .hand .when{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;color:var(--lav-deep);
+    display:block;margin-bottom:.5rem;}
+  .hand .what{font-family:var(--serif-title);font-size:1.02rem;color:var(--ink);line-height:1.6;}
+  .hand.after .what{color:var(--amber-deep);}
+  .arrow{color:var(--lav);font-size:1.2rem;}
+
+  /* 두 결론 대비 */
+  .versus{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .vs-card{border-radius:4px;padding:1.4rem 1.5rem;font-family:var(--serif-title);line-height:1.75;}
+  .vs-card .who{font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;display:block;margin-bottom:.7rem;}
+  .vs-a{background:rgba(198,192,214,.22);border:1px solid var(--lav-mist);color:var(--ink);}
+  .vs-a .who{color:var(--lav-deep);}
+  .vs-b{background:rgba(217,139,69,.1);border:1px solid rgba(217,139,69,.35);color:var(--ink);}
+  .vs-b .who{color:var(--amber-deep);}
+
+  /* 논점 */
+  .points{counter-reset:p;list-style:none;padding:0;margin:0;}
+  .point{counter-increment:p;position:relative;background:linear-gradient(180deg,#fff,#fdfcfb);
+    border:1px solid var(--lav-pale);border-radius:4px;padding:1.5rem 1.6rem 1.3rem 3.4rem;margin-bottom:1.1rem;}
+  .point::before{content:"논점 " counter(p);position:absolute;left:1.5rem;top:1.65rem;writing-mode:vertical-rl;
+    font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;color:var(--lav);}
+  .point q{display:block;font-family:var(--serif-title);font-size:1.14rem;color:var(--ink);quotes:none;
+    margin-bottom:.7rem;line-height:1.65;}
+  .fork{font-size:.9rem;color:var(--ink-soft);margin:0;}
+  .fork span{display:inline-block;background:var(--lav-pale);color:var(--lav-deep);font-family:var(--sans);
+    font-size:.7rem;padding:.1rem .5rem;border-radius:2px;margin-right:.45rem;letter-spacing:.06em;}
+  .fork + .fork{margin-top:.45rem;}
+
+  /* 인용 */
+  blockquote{margin:0 0 1.5rem;padding:1.2rem 1.5rem;
+    background:linear-gradient(90deg,rgba(217,139,69,.07),rgba(217,139,69,0));
+    border-left:2px solid var(--amber);font-family:var(--serif-title);font-size:1.03rem;
+    color:var(--ink);line-height:1.85;}
+  blockquote cite{display:block;margin-top:.6rem;font-family:var(--sans);font-style:normal;
+    font-size:.71rem;letter-spacing:.08em;color:var(--lav-deep);}
+  blockquote.quiet{background:none;border-left-color:var(--lav-mist);}
+
+  /* 접기 */
+  details{border:1px dashed var(--lav);border-radius:4px;padding:0 1.4rem;background:rgba(198,192,214,.09);
+    margin-bottom:1rem;}
+  details.mine{border-color:var(--amber);background:rgba(217,139,69,.07);}
+  summary{cursor:pointer;list-style:none;padding:1.1rem 0;font-family:var(--serif-title);
+    font-size:1.02rem;color:var(--lav-deep);}
+  details.mine summary{color:var(--amber-deep);}
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:'▸ ';color:var(--amber);}
+  details[open] summary::before{content:'▾ ';}
+  details[open] summary{border-bottom:1px solid var(--lav-pale);margin-bottom:1.2rem;}
+  details .body{padding-bottom:1.4rem;}
+  details .body p:last-child{margin-bottom:0;}
+
+  /* 연표 */
+  .beats{list-style:none;padding:0;margin:0;}
+  .beats li{position:relative;padding:0 0 1.1rem 1.6rem;color:var(--ink-soft);font-size:.96rem;line-height:1.8;}
+  .beats li::before{content:'';position:absolute;left:.35rem;top:.75rem;width:6px;height:6px;
+    border-radius:50%;background:var(--lav);}
+  .beats li.hot::before{background:var(--amber);}
+  .beats li:last-child{padding-bottom:0;}
+
+  /* 메모 */
+  .memo{background:#fff;border:1px solid var(--lav-pale);border-radius:4px;padding:1.3rem 1.5rem;margin-bottom:1rem;}
+  .memo h3{color:var(--amber-deep);}
+  .memo .lines{margin-top:.8rem;
+    background-image:repeating-linear-gradient(180deg,transparent 0,transparent 2.1rem,
+      var(--lav-pale) 2.1rem,var(--lav-pale) calc(2.1rem + 1px));height:6.4rem;}
+  .said{font-family:var(--serif-title);color:var(--ink);background:rgba(245,201,138,.2);
+    padding:.1rem .3rem;line-height:2.15;}
+
+  .todo{background:rgba(198,192,214,.14);border:1px solid var(--lav-mist);border-radius:4px;padding:1.3rem 1.5rem;}
+  .todo ul{margin:.6rem 0 0;padding-left:1.1rem;color:var(--ink-soft);font-size:.94rem;}
+  .todo li{margin-bottom:.4rem;}
+
+  footer{border-top:1px solid var(--lav-pale);padding-top:1.6rem;font-family:var(--sans);
+    font-size:.75rem;color:var(--lav-deep);line-height:2;}
+
+  .divider{height:1px;margin:0 auto;
+    background:linear-gradient(90deg,transparent,var(--lav-mist) 30%,var(--amber) 50%,var(--lav-mist) 70%,transparent);}
+
+  @media (max-width:640px){
+    .cover-inner{grid-template-columns:1fr;}
+    .cover-left{order:2;text-align:right;padding-bottom:0;}
+    .byline{writing-mode:horizontal-tb;letter-spacing:.25em;font-size:.9rem;}
+    .cover-right{order:1;}
+    .point{padding-left:1.5rem;}
+    .point::before{position:static;writing-mode:horizontal-tb;display:block;margin-bottom:.5rem;}
+    .versus{grid-template-columns:1fr;}
+    .hands{grid-template-columns:1fr;gap:.8rem;}
+    .arrow{transform:rotate(90deg);}
+  }
+</style>
+</head>
+<body>
+
+<a href="/reading/" style="display:block;max-width:820px;margin:0 auto;padding:18px 26px 0;font-family:'Gowun Dodum',sans-serif;font-size:13px;letter-spacing:.04em;color:#6f6a8e;text-decoration:none;">← 독서 자료</a>
+<div class="cover">
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)" opacity="0.35"/></svg>
+  <div class="crack"></div>
+  <div class="drop"></div>
+  <div class="cover-inner">
+    <div class="cover-left"><p class="byline">구병모 장편소설</p></div>
+    <div class="cover-right">
+      <h1 class="title-ko">절창</h1>
+      <p class="title-hanja">切創</p>
+    </div>
+  </div>
+  <div class="cover-meta">도란도란 · 2026.07</div>
+</div>
+
+<main>
+
+  <section>
+    <p class="eyebrow">들어가며</p>
+    <p class="lead">
+      <strong>절창(切創)</strong>은 빼어난 노래(絕唱)가 아니라 <strong>칼에 베인 상처</strong>다.
+      그리고 이 소설에서 유일하게 이름을 가진 인물, <strong>오언(烏焉)</strong>은
+      <strong>'글자 모양이 비슷해 틀리기 쉬운 글자'</strong>라는 뜻이다.
+      제목도 이름도 잘못 읽히도록 지어졌다. 그 어긋남이 이미 이 소설의 태도다.
+    </p>
+    <p>
+      상처에 손을 대면 그 사람의 마음과 기억을 읽는 소녀가 있다. 보육원에서 자란 그녀는
+      사업가이자 범죄조직의 보스인 문오언을 만나 저택에 들어가고, 오언은 그 능력을 자기 목적에 쓴다.
+      그런데 이 이야기를 우리에게 들려주는 사람은 두 사람 중 누구도 아니다.
+      저택에 입주해 소녀에게 독서를 가르치던 <strong>독서교사</strong>다.
+    </p>
+    <p>
+      그러니까 이건 <strong>읽기에 관한 소설</strong>이다.
+      읽는 능력을 가진 인물, 읽히기만을 원한 인물, 그 둘을 읽어 우리에게 옮긴 화자.
+      그리고 그 화자를 읽고 있는 우리.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">누가 누구를 읽는가</p>
+    <h2>세 사람<span class="han">人物</span></h2>
+    <div class="people">
+      <div class="person">
+        <span class="tag">아가씨 — 읽는 사람, 그리고 거절한 사람</span>
+        <p>보육원 출신. 타인의 <strong>상처에 손을 대면</strong> 그 마음과 기억이 건너온다.
+        오언에게 새 이름과 새 옷, 저택을 받았지만 스스로를 <strong>"고용된 노비"</strong>라 부른다.
+        오언이 자기 몸을 그어 읽히기를 요구했을 때 <strong>손을 등 뒤로 감추고 물러섰다.</strong></p>
+      </div>
+      <div class="person accent">
+        <span class="tag">문오언 — 읽히려는 사람</span>
+        <p>범죄조직의 보스. 소설에서 <strong>목소리를 갖지 못하는 유일한 인물</strong>이면서 유일하게 이름을 가진 인물.
+        오언(烏焉)은 <strong>'글자 모양이 비슷해 틀리기 쉬운 글자'</strong>라는 뜻이다.
+        말하는 대신 자기를 베어 내밀고 "이리로 와"라고 명령한다.</p>
+      </div>
+      <div class="person">
+        <span class="tag">독서교사 — 옮기는 사람, 그리고 피해자</span>
+        <p>화자 '나'. <strong>남편을 오언에게 잃은 사람</strong>이다. 우리는 처음부터 끝까지 이 사람의
+        "~습니다" 진술로만 두 사람을 만난다. 오언을 총으로 겨눴던 이 사람이,
+        마지막에는 <strong>오언이 옳았을지도 모른다</strong>는 데까지 간다.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">읽은 사람만 펼치기</p>
+    <h2>무슨 일이 있었나<span class="han">事</span></h2>
+    <details>
+      <summary>줄거리와 결말 — 아직 안 읽으신 분은 접어두세요</summary>
+      <div class="body">
+        <ul class="beats">
+          <li>아가씨는 저택에서 오언이 시키는 대로 사람들의 상처를 읽는다. 독서교사가 입주해 그녀를 가르친다.</li>
+          <li class="hot"><strong>266~267쪽.</strong> 오언이 자기 쇄골 아래를 그어 상처를 내고 <em>"이리로 와. 네가 직접."</em>
+          <em>"내용은 줄줄 읊지 않아도 되니까, 나를 읽어."</em>라고 요구한다.
+          나만 읽겠다고 약속하면 싫어하는 일은 시키지 않겠다고, <strong>그게 싫다면 더 많은 사람의 머릿속을 더 자주 들여다보며 살게 될 거라고</strong> 덧붙인다.</li>
+          <li class="hot">아가씨는 다가가는 대신 <strong>두 손을 등 뒤로 감추고 한 걸음 물러난다.</strong>
+          <em>"난 어차피 그런 일을 위해 고용된 노비니까. 당신한텐 그거면 됐지?"</em></li>
+          <li><strong>329쪽.</strong> 독서교사가 총으로 오언을 위협해 어딘가로 향하는 차 안.
+          오언이 <em>"미안합니다"</em>라고 하지만 화자는 변호사를 통해 하라고 자른다.</li>
+          <li class="hot">오언이 『햄릿』의 대사를 읊는다. <em>"그것이 지금이라면 앞으로는 오지 않을 테고, 다음번이 아니라면 지금 오겠지요."</em>
+          그 지시대명사가 <strong>죽음</strong>임을 화자가 알아챈 순간, 오언은 중앙선을 넘어 마주 오던 SUV와 충돌한다.</li>
+          <li class="hot"><strong>330~331쪽.</strong> 아가씨가 깨져 피 흐르는 그의 머리에 <strong>손을 올린다.</strong>
+          화자는 속으로 외친다. <em>"읽지 마. 그의 소원을 들어주지 마."</em>
+          아가씨의 손은 상처에 머물렀다가 뺨을 쓸며 목으로 내려가고, 그러다 <strong>그에게 얼굴을 가까이해 귀를 댄다.</strong>
+          그가 입을 열어 말하려 하나 <strong>목소리가 나오지 않는다.</strong></li>
+          <li><strong>335쪽.</strong> 오언은 사망. 병원에서 화자는 아가씨에게 한마디 전하려다 결국 아무 말도 고르지 못한다.</li>
+          <li class="hot"><strong>마지막.</strong> 몇 해 뒤, 어느 섬. 아가씨는 수녀복을 입고 아이들과 산다.
+          싸운 아이에게 <em>"좋아하는 사람을 이렇게 때리고 할퀴고, 상처를 주면 안 돼. 사과할 거지?"</em>라고 말한다.
+          화자는 그 모습을 보며 그녀에게 조금씩 다가가는 중이다. <strong>도착하지 않은 채 소설이 끝난다.</strong></li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">이 소설의 심장</p>
+    <h2>손의 이동<span class="han">手</span></h2>
+    <div class="hands">
+      <div class="hand">
+        <span class="when">266~267쪽 · 살아 있는 그</span>
+        <span class="what">두 손을 등 뒤로 감추고<br>한 걸음 물러난다</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="hand after">
+        <span class="when">330~331쪽 · 죽어가는 그</span>
+        <span class="what">깨진 머리에 손을 올리고<br>귀까지 가져간다</span>
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;">
+      살아서 구했다가 거절당한 것이 <strong>소원</strong>이 되었다.
+      그래서 화자가 <em>"읽지 마. 그의 소원을 들어주지 마"</em>라고 외친 것이다.
+      그러니 <strong>"아가씨는 읽었을까"</strong>는 능력이 작동했느냐의 문제가 아니다.
+      <strong>한 번 거절했던 것을 허락하기로 한 선택</strong>이었다.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">밑줄</p>
+    <h2>문장 수집<span class="han">文</span></h2>
+
+    <blockquote>
+      내용은 줄줄 읊지 않아도 되니까, 나를 읽어. (…) 줄곧 내 옆에 있으면서 나만, 그러니까 그것이 무엇이든 간에 나를……
+      <cite>266쪽 · 오언</cite>
+    </blockquote>
+
+    <blockquote>
+      그런 방식으로 옆에 붙어 있는 걸, 존재한다고 일컬어도 될까.
+      상처를 읽는 행위로써만 상대방을 이해할 수 있다면, 그걸 가리켜 어떻게 관계라고 정의할 수 있을까.
+      <cite>267쪽 · 아가씨</cite>
+    </blockquote>
+
+    <blockquote class="quiet">
+      난 이제 더는 당신하고 뭐든 개선할 여지도 의지도 없다는 것만 알겠어. 시키는 일은 할게.
+      난 어차피 그런 일을 위해 고용된 노비니까. 당신한텐 그거면 됐지?
+      <cite>267쪽 · 아가씨</cite>
+    </blockquote>
+
+    <blockquote>
+      읽지 마. 그의 소원을 들어주지 마.
+      <cite>330쪽 · 화자</cite>
+    </blockquote>
+
+    <blockquote class="quiet">
+      그의 상처가 뭐라고 말해? 너는 그에게서 무엇을 읽었어?……
+      <cite>331쪽 · 화자</cite>
+    </blockquote>
+
+    <blockquote>
+      마침내 용해되지 않는 감정들과 이가 빠지고 비어버린 다공질의 언어들이 내 안에서 소용돌이쳤습니다.
+      <cite>335쪽 · 화자</cite>
+    </blockquote>
+
+    <blockquote class="quiet">
+      상처 없는 관계라는 게 일찍이 존재나 하는 것인지 나는 모르겠다.
+      <cite>마지막 장면 · 화자</cite>
+    </blockquote>
+
+    <blockquote>
+      상처는 필연이고 용서는 선택이지만, 어쩌면 상처를 가만히 들여다봄으로 인해, 상처를 만짐으로 인해,
+      상처를 통해서만 다가갈 수 있는 대상이, 세상에는 있는지도 모르겠다고.
+      <cite>마지막 장면 · 화자</cite>
+    </blockquote>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">소설이 답하지 않고 마주 세워둔 것</p>
+    <h2>두 개의 결론<span class="han">岐</span></h2>
+    <div class="versus">
+      <div class="vs-card vs-a">
+        <span class="who">아가씨 — 아이들에게</span>
+        좋아하는 사람을 이렇게 때리고 할퀴고, 상처를 주면 안 돼. 사과할 거지?
+      </div>
+      <div class="vs-card vs-b">
+        <span class="who">화자 — 속으로</span>
+        상처를 통해서만 다가갈 수 있는 대상이, 세상에는 있는지도 모르겠다고.
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;">
+      오언을 겪은 두 사람이 <strong>정반대의 결론</strong>에 도달했다.
+      그리고 화자는 아가씨가 아이에게 그 말을 하는 걸 다 보고서도, 여전히 자기 말을 전하러 다가간다.
+      소설은 누구 편도 들지 않고 <strong>두 사람을 마주 세워놓은 채</strong> 끝난다.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">읽고 나서 남은 물음</p>
+    <h2>논점<span class="han">論</span></h2>
+    <ol class="points">
+
+      <li class="point">
+        <q>살아 있는 그가 상처를 내밀었을 때 아가씨는 물러났다. 그런데 죽어가는 그에게는 손을 얹었다. 무엇이 달라졌을까.</q>
+        <p class="fork"><span>가</span>요구하는 사람이 사라진 자리에서만 다가갈 수 있었다. 거래가 끝나야 애도가 시작된다.</p>
+        <p class="fork"><span>나</span>거절이 늦었다는 후회. 혹은 마침내 자기 의지로 고른 첫 번째 읽기.</p>
+      </li>
+
+      <li class="point">
+        <q>"상처를 읽는 행위로써만 상대방을 이해할 수 있다면, 그걸 가리켜 어떻게 관계라고 정의할 수 있을까."</q>
+        <p class="fork"><span>가</span>부를 수 없다. 그건 관계가 아니라 기능이다. 그래서 아가씨는 스스로를 노비라 불렀다.</p>
+        <p class="fork"><span>나</span>그렇다면 상처 없는 관계는 존재하나. 화자는 그걸 더는 모르겠다고 했다.</p>
+      </li>
+
+      <li class="point">
+        <q>오언의 요구는 사랑인가 폭력인가. 둘 다일 수 있을까.</q>
+        <p class="fork"><span>가</span>폭력이다. 자기를 베어놓고 오라고 명령했고, 거절하면 더 많이 읽게 하겠다고 했다.</p>
+        <p class="fork"><span>나</span>그의 세계에서 배운 유일한 문법이 거래였다면, 그는 사랑을 그 문법으로 번역한 것뿐일까.</p>
+      </li>
+
+      <li class="point">
+        <q>아가씨와 화자, 우리는 누구를 따라갈까.</q>
+        <p class="fork"><span>가</span>좋아해도 상처를 주면 안 된다 — 아가씨가 아이에게 가르치는 것.</p>
+        <p class="fork"><span>나</span>상처를 통해서만 닿는 상대가 있는지도 모른다 — 화자가 도달한 곳.</p>
+      </li>
+
+      <li class="point">
+        <q>화자는 왜 아가씨를 찾아갈까. 저속한 호기심이라고 스스로 알면서도.</q>
+        <p class="fork"><span>가</span>답을 얻으러 간다. 그의 상처가 무엇을 말했는지 끝내 모르는 채 살 수 없어서.</p>
+        <p class="fork"><span>나</span>묻기 위해 간다. 자기 언어로, 아득한 거리를 걸어서. 오언이 끝내 하지 못한 방식으로.</p>
+      </li>
+
+      <li class="point">
+        <q>말하기는 왜 이토록 어려운가.</q>
+        <p class="fork"><span>가</span>오언을 나무랐던 화자마저 병실 앞에서 <strong>이가 빠진 언어</strong>밖에 갖지 못했다.</p>
+        <p class="fork"><span>나</span>그러니 말 못 하는 사람은 오언 하나가 아니었다. 이 소설은 그를 예외로 그려놓고 마지막에 모두를 같은 자리에 세운다.</p>
+      </li>
+
+      <li class="point">
+        <q>나는 베는 사람인가, 걷는 사람인가.</q>
+        <p class="fork"><span>가</span>베면 상대가 와야 한다. 오언은 그 방법으로 아무것도 얻지 못했다.</p>
+        <p class="fork"><span>나</span>걸으면 내가 간다. 자격이 없어도, 아니 <strong>아무것도 아니기에</strong> 전할 수 있을지도 모른다.</p>
+      </li>
+
+    </ol>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="eyebrow">나만 펼치는 칸</p>
+    <h2>내 이야기<span class="han">私</span></h2>
+    <details class="mine">
+      <summary>이 책이 내 안에서 건드린 것</summary>
+      <div class="body">
+        <p><span class="said">슬펐어. 왜 소통을 하지 못하는 걸까. 자신을 해치면서까지 읽히기를 원할 만큼 소통에 자신이 없었던 걸까.</span></p>
+
+        <p style="margin-top:1.4rem;">사랑하는 사람이지만 오언과 아가씨처럼 좀처럼 소통이 되지 않기도 한다.
+        방법도 사고도 일치하는 것이 없어서, 말로 하는 소통이 오히려 오해를 불러일으키는 것 같다.
+        그렇다면 내가 읽힌다면, 나의 의도가 그대로 전해진다면 얼마나 좋을까.
+        하지만 읽는다는 건 언제나 오독의 여지가 있는 걸.</p>
+
+        <p>강압적이고 일방적인 방식으로밖에 소통하지 못하는 오언이 불쌍해서 슬펐다.
+        상처를 내어 진심을 전하려는 그 방식은 폭력이 아니고 무엇인가.
+        그런데 동시에 — 상처를 통해서만 알 수 있는 사람이 있다는 것도 안다.
+        하지만 그 상처를 내보이면서까지 상대를 모두 다 읽어야만 하는 걸까.</p>
+
+        <p><strong>아가씨의 마음과 오언의 마음이 내 안에 모두 있다.</strong>
+        상처를 드러내며 폭력적으로 다가오는 게 너무 싫지만,
+        어떻게 해도 소통하는 방법을 모르겠는 사람에게는 나를 베어서라도 다가가야 할까 싶은.</p>
+
+        <div class="memo" style="margin-top:1.6rem;">
+          <h3>두고 볼 것</h3>
+          <p style="margin:0;font-size:.95rem;">화자가 바로 그 자리에 서 있는 사람이다.
+          오언에게 남편을 잃고도 <em>"상처를 통해서만 다가갈 수 있는 대상이 있는지도 모르겠다"</em>는 데까지 간 사람.
+          두 마음을 다 가진 사람만이 이 이야기를 할 수 있었다.</p>
+          <p style="margin:.9rem 0 0;font-size:.95rem;">그리고 오언이 자기를 베어 내밀었을 때
+          상대가 한 일은 다가오는 것이 아니라 <strong>손을 등 뒤로 감추고 물러나는 것</strong>이었다.
+          손이 온 건 모든 것이 끝난 다음이었다.</p>
+        </div>
+
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    구병모 『절창』, 문학동네, 2025.09<br>
+    도란도란 독서모임 · 햇살<br>
+    인용 쪽수는 266·267·329·330·331·335쪽
+  </footer>
+
+</main>
+</body>
+</html>
