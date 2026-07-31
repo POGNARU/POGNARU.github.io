@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지금은 그대로 있어 · 2026.07.20—07.26 주간 회고 · 포근나루</title>
+<meta name="description" content="2026년 7월 20일–7월 26일, 흔들린 믿음과 잠 못 이룬 밤 사이에서 억지로 떠오르는 대신 가라앉음을 허락하기로 한 한 주의 모닝페이지 회고.">
+<link rel="canonical" href="https://pognaru.github.io/weekly/260726.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="지금은 그대로 있어 · 2026.07.20—07.26 주간 회고">
+<meta property="og:description" content="억지로 떠오르는 대신, 가라앉음을 허락하기로 한 한 주.">
+<meta property="og:url" content="https://pognaru.github.io/weekly/260726.html">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  /* ---------- 기록 스트립 ---------- */
+  .days{margin-bottom:.7rem;}
+  .days .row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem;}
+  .days .chip{
+    font-family:var(--gothic);
+    font-size:.78rem;
+    color:var(--ink);
+    background:var(--apricot);
+    border-radius:99px;
+    padding:.26rem .72rem;
+    line-height:1.6;
+  }
+  .days .count{
+    display:flex;
+    align-items:center;
+    gap:.45rem;
+    font-family:var(--gothic);
+    font-size:.78rem;
+    color:var(--ink-faint);
+    padding-top:.7rem;
+    border-top:1px solid var(--line-soft);
+  }
+  .days .count .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
+  .days .count b{color:var(--terra);font-weight:400;}
+
+  /* ---------- 새벽의 흐름 (타임라인) ---------- */
+  .timeline{position:relative;padding-left:1.35rem;}
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:4px;top:.7rem;bottom:.7rem;
+    width:3px;
+    border-radius:3px;
+    background:linear-gradient(180deg,var(--amber),var(--apricot));
+  }
+  .tl{
+    position:relative;
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-radius:14px;
+    padding:1.05rem 1.15rem;
+    margin-bottom:.7rem;
+    box-shadow:0 1px 2px rgba(60,36,21,.03);
+  }
+  .tl::before{
+    content:"";
+    position:absolute;
+    left:-1.35rem;top:1.15rem;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--amber);
+    border:2px solid var(--cream);
+  }
+  .tl .day{
+    font-family:var(--gothic);
+    font-size:.76rem;
+    letter-spacing:.08em;
+    color:var(--terra);
+    margin-bottom:.35rem;
+  }
+  .tl p{
+    font-size:.97rem;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+  .tl p b{color:var(--ink);font-weight:400;}
+
+  /* ---------- 인용 ---------- */
+  .quote{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-left:4px solid var(--amber);
+    border-radius:0 14px 14px 0;
+    padding:1.05rem 1.2rem;
+    margin-bottom:.7rem;
+  }
+  .quote p{
+    font-family:var(--serif);
+    font-size:1.02rem;
+    line-height:1.9;
+    color:var(--ink);
+  }
+  .quote .src{
+    font-family:var(--gothic);
+    font-size:.74rem;
+    color:var(--ink-faint);
+    margin-top:.55rem;
+  }
+
+  /* ---------- 씨앗 (다크 카드) ---------- */
+  .seed{
+    background:var(--ink);
+    border-radius:18px;
+    padding:1.7rem 1.5rem;
+    margin-top:.4rem;
+  }
+  .seed .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    font-family:var(--gothic);
+    font-size:.74rem;
+    letter-spacing:.18em;
+    color:var(--apricot);
+    margin-bottom:.9rem;
+  }
+  .seed .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
+  .seed h3{
+    color:var(--cream);
+    font-size:1.15rem;
+    line-height:1.55;
+    margin-bottom:.8rem;
+  }
+  .seed p{
+    font-size:.97rem;
+    line-height:1.95;
+    color:rgba(255,251,239,.84);
+  }
+  .seed p + p{margin-top:.9rem;}
+  .seed em{font-style:normal;color:var(--apricot);}
+
+  /* ---------- 핵심 문장 ---------- */
+  .pull{
+    font-family:var(--logo);
+    font-size:1.1rem;
+    line-height:1.9;
+    color:var(--ink);
+    text-align:center;
+    padding:1.7rem 1rem;
+    margin-top:2.8rem;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .pull .who{
+    display:block;
+    font-family:var(--gothic);
+    font-size:.74rem;
+    color:var(--ink-faint);
+    margin-top:.6rem;
+  }
+
+  .foot-nav{margin-top:2rem;}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <a class="backlink" href="/weekly/">← 회고 목록</a>
+
+  <article>
+
+    <header class="fade">
+      <div class="datemark">2026.07.20 — 07.26 · 주간 회고</div>
+      <h1>지금은<br>그대로 있어</h1>
+      <p class="lead">한 주 내내 <b>원인을 찾아 뒤를 돌아보던</b> 사람이, 목요일에야 방향을 바꿨다. 억지로 떠오르는 대신 <b>가라앉음을 허락하는</b> 쪽으로. 흔들린 믿음과 잠 못 이룬 밤이 나란히 놓인 한 주였다.</p>
+      <div class="amber-line"></div>
+    </header>
+
+    <!-- ① 기록 스트립 -->
+    <div class="card days fade d1">
+      <div class="row">
+        <span class="chip">7 · 20 월</span>
+        <span class="chip">7 · 21 화</span>
+        <span class="chip">7 · 22 수</span>
+        <span class="chip">7 · 23 목</span>
+        <span class="chip">7 · 24 금</span>
+        <span class="chip">7 · 25 토</span>
+      </div>
+      <div class="count"><span class="dot"></span>월요일부터 토요일까지 <b>여섯 날</b>, 수요일엔 아침과 밤 두 번 써서 <b>일곱 편</b></div>
+    </div>
+
+    <!-- ② 새벽의 흐름 -->
+    <h2 class="sec-title">새벽의 흐름</h2>
+
+    <div class="timeline fade">
+
+      <div class="tl">
+        <div class="day">월요일 · 7 / 20</div>
+        <p>무료함으로 한 주가 열렸다. 기쁨의 유통기한이 하루밖에 되지 않는다는 것 — 토요일의 기쁨이 일요일엔 이미 퇴색해 있었다는 것 — 을 담담히 적었다. 그리고 이 주 전체를 예고하는 문장이 여기 있었다. <b>"나는 자꾸만 원인을 찾으려고 한다. 원인을 알면 이 감정을 바꿀 수나 있을 것처럼."</b></p>
+      </div>
+
+      <div class="tl">
+        <div class="day">화요일 · 7 / 21</div>
+        <p>진료실에서 들은 한마디가 이 주의 중심 사건이 되었다. 의식을 내려놓고 쓰는 글은 본모습이 아니라는 말. 그 말을 그냥 받아들이지도, 그냥 밀어내지도 않고 다른 곳에 다시 물어 다른 답을 얻었지만 "완전히 안심되지는 않았다"고 썼다. 흔들림이라기보다 검증에 가까운 하루였다. 같은 날 꿈에는 얼굴을 다 덮는 가면 같은 안경이 나왔다.</p>
+      </div>
+
+      <div class="tl">
+        <div class="day">수요일 · 7 / 22</div>
+        <p>아침은 "방학이다. 신나는 방학~"이라는 설렘으로 열렸다. 그러나 "누가 나를 구해주지?"라는 물음이 곧 따라붙었고, 같은 문단 안에서 스스로 답했다. <b>"결국엔 나 스스로 떠올라야 한다."</b> 밤에 다시 쓴 글은 이 주에서 가장 깊이 내려간 자리였다. 그 어둠 안에서도 밥을 차려준 아이에게 고맙다는 문장으로 하루를 맺었다.</p>
+      </div>
+
+      <div class="tl">
+        <div class="day">목요일 · 7 / 23</div>
+        <p>전환이 왔다. 억지로 밝아지는 방식이 아니라 가라앉음을 인정하는 방식으로. "몽롱쓰기는 의식이 없는 상태에서 멈추지 않고 아무 말 대잔치를 하는 것인데, 브레이크가 생겨버렸다"고 적으면서도, 화면 너머 같이 쓰고 있는 이의 손을 보며 혼자가 아니라는 걸 느꼈다. 이 주에서 가장 오래 쓴 날이자, 목소리가 스스로에게 말을 걸기 시작한 날이다.</p>
+      </div>
+
+      <div class="tl">
+        <div class="day">금요일 · 7 / 24</div>
+        <p>한 주 내내 원인을 뒤지던 사람이 마침내 몸에서 답 하나를 건졌다. 잠. "정말 오랜만에 느껴보는 잠 오는 느낌! 눈꺼풀이 무거워지고, 졸려서 어질어질하는 그 느낌이 너무 좋다." 안도가 문장마다 배어 있는 아침이었다.</p>
+      </div>
+
+      <div class="tl">
+        <div class="day">토요일 · 7 / 25</div>
+        <p>그리고 바로 다음 날, "거의 자지 못했다." 회복이 직선으로 오지 않는다는 걸 이 두 편이 나란히 보여준다. 못 잔 채로 먼 길을 나서는 아침이었지만, 글의 끝은 절망이 아니라 잠을 구하는 조용한 기도였다.</p>
+      </div>
+
+    </div>
+
+    <!-- ③ 새벽이 남긴 문장들 -->
+    <h2 class="sec-title">새벽이 남긴 문장들</h2>
+
+    <div class="fade">
+      <div class="quote">
+        <p>"모른다는 것이 늘 불안하다.<br>
+        그 불안을 잠재우기 위해 자꾸만 원인을 찾으려 뒤돌아보는 나.<br>
+        나는 앞만 바라볼 필요가 있다고 느껴진다."</p>
+        <div class="src">260720 월요일</div>
+      </div>
+
+      <div class="quote">
+        <p>"유일하게 자유로웠던 몽롱쓰기에서마저<br>
+        나는 생각의 고삐에 당겨져 멈추게 되었다."</p>
+        <div class="src">260723 목요일</div>
+      </div>
+
+      <div class="quote">
+        <p>"어쨌든 지금은 침잠의 시기라는 걸 받아들여야겠다.<br>
+        인정하고 나면 떠오를지 모른다.<br>
+        무겁게 가라앉은 마음을 받아들여주자."</p>
+        <div class="src">260723 목요일</div>
+      </div>
+
+      <div class="quote">
+        <p>"억지로 부양하려는 마음은 온전히 나만의 것이 아니야.<br>
+        남들에게 보여지는 나를 의식한 거지.<br>
+        그러니 지금은 그대로 있어."</p>
+        <div class="src">260723 목요일</div>
+      </div>
+
+      <div class="quote">
+        <p>"배고프다는 감각이 느껴지는 걸 보니 살아있네."</p>
+        <div class="src">260723 목요일</div>
+      </div>
+
+      <div class="quote">
+        <p>"이렇게 편해지다니!"</p>
+        <div class="src">260724 금요일</div>
+      </div>
+    </div>
+
+    <!-- ④ 이번 주 결 -->
+    <h2 class="sec-title">이번 주 결</h2>
+
+    <div class="taglist fade">
+      <span class="tag">흔들린 믿음</span>
+      <span class="tag">원인을 찾는 사람</span>
+      <span class="tag">구원이 아니라 동행</span>
+      <span class="tag">잠, 그리고 몸</span>
+      <span class="tag">가면 같은 안경</span>
+      <span class="tag">침잠의 허락</span>
+      <span class="tag">스스로에게 거는 말</span>
+      <span class="tag">직선이 아닌 회복</span>
+    </div>
+
+    <!-- ⑤ 이번 주의 씨앗 -->
+    <h2 class="sec-title">이번 주의 씨앗</h2>
+
+    <div class="seed fade">
+      <div class="eyebrow"><span class="dot"></span>SEED</div>
+      <h3>잘 보려고 쓴 것이 시야를 가릴 때 —<br>버리지 않고 깎아서 쓰기로 했다</h3>
+      <p>화요일 꿈의 안경이 이 주에서 가장 밀도 높은 이미지였다. 잘 읽고 싶어 고른 것인데 얼굴을 다 덮는 가면 같았고, 무거웠고, 결국 읽고 쓸 수가 없어 하루도 못 되어 깎으러 갔다. 같은 주 월요일에 적어둔 문장 — 본래의 나와 타인이 보는 나의 격차가 크다는 것은 사회적 페르소나가 제대로 기능한다는 증거일지 모른다는 — 과 나란히 놓아보면, 두 글이 같은 것을 말하고 있는 듯하다. 그리고 나는 그것을 버리지 않고 <em>깎아서 쓰기로</em> 했다.</p>
+      <p>하나 더. "억지로 부양하려는 마음은 온전히 나만의 것이 아니야" — 이 문장 하나로도 짧은 글 한 편이 된다. 회복이란 떠오르는 것이 아니라 가라앉는 것을 허락하는 데서 시작한다는 이야기. 내가 늘 쓰던 "돌멩이를 건진다"는 말과도 이어진다. 가라앉지 않으면 바닥에 손이 닿지 않으니까.</p>
+    </div>
+
+    <!-- ⑥ 핵심 문장 -->
+    <p class="pull fade">그러니 지금은<br>그대로 있어.<span class="who">— 260723 목요일 새벽에</span></p>
+
+    <!-- ⑦ 저자 블록 -->
+    <div class="author">
+      <div class="who"><b>햇살(이다현)</b> · 포근나루</div>
+      <div>고요히, 마음에 머무는 글을 전하는 포근나루</div>
+      <div>
+        <a href="/books/">『파도는 여전히 하얗다』</a> ·
+        <a href="https://pognaru.github.io/sunlit-morning/" target="_blank" rel="noopener">선릿모닝</a>
+      </div>
+    </div>
+
+  </article>
+
+  <p class="foot-nav"><a class="textlink" href="/weekly/">← 회고 목록으로</a></p>
+
+  <footer class="sitefoot">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/weekly/">주간 회고</a>
+      <a href="/books/">책</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는 포근나루
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

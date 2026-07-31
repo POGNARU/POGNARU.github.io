@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파도는 여전히 하얗다 · 포근나루의 책</title>
+<meta name="description" content="햇살(이다현) 에세이 『파도는 여전히 하얗다』 — Sunlit Days 1. 부서져도 여전히 하얀 파도처럼, 낫지 않았지만 살아가는 날들의 기록. 교보문고·YES24·알라딘 전자책.">
+<link rel="canonical" href="https://pognaru.github.io/books/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="파도는 여전히 하얗다 · 포근나루의 책">
+<meta property="og:description" content="부서져도 여전히 하얀 파도처럼. 햇살 에세이, Sunlit Days 1.">
+<meta property="og:url" content="https://pognaru.github.io/books/">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  /* ---------- 표지 ---------- */
+  .cover{
+    width:min(200px,52vw);
+    aspect-ratio:1 / 1.5;
+    margin:0 auto 1.6rem;
+    border-radius:10px;
+    background:var(--apricot);
+    border:1px dashed rgba(233,163,58,.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    box-shadow:0 8px 22px -14px rgba(60,36,21,.45);
+  }
+  .cover span{
+    font-family:var(--gothic);
+    font-size:.76rem;
+    color:var(--ink-faint);
+    line-height:1.8;
+  }
+  .cover img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;}
+
+  .bookhead{text-align:center;}
+  .bookhead .series{
+    font-family:var(--gothic);
+    font-size:.74rem;
+    letter-spacing:.2em;
+    color:var(--terra);
+    margin-bottom:.6rem;
+  }
+  .bookhead h1{margin-bottom:.55rem;}
+  .bookhead .meta{
+    font-family:var(--gothic);
+    font-size:.79rem;
+    color:var(--ink-faint);
+  }
+
+  .intro{margin-top:2.2rem;}
+  .intro p{
+    color:var(--ink-soft);
+    font-size:1rem;
+    line-height:1.95;
+  }
+  .intro p + p{margin-top:1rem;}
+  .intro b{color:var(--terra);font-weight:400;}
+
+  .book-pull{
+    font-family:var(--logo);
+    font-size:1.05rem;
+    line-height:1.9;
+    color:var(--ink);
+    text-align:center;
+    padding:1.5rem 1rem;
+    margin:2.2rem 0 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .book-pull .who{
+    display:block;
+    font-family:var(--gothic);
+    font-size:.73rem;
+    color:var(--ink-faint);
+    margin-top:.55rem;
+  }
+
+  /* ---------- 구매 ---------- */
+  .buy-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:.9rem;
+  }
+  .buy{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-top:3px solid var(--amber);
+    border-radius:16px;
+    padding:1.3rem 1.3rem 1rem;
+    box-shadow:0 1px 2px rgba(60,36,21,.03);
+    display:flex;
+    flex-direction:column;
+  }
+  .buy .badge{
+    display:inline-block;
+    align-self:flex-start;
+    font-family:var(--gothic);
+    font-size:.72rem;
+    letter-spacing:.08em;
+    color:var(--ink);
+    background:var(--apricot);
+    border-radius:99px;
+    padding:.22rem .75rem;
+    margin-bottom:.75rem;
+  }
+  .buy h3{margin-bottom:.3rem;}
+  .buy .price{
+    font-family:var(--gothic);
+    font-size:.86rem;
+    color:var(--terra);
+    margin-bottom:.5rem;
+  }
+  .buy .note{
+    font-family:var(--gothic);
+    font-size:.81rem;
+    color:var(--ink-faint);
+    line-height:1.75;
+    margin-bottom:1rem;
+  }
+  .stores{margin-top:auto;border-top:1px solid var(--line-soft);}
+  .store{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    padding:.62rem .1rem;
+    border-bottom:1px solid var(--line-soft);
+    text-decoration:none;
+    color:var(--ink);
+    font-family:var(--gothic);
+    font-size:.87rem;
+  }
+  .store:last-child{border-bottom:none;}
+  .store .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
+  .store .arrow{margin-left:auto;color:var(--terra);font-size:.8rem;flex:none;}
+  .store:hover{color:var(--terra);}
+
+  .paper-note{
+    font-family:var(--gothic);
+    font-size:.79rem;
+    color:var(--ink-faint);
+    line-height:1.8;
+    margin-top:1.2rem;
+    padding-left:.9rem;
+    border-left:3px solid var(--apricot);
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <a class="backlink" href="/">← 포근나루</a>
+
+  <div class="kicker fade">BOOKS</div>
+
+  <!-- TODO: 표지 이미지 확보되면 아래 자리표시를 <img>로 교체
+       <div class="cover"><img src="/assets/cover-sunlit-days-1.jpg" alt="파도는 여전히 하얗다 표지"></div> -->
+  <div class="cover fade" aria-hidden="true"><span>표지 자리<br>(준비 중)</span></div>
+
+  <header class="bookhead fade d1">
+    <div class="series">SUNLIT DAYS 1</div>
+    <h1>파도는 여전히 하얗다</h1>
+    <div class="meta">햇살(이다현) 에세이 · 포근나루</div>
+  </header>
+
+  <!-- TODO: 소개 문구 다현씨 확인 -->
+  <section class="intro fade d2">
+    <p>포근나루가 처음 내보낸 책입니다. 부산 바다를 무대로, 한 사람 안에 <b>짙은 남색과 주황이 함께 사는</b> 시간을 적었습니다. 달의 위상에, 마른 열매에, 일렁이는 물결에 마음을 나란히 놓아 보는 글들입니다.</p>
+    <p>우울을 미화하지도 부정하지도 않고 <b>가만히 관찰합니다.</b> 회복을 다 끝난 일로 선언하지 않습니다. 낫지 않았지만 살아가는 날들, 그 안에서도 바다와 사람과 글로 착지하는 마음을 담았습니다.</p>
+  </section>
+
+  <p class="book-pull fade d3">파도는 여전히 하얗다.<br>부서져 작아져도, 저 물방울 하나는 행복하다.<span class="who">— 「산산이 부서지는 것들」에서</span></p>
+
+  <h2 class="sec-title">전자책으로 읽기</h2>
+
+  <div class="buy-grid fade">
+
+    <!-- 체험판 -->
+    <div class="buy">
+      <span class="badge">먼저 조금 읽어보기</span>
+      <h3>체험판</h3>
+      <div class="price">1,000원</div>
+      <p class="note">책의 앞머리를 미리 읽어볼 수 있습니다. 결이 맞는지 가볍게 확인해 보세요.</p>
+      <div class="stores">
+        <a class="store" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771124" target="_blank" rel="noopener">
+          <span class="dot"></span>교보문고<span class="arrow">열기 ↗</span>
+        </a>
+        <a class="store" href="https://www.yes24.com/product/goods/184278292" target="_blank" rel="noopener">
+          <span class="dot"></span>YES24<span class="arrow">열기 ↗</span>
+        </a>
+        <a class="store" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060305" target="_blank" rel="noopener">
+          <span class="dot"></span>알라딘<span class="arrow">열기 ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 정식판 -->
+    <div class="buy">
+      <span class="badge">처음부터 끝까지</span>
+      <h3>정식판</h3>
+      <div class="price">7,800원</div>
+      <p class="note">여는 글부터 마지막 편까지, 한 권을 온전히 담았습니다.</p>
+      <div class="stores">
+        <a class="store" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771594" target="_blank" rel="noopener">
+          <span class="dot"></span>교보문고<span class="arrow">열기 ↗</span>
+        </a>
+        <a class="store" href="https://www.yes24.com/product/goods/184278291" target="_blank" rel="noopener">
+          <span class="dot"></span>YES24<span class="arrow">열기 ↗</span>
+        </a>
+        <a class="store" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060328" target="_blank" rel="noopener">
+          <span class="dot"></span>알라딘<span class="arrow">열기 ↗</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="sec-title">종이책으로 읽기</h2>
+
+  <div class="buy-grid fade">
+    <div class="buy paper">
+      <span class="badge">손에 쥐고 읽기</span>
+      <h3>종이책</h3>
+      <div class="price">포근나루 스마트스토어</div>
+      <p class="note">초판을 소량 가지고 있습니다. 남은 부수가 많지 않아, 다 나가면 재인쇄까지 시간이 걸립니다.</p>
+      <div class="stores">
+        <a class="store" href="https://smartstore.naver.com/pognaru" target="_blank" rel="noopener">
+          <span class="dot"></span>스마트스토어<span class="arrow">열기 ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 재고 소진 시: 위 '종이책으로 읽기' 섹션(h2 + buy-grid)을 통째로 지운다.
+       재인쇄 후에는 note 문구만 바꿔서 되살린다. -->
+
+  <footer class="sitefoot">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/weekly/">주간 회고</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는 포근나루
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

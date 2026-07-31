@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포근나루 — 고요히, 마음에 머무는 글</title>
+<meta name="description" content="고요히, 마음에 머무는 글을 전하는 포근나루. 1인 독립출판 임프린트이자 글쓰기 교육 브랜드입니다. 매주 모닝페이지 주간 회고를 공개합니다.">
+<link rel="canonical" href="https://pognaru.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="포근나루 — 고요히, 마음에 머무는 글">
+<meta property="og:description" content="1인 독립출판 임프린트이자 글쓰기 교육 브랜드. 매주 모닝페이지 주간 회고를 공개합니다.">
+<meta property="og:url" content="https://pognaru.github.io/">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  .home-wrap{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:clamp(4rem,16vw,7rem) 1.25rem 3rem;
+  }
+  .hero{text-align:center;margin-bottom:clamp(3rem,10vw,4.5rem);}
+  .logo{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:clamp(2.3rem,10vw,3rem);
+    letter-spacing:.12em;
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .logo-en{
+    font-family:var(--gothic);
+    font-size:.7rem;
+    letter-spacing:.34em;
+    color:var(--ink-faint);
+    margin-top:.9rem;
+  }
+  .tagline{
+    font-family:var(--serif);
+    font-size:clamp(.98rem,3.6vw,1.06rem);
+    color:var(--ink-soft);
+    line-height:1.9;
+    margin-top:1.6rem;
+  }
+
+  /* 이번 주 회고 카드 */
+  .latest{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-left:4px solid var(--amber);
+    border-radius:16px;
+    padding:1.35rem 1.4rem;
+    text-decoration:none;
+    color:inherit;
+    box-shadow:0 1px 2px rgba(60,36,21,.03);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .latest:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(60,36,21,.35);}
+  .latest .body{flex:1;min-width:0;}
+  .latest .eyebrow{
+    font-family:var(--gothic);
+    font-size:.74rem;
+    letter-spacing:.14em;
+    color:var(--terra);
+    margin-bottom:.35rem;
+  }
+  .latest .t{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1.16rem;
+    line-height:1.45;
+    color:var(--ink);
+    margin-bottom:.25rem;
+  }
+  .latest .d{
+    font-family:var(--gothic);
+    font-size:.82rem;
+    color:var(--ink-faint);
+    line-height:1.65;
+  }
+  .latest .arrow{
+    flex:none;
+    color:var(--terra);
+    font-size:1.15rem;
+    transition:transform .25s ease;
+  }
+  .latest:hover .arrow{transform:translateX(4px);}
+
+  .more{text-align:center;margin-top:1.5rem;}
+
+  /* 앞으로 붙을 자리 */
+  .future{margin-top:clamp(3.5rem,11vw,5rem);}
+</style>
+</head>
+<body>
+
+<main class="home-wrap">
+
+  <header class="hero fade">
+    <div class="logo">포근나루</div>
+    <div class="logo-en">POGNARU STUDIO</div>
+    <div class="amber-line center"></div>
+    <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루</p>
+  </header>
+
+  <a class="latest fade d1" href="/weekly/260726.html">
+    <span class="body">
+      <span class="eyebrow">이번 주 회고 · 2026.07.20 — 07.26</span>
+      <span class="t">지금은 그대로 있어</span>
+      <span class="d">흔들린 믿음과 잠 못 이룬 밤 사이에서, 가라앉음을 허락하기로 한 한 주</span>
+    </span>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <p class="more fade d2"><a class="textlink" href="/weekly/">회고 전체 보기 →</a></p>
+
+  <!-- ============================================================
+       앞으로 붙을 자리 — 소개 / 클래스 / 책
+       .card-grid + .info-card 스타일은 assets/base.css 에 이미 들어 있다.
+       섹션을 열 때 아래 주석을 풀어 쓰면 된다.
+
+  <section class="future">
+    <h2 class="sec-title">포근나루에서 하는 일</h2>
+    <div class="card-grid">
+      <a class="info-card" href="/about/">
+        <div class="it">소개</div>
+        <div class="id">먼저 건넌 사람이 아직 건너지 못한 사람에게 건네는 자리</div>
+      </a>
+      <a class="info-card" href="/class/">
+        <div class="it">클래스</div>
+        <div class="id">선릿모닝 · 나루의 밤 · 고전 토론</div>
+      </a>
+      <a class="info-card" href="/books/">
+        <div class="it">책</div>
+        <div class="id">파도는 여전히 하얗다 — Sunlit Days 1</div>
+      </a>
+    </div>
+  </section>
+       ============================================================ -->
+
+  <footer class="sitefoot fade d3">
+    <nav>
+      <a href="/weekly/">주간 회고</a>
+      <a href="/books/">책</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는 포근나루
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

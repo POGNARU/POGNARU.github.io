@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주간 회고 · 포근나루</title>
+<meta name="description" content="포근나루 모닝페이지 회고 모음. 매주 새벽에 쓴 글에서 그 주의 결을 길어 올립니다. 달마다 월간 회고를 함께 엮습니다.">
+<link rel="canonical" href="https://pognaru.github.io/weekly/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="주간 회고 · 포근나루">
+<meta property="og:description" content="매주 새벽에 쓴 글에서 그 주의 결을 길어 올립니다.">
+<meta property="og:url" content="https://pognaru.github.io/weekly/">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  /* ---------- 월 바로가기 ---------- */
+  .jump{
+    display:flex;
+    gap:.4rem;
+    margin-bottom:2.6rem;
+    padding-bottom:.3rem;
+  }
+  .jump a{
+    flex:none;
+    font-family:var(--gothic);
+    font-size:.8rem;
+    color:var(--terra);
+    text-decoration:none;
+    background:var(--white);
+    border:1px solid rgba(233,163,58,.55);
+    border-radius:99px;
+    padding:.34rem .9rem;
+    white-space:nowrap;
+    transition:background .2s ease;
+  }
+  .jump a:hover{background:var(--apricot);}
+
+  /* ---------- 월 블록 ---------- */
+  .month{margin-bottom:2.8rem;scroll-margin-top:1.5rem;}
+  .month-label{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    font-family:var(--gothic);
+    font-size:.82rem;
+    letter-spacing:.14em;
+    color:var(--terra);
+    margin-bottom:1rem;
+  }
+  .month-label::before{
+    content:"";
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--amber);
+    flex:none;
+  }
+  .month-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line-soft);
+  }
+
+  /* ---------- 주간 카드 ---------- */
+  .rc{
+    display:flex;
+    align-items:center;
+    gap:.9rem;
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-left:3px solid var(--amber);
+    border-radius:14px;
+    padding:1.05rem 1.15rem;
+    margin-bottom:.7rem;
+    text-decoration:none;
+    color:inherit;
+    box-shadow:0 1px 2px rgba(60,36,21,.03);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .rc:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(60,36,21,.35);}
+  .rc .day{
+    flex:none;
+    width:46px;
+    text-align:center;
+    border-right:1px solid var(--line-soft);
+    padding-right:.7rem;
+  }
+  .rc .dd{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1.55rem;
+    line-height:1;
+    color:var(--ink);
+  }
+  .rc .dm{
+    font-family:var(--gothic);
+    font-size:.66rem;
+    letter-spacing:.1em;
+    color:var(--terra);
+    margin-top:.3rem;
+  }
+  .rc .info{flex:1;min-width:0;}
+  .rc .t{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1.05rem;
+    line-height:1.45;
+    color:var(--ink);
+    margin-bottom:.2rem;
+  }
+  .rc .d{
+    font-family:var(--gothic);
+    font-size:.79rem;
+    color:var(--ink-faint);
+    line-height:1.6;
+  }
+  .rc .arrow{flex:none;color:var(--terra);font-size:1.05rem;transition:transform .25s ease;}
+  .rc:hover .arrow{transform:translateX(4px);}
+
+  /* 아직 옮기지 않은 회고 */
+  .rc.soon{border-left-color:var(--g-compare);}
+  .rc.soon .arrow{color:var(--ink-faint);}
+
+  /* ---------- 월간 카드 ---------- */
+  .mc{
+    display:block;
+    background:var(--apricot);
+    border:1.5px solid var(--amber);
+    border-radius:16px;
+    padding:1.2rem 1.3rem;
+    margin-bottom:.9rem;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .mc:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(60,36,21,.35);}
+  .mc .top{
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    margin-bottom:.5rem;
+  }
+  .mc .badge{
+    font-family:var(--gothic);
+    font-size:.7rem;
+    letter-spacing:.1em;
+    color:var(--terra);
+    background:var(--white);
+    border-radius:99px;
+    padding:.2rem .7rem;
+    flex:none;
+  }
+  .mc .range{
+    font-family:var(--gothic);
+    font-size:.74rem;
+    color:var(--ink-faint);
+  }
+  .mc .t{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1.2rem;
+    line-height:1.45;
+    color:var(--ink);
+    margin-bottom:.25rem;
+  }
+  .mc .d{
+    font-family:var(--gothic);
+    font-size:.8rem;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .mc .meta{
+    display:flex;
+    align-items:center;
+    gap:.4rem;
+    font-family:var(--gothic);
+    font-size:.74rem;
+    color:var(--terra);
+    margin-top:.75rem;
+    padding-top:.6rem;
+    border-top:1px solid rgba(233,163,58,.45);
+  }
+  .mc .meta .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex:none;}
+
+  @media (max-width:400px){
+    .rc{padding:.95rem 1rem;gap:.7rem;}
+    .rc .day{width:40px;padding-right:.55rem;}
+    .rc .dd{font-size:1.4rem;}
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <a class="backlink" href="/">← 포근나루</a>
+
+  <header class="fade">
+    <div class="kicker">WEEKLY REVIEW</div>
+    <h1>한 주의 새벽을<br>가만히 모아 보는 자리</h1>
+    <p class="lead">매주, 새벽에 쓴 글에서 그 주의 결을 길어 올립니다.<br>달이 끝나면 한 달을 <b>그래프와 글감</b>으로 한 번 더 엮습니다.</p>
+    <div class="amber-line"></div>
+  </header>
+
+  <nav class="jump fade d1" aria-label="월 바로가기">
+    <a href="#m2026-07">2026 · 7월</a>
+    <a href="#m2026-06">6월</a>
+  </nav>
+
+  <!-- ================= 2026년 7월 ================= -->
+  <section class="month fade d2" id="m2026-07">
+    <div class="month-label">2026 · 7월</div>
+
+    <!-- TODO: 7월 월간 회고 발행되면 href·제목 교체 -->
+    <a class="mc" href="#">
+      <div class="top">
+        <span class="badge">월간</span>
+        <span class="range">2026.07.01 — 07.31</span>
+      </div>
+      <div class="t">7월 월간 회고</div>
+      <div class="d">한 달의 새벽을 한자리에 놓고, 감정과 시간과 말버릇의 흐름을 살핍니다.</div>
+      <div class="meta"><span class="dot"></span>그래프 4종 · 글감 분석</div>
+    </a>
+
+    <a class="rc" href="/weekly/260726.html">
+      <div class="day"><div class="dd">20</div><div class="dm">JUL</div></div>
+      <div class="info">
+        <div class="t">지금은 그대로 있어</div>
+        <div class="d">7.20 — 7.26 · 흔들린 믿음, 원인을 찾는 사람, 침잠의 허락</div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+    </a>
+
+    <!-- TODO: naru-review 에서 이관 후 href 연결 -->
+    <a class="rc soon" href="#">
+      <div class="day"><div class="dd">13</div><div class="dm">JUL</div></div>
+      <div class="info">
+        <div class="t">기다림 끝에, 응원이 왔다</div>
+        <div class="d">7.13 — 7.19 · 신청자 없는 무력감, 쓰는 나에 대한 물음, 뒤집힌 토요일</div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+    </a>
+
+    <!-- TODO: naru-review 에서 이관 후 href 연결 -->
+    <a class="rc soon" href="#">
+      <div class="day"><div class="dd">6</div><div class="dm">JUL</div></div>
+      <div class="info">
+        <div class="t">아이에게 건넨 믿음, 나에게도</div>
+        <div class="d">7.6 — 7.12 · 몸의 리듬, 아이를 향한 믿음, 새로운 역할 앞에서</div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+    </a>
+  </section>
+
+  <!-- ================= 2026년 6월 ================= -->
+  <section class="month fade d3" id="m2026-06">
+    <div class="month-label">2026 · 6월</div>
+
+    <!-- TODO: naru-review 에서 이관 후 href 연결 -->
+    <a class="mc" href="#">
+      <div class="top">
+        <span class="badge">월간</span>
+        <span class="range">2026.06.01 — 06.30</span>
+      </div>
+      <div class="t">6월 월간 회고</div>
+      <div class="d">쓰는 이유를 새벽마다 다시 물은 달. 감정의 곡선과 반복 키워드를 나란히 놓았습니다.</div>
+      <div class="meta"><span class="dot"></span>그래프 4종 · 글감 분석</div>
+    </a>
+
+    <!-- TODO: naru-review 에서 이관 후 href 연결 -->
+    <a class="rc soon" href="#">
+      <div class="day"><div class="dd">29</div><div class="dm">JUN</div></div>
+      <div class="info">
+        <div class="t">질투를 캐묻다가, 용서 앞에 섰다</div>
+        <div class="d">6.29 — 7.5 · 몸의 신호, 질투 글쓰기, 용서라는 질문</div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+    </a>
+  </section>
+
+  <footer class="sitefoot fade d4">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/books/">책</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는 포근나루
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

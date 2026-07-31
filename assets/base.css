@@ -1,0 +1,264 @@
+/* ============================================================
+   포근나루 공통 스타일 — 화면판 팔레트
+   기준: 260731 포근나루 컬러차트(화면판·인쇄판)
+   - 호박 #E9A33A 은 선·점·아이콘 전용. 글자에 쓰지 않는다.
+   - 강조 글자는 진테라코타 #A9532A 가 받는다.
+   - 테라코타 #C8845A 는 인쇄 전용. 화면에서 쓰지 않는다.
+   ============================================================ */
+
+:root{
+  /* 바탕과 면 */
+  --cream:#FFFBEF;
+  --white:#FFFFFF;
+  --apricot:#FBE7C9;
+
+  /* 포인트 — 선·점·아이콘 전용 */
+  --amber:#E9A33A;
+
+  /* 강조 글자·링크·날짜 라벨 */
+  --terra:#A9532A;
+
+  /* 글자 */
+  --ink:#3C2415;        /* 제목·짧은 본문 */
+  --ink-soft:#5C4433;   /* 긴 본문 */
+  --ink-faint:#7A6250;  /* 캡션·메타 */
+
+  /* 선 */
+  --line:rgba(60,36,21,.12);
+  --line-soft:rgba(60,36,21,.07);
+
+  /* 그래프 5단계 — 월간 회고에서 사용 */
+  --g1:#F5D9A3;
+  --g2:#E9A33A;
+  --g3:#D97E33;
+  --g4:#A9532A;
+  --g5:#6E3318;
+  --g-compare:#C7B49B;  /* 비교군(전주·전월) */
+
+  /* 폰트 */
+  --logo:"Gowun Batang", serif;
+  --serif:"Nanum Myeongjo", serif;
+  --gothic:"Gowun Dodum", sans-serif;
+
+  /* 본문 폭 */
+  --measure:640px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.85;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.wrap{
+  max-width:var(--measure);
+  margin:0 auto;
+  padding:2.6rem 1.25rem 3.5rem;
+}
+
+/* ---------- 링크 ---------- */
+a{color:var(--terra);}
+.backlink{
+  display:inline-block;
+  font-family:var(--gothic);
+  font-size:.82rem;
+  color:var(--terra);
+  text-decoration:none;
+  margin-bottom:1.8rem;
+}
+.backlink:hover{text-decoration:underline;}
+
+.textlink{
+  display:inline-block;
+  font-family:var(--gothic);
+  font-size:.86rem;
+  color:var(--terra);
+  text-decoration:none;
+  border-bottom:1px solid rgba(169,83,42,.35);
+  padding-bottom:2px;
+  transition:border-color .2s ease;
+}
+.textlink:hover{border-color:var(--terra);}
+
+/* ---------- 공통 타이포 ---------- */
+.kicker{
+  font-family:var(--gothic);
+  font-size:.78rem;
+  letter-spacing:.22em;
+  color:var(--terra);
+  margin-bottom:.6rem;
+}
+.datemark{
+  font-family:var(--gothic);
+  font-size:.8rem;
+  letter-spacing:.1em;
+  color:var(--terra);
+  margin-bottom:.5rem;
+}
+h1{
+  font-family:var(--logo);
+  font-weight:700;
+  font-size:clamp(1.85rem,7vw,2.3rem);
+  line-height:1.32;
+  letter-spacing:-.01em;
+  margin-bottom:.8rem;
+}
+h2{
+  font-family:var(--logo);
+  font-weight:700;
+  font-size:1.25rem;
+  line-height:1.5;
+  margin-bottom:1rem;
+}
+h3{
+  font-family:var(--logo);
+  font-weight:700;
+  font-size:1.05rem;
+  line-height:1.5;
+}
+.lead{
+  color:var(--ink-soft);
+  font-size:1rem;
+  line-height:1.85;
+}
+.lead b{color:var(--terra);font-weight:400;}
+.caption{
+  font-family:var(--gothic);
+  font-size:.8rem;
+  color:var(--ink-faint);
+  line-height:1.7;
+}
+
+/* 호박 짧은 선 — 페이지의 쉼표 */
+.amber-line{
+  width:54px;height:3px;
+  background:var(--amber);
+  border-radius:3px;
+  margin:2rem 0;
+}
+.amber-line.center{margin-left:auto;margin-right:auto;}
+
+/* 섹션 제목 — 앞에 호박 점 */
+.sec-title{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  font-family:var(--logo);
+  font-weight:700;
+  font-size:1.22rem;
+  color:var(--ink);
+  margin:2.8rem 0 1.1rem;
+}
+.sec-title::before{
+  content:"";
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--amber);
+  flex:none;
+}
+
+/* ---------- 카드 ---------- */
+.card{
+  background:var(--white);
+  border:1px solid var(--line-soft);
+  border-radius:16px;
+  padding:1.4rem 1.5rem;
+  box-shadow:0 1px 2px rgba(60,36,21,.03);
+}
+
+/* ---------- 알약 태그 ---------- */
+.taglist{display:flex;flex-wrap:wrap;gap:.45rem;}
+.tag{
+  font-family:var(--gothic);
+  font-size:.83rem;
+  color:var(--ink);
+  background:var(--apricot);
+  border-radius:99px;
+  padding:.32rem .85rem;
+  line-height:1.6;
+}
+
+/* ---------- 저자 블록 (개별 글 하단) ---------- */
+.author{
+  margin-top:3.2rem;
+  padding-top:1.3rem;
+  border-top:1px solid var(--line);
+  font-family:var(--gothic);
+  font-size:.8rem;
+  line-height:1.9;
+  color:var(--ink-faint);
+}
+.author .who{color:var(--ink-soft);}
+.author .who b{font-weight:400;color:var(--ink);}
+.author a{color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(169,83,42,.3);}
+.author a:hover{border-color:var(--terra);}
+
+/* ---------- 사이트 푸터 ---------- */
+.sitefoot{
+  margin-top:3rem;
+  padding-top:1.4rem;
+  border-top:1px solid var(--line-soft);
+  text-align:center;
+  font-family:var(--gothic);
+  font-size:.76rem;
+  color:var(--ink-faint);
+  line-height:1.9;
+}
+.sitefoot nav{display:flex;justify-content:center;flex-wrap:wrap;gap:.2rem .9rem;margin-bottom:.55rem;}
+.sitefoot nav a{color:var(--terra);text-decoration:none;}
+.sitefoot nav a:hover{text-decoration:underline;}
+.sitefoot .brand{
+  display:block;
+  letter-spacing:.18em;
+  font-size:.7rem;
+  color:var(--ink-faint);
+  margin-top:.3rem;
+}
+
+/* ---------- 앞으로 붙을 섹션용 (소개·클래스·책) ---------- */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:.9rem;
+}
+.info-card{
+  background:var(--white);
+  border:1px solid var(--line-soft);
+  border-top:3px solid var(--amber);
+  border-radius:14px;
+  padding:1.3rem 1.4rem;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+.info-card .it{font-family:var(--logo);font-weight:700;font-size:1.05rem;margin-bottom:.3rem;}
+.info-card .id{font-family:var(--gothic);font-size:.83rem;color:var(--ink-faint);line-height:1.7;}
+
+/* ---------- 넓은 요소 가로 스크롤 래퍼 (표·그래프) ---------- */
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+/* ---------- 등장 ---------- */
+.fade{opacity:0;animation:rise .8s ease forwards;}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
+@keyframes rise{
+  from{opacity:0;transform:translateY(12px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;}
+  html{scroll-behavior:auto;}
+}
+
+/* ---------- 좁은 화면 ---------- */
+@media (max-width:400px){
+  .wrap{padding:2.1rem 1.05rem 3rem;}
+  .card{padding:1.2rem 1.15rem;}
+}
