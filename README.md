@@ -2,7 +2,7 @@
 
 포근나루(POGNARU STUDIO) 공식 웹사이트입니다.
 
-🌐 **https://pognaru.github.io/**
+🌐 **https://pognaru.com/**
 
 조직 사이트라 루트에서 서빙됩니다. 그동안 포근나루 레포들이 `pognaru.github.io/레포명/` 아래 흩어져 있고 정작 현관이 없었는데, 2026-07-31 이 자리를 열었습니다. 앞으로 소개·클래스·책이 여기에 붙습니다.
 
