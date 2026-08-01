@@ -39,6 +39,22 @@ assets/
 .claude/launch.json 로컬 미리보기용 (python -m http.server). 배포와 무관합니다
 ```
 
+### CSS를 고치면 `?v=` 를 반드시 올리세요 (2026-08-01)
+
+```html
+<link rel="stylesheet" href="/assets/base.css?v=260801">
+```
+
+GitHub Pages는 CSS에 `Cache-Control: max-age=600`을 붙여 내보냅니다. **주소가 그대로면 브라우저는 새 파일을 받지 않습니다** — 특히 모바일은 더 오래 붙들고 있습니다. 실제로 2026-08-01 한글 줄바꿈을 고친 뒤 서버는 새 CSS를 내보내는데 폰에서는 옛 화면이 그대로였습니다.
+
+`assets/*.css` 중 **하나라도** 고쳤으면 그날 날짜(YYMMDD)로 **21개 링크를 전부** 올립니다. 값은 셋 다 같아도 됩니다 — 목적은 주소를 바꾸는 것뿐입니다.
+
+```bash
+grep -rl 'assets/[a-z]*\.css?v=' --include='*.html' . | xargs sed -i 's/\.css?v=[0-9]*/.css?v=260802/g'
+```
+
+`/reading/`의 예외 페이지 둘은 CSS를 인라인으로 품고 있어 해당 없습니다.
+
 **CSS를 두 겹으로 나눈 이유**: 주간 회고는 매주 한 장씩 늘어납니다. 색·폰트·카드 스타일을 페이지마다 복사해두면 팔레트를 손볼 때 전부 고쳐야 하고, 매주 자동 생성 비용도 커집니다. 공통은 `base.css`, 회고 전용은 `weekly.css`에 두고 개별 페이지는 내용만 담습니다.
 
 ---
