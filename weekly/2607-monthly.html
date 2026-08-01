@@ -46,7 +46,7 @@
         <span class="chip">4주차 · 7편</span>
         <span class="chip">5주차 · 4편</span>
       </div>
-      <div class="count"><span class="dot"></span>새벽에 <b>스물네 편</b>, 저녁에 <b>다섯 편</b> — 지난달 열일곱 편보다 <b>일곱 편 더</b> 썼다</div>
+      <div class="count"><span class="dot"></span>새벽에 <b>스물네 편</b>, 저녁에 <b>다섯 편</b> — 지난달 열아홉 편보다 <b>다섯 편 더</b> 썼다</div>
     </div>
 
     <!-- ② 그래프 -->
@@ -58,7 +58,7 @@
       <div class="ct">기록 리듬</div>
       <div class="cc">주차별 편수 · 점선은 지난달 주당 평균</div>
       <div class="scroll-x"><svg id="rhythmChart" viewBox="0 0 720 260" role="img" aria-label="2026년 7월 주차별 모닝페이지 편수 막대 그래프"></svg></div>
-      <div class="gnote">달의 뒤로 갈수록 <b>더 자주 썼다.</b> 1주차 세 편에서 4주차 일곱 편까지 올라간다. 마음이 가장 무거웠던 시기에 오히려 자리에 앉는 날이 늘었다는 뜻이다. 한 달 합계는 <b>스물네 편</b>으로 지난달 열일곱 편을 넘어섰다.</div>
+      <div class="gnote">달의 뒤로 갈수록 <b>더 자주 썼다.</b> 1주차 세 편에서 4주차 일곱 편까지 올라간다. 마음이 가장 무거웠던 시기에 오히려 자리에 앉는 날이 늘었다는 뜻이다. 한 달 합계는 <b>스물네 편</b>으로 지난달 열아홉 편을 넘어섰다.</div>
     </div>
 
     <div class="chart fade">
@@ -75,9 +75,9 @@
 
     <div class="chart fade">
       <div class="ct">반복해서 나온 것들</div>
-      <div class="cc">그 주제가 등장한 날의 비율 · <span style="color:#C7B49B">■</span> 6월(17편) &nbsp; <span style="color:#A9532A">■</span> 7월(24편) — 기록한 편수가 달라 날짜 수 대신 비율로 견줬습니다</div>
+      <div class="cc">그 주제가 등장한 날의 비율 · <span style="color:#C7B49B">■</span> 6월(19편) &nbsp; <span style="color:#A9532A">■</span> 7월(24편) — 기록한 편수가 달라 날짜 수 대신 비율로 견줬습니다</div>
       <div class="scroll-x"><svg id="kwChart" viewBox="0 0 720 410" role="img" aria-label="6월과 7월의 주제별 등장 비율 비교 막대 그래프"></svg></div>
-      <div class="gnote">열한 갈래 가운데 <b>올라간 것은 '자책'뿐이다.</b> 53%에서 79%로, 스물네 편 중 열아홉 편에 "게으르다" "안 하는 거다" 같은 말이 나온다. 나머지가 모두 내려간 것은 관심이 식어서가 아니라, 달의 후반으로 갈수록 글이 짧아지고 <b>한 가지 생각만 되풀이했기 때문</b>이다.</div>
+      <div class="gnote">열한 갈래 가운데 <b>올라간 것은 '자책'뿐이다.</b> 56%에서 79%로, 스물네 편 중 열아홉 편에 "게으르다" "안 하는 거다" 같은 말이 나온다. 나머지가 모두 내려간 것은 관심이 식어서가 아니라, 달의 후반으로 갈수록 글이 짧아지고 <b>한 가지 생각만 되풀이했기 때문</b>이다.</div>
     </div>
 
     <div class="chart fade">
@@ -261,7 +261,7 @@
   /* ---------- ① 기록 리듬 ---------- */
   (function(){
     var svg=document.getElementById('rhythmChart');
-    var counts=[3,4,6,7,4], junAvg=4.0;
+    var counts=[3,4,6,7,4], junAvg=4.5;
     var L=42,R=700,T=22,B=205,maxV=8;
     var n=counts.length,gap=(R-L)/n,bw=gap*0.42;
     var y=function(v){return B-(B-T)*v/maxV;};
@@ -276,7 +276,7 @@
       svg.appendChild(txt(cx,B+24,weeks[i],opt({'font-size':12,fill:FAINT,'text-anchor':'middle'})));
     }
     svg.appendChild(el('line',{x1:L,y1:y(junAvg),x2:R,y2:y(junAvg),stroke:GC,'stroke-width':1.6,'stroke-dasharray':'5 4'}));
-    svg.appendChild(txt(R,y(junAvg)-7,'6월 주당 평균 4편',opt({'font-size':11,fill:'#8A7358','text-anchor':'end'})));
+    svg.appendChild(txt(R,y(junAvg)-7,'6월 주당 평균 4.5편',opt({'font-size':11,fill:'#8A7358','text-anchor':'end'})));
   })();
 
   /* ---------- ② 감정의 흐름 ---------- */
@@ -314,9 +314,9 @@
   (function(){
     var svg=document.getElementById('kwChart');
     /* [주제, 6월 %, 7월 %] — 등장한 날 ÷ 기록한 날 */
-    var data=[['자책·죄책감',53,79],['신앙·기도',71,71],['가족·관계',59,50],['글쓰기·문체',65,46],
-              ['수면·건강',76,42],['일·포근나루',88,38],['독서·토론',41,25],['새벽의 동행',35,25],
-              ['돈·수익',41,21],['AI와 함께 일하기',59,21],['꿈',24,8]];
+    var data=[['자책·죄책감',56,79],['신앙·기도',72,71],['가족·관계',61,50],['글쓰기·문체',67,46],
+              ['수면·건강',78,42],['일·포근나루',89,38],['독서·토론',44,25],['새벽의 동행',39,25],
+              ['돈·수익',39,21],['AI와 함께 일하기',56,21],['꿈',22,8]];
     var L=132,R=672,T=12,maxV=100,rowH=35,bh=11;
     var x=function(v){return L+(R-L)*v/maxV;};
     for(var i=0;i<data.length;i++){
