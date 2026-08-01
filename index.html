@@ -50,6 +50,22 @@
     margin-top:1.6rem;
   }
 
+  /* 회고가 무엇인지 알려주는 한 줄.
+     카드로 만들지 않는 이유: 현관에 누를 상자가 이미 넷이라
+     다섯째를 더하면 첫 화면이 '누를 것 목록'이 된다.
+     설명은 누를 것이 아니라 읽을 것이라 카드 바로 위에 눕힌다. */
+  .latest-note{
+    text-align:center;
+    font-family:var(--gothic);
+    font-size:.87rem;
+    color:var(--ink-soft);
+    line-height:1.8;
+    margin-bottom:1rem;
+    /* 좁은 화면에서 '올립니다.' 한 마디만 둘째 줄에 떨어지던 것을 막는다 */
+    word-break:keep-all;
+    text-wrap:balance;
+  }
+
   /* 이번 주 회고 카드 */
   .latest{
     display:flex;
@@ -96,7 +112,28 @@
   }
   .latest:hover .arrow{transform:translateX(4px);}
 
-  .more{text-align:center;margin-top:1.5rem;}
+  /* 목록으로 가는 길. 밑줄 링크(.textlink)로 두었더니 카드에 눌려
+     보이지 않았다. 처음 온 사람은 글 한 편보다 목록이 이해가 빠르므로
+     알약으로 세운다. 다만 위 카드보다는 한 단 낮게 둔다. */
+  .more{text-align:center;margin-top:1.6rem;}
+  .more a{
+    display:inline-block;
+    font-family:var(--gothic);
+    font-size:.87rem;
+    color:var(--terra);
+    background:var(--white);
+    border:1px solid rgba(233,163,58,.55);
+    border-radius:99px;
+    padding:.55rem 1.35rem;
+    text-decoration:none;
+    line-height:1.5;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .more a:hover{
+    background:var(--cream);
+    border-color:var(--terra);
+    transform:translateY(-1px);
+  }
 
   /* 앞으로 붙을 자리 */
   .future{margin-top:clamp(3.5rem,11vw,5rem);}
@@ -128,6 +165,9 @@
     <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루입니다.</p>
   </header>
 
+  <!-- '한 주씩'·'그 결을'은 &nbsp;로 묶는다. 안 묶으면 좁은 화면에서 그 사이가 갈린다 -->
+  <p class="latest-note fade d1">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
+
   <a class="latest fade d1" href="/weekly/260726.html">
     <span class="body">
       <span class="eyebrow">이번 주 회고 · 2026.07.20 — 07.26</span>
@@ -137,7 +177,7 @@
     <span class="arrow" aria-hidden="true">→</span>
   </a>
 
-  <p class="more fade d2"><a class="textlink" href="/weekly/">회고 전체 보기 →</a></p>
+  <p class="more fade d2"><a href="/weekly/">회고 전체 보기 →</a></p>
 
   <section class="fade d3" style="margin-top:2.6rem;">
     <div class="card-grid">
