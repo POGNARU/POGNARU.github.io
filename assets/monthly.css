@@ -1,0 +1,90 @@
+/* ============================================================
+   monthly.css — 월간 회고 개별 페이지 전용
+   base.css → weekly.css → monthly.css 순으로 불러온다.
+   주간과 구조·톤은 같고, 월간에만 있는 그래프 블록을 담는다.
+   그래프 색은 base.css의 --g1~--g5 / --g-compare를 쓴다.
+   호박(--amber)은 선·점 전용, 글자는 진테라코타(--terra).
+   ============================================================ */
+
+/* ---------- 그래프 카드 ---------- */
+.chart{
+  background:var(--white);
+  border:1px solid var(--line-soft);
+  border-radius:14px;
+  padding:1.2rem 1.25rem 1.05rem;
+  margin-bottom:.7rem;
+}
+.chart .ct{
+  font-family:var(--logo);
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--ink);
+  margin-bottom:.2rem;
+}
+.chart .cc{
+  font-family:var(--gothic);
+  font-size:.76rem;
+  line-height:1.7;
+  color:var(--ink-faint);
+  margin-bottom:.9rem;
+}
+.chart svg{display:block;width:100%;height:auto;}
+
+/* 좁은 화면에서 그래프만 가로로 흐르게 — 본문은 절대 넘치지 않는다 */
+.chart .scroll-x > svg{min-width:440px;}
+
+/* ---------- 범례 ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem .95rem;
+  font-family:var(--gothic);
+  font-size:.75rem;
+  color:var(--ink-faint);
+  margin-bottom:.75rem;
+}
+.legend span{display:flex;align-items:center;gap:.35rem;}
+.legend i{width:18px;height:0;border-top:3px solid;display:inline-block;flex:none;}
+.legend b{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none;}
+
+/* ---------- 그래프 밑 한 줄 읽기 ---------- */
+.gnote{
+  font-size:.92rem;
+  line-height:1.85;
+  color:var(--ink-soft);
+  background:var(--cream);
+  border-radius:10px;
+  padding:.8rem .95rem;
+  margin-top:.85rem;
+}
+.gnote b{color:var(--terra);font-weight:400;}
+
+/* ---------- 범위 고지 ---------- */
+.scope{
+  font-family:var(--gothic);
+  font-size:.8rem;
+  line-height:1.8;
+  color:var(--ink-soft);
+  background:var(--apricot);
+  border-radius:12px;
+  padding:.9rem 1.05rem;
+  margin-bottom:1.4rem;
+}
+
+/* ---------- 월간 타임라인 — 주차 라벨이 날짜보다 길어 한 톤 크게 ---------- */
+.tl .wk{
+  font-family:var(--gothic);
+  font-size:.76rem;
+  letter-spacing:.06em;
+  color:var(--terra);
+  margin-bottom:.35rem;
+}
+.tl .wk em{
+  font-style:normal;
+  color:var(--ink-faint);
+  margin-left:.4rem;
+}
+
+@media(max-width:520px){
+  .chart{padding:1rem 1rem .9rem;}
+}
