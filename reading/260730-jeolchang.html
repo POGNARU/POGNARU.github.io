@@ -26,8 +26,10 @@
     --sans:'Gowun Dodum',system-ui,sans-serif;
   }
   *{box-sizing:border-box;}
+  /* 이 페이지는 base.css를 안 불러오므로 한글 줄바꿈(keep-all)을 직접 건다 */
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
-    line-height:1.9;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased;}
+    line-height:1.9;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased;
+    word-break:keep-all;overflow-wrap:break-word;}
 
   /* ── 표지 ── */
   .cover{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden;

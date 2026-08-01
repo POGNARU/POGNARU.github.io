@@ -30,6 +30,9 @@
     line-height:1.85;
     font-size:17px;
     -webkit-font-smoothing:antialiased;
+    /* 이 페이지는 base.css를 안 불러오므로 한글 줄바꿈을 직접 건다 */
+    word-break:keep-all;
+    overflow-wrap:break-word;
   }
   .wrap{max-width:820px;margin:0 auto;padding:0 26px;}
 

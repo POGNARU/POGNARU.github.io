@@ -54,6 +54,11 @@ body{
   line-height:1.85;
   min-height:100vh;
   overflow-x:hidden;
+  /* 한국어는 단어 중간에서 끊지 않는다. 브라우저 기본값은 음절 단위로 끊어서
+     '다음 평 / 일에'처럼 갈린다. overflow-wrap은 그 짝 — 끊을 수 없는 긴
+     영문·URL이 화면을 밀어내지 않도록 받쳐준다. */
+  word-break:keep-all;
+  overflow-wrap:break-word;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
