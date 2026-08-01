@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://pognaru.com/books/">
 <meta property="og:site_name" content="포근나루">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://pognaru.com/assets/cover-sunlit-days-1.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,26 +23,16 @@
 
 <style>
   /* ---------- 표지 ---------- */
+  /* 비율은 실제 표지 파일(720×1000)에 맞춘다. 다른 값을 넣으면 글자가 잘린다 */
   .cover{
-    width:min(200px,52vw);
-    aspect-ratio:1 / 1.5;
+    width:min(220px,56vw);
+    aspect-ratio:720 / 1000;
     margin:0 auto 1.6rem;
     border-radius:10px;
-    background:var(--apricot);
-    border:1px dashed rgba(233,163,58,.9);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    box-shadow:0 8px 22px -14px rgba(60,36,21,.45);
+    overflow:hidden;
+    box-shadow:0 10px 26px -14px rgba(60,36,21,.5);
   }
-  .cover span{
-    font-family:var(--gothic);
-    font-size:.76rem;
-    color:var(--ink-faint);
-    line-height:1.8;
-  }
-  .cover img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block;}
 
   .bookhead{text-align:center;}
   .bookhead .series{
@@ -164,9 +155,10 @@
 
   <div class="kicker fade">BOOKS</div>
 
-  <!-- TODO: 표지 이미지 확보되면 아래 자리표시를 <img>로 교체
-       <div class="cover"><img src="/assets/cover-sunlit-days-1.jpg" alt="파도는 여전히 하얗다 표지"></div> -->
-  <div class="cover fade" aria-hidden="true"><span>표지 자리<br>(준비 중)</span></div>
+  <div class="cover fade">
+    <img src="/assets/cover-sunlit-days-1.jpg" width="720" height="1000"
+         alt="『파도는 여전히 하얗다』 표지 — 맑은 하늘 아래 하얗게 부서지는 바다">
+  </div>
 
   <header class="bookhead fade d1">
     <div class="series">SUNLIT DAYS 1</div>
