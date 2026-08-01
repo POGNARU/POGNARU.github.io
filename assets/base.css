@@ -242,6 +242,39 @@ h3{
 .info-card .it{font-family:var(--logo);font-weight:700;font-size:1.05rem;margin-bottom:.3rem;}
 .info-card .id{font-family:var(--gothic);font-size:.83rem;color:var(--ink-faint);line-height:1.7;}
 
+/* ---------- 카카오채널 문의 버튼 ----------
+   신청 버튼(.btn, 진테라코타 채움)보다 한 단 낮은 '부' 버튼이다.
+   테두리만 두르는 이유는 한 화면에서 신청과 문의가 힘을 겨루지 않게 하기 위함.
+   말풍선 아이콘만 호박이고 글자는 진테라코타다(호박은 글자 금지). */
+.kakao-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:var(--gothic);
+  font-size:.88rem;
+  color:var(--terra);
+  background:var(--white);
+  border:1px solid rgba(169,83,42,.35);
+  border-radius:99px;
+  padding:.6rem 1.3rem;
+  text-decoration:none;
+  line-height:1.5;
+  transition:border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.kakao-btn:hover{
+  border-color:var(--terra);
+  background:var(--cream);
+  transform:translateY(-1px);
+}
+.kakao-btn svg{flex:none;width:17px;height:17px;fill:var(--amber);}
+.kakao-hours{
+  font-family:var(--gothic);
+  font-size:.76rem;
+  color:var(--ink-faint);
+  line-height:1.8;
+  margin-top:.7rem;
+}
+
 /* ---------- 넓은 요소 가로 스크롤 래퍼 (표·그래프) ---------- */
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 
