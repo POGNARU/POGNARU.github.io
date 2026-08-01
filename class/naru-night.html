@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나루의 밤 — 문학과 철학을 짝지어 읽는 고전 독서 토론 · 포근나루</title>
+<meta name="description" content="문학이 철학을 해설하고 철학이 문학을 해설합니다. 한 해의 질문 하나를 네 권의 고전으로 건너가는 온라인 독서 토론. 월 1회 줌, 분기당 3회.">
+<link rel="canonical" href="https://pognaru.com/class/naru-night.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="나루의 밤 — 문학과 철학을 짝지어 읽는 고전 독서 토론">
+<meta property="og:description" content="정리하고 끝내지 않고, 질문 앞에 함께 머무릅니다. 월 1회 줌, 분기당 3회.">
+<meta property="og:url" content="https://pognaru.com/class/naru-night.html">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  .facts{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-left:4px solid var(--amber);
+    border-radius:16px;
+    padding:1.3rem 1.5rem;
+    margin:1.8rem 0 .6rem;
+  }
+  .facts dl{display:grid; grid-template-columns:5.4rem 1fr; gap:.55rem 1rem;}
+  .facts dt{font-family:var(--gothic); font-size:.82rem; color:var(--ink-faint); line-height:1.75;}
+  .facts dd{font-family:var(--gothic); font-size:.88rem; color:var(--ink); line-height:1.75;}
+  .facts dd b{color:var(--terra); font-weight:400;}
+
+  .p{color:var(--ink-soft); font-size:1rem; line-height:1.95; margin-bottom:1.05rem;}
+  .p:last-child{margin-bottom:0;}
+  .p b{color:var(--terra); font-weight:400;}
+
+  /* 올해의 질문 */
+  .annual{
+    background:var(--apricot);
+    border-radius:16px;
+    padding:1.6rem 1.55rem;
+    text-align:center;
+  }
+  .annual .yr{
+    font-family:var(--gothic);
+    font-size:.76rem;
+    letter-spacing:.2em;
+    color:var(--terra);
+    margin-bottom:.7rem;
+  }
+  .annual .q{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:clamp(1.2rem,5.4vw,1.5rem);
+    line-height:1.5;
+    color:var(--ink);
+  }
+  .annual .sub{
+    font-family:var(--gothic);
+    font-size:.85rem;
+    color:var(--ink-soft);
+    line-height:1.8;
+    margin-top:.9rem;
+  }
+
+  /* 분기 카드 */
+  .qtr{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-radius:16px;
+    padding:1.35rem 1.5rem;
+    margin-bottom:.9rem;
+  }
+  .qtr.now{border-top:4px solid var(--amber);}
+  .qtr .head{display:flex; align-items:baseline; gap:.55rem; flex-wrap:wrap; margin-bottom:.45rem;}
+  .qtr .badge{
+    font-family:var(--gothic);
+    font-size:.74rem;
+    color:var(--ink);
+    background:var(--apricot);
+    border-radius:99px;
+    padding:.22rem .7rem;
+  }
+  .qtr.now .badge{background:var(--terra); color:var(--cream);}
+  .qtr .when{font-family:var(--gothic); font-size:.79rem; color:var(--ink-faint);}
+  .qtr .bk{font-family:var(--logo); font-weight:700; font-size:1.16rem; color:var(--ink); line-height:1.4;}
+  .qtr .by{font-family:var(--gothic); font-size:.79rem; color:var(--ink-faint); margin-top:.2rem;}
+  .qtr .ask{
+    font-family:var(--serif);
+    font-size:.95rem;
+    color:var(--ink-soft);
+    line-height:1.85;
+    margin-top:.75rem;
+  }
+  .qtr .rounds{
+    margin-top:.95rem;
+    padding-top:.85rem;
+    border-top:1px solid var(--line-soft);
+  }
+  .qtr .rd{
+    display:flex; gap:.8rem; align-items:baseline;
+    font-family:var(--gothic);
+    font-size:.83rem;
+    line-height:1.9;
+  }
+  .qtr .rd .d{flex:0 0 4.6rem; color:var(--terra);}
+  .qtr .rd .w{color:var(--ink-soft);}
+  .qtr .rd.done .d, .qtr .rd.done .w{color:var(--ink-faint);}
+
+  /* 읽는 방식 */
+  .steps{counter-reset:s; margin-top:.4rem;}
+  .steps li{
+    counter-increment:s;
+    position:relative;
+    padding-left:2.2rem;
+    margin-bottom:1rem;
+    color:var(--ink-soft);
+    font-size:.97rem;
+    line-height:1.85;
+    list-style:none;
+  }
+  .steps li::before{
+    content:counter(s);
+    position:absolute;
+    left:0; top:.15em;
+    width:1.55rem; height:1.55rem;
+    border-radius:50%;
+    border:1.5px solid var(--amber);
+    color:var(--terra);
+    font-family:var(--gothic);
+    font-size:.8rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .steps li b{color:var(--ink); font-weight:400;}
+
+  .cta{margin-top:2.6rem; text-align:center;}
+  .cta .btn{
+    display:inline-block;
+    background:var(--terra);
+    color:var(--cream);
+    font-family:var(--gothic);
+    font-size:.95rem;
+    text-decoration:none;
+    padding:.85rem 2.2rem;
+    border-radius:99px;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .cta .btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px -8px rgba(169,83,42,.55);}
+  .cta .sub{
+    font-family:var(--gothic);
+    font-size:.82rem;
+    color:var(--ink-faint);
+    line-height:1.8;
+    margin-top:.9rem;
+  }
+  .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.3);}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <a class="backlink" href="/class/">← 클래스</a>
+
+  <div class="kicker fade">NARU NIGHT</div>
+
+  <header class="fade">
+    <h1>나루의 밤</h1>
+    <p class="lead">좋은 소설은 철학을 품고, 좋은 철학은 소설처럼 읽힙니다. <b>문학으로 느끼고, 철학으로 깊어지는</b> 독서 토론입니다.</p>
+    <div class="amber-line"></div>
+  </header>
+
+  <div class="facts fade d1">
+    <dl>
+      <dt>모임</dt><dd>월 1회 · <b>화요일 밤 8시</b> · Zoom</dd>
+      <dt>한 분기</dt><dd>3개월 3회 · 책 한 권을 나눠 읽습니다</dd>
+      <dt>참가비</dt><dd>회차당 20,000원 · <b>분기 3회 50,000원</b></dd>
+      <dt>읽는 책</dt><dd>2026–2027 두 해에 걸쳐 문학 4권 × 철학·사상 4권</dd>
+    </dl>
+  </div>
+
+  <section class="fade d2">
+    <h2 class="sec-title">정리하고 끝내지 않습니다</h2>
+    <p class="p">독서 토론의 가장 큰 위험은 <b>'정리'에 그치는 것</b>입니다. 줄거리를 확인하고 작가의 의도를 찾아내는 것으로 끝날 때, 책은 소비되고 맙니다.</p>
+    <p class="p">나루의 밤은 다릅니다. 텍스트를 통해 참여자 스스로 질문을 발견하고, 그 질문 앞에 함께 머무르는 것을 목표로 합니다. 한 분기는 문학을 통해 인물의 감정과 선택을 따라가고, 다음 분기에는 철학 텍스트로 돌아와 그 경험에 언어와 개념을 부여합니다.</p>
+  </section>
+
+  <section class="annual fade">
+    <div class="yr">2026 ANNUAL QUESTION</div>
+    <div class="q">죄책감은 인간을<br>어떻게 만드는가</div>
+    <p class="sub">『워더링 하이츠』의 히스클리프부터 베네딕트의 문화 구조까지 —<br>억압과 죄책감이 인간 내면을 빚는 방식을<br>문학 → 신학 → 문학 → 문화인류학의 언어로 건너갑니다.</p>
+  </section>
+
+  <!-- ============================================================
+       분기가 바뀌면 이 블록을 고칩니다.
+       - .qtr.now 는 지금 읽는 분기 하나에만 붙입니다
+       - 지나간 회차는 .rd.done 으로 흐리게
+       - 전체 커리큘럼(2026–2027 8권)은 bamnaru 레포가 정본입니다
+       ============================================================ -->
+  <section class="fade">
+    <h2 class="sec-title">지금 읽는 책</h2>
+
+    <div class="qtr now">
+      <div class="head">
+        <span class="badge">3분기</span>
+        <span class="when">2026년 7월 – 9월 · 문학</span>
+      </div>
+      <div class="bk">마음 (こころ)</div>
+      <div class="by">나쓰메 소세키 · 현암사 · 송태욱 역</div>
+      <p class="ask">고백하지 못할 때 인간은 어떻게 되는가. 아우구스티누스가 고백을 통해 해방을 찾았다면, 소세키의 '선생'은 끝내 말하지 못합니다. 그 침묵이 한 인간을 서서히 무너뜨리는 과정을 따라갑니다.</p>
+      <div class="rounds">
+        <div class="rd done"><span class="d">7/21(화)</span><span class="w">상. 선생님과 나</span></div>
+        <div class="rd"><span class="d">8/18(화)</span><span class="w">중. 부모님과 나</span></div>
+        <div class="rd"><span class="d">9/15(화)</span><span class="w">하. 선생님과 유서</span></div>
+      </div>
+    </div>
+
+    <div class="qtr">
+      <div class="head">
+        <span class="badge">4분기</span>
+        <span class="when">2026년 10월 – 12월 · 문화인류학</span>
+      </div>
+      <div class="bk">국화와 칼</div>
+      <div class="by">루스 베네딕트 · 현대지성 · 왕은철 역</div>
+      <p class="ask">죄책감 문화와 수치심 문화, 인간을 만드는 구조는 무엇인가. 소세키의 선생이 고백하지 못한 이유는 개인의 나약함이 아닐 수 있습니다. 한 개인의 내면에서 출발한 여정이 문명의 구조로 확장됩니다.</p>
+    </div>
+
+    <p class="p" style="margin-top:1.2rem;">
+      2026–2027 두 해의 여정 전체는 <a class="textlink" href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">나루의 밤 커리큘럼</a>에서 보실 수 있습니다.
+      지난 토론 자료는 <a class="textlink" href="/reading/">독서 자료</a>에 쌓아 둡니다.
+    </p>
+  </section>
+
+  <section class="fade">
+    <h2 class="sec-title">이렇게 읽습니다</h2>
+    <ol class="steps">
+      <li><b>먼저 한 번 통독합니다.</b> 이해하지 못해도 괜찮습니다</li>
+      <li><b>모임 전, 해당 파트를 다시 읽습니다.</b> 밑줄을 긋고 메모를 남깁니다</li>
+      <li><b>공감한 문장, 꺼내고 싶은 문장을 오픈 채팅방에 올립니다</b></li>
+      <li><b>그렇게 준비된 마음으로 함께 앉아 이야기합니다</b></li>
+    </ol>
+    <p class="p" style="margin-top:1rem;">한 번에 다 이해하려 하지 않아도 됩니다. 석 달에 걸쳐 한 권을 건너가는 속도입니다.</p>
+  </section>
+
+  <!-- ⚠ 모집 안내: 분기 모집이 열리면 아래 버튼을 신청 폼으로 바꿉니다.
+       3분기(『마음』) 신청은 2026-07-02에 마감됐습니다. -->
+  <div class="cta fade">
+    <a class="btn" href="mailto:pognaru@naver.com?subject=%EB%82%98%EB%A3%A8%EC%9D%98%20%EB%B0%A4%20%EB%AC%B8%EC%9D%98">나루의 밤 문의하기</a>
+    <p class="sub">
+      4분기(『국화와 칼』) 모집은 <b>9월에</b> 안내드립니다.<br>
+      카카오채널 <b>'포근나루'</b> 1:1 상담으로도 물어보실 수 있어요.<br>
+      상담은 평일 06시~18시에 답해드립니다.
+    </p>
+  </div>
+
+  <footer class="sitefoot fade">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/class/">클래스</a>
+      <a href="/reading/">독서</a>
+      <a href="/books/">책</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

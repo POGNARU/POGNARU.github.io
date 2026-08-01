@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선릿모닝 — 새벽에 함께 쓰는 시간 · 포근나루</title>
+<meta name="description" content="월~금 새벽 5시 50분부터 30분, 줌에서 각자 자기 글을 쓰는 온라인 새벽 글쓰기 모임. 나누지도 첨삭하지도 않습니다. 월 20,000원, 상시 신청.">
+<link rel="canonical" href="https://pognaru.com/class/sunlit-morning.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="선릿모닝 — 새벽에 함께 쓰는 시간">
+<meta property="og:description" content="월~금 새벽 5시 50분, 줌에서 각자 자기 글을 씁니다. 나누지도 첨삭하지도 않습니다.">
+<meta property="og:url" content="https://pognaru.com/class/sunlit-morning.html">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  /* 한눈에 보기 */
+  .facts{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-left:4px solid var(--amber);
+    border-radius:16px;
+    padding:1.3rem 1.5rem;
+    margin:1.8rem 0 .6rem;
+  }
+  .facts dl{display:grid; grid-template-columns:5.4rem 1fr; gap:.55rem 1rem;}
+  .facts dt{
+    font-family:var(--gothic);
+    font-size:.82rem;
+    color:var(--ink-faint);
+    line-height:1.75;
+  }
+  .facts dd{
+    font-family:var(--gothic);
+    font-size:.88rem;
+    color:var(--ink);
+    line-height:1.75;
+  }
+  .facts dd b{color:var(--terra); font-weight:400;}
+
+  /* 본문 문단 */
+  .p{color:var(--ink-soft); font-size:1rem; line-height:1.95; margin-bottom:1.05rem;}
+  .p:last-child{margin-bottom:0;}
+  .p b{color:var(--terra); font-weight:400;}
+
+  /* 목록 */
+  .plain{list-style:none; margin:.2rem 0 0;}
+  .plain li{
+    position:relative;
+    padding-left:1.05rem;
+    color:var(--ink-soft);
+    font-size:.97rem;
+    line-height:1.9;
+    margin-bottom:.4rem;
+  }
+  .plain li::before{
+    content:"";
+    position:absolute;
+    left:0; top:.85em;
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--amber);
+  }
+  .plain li b{color:var(--ink); font-weight:400;}
+
+  /* 처음 오시는 분께 */
+  .first{
+    background:var(--apricot);
+    border-radius:16px;
+    padding:1.4rem 1.55rem;
+  }
+  .first h3{margin-bottom:.9rem;}
+  .first .q{
+    font-family:var(--gothic);
+    font-size:.87rem;
+    color:var(--terra);
+    margin-top:1.1rem;
+    margin-bottom:.15rem;
+  }
+  .first .q:first-of-type{margin-top:0;}
+  .first .a{
+    font-size:.95rem;
+    color:var(--ink-soft);
+    line-height:1.85;
+  }
+
+  /* 신청 단계 */
+  .steps{counter-reset:s; margin-top:.4rem;}
+  .steps li{
+    counter-increment:s;
+    position:relative;
+    padding-left:2.2rem;
+    margin-bottom:1rem;
+    color:var(--ink-soft);
+    font-size:.97rem;
+    line-height:1.85;
+    list-style:none;
+  }
+  .steps li::before{
+    content:counter(s);
+    position:absolute;
+    left:0; top:.15em;
+    width:1.55rem; height:1.55rem;
+    border-radius:50%;
+    border:1.5px solid var(--amber);
+    color:var(--terra);
+    font-family:var(--gothic);
+    font-size:.8rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .steps li b{color:var(--ink); font-weight:400;}
+
+  /* 자주 묻는 것 */
+  .faq{border-top:1px solid var(--line-soft);}
+  .faq details{border-bottom:1px solid var(--line-soft);}
+  .faq summary{
+    cursor:pointer;
+    list-style:none;
+    padding:.95rem 1.8rem .95rem 0;
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1rem;
+    color:var(--ink);
+    position:relative;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:"+";
+    position:absolute;
+    right:.2rem; top:.85rem;
+    color:var(--amber);
+    font-family:var(--gothic);
+    font-size:1.2rem;
+    line-height:1;
+  }
+  .faq details[open] summary::after{content:"−";}
+  .faq .body{
+    padding:0 0 1.1rem;
+    color:var(--ink-soft);
+    font-size:.95rem;
+    line-height:1.9;
+  }
+  .faq .body b{color:var(--terra); font-weight:400;}
+
+  /* 이번 달 */
+  .month{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-radius:16px;
+    padding:1.3rem 1.5rem;
+  }
+  .month .row{
+    display:flex; gap:1rem; align-items:baseline;
+    padding:.5rem 0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:var(--gothic);
+    font-size:.89rem;
+  }
+  .month .row:last-child{border-bottom:none;}
+  .month .row .m{flex:0 0 3.2rem; color:var(--terra);}
+  .month .row .v{color:var(--ink-soft); line-height:1.7;}
+  .month .note{
+    font-family:var(--gothic);
+    font-size:.8rem;
+    color:var(--ink-faint);
+    line-height:1.75;
+    margin-top:.9rem;
+  }
+
+  /* 신청 */
+  .cta{
+    margin-top:2.6rem;
+    text-align:center;
+  }
+  .cta .btn{
+    display:inline-block;
+    background:var(--terra);
+    color:var(--cream);
+    font-family:var(--gothic);
+    font-size:.95rem;
+    letter-spacing:.02em;
+    text-decoration:none;
+    padding:.85rem 2.2rem;
+    border-radius:99px;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .cta .btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px -8px rgba(169,83,42,.55);}
+  .cta .sub{
+    font-family:var(--gothic);
+    font-size:.82rem;
+    color:var(--ink-faint);
+    line-height:1.8;
+    margin-top:.9rem;
+  }
+  .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.3);}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <a class="backlink" href="/class/">← 클래스</a>
+
+  <div class="kicker fade">SUNLIT MORNING</div>
+
+  <header class="fade">
+    <h1>선릿모닝</h1>
+    <p class="lead">월요일에서 금요일까지, 새벽 <b>5시 50분</b>에 줌을 열고 <b>6시 20분</b>에 마칩니다. 30분 동안 각자 자기 글을 씁니다.</p>
+    <div class="amber-line"></div>
+  </header>
+
+  <div class="facts fade d1">
+    <dl>
+      <dt>시간</dt><dd>월~금 새벽 <b>05:50 – 06:20</b></dd>
+      <dt>쉬는 날</dt><dd>토요일 · 일요일 · 법정공휴일</dd>
+      <dt>장소</dt><dd>Zoom (신청 후 링크를 보내드립니다)</dd>
+      <dt>참가비</dt><dd><b>월 20,000원</b></dd>
+      <dt>신청</dt><dd>상시 열려 있습니다. 마감일이 없습니다</dd>
+    </dl>
+  </div>
+
+  <section class="fade d2">
+    <h2 class="sec-title">이런 시간입니다</h2>
+    <p class="p">새벽에 혼자 앉는 일은 어렵습니다. 알람을 끄고 다시 눕는 데는 이유가 필요 없지만, 일어나 앉는 데는 이유가 필요합니다. 선릿모닝은 그 이유를 <b>다른 사람의 기척</b>에 둡니다.</p>
+    <p class="p">화면 너머에 누군가 쓰고 있는 것이 보이면, 이상하게도 나도 조금 더 앉아 있게 됩니다. 말을 걸지 않아도, 얼굴을 보지 않아도 그렇습니다. 그래서 이 시간에는 말이 거의 없습니다. 인사도 짧습니다.</p>
+    <p class="p">무엇을 쓰든 괜찮습니다. 일기여도 되고, 쓰다 만 원고여도 되고, 아무것도 떠오르지 않는다고 적어도 됩니다. <b>잘 쓰는 것이 목표가 아니라 앉는 것이 목표입니다.</b></p>
+  </section>
+
+  <section class="fade">
+    <h2 class="sec-title">하지 않는 것</h2>
+    <ul class="plain">
+      <li><b>글을 나누지 않습니다.</b> 쓴 것을 보여주지 않아도 됩니다</li>
+      <li><b>첨삭하지 않습니다.</b> 고쳐주는 자리가 아닙니다</li>
+      <li><b>발표도 평가도 없습니다.</b> 오늘 무엇을 썼는지 묻지 않습니다</li>
+      <li><b>진도가 없습니다.</b> 빠진 날을 따라잡을 것이 없습니다</li>
+    </ul>
+    <p class="p" style="margin-top:1rem;">가르치지 않고 함께 씁니다. 진행자도 같은 시간에 자기 글을 씁니다.</p>
+  </section>
+
+  <section class="first fade">
+    <h3>처음 오시는 분께</h3>
+
+    <div class="q">카메라를 켜야 하나요?</div>
+    <div class="a">화면은 켜주시길 부탁드립니다. 다만 <b>얼굴이 나오지 않아도 괜찮습니다.</b> 책상 위에 놓인 손이나 어깨쯤만 비추시면 돼요. 새벽이니 세수하지 않으셔도 되고, 불을 환히 켜지 않으셔도 됩니다.</div>
+
+    <div class="q">소리는요?</div>
+    <div class="a">마이크는 꺼둡니다. 각자 조용히 씁니다.</div>
+
+    <div class="q">무엇을 준비하나요?</div>
+    <div class="a">따로 준비하실 것이 없습니다. 쓰시던 노트나 노트북이면 충분합니다.</div>
+
+    <div class="q">못 오는 날이 있으면요?</div>
+    <div class="a">괜찮습니다. 빠지셨다가 다음 날 다시 오시면 됩니다. 결석을 세지 않습니다.</div>
+
+    <div class="q">이름은 어떻게 하나요?</div>
+    <div class="a">신청하실 때 정하신 <b>필명</b>으로 줌 이름을 바꿔주세요. 새벽의 나로 살아가기 위해 스스로 붙이는 이름입니다.</div>
+  </section>
+
+  <section class="fade">
+    <h2 class="sec-title">신청하는 법</h2>
+    <ol class="steps">
+      <li><b>신청서를 씁니다.</b> 아래 링크의 네이버 폼에서 실명·필명·연락처를 남겨주세요. 오래 걸리지 않습니다</li>
+      <li><b>입금 안내를 문자로 받습니다.</b> 신청 당일이나 다음 날 안에 보내드려요</li>
+      <li><b>참가비를 보냅니다.</b> 입금자명은 신청하실 때 적어주신 실명으로 해주세요</li>
+      <li><b>줌 링크를 받습니다.</b> 입금이 확인되면 메일로 보내드립니다. 첫 새벽 전에 안내를 한 번 더 드려요</li>
+    </ol>
+  </section>
+
+  <section class="fade">
+    <h2 class="sec-title">자주 묻는 것</h2>
+    <div class="faq">
+
+      <details>
+        <summary>달 중간에 시작해도 되나요?</summary>
+        <div class="body">됩니다. 다만 남은 기간에 따라 안내가 달라져서, <b>카카오채널 1:1 상담으로 먼저 말씀해주세요.</b> 그 자리에서 함께 정합니다.</div>
+      </details>
+
+      <details>
+        <summary>다음 달에도 이어가려면요?</summary>
+        <div class="body">매월 25일쯤 안내를 드립니다. <b>28일까지 입금이 확인되면</b> 다음 달 첫 새벽부터 끊김 없이 이어집니다. 며칠 늦어도 괜찮아요 — 줌 링크 발송이 조금 밀릴 뿐입니다.</div>
+      </details>
+
+      <details>
+        <summary>환불이 되나요?</summary>
+        <div class="body"><b>참여를 시작하기 전이면 전액 환불해드립니다.</b> 시작한 뒤에는 어렵습니다.</div>
+      </details>
+
+      <details>
+        <summary>새벽에 일어날 자신이 없는데요.</summary>
+        <div class="body">며칠 빠지셔도 괜찮습니다. 못 온 날을 세지 않고, 따라잡아야 할 진도도 없습니다. 다시 오시면 그날부터입니다.</div>
+      </details>
+
+      <details>
+        <summary>글을 잘 못 쓰는데 괜찮을까요?</summary>
+        <div class="body">괜찮습니다. 아무도 보지 않습니다. 나누지 않고 첨삭하지 않으니 잘 쓸 필요가 없습니다. 여기서 하는 일은 <b>앉는 것</b>입니다.</div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       달이 바뀌면 이 블록만 고칩니다.
+       ⚠ 규칙에서 역산하지 마세요. 월 시작일은 1일도 아니고 월요일도 아닙니다.
+         새 달 일정은 반드시 다현씨에게 확인하고 적습니다.
+         (근거: 볼트 「선릿모닝 신청 안내」 현행 기준 표)
+       ============================================================ -->
+  <section class="fade">
+    <h2 class="sec-title">이번 달 일정</h2>
+    <div class="month">
+      <div class="row"><span class="m">8월</span><span class="v">3일(월) ~ 28일(금) · <b>31일(월)은 쉬어 갑니다</b></span></div>
+      <div class="row"><span class="m">9월</span><span class="v">1일(화)부터 시작합니다</span></div>
+      <p class="note">달이 바뀌는 자리에 하루 쉼표를 둡니다. 토요일과 일요일, 법정공휴일도 쉬어 갑니다.</p>
+    </div>
+  </section>
+
+  <div class="cta fade">
+    <a class="btn" href="https://naver.me/GcAknJnT" target="_blank" rel="noopener">선릿모닝 신청하기</a>
+    <p class="sub">
+      새벽이 밝아오는 <a href="https://pognaru.com/sunlit-morning/" target="_blank" rel="noopener">선릿모닝 소개 페이지</a>도 있어요.<br><br>
+      궁금한 것이 있으시면 카카오채널 <b>'포근나루'</b> 1:1 상담이나<br>
+      <a href="mailto:pognaru@naver.com">pognaru@naver.com</a>으로 편히 남겨주세요.<br>
+      상담은 평일 06시~18시에 답해드립니다.
+    </p>
+  </div>
+
+  <footer class="sitefoot fade">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/class/">클래스</a>
+      <a href="/weekly/">주간 회고</a>
+      <a href="/books/">책</a>
+    </nav>
+    고요히, 마음에 머무는 글을 전하는
+    <span class="brand">POGNARU STUDIO</span>
+  </footer>
+
+</main>
+
+</body>
+</html>
