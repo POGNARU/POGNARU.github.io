@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>포근나루 — 고요히, 마음에 머무는 글</title>
-<meta name="description" content="고요히, 마음에 머무는 글을 전하는 포근나루. 1인 독립출판 임프린트이자 글쓰기 교육 브랜드입니다. 매주 모닝페이지 주간 회고를 공개합니다.">
+<!-- 화면에 보이는 이름은 「한 주의 새벽」, 검색에 걸리는 이름은 '주간 회고'다.
+     아래 메타에서 '주간 회고'·'모닝페이지'를 빼지 마세요 — 사람들은 그 말로 검색합니다. -->
+<meta name="description" content="고요히, 마음에 머무는 글을 전하는 포근나루. 1인 독립출판 임프린트이자 글쓰기 교육 브랜드입니다. 매주 모닝페이지 주간 회고 「한 주의 새벽」을 공개합니다.">
 <link rel="canonical" href="https://pognaru.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="포근나루 — 고요히, 마음에 머무는 글">
-<meta property="og:description" content="1인 독립출판 임프린트이자 글쓰기 교육 브랜드. 매주 모닝페이지 주간 회고를 공개합니다.">
+<meta property="og:description" content="1인 독립출판 임프린트이자 글쓰기 교육 브랜드. 매주 모닝페이지 주간 회고 「한 주의 새벽」을 공개합니다.">
 <meta property="og:url" content="https://pognaru.com/">
 <meta property="og:site_name" content="포근나루">
 <meta property="og:locale" content="ko_KR">
@@ -50,7 +52,7 @@
     margin-top:1.6rem;
   }
 
-  /* 회고가 무엇인지 알려주는 한 줄.
+  /* 「한 주의 새벽」이 무엇인지 알려주는 한 줄.
      카드로 만들지 않는 이유: 현관에 누를 상자가 이미 넷이라
      다섯째를 더하면 첫 화면이 '누를 것 목록'이 된다.
      설명은 누를 것이 아니라 읽을 것이라 카드 바로 위에 눕힌다. */
@@ -66,7 +68,7 @@
     text-wrap:balance;
   }
 
-  /* 이번 주 회고 카드 */
+  /* 이번 주의 새벽 카드 */
   .latest{
     display:flex;
     align-items:center;
@@ -83,6 +85,11 @@
   }
   .latest:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(60,36,21,.35);}
   .latest .body{flex:1;min-width:0;}
+  /* 셋 다 <span>이라 기본값이 inline이었다. 그대로 두면 날짜·제목·요약이
+     한 문단으로 이어 붙고 아래 margin-bottom도 먹지 않는다. */
+  .latest .eyebrow,
+  .latest .t,
+  .latest .d{display:block;}
   .latest .eyebrow{
     font-family:var(--gothic);
     font-size:.74rem;
@@ -170,14 +177,14 @@
 
   <a class="latest fade d1" href="/weekly/260726.html">
     <span class="body">
-      <span class="eyebrow">이번 주 회고 · 2026.07.20 — 07.26</span>
+      <span class="eyebrow">이번 주의 새벽 · 2026.07.20 — 07.26</span>
       <span class="t">지금은 그대로 있어</span>
       <span class="d">흔들린 믿음과 잠 못 이룬 밤 사이에서, 가라앉음을 허락하기로 한 한 주</span>
     </span>
     <span class="arrow" aria-hidden="true">→</span>
   </a>
 
-  <p class="more fade d2"><a href="/weekly/">회고 전체 보기 →</a></p>
+  <p class="more fade d2"><a href="/weekly/">지난 새벽 모두 보기 →</a></p>
 
   <section class="fade d3" style="margin-top:2.6rem;">
     <div class="card-grid">
@@ -221,7 +228,7 @@
   <footer class="sitefoot fade d3">
     <nav>
       <a href="/class/">클래스</a>
-      <a href="/weekly/">주간 회고</a>
+      <a href="/weekly/">한 주의 새벽</a>
       <a href="/books/">책</a>
       <a href="/reading/">독서</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
