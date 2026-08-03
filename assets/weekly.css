@@ -16,18 +16,31 @@
   padding:.26rem .72rem;
   line-height:1.6;
 }
+/* 한 줄 요약 — 문장이므로 flex로 쪼개지 않는다.
+   flex를 쓰면 텍스트 마디와 <b>가 각각 플렉스 아이템이 되어
+   좁은 화면에서 낱말이 흩어지고 줄이 어긋난다. (2026-08-04 수정) */
 .days .count{
-  display:flex;
-  align-items:center;
-  gap:.45rem;
   font-family:var(--gothic);
-  font-size:.78rem;
+  font-size:.82rem;
+  line-height:1.8;
   color:var(--ink-faint);
   padding-top:.7rem;
   border-top:1px solid var(--line-soft);
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+  /* 둘째 줄부터 점 아래가 아니라 글자에 맞춰 들여 쓴다 */
+  padding-left:15px;
+  text-indent:-15px;
 }
-.days .count .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
-.days .count b{color:var(--terra);font-weight:400;}
+.days .count .dot{
+  display:inline-block;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--amber);
+  margin-right:8px;
+  vertical-align:.12em;
+}
+.days .count b{color:var(--terra);font-weight:400;white-space:nowrap;}
 
 /* ---------- 타임라인 ---------- */
 .timeline{position:relative;padding-left:1.35rem;}
