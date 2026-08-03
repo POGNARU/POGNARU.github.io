@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/base.css?v=260801">
 <link rel="stylesheet" href="/assets/weekly.css?v=260804">
-<link rel="stylesheet" href="/assets/monthly.css?v=260801">
+<link rel="stylesheet" href="/assets/monthly.css?v=260804">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 </head>
@@ -83,7 +83,7 @@
     <div class="chart fade">
       <div class="ct">무엇에 대해 썼나</div>
       <div class="cc">주제 비중 · 6월에서 7월로</div>
-      <div class="scroll-x"><svg id="topicChart" viewBox="0 0 640 250" role="img" aria-label="6월과 7월의 주제 비중 도넛 그래프 두 개"></svg></div>
+      <div class="donuts"><svg id="topicChart" viewBox="0 0 420 210" role="img" aria-label="6월과 7월의 주제 비중 도넛 그래프 두 개"></svg></div>
       <div class="legend" id="topicLegend" style="margin-top:.7rem;margin-bottom:0"></div>
       <div class="gnote"><b>'가족'이 15%에서 24%로 올라 처음으로 1위</b>가 되었다. 그다음이 '글쓰기·창작'(13→18%)이다. 반대로 '일·사업'은 24%에서 14%로 내려왔다 — 일을 놓아서가 아니라, 이 달의 무게가 집 안쪽으로 옮겨갔기 때문이다.</div>
     </div>
@@ -349,11 +349,11 @@
         svg.appendChild(el('path',{d:'M '+x1+' '+y1+' A '+rO+' '+rO+' 0 '+lg+' 1 '+x2+' '+y2+' L '+x3+' '+y3+' A '+rI+' '+rI+' 0 '+lg+' 0 '+x4+' '+y4+' Z',fill:pal[k]}));
         ang=a2;
       });
-      svg.appendChild(txt(cx,cy-1,label,{'font-family':'Gowun Batang','font-size':15,fill:INK,'text-anchor':'middle','font-weight':700}));
-      svg.appendChild(txt(cx,cy+17,'주제 비중',opt({'font-size':9.5,fill:FAINT,'text-anchor':'middle'})));
+      svg.appendChild(txt(cx,cy-2,label,{'font-family':'Gowun Batang','font-size':17,fill:INK,'text-anchor':'middle','font-weight':700}));
+      svg.appendChild(txt(cx,cy+17,'주제 비중',opt({'font-size':11,fill:FAINT,'text-anchor':'middle'})));
     }
-    donut(168,125,84,49,1,junShades,'6월');
-    donut(468,125,84,49,2,shades,'7월');
+    donut(106,103,80,47,1,junShades,'6월');
+    donut(314,103,80,47,2,shades,'7월');
     var lg=document.getElementById('topicLegend');
     topics.forEach(function(t,k){
       var s=document.createElement('span');
