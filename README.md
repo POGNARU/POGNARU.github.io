@@ -38,9 +38,41 @@ assets/
   weekly.css        주간·월간 회고 개별 페이지 공통 (타임라인·인용·씨앗·핵심문장)
   monthly.css       월간 회고에만 있는 그래프 블록 (.chart .legend .gnote .scope)
   cover-sunlit-days-1.jpg  『파도는 여전히 하얗다』 전자책 표지 720×1000
+robots.txt          검색엔진 차단 규칙 — 비공개 하위 사이트 네 곳 (아래 설명)
 .nojekyll           Jekyll 처리 끄기
 .claude/launch.json 로컬 미리보기용 (python -m http.server). 배포와 무관합니다
 ```
+
+### `robots.txt` — 비공개 하위 사이트 네 곳 (2026-08-20)
+
+`pognaru.com`은 조직 사이트라 다른 레포들이 전부 이 도메인 하위 경로로 붙습니다. 그중 넷은
+**링크를 받은 사람만 보는 자리**라 검색에서 빼야 합니다.
+
+| 경로 | 레포 | 왜 |
+|---|---|---|
+| `/deeper-haetsal/` | `deeper-haetsal` | 디퍼 인사이트·과제 아카이브 — 사적 성찰 기록 |
+| `/byeol/` | `byeol` | 밤하늘 — 새벽 글 별자리 아카이브 |
+| `/dawn/` | `dawn` | 새벽갈피 — 저작권상 비공개 |
+| `/lectura/` | `lectura` | 낭독 노트 — 링크 공유는 허용하되 검색 노출은 차단 |
+
+네 사이트는 **각 HTML에 `<meta name="robots" content="noindex, nofollow">`가 이미 걸려 있습니다.**
+`robots.txt`는 그 위에 한 겹 더 얹는 것이고, 둘의 역할이 다릅니다.
+
+- `noindex` 메타 — 크롤러가 **읽은 뒤** 색인하지 말라는 지시
+- `robots.txt` — 크롤러가 **읽으러 오지도 말라는** 지시
+
+그래서 `robots.txt`로 막으면 크롤러는 `noindex` 메타를 볼 수 없습니다. **이미 색인된 페이지가 있을 때는
+오히려 색인이 안 지워지므로 순서가 중요합니다** — 넣기 전에 `site:pognaru.com` 으로 색인 0건을 확인하고
+넣었습니다(2026-08-20 확인).
+
+**새 하위 사이트를 추가할 때**: 공개할 자리면 손댈 것 없고, 비공개 자리면 ① 그 레포 HTML 전부에
+`noindex` 메타를 넣고 ② 여기 `robots.txt`에 `Disallow:` 한 줄을 더합니다. 둘 중 하나만 하지 않습니다.
+
+> ⚠️ 레포 자체는 public입니다. 무료 플랜에서는 private 레포로 GitHub Pages를 돌릴 수 없기 때문입니다.
+> 즉 `github.com/POGNARU/<레포>` 에서 파일은 그대로 읽히고, 깃허브 쪽은 `robots.txt`가 닿지 않습니다.
+> **정말 남에게 보이면 안 되는 글은 이 도메인에 올리지 않습니다.**
+
+---
 
 ### CSS를 고치면 `?v=` 를 반드시 올리세요 (2026-08-01)
 

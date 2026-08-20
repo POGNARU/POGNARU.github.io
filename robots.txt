@@ -1,0 +1,18 @@
+# pognaru.com — 포근나루(POGNARU STUDIO)
+# 공개 페이지는 모두 열어 둡니다. 아래 네 곳만 검색에서 제외합니다.
+# 각 페이지에는 <meta name="robots" content="noindex, nofollow"> 도 함께 걸려 있습니다.
+# (2026-08-20 추가)
+
+User-agent: *
+
+# 디퍼 인사이트·과제 아카이브 — 사적 성찰 기록
+Disallow: /deeper-haetsal/
+
+# 밤하늘 — 새벽 글 별자리 아카이브
+Disallow: /byeol/
+
+# 새벽갈피 — 저작권상 비공개
+Disallow: /dawn/
+
+# 낭독 노트 — 링크를 받은 사람만 (검색 노출은 막습니다)
+Disallow: /lectura/
