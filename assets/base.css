@@ -300,3 +300,18 @@ h3{
   .wrap{padding:2.1rem 1.05rem 3rem;}
   .card{padding:1.2rem 1.15rem;}
 }
+
+/* 식구 크레딧 — 페이지를 지은 식구를 푸터에 밝힌다 (2026-08-25 첫 적용)
+   형식·규칙은 lectura assets/style.css 와 같습니다. 사이트를 가리지 않습니다. */
+.sitefoot .credit{
+  margin-top:.9rem;
+  padding-top:.85rem;
+  border-top:1px solid rgba(233,163,58,.4);
+  font-family:var(--gothic);
+  font-size:.72rem;
+  line-height:1.9;
+  color:var(--ink-faint);
+}
+.sitefoot .credit .who{white-space:nowrap;}
+.sitefoot .credit .who b{font-weight:400; color:var(--terra);}
+.sitefoot .credit .sep{color:rgba(233,163,58,.75); margin:0 .45rem;}

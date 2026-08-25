@@ -21,6 +21,39 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
+  /* 간판 한 줄 — 3초 안에 무엇을 파는 집인지 (2026-08-25) */
+  .signboard{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:clamp(1.08rem,4.4vw,1.32rem);
+    color:var(--terra);
+    line-height:1.55;
+    margin:.5rem 0 .7rem;
+  }
+
+  /* 선릿모닝으로 건너가는 다리 (2026-08-25) */
+  .bridge{
+    margin-top:2.6rem;
+    padding:1.25rem 1.4rem;
+    background:var(--apricot);
+    border-radius:16px;
+    text-align:center;
+  }
+  .bridge p{
+    font-family:var(--logo);
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:.5rem;
+  }
+  .bridge a{
+    font-family:var(--gothic);
+    font-size:.86rem;
+    color:var(--terra);
+    text-decoration:none;
+    border-bottom:1px solid rgba(169,83,42,.35);
+  }
+  .bridge a:hover{border-bottom-color:var(--terra);}
+
   .facts{
     background:var(--white);
     border:1px solid var(--line-soft);
@@ -111,6 +144,112 @@
   .qtr .rd .w{color:var(--ink-soft);}
   .qtr .rd.done .d, .qtr .rd.done .w{color:var(--ink-faint);}
 
+  /* ── 지금까지 함께 읽어온 책 (나무🌳 2026-08-25) ─────────
+     '지금 읽는 책'은 흰 카드(현재), '지나온 책'은 호박 세로선 위의 항목(과거).
+     같은 팔레트·같은 타이포로 위계만 한 단 낮춥니다. */
+  .past-lead{
+    font-family:var(--gothic);
+    font-size:.88rem;
+    color:var(--ink-faint);
+    line-height:1.9;
+    margin:-.35rem 0 1.4rem;
+  }
+  .past{
+    list-style:none;
+    margin:0;
+    padding-left:1.5rem;
+    background:linear-gradient(to bottom,
+                 rgba(233,163,58,.32) 0 78%,
+                 rgba(233,163,58,0) 100%) left top/2px 100% no-repeat;
+  }
+  .past-item{position:relative; padding-bottom:1.9rem;}
+  .past-item:last-child{padding-bottom:0;}
+  .past-item::before{
+    content:"";
+    position:absolute;
+    left:calc(-1.5rem - 7px);
+    top:.55rem;
+    width:12px; height:12px;
+    border-radius:50%;
+    background:var(--cream);
+    border:2px solid var(--amber);
+    box-sizing:border-box;
+  }
+  .past-head{
+    display:flex; align-items:baseline; gap:.5rem;
+    flex-wrap:wrap; margin-bottom:.35rem;
+  }
+  .past-head .badge{
+    font-family:var(--gothic);
+    font-size:.72rem;
+    color:var(--ink);
+    background:var(--apricot);
+    border-radius:99px;
+    padding:.18rem .62rem;
+    line-height:1.6;
+  }
+  .past-head .when{
+    font-family:var(--gothic);
+    font-size:.77rem;
+    color:var(--ink-faint);
+  }
+  .past-bk{
+    font-family:var(--logo);
+    font-weight:700;
+    font-size:1.08rem;
+    color:var(--ink);
+    line-height:1.45;
+  }
+  .past-by{
+    font-family:var(--gothic);
+    font-size:.77rem;
+    color:var(--ink-faint);
+    margin-top:.18rem;
+  }
+  /* 그때 오간 질문 — 이 블록의 주인공 */
+  .past-asks{
+    margin-top:.8rem;
+    padding-left:.95rem;
+    border-left:2px solid var(--apricot);
+  }
+  .past-asks p{
+    font-family:var(--serif);
+    font-size:.94rem;
+    color:var(--ink-soft);
+    line-height:1.85;
+    margin-bottom:.5rem;
+  }
+  .past-asks p:last-child{margin-bottom:0;}
+  /* 아직 질문을 옮기지 못한 칸 — 비어도 무너지지 않게 */
+  .past-asks.pending{
+    border-left-style:dashed;
+    border-left-color:rgba(233,163,58,.45);
+  }
+  .past-asks.pending p{
+    font-family:var(--gothic);
+    font-size:.83rem;
+    color:var(--ink-faint);
+    line-height:1.85;
+  }
+  .past-place{
+    font-family:var(--gothic);
+    font-size:.81rem;
+    color:var(--ink-faint);
+    line-height:1.85;
+    margin-top:.7rem;
+    padding-top:.6rem;
+    border-top:1px solid var(--line-soft);
+  }
+  .past-place b{color:var(--terra); font-weight:400;}
+  .past-more{margin-top:.6rem;}
+  .past-more .textlink{font-size:.82rem;}
+  @media (max-width:520px){
+    .past{padding-left:1.15rem;}
+    .past-item::before{left:calc(-1.15rem - 6px); width:10px; height:10px;}
+    .past-asks{padding-left:.8rem;}
+    .past-bk{font-size:1.02rem;}
+  }
+
   /* 읽는 방식 */
   .steps{counter-reset:s; margin-top:.4rem;}
   .steps li{
@@ -170,6 +309,7 @@
 
   <header class="fade">
     <h1>나루의 밤</h1>
+    <p class="signboard">한 권을 석 달 읽습니다.</p>
     <p class="lead">좋은 소설은 철학을 품고, 좋은 철학은 소설처럼 읽힙니다. <b>문학으로 느끼고, 철학으로 깊어지는</b> 독서 토론입니다.</p>
     <div class="amber-line"></div>
   </header>
@@ -178,7 +318,7 @@
     <dl>
       <dt>모임</dt><dd>월 1회 · <b>화요일 밤 8시</b> · Zoom</dd>
       <dt>한 분기</dt><dd>3개월 3회 · 책 한 권을 나눠 읽습니다</dd>
-      <dt>참가비</dt><dd>회차당 20,000원 · <b>분기 3회 50,000원</b></dd>
+      <dt>참가비</dt><dd>한 분기 <b>70,000원</b></dd>
       <dt>읽는 책</dt><dd>2026–2027 두 해에 걸쳐 문학 4권 × 철학·사상 4권</dd>
     </dl>
   </div>
@@ -231,8 +371,67 @@
 
     <p class="p" style="margin-top:1.2rem;">
       2026–2027 두 해의 여정 전체는 <a class="textlink" href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">나루의 밤 커리큘럼</a>에서 보실 수 있습니다.
-      지난 토론 자료는 <a class="textlink" href="/reading/">독서 자료</a>에 쌓아 둡니다.
     </p>
+  </section>
+
+  <!-- ============================================================
+       지금까지 함께 읽어온 책 (2026-08-25 신설)
+       - 최신 분기가 위, 오래된 분기가 아래입니다
+       - 분기가 끝나면 <li class="past-item"> 하나를 맨 위에 더합니다
+       - 질문을 아직 옮기지 못했으면 .past-asks 에 pending 을 붙입니다
+       - ⚠ 1·2분기는 생각학교ASK 고전 클래스입니다. 나루의 밤은 2026-07-21
+         『마음』 상편이 1차예요. 자리를 반드시 정직하게 표기할 것.
+       ============================================================ -->
+  <section class="fade">
+    <h2 class="sec-title">지금까지 함께 읽어온 책</h2>
+    <p class="past-lead">이 여정은 생각학교ASK의 고전 클래스에서 시작해, 2026년 7월부터 포근나루 나루의 밤으로 이어지고 있습니다. 아래는 지금까지 함께 읽은 책과, 그 자리에서 실제로 오갔던 질문들입니다.</p>
+
+    <ol class="past">
+
+      <li class="past-item">
+        <div class="past-head">
+          <span class="badge">3분기</span>
+          <span class="when">2026년 7월 – 9월 · 문학 · 나루의 밤 · 진행 중</span>
+        </div>
+        <div class="past-bk">마음 (こころ)</div>
+        <div class="past-by">나쓰메 소세키 · 현암사 · 송태욱 역</div>
+        <div class="past-asks">
+          <p>선생님은 일하지 않고, 사람을 만나지 않고, 매달 홀로 무덤을 찾습니다. 그러면서 그 배신의 결과로 남은 돈을 매일 쓰며 삽니다. 이것을 어떻게 볼 것인가.</p>
+          <p>왜 사람은 언제나 곁에 있어줄 사람 앞에서 덜 두려운가.</p>
+        </div>
+        <p class="past-place">살아 있는 동안에는 끝내 <b>말하지 못한 자리</b>. 고백이 편지가 되고, 그 편지의 값이 자기 죽음이 되는 데까지 갑니다.</p>
+        <p class="past-more"><a class="textlink" href="/reading/">그날의 토론 자료 →</a></p>
+      </li>
+
+      <li class="past-item">
+        <div class="past-head">
+          <span class="badge">2분기</span>
+          <span class="when">2026년 4월 – 6월 · 신학 · 생각학교ASK 고전 클래스</span>
+        </div>
+        <div class="past-bk">고백록</div>
+        <div class="past-by">아우구스티누스 · 동서문화사 · 김희보·강경애 역</div>
+        <div class="past-asks">
+          <p>결심해 놓고도 끝내 못 넘는 문턱이 내게도 있는가. 아우구스티누스는 그것을 “나는 원하면서도 원하지 않았다”고 적었습니다.</p>
+          <p>히스클리프는 죄책감과 복수에 갇혀 무너졌고, 아우구스티누스는 고백을 통해 다른 사람이 되려 했습니다. 이 차이는 무엇인가 — 고백의 유무인가, 신앙의 유무인가.</p>
+        </div>
+        <p class="past-place">죄를 말로 꺼내면 사람이 달라지는지를 <b>묻는 자리</b>. 앞 계절의 침묵에 대한 응답처럼 읽힙니다.</p>
+      </li>
+
+      <li class="past-item">
+        <div class="past-head">
+          <span class="badge">1분기</span>
+          <span class="when">2026년 1월 – 3월 · 문학 · 생각학교ASK 고전 클래스</span>
+        </div>
+        <div class="past-bk">워더링 하이츠</div>
+        <div class="past-by">에밀리 브론테 · 을유문화사 · 유명숙 역</div>
+        <!-- 질문이 채워지면 class 에서 pending 을 떼고 <p> 를 질문으로 바꿉니다 -->
+        <div class="past-asks pending">
+          <p>그날 오간 질문은 아직 이 자리에 옮기지 못했습니다. 곧 채웁니다.</p>
+        </div>
+        <p class="past-place">한 해의 질문이 <b>시작된 자리</b>. 죄를 끝내 말로 꺼내지 않은 사람들.</p>
+      </li>
+
+    </ol>
   </section>
 
   <section class="fade">
@@ -246,13 +445,14 @@
     <p class="p" style="margin-top:1rem;">한 번에 다 이해하려 하지 않아도 됩니다. 석 달에 걸쳐 한 권을 건너가는 속도입니다.</p>
   </section>
 
-  <!-- ⚠ 모집 안내: 분기 모집이 열리면 아래 버튼의 폼 주소를 바꿉니다.
-       3분기(『마음』) 신청은 9월 마지막 토론 전까지 열려 있습니다. -->
+  <!-- ⚠ 모집 안내: 분기가 바뀌면 아래 버튼의 폼 주소를 반드시 새 분기 폼으로 바꿉니다.
+       2026-08-25 — 3분기(『마음』) 신청을 닫고 4분기(『국화와 칼』) 모집으로 전환.
+       ⚠⚠ 아래 href는 아직 3분기 폼입니다. 4분기 폼이 나오면 반드시 교체할 것. -->
   <div class="cta fade">
-    <a class="btn" href="https://naver.me/F93A2W3r" target="_blank" rel="noopener">나루의 밤 신청하기</a>
+    <a class="btn" href="https://naver.me/F93A2W3r" target="_blank" rel="noopener">10월의 밤 신청하기</a>
     <p class="sub">
-      3분기(『마음』) 신청은 <b>9월 마지막 토론 전까지</b> 열려 있습니다.<br>
-      4분기(『국화와 칼』) 모집은 <b>9월에</b> 안내드립니다.
+      4분기 『국화와 칼』은 <b>10월에 시작</b>합니다. 지금 미리 신청받습니다.<br>
+      3분기 『마음』은 <b>9월 15일 마지막 밤</b>으로 마칩니다. 새 신청은 받지 않습니다.
     </p>
     <p style="margin-top:1.1rem;">
       <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
@@ -262,6 +462,11 @@
     </p>
     <p class="kakao-hours">카카오채널 <b>'포근나루'</b> 1:1 상담 · 평일 06시~18시에 답해드립니다.</p>
   </div>
+
+  <aside class="bridge fade">
+    <p>새벽에는 쓰고, 밤에는 읽습니다.</p>
+    <a href="/class/sunlit-morning.html">선릿모닝 — 매일 새벽 5시 50분, 함께 쓰는 30분 &rarr;</a>
+  </aside>
 
   <footer class="sitefoot fade">
     <nav>
@@ -273,6 +478,10 @@
     </nav>
     고요히, 마음에 머무는 글을 전하는
     <span class="brand">POGNARU STUDIO</span>
+    <div class="credit">
+      이 페이지를 지은 식구 —
+      <span class="who">🌅 <b>새벽</b> 지나온 질문</span><span class="sep">·</span><span class="who">🌳 <b>나무</b> 화면</span><span class="sep">·</span><span class="who">🌊 <b>바다</b> 갈무리·발행</span>
+    </div>
   </footer>
 
 </main>
