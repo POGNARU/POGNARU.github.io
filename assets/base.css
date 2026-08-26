@@ -315,3 +315,28 @@ h3{
 .sitefoot .credit .who{white-space:nowrap;}
 .sitefoot .credit .who b{font-weight:400; color:var(--terra);}
 .sitefoot .credit .sep{color:rgba(233,163,58,.75); margin:0 .45rem;}
+
+/* 페이지끼리 건너가는 다리 (2026-08-25 신설)
+   나루의 밤 → 선릿모닝, 한 주의 새벽 → 선릿모닝 등.
+   호박은 선·점 전용이라 글자에 쓰지 않는다. 강조 글자는 진테라코타. */
+.bridge{
+  margin-top:2.6rem;
+  padding:1.25rem 1.4rem;
+  background:var(--apricot);
+  border-radius:16px;
+  text-align:center;
+}
+.bridge p{
+  font-family:var(--logo);
+  font-size:1rem;
+  color:var(--ink);
+  margin-bottom:.5rem;
+}
+.bridge a{
+  font-family:var(--gothic);
+  font-size:.86rem;
+  color:var(--terra);
+  text-decoration:none;
+  border-bottom:1px solid rgba(169,83,42,.35);
+}
+.bridge a:hover{border-bottom-color:var(--terra);}
