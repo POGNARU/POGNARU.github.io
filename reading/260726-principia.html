@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FFFBEF;
@@ -19,6 +19,16 @@
     --brown-soft:#5C4433;
     --line:#E4D3B8;
     --ink-faint:rgba(60,36,21,.55);
+
+    /* 종수 정리 2026-09-06 · 나무🌳
+       팔레트는 표지 오마주(예외)라 그대로 두고, 반경·행간·굵기만
+       사이트 공통 토큰 체계에 맞춘다. */
+    --r-s:2px;   /* 칩·태그·뱃지 */
+    --r-m:4px;   /* 카드·큰 면 */
+    --lh-tight:1.35;
+    --lh-snug:1.55;
+    --lh-normal:1.75;
+    --lh-loose:1.95;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -27,7 +37,7 @@
     background:var(--cream);
     color:var(--brown);
     font-family:"Nanum Myeongjo","Gowun Batang",serif;
-    line-height:1.85;
+    line-height:var(--lh-loose);
     font-size:17px;
     -webkit-font-smoothing:antialiased;
     /* 이 페이지는 base.css를 안 불러오므로 한글 줄바꿈을 직접 건다 */
@@ -62,11 +72,11 @@
   .latin{
     font-family:"EB Garamond",serif;
     color:var(--brown);
-    line-height:1.05;
+    line-height:var(--lh-tight);
   }
-  .latin .l1{font-size:clamp(32px,7vw,58px);letter-spacing:.06em;font-weight:500;}
+  .latin .l1{font-size:clamp(32px,7vw,58px);letter-spacing:.06em;}
   .latin .l2{font-size:clamp(15px,3vw,22px);letter-spacing:.44em;margin:6px 0 2px;}
-  .latin .l3{font-size:clamp(40px,9vw,74px);letter-spacing:.05em;font-weight:500;}
+  .latin .l3{font-size:clamp(40px,9vw,74px);letter-spacing:.05em;}
   .latin .l4{font-size:clamp(22px,5vw,38px);letter-spacing:.14em;}
   .rule{width:60%;max-width:360px;height:1px;background:var(--brown);margin:22px auto;opacity:.7;}
   .hangul-title{
@@ -88,7 +98,7 @@
     font-size:12px;
     color:var(--ink-faint);
     border:1px dashed var(--line);
-    border-radius:8px;
+    border-radius:var(--r-m);
     padding:7px 14px;
     letter-spacing:.02em;
   }
@@ -97,7 +107,7 @@
   .intro{padding:56px 26px 20px;}
   .intro .lead{
     font-size:20px;
-    line-height:1.9;
+    line-height:var(--lh-loose);
     color:var(--brown);
   }
   .intro .lead b{color:var(--terra-deep);font-weight:700;}
@@ -116,7 +126,7 @@
   h2{
     font-family:"Gowun Batang",serif;
     font-size:clamp(23px,4.4vw,30px);
-    line-height:1.4;
+    line-height:var(--lh-tight);
     margin:0 0 20px;
     letter-spacing:.01em;
   }
@@ -134,7 +144,7 @@
   .quote{
     font-family:"Gowun Batang",serif;
     font-size:19px;
-    line-height:1.8;
+    line-height:var(--lh-snug);
     color:var(--brown);
     border-left:3px solid var(--terra);
     background:linear-gradient(90deg,rgba(251,231,201,.4),transparent);
@@ -154,7 +164,7 @@
     display:flex;gap:18px;
     background:#fff;
     border:1px solid var(--line);
-    border-radius:14px;
+    border-radius:var(--r-m);
     padding:20px 22px;
   }
   .gate .g-num{
@@ -169,7 +179,7 @@
     font-family:"Gowun Batang",serif;
     font-size:17px;margin:2px 0 8px;
   }
-  .gate p{font-size:15px;margin:0;color:var(--brown-soft);line-height:1.75;}
+  .gate p{font-size:15px;margin:0;color:var(--brown-soft);line-height:var(--lh-normal);}
   .gate .where{
     display:inline-block;font-size:12px;color:var(--terra-deep);
     letter-spacing:.04em;margin-bottom:6px;
@@ -180,7 +190,7 @@
   table{
     border-collapse:collapse;width:100%;min-width:520px;
     font-size:15px;background:#fff;
-    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;
   }
   th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);}
   th{
@@ -188,7 +198,7 @@
     font-family:"Gowun Batang",serif;font-weight:700;
     font-size:14px;letter-spacing:.03em;
   }
-  td:first-child{font-family:"EB Garamond",serif;font-weight:500;color:var(--terra-deep);white-space:nowrap;}
+  td:first-child{font-family:"EB Garamond",serif;color:var(--terra-deep);white-space:nowrap;}
   tr:last-child td{border-bottom:none;}
   .att-read{color:var(--terra-deep);font-weight:700;}
   .att-skip{color:var(--ink-faint);}
@@ -201,7 +211,7 @@
   /* ── 강조 박스 ── */
   .callout{
     background:var(--apricot);
-    border-radius:16px;
+    border-radius:var(--r-m);
     padding:26px 28px;
     margin:24px 0;
   }
@@ -213,18 +223,18 @@
   .badge{
     display:inline-block;background:var(--terra);color:#fff;
     font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    padding:5px 12px;border-radius:20px;
+    padding:5px 12px;border-radius:var(--r-s);
     font-family:"EB Garamond",serif;margin-bottom:14px;
   }
   .roles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0;}
   .role{
-    background:#fff;border:1px solid var(--line);border-radius:16px;
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-m);
     padding:24px 22px;position:relative;
   }
   .role .sym{font-size:26px;margin-bottom:8px;}
   .role h4{font-family:"Gowun Batang",serif;font-size:18px;margin:0 0 4px;}
   .role .tag{font-size:12px;color:var(--terra-deep);letter-spacing:.06em;margin-bottom:14px;}
-  .role ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--brown-soft);line-height:1.7;}
+  .role ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--brown-soft);line-height:var(--lh-normal);}
   .role ul li{margin-bottom:7px;}
   .role .q{
     margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
@@ -233,13 +243,13 @@
   .rhythm{list-style:none;padding:0;margin:20px 0 0;counter-reset:r;}
   .rhythm li{
     position:relative;padding:12px 0 12px 46px;
-    border-bottom:1px solid var(--line);font-size:15px;line-height:1.7;
+    border-bottom:1px solid var(--line);font-size:15px;line-height:var(--lh-normal);
   }
   .rhythm li:last-child{border-bottom:none;}
   .rhythm li::before{
     counter-increment:r;content:counter(r);
     position:absolute;left:0;top:11px;
-    width:30px;height:30px;border-radius:50%;
+    width:30px;height:30px;border-radius:var(--r-s);
     background:var(--terra);color:#fff;
     font-family:"EB Garamond",serif;font-size:15px;
     display:flex;align-items:center;justify-content:center;
@@ -249,7 +259,7 @@
   .disc{
     background:linear-gradient(135deg,rgba(200,132,90,.1),rgba(251,231,201,.35));
     border-left:3px solid var(--terra);
-    border-radius:0 12px 12px 0;
+    border-radius:0 var(--r-m) var(--r-m) 0;
     padding:16px 22px;margin:22px 0 4px;
     font-size:15.5px;
   }
@@ -265,7 +275,7 @@
     text-align:center;padding:50px 26px;margin-top:50px;
   }
   footer .f-mark{font-family:"Gowun Batang",serif;font-size:20px;letter-spacing:.2em;margin-bottom:10px;}
-  footer .f-quote{font-family:"EB Garamond",serif;font-style:italic;font-size:16px;opacity:.85;line-height:1.7;max-width:520px;margin:0 auto 16px;}
+  footer .f-quote{font-family:"EB Garamond",serif;font-style:italic;font-size:16px;opacity:.85;line-height:var(--lh-normal);max-width:520px;margin:0 auto 16px;}
   footer .f-meta{font-size:12px;opacity:.55;letter-spacing:.08em;}
 
   @media(max-width:600px){

@@ -15,8 +15,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
@@ -24,113 +24,136 @@
   /* 간판 한 줄 — 3초 안에 무엇을 파는 집인지 (2026-08-25) */
   .signboard{
     font-family:var(--logo);
-    font-weight:700;
-    font-size:clamp(1.08rem,4.4vw,1.32rem);
+    font-weight:var(--w-bold);
+    font-size:var(--fs-4);
+    letter-spacing:var(--ls-lg);
     color:var(--terra);
-    line-height:1.55;
+    line-height:var(--lh-snug);
     margin:.5rem 0 .7rem;
   }
 
-
+  /* 한눈에 보기 — 이 페이지에서 가장 먼저 읽어야 할 면.
+     흰 카드는 크림과 1.035라 사실상 경계가 없다. 살구로 바꾸고
+     테두리·호박 띠를 걷었다. */
   .facts{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-left:4px solid var(--amber);
-    border-radius:16px;
-    padding:1.3rem 1.5rem;
-    margin:1.8rem 0 .6rem;
-  }
-  .facts dl{display:grid; grid-template-columns:5.4rem 1fr; gap:.55rem 1rem;}
-  .facts dt{font-family:var(--gothic); font-size:.82rem; color:var(--ink-faint); line-height:1.75;}
-  .facts dd{font-family:var(--gothic); font-size:.88rem; color:var(--ink); line-height:1.75;}
-  .facts dd b{color:var(--terra); font-weight:400;}
-
-  .p{color:var(--ink-soft); font-size:1rem; line-height:1.95; margin-bottom:1.05rem;}
-  .p:last-child{margin-bottom:0;}
-  .p b{color:var(--terra); font-weight:400;}
-
-  /* 올해의 질문 */
-  .annual{
     background:var(--apricot);
-    border-radius:16px;
-    padding:1.6rem 1.55rem;
+    border:0;
+    border-radius:var(--r-m);
+    padding:1.3rem 1.45rem;
+    margin:var(--sp-3) 0 var(--sp-1);
+  }
+  .facts dl{display:grid; grid-template-columns:5rem 1fr; gap:.5rem 1rem;}
+  /* 살구 면 위 ink-faint(4.71) 대신 ink-soft(7.46) */
+  .facts dt{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); line-height:var(--lh-normal);}
+  .facts dd{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink); line-height:var(--lh-normal);}
+  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 강조는 색이 아니라 굵기가 맡는다 */
+  .facts dd b{color:var(--ink); font-weight:var(--w-bold);}
+
+  .p{color:var(--ink-soft); font-size:var(--fs-5); line-height:var(--lh-loose);
+     letter-spacing:var(--ls-md); margin-bottom:var(--sp-2);}
+  .p:last-child{margin-bottom:0;}
+  .p b{color:var(--terra); font-weight:var(--w-reg);}
+
+  /* 올해의 질문 — 페이지의 유일한 어두운 층.
+     크림 본문 한복판에 시작·중간·끝을 만든다(잉크 위 크림 13.95) */
+  .annual{
+    background:var(--ink);
+    border-radius:var(--r-m);
+    padding:1.7rem 1.55rem;
     text-align:center;
   }
   .annual .yr{
     font-family:var(--gothic);
-    font-size:.76rem;
-    letter-spacing:.2em;
-    color:var(--terra);
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-label);
+    line-height:var(--lh-normal);
+    color:var(--amber);       /* 잉크 위 호박 6.71 — 어두운 면 위에서만 제 몫을 한다 */
     margin-bottom:.7rem;
   }
   .annual .q{
     font-family:var(--logo);
-    font-weight:700;
-    font-size:clamp(1.2rem,5.4vw,1.5rem);
-    line-height:1.5;
-    color:var(--ink);
+    font-weight:var(--w-bold);
+    font-size:var(--fs-3);
+    line-height:var(--lh-snug);
+    letter-spacing:var(--ls-lg);
+    color:var(--cream);
   }
   .annual .sub{
     font-family:var(--gothic);
-    font-size:.85rem;
-    color:var(--ink-soft);
-    line-height:1.8;
+    font-size:var(--fs-6);
+    color:var(--apricot);     /* 잉크 위 살구 11.94 */
+    line-height:var(--lh-normal);
     margin-top:.9rem;
   }
 
-  /* 분기 카드 */
+  /* 분기 카드 — 흰 면(크림 대비 1.035, 사실상 경계 없음)을 살구(1.168)로 바꾸고
+     테두리·호박 띠를 걷었다. 여기는 항목이 둘뿐이라 면을 걷지 않는다.
+     ('목록은 카드로 쌓지 않는다'는 열 장이 넘을 때의 규칙이다.)
+     지금 읽는 분기는 왼쪽 호박 획 하나로만 갈라, 다음 분기가 물러나지 않게 한다. */
   .qtr{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-radius:16px;
-    padding:1.35rem 1.5rem;
-    margin-bottom:.9rem;
+    position:relative;
+    overflow:hidden;
+    background:var(--apricot);
+    border:0;
+    border-radius:var(--r-m);
+    padding:1.35rem 1.4rem 1.3rem;
+    margin-bottom:.6rem;
   }
-  .qtr.now{border-top:4px solid var(--amber);}
+  .qtr.now{padding-left:1.7rem;}
+  .qtr.now::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--amber);}
   .qtr .head{display:flex; align-items:baseline; gap:.55rem; flex-wrap:wrap; margin-bottom:.45rem;}
+  /* 알약(99px)을 눕히고, 살구 면 위 살구 뱃지가 안 보이므로 괘선 칩으로 */
   .qtr .badge{
     font-family:var(--gothic);
-    font-size:.74rem;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-md);
+    line-height:var(--lh-normal);
     color:var(--ink);
-    background:var(--apricot);
-    border-radius:99px;
-    padding:.22rem .7rem;
+    background:transparent;
+    border:1px solid rgba(60,36,21,.25);
+    border-radius:var(--r-s);
+    padding:.2rem .65rem;
   }
-  .qtr.now .badge{background:var(--terra); color:var(--cream);}
-  .qtr .when{font-family:var(--gothic); font-size:.79rem; color:var(--ink-faint);}
-  .qtr .bk{font-family:var(--logo); font-weight:700; font-size:1.16rem; color:var(--ink); line-height:1.4;}
-  .qtr .by{font-family:var(--gothic); font-size:.79rem; color:var(--ink-faint); margin-top:.2rem;}
+  /* 살구 면 위 — faint(4.71) 대신 soft(7.46) */
+  .qtr .when{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); line-height:var(--lh-normal);}
+  .qtr .bk{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-4);
+    letter-spacing:var(--ls-lg); color:var(--ink); line-height:var(--lh-snug);}
+  .qtr .by{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.2rem;}
   .qtr .ask{
     font-family:var(--serif);
-    font-size:.95rem;
+    font-size:var(--fs-6);
     color:var(--ink-soft);
-    line-height:1.85;
+    line-height:var(--lh-normal);
     margin-top:.75rem;
   }
   .qtr .rounds{
     margin-top:.95rem;
     padding-top:.85rem;
-    border-top:1px solid var(--line-soft);
+    border-top:1px solid rgba(60,36,21,.14);
   }
   .qtr .rd{
     display:flex; gap:.8rem; align-items:baseline;
     font-family:var(--gothic);
-    font-size:.83rem;
-    line-height:1.9;
+    font-size:var(--fs-6);
+    line-height:var(--lh-normal);
   }
-  .qtr .rd .d{flex:0 0 4.6rem; color:var(--terra);}
+  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 날짜는 잉크로 세운다 */
+  .qtr .rd .d{flex:0 0 4.6rem; color:var(--ink);}
   .qtr .rd .w{color:var(--ink-soft);}
-  .qtr .rd.done .d, .qtr .rd.done .w{color:var(--ink-faint);}
+  /* 지나간 회차는 한 단 낮춘다 — 살구 위 soft(7.46)가 하한 */
+  .qtr .rd.done .d{color:var(--ink-soft);}
+  .qtr .rd.done .w{color:var(--ink-soft); opacity:.72;}
 
   /* ── 지금까지 함께 읽어온 책 (나무🌳 2026-08-25) ─────────
-     '지금 읽는 책'은 흰 카드(현재), '지나온 책'은 호박 세로선 위의 항목(과거).
+     '지금 읽는 분기'는 면(현재), '지나온 책'은 호박 세로선 위의 항목(과거).
      같은 팔레트·같은 타이포로 위계만 한 단 낮춥니다. */
   .past-lead{
     font-family:var(--gothic);
-    font-size:.88rem;
+    font-size:var(--fs-6);
     color:var(--ink-faint);
-    line-height:1.9;
-    margin:-.35rem 0 1.4rem;
+    line-height:var(--lh-normal);
+    margin:-.35rem 0 var(--sp-2);
   }
   .past{
     list-style:none;
@@ -140,17 +163,18 @@
                  rgba(233,163,58,.32) 0 78%,
                  rgba(233,163,58,0) 100%) left top/2px 100% no-repeat;
   }
-  .past-item{position:relative; padding-bottom:1.9rem;}
+  .past-item{position:relative; padding-bottom:var(--sp-3);}
   .past-item:last-child{padding-bottom:0;}
+  /* 점을 각진 획으로 눕히고, 세로선(left:0, 폭 2px)의 한가운데에 앉힌다.
+     선과 점을 같은 left 에 두면 선이 점의 가장자리에 붙어 사라져 보인다. */
   .past-item::before{
     content:"";
     position:absolute;
-    left:calc(-1.5rem - 7px);
-    top:.55rem;
-    width:12px; height:12px;
-    border-radius:50%;
-    background:var(--cream);
-    border:2px solid var(--amber);
+    left:calc(-1.5rem - 3px);
+    top:.5rem;
+    width:8px; height:8px;
+    border-radius:var(--r-s);
+    background:var(--amber);
     box-sizing:border-box;
   }
   .past-head{
@@ -159,28 +183,32 @@
   }
   .past-head .badge{
     font-family:var(--gothic);
-    font-size:.72rem;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-md);
     color:var(--ink);
     background:var(--apricot);
-    border-radius:99px;
-    padding:.18rem .62rem;
-    line-height:1.6;
+    border-radius:var(--r-s);
+    padding:.18rem .6rem;
+    line-height:var(--lh-normal);
   }
   .past-head .when{
     font-family:var(--gothic);
-    font-size:.77rem;
+    font-size:var(--fs-7);
+    line-height:var(--lh-normal);
     color:var(--ink-faint);
   }
   .past-bk{
     font-family:var(--logo);
-    font-weight:700;
-    font-size:1.08rem;
+    font-weight:var(--w-bold);
+    font-size:var(--fs-4);
+    letter-spacing:var(--ls-lg);
     color:var(--ink);
-    line-height:1.45;
+    line-height:var(--lh-snug);
   }
   .past-by{
     font-family:var(--gothic);
-    font-size:.77rem;
+    font-size:var(--fs-7);
+    line-height:var(--lh-normal);
     color:var(--ink-faint);
     margin-top:.18rem;
   }
@@ -192,9 +220,9 @@
   }
   .past-asks p{
     font-family:var(--serif);
-    font-size:.94rem;
+    font-size:var(--fs-6);
     color:var(--ink-soft);
-    line-height:1.85;
+    line-height:var(--lh-normal);
     margin-bottom:.5rem;
   }
   .past-asks p:last-child{margin-bottom:0;}
@@ -205,76 +233,79 @@
   }
   .past-asks.pending p{
     font-family:var(--gothic);
-    font-size:.83rem;
+    font-size:var(--fs-7);
     color:var(--ink-faint);
-    line-height:1.85;
+    line-height:var(--lh-normal);
   }
   .past-place{
     font-family:var(--gothic);
-    font-size:.81rem;
+    font-size:var(--fs-7);
     color:var(--ink-faint);
-    line-height:1.85;
+    line-height:var(--lh-normal);
     margin-top:.7rem;
     padding-top:.6rem;
     border-top:1px solid var(--line-soft);
   }
-  .past-place b{color:var(--terra); font-weight:400;}
+  .past-place b{color:var(--terra); font-weight:var(--w-reg);}
   .past-more{margin-top:.6rem;}
-  .past-more .textlink{font-size:.82rem;}
+  .past-more .textlink{font-size:var(--fs-7);}
   @media (max-width:520px){
     .past{padding-left:1.15rem;}
-    .past-item::before{left:calc(-1.15rem - 6px); width:10px; height:10px;}
+    .past-item::before{left:calc(-1.15rem - 3px);}
     .past-asks{padding-left:.8rem;}
-    .past-bk{font-size:1.02rem;}
   }
 
-  /* 읽는 방식 */
+  /* 읽는 방식 — 번호를 원에서 각진 칩으로. 원 하나가 또 줄어든다 */
   .steps{counter-reset:s; margin-top:.4rem;}
   .steps li{
     counter-increment:s;
     position:relative;
-    padding-left:2.2rem;
-    margin-bottom:1rem;
+    padding-left:2.1rem;
+    margin-bottom:var(--sp-2);
     color:var(--ink-soft);
-    font-size:.97rem;
-    line-height:1.85;
+    font-size:var(--fs-6);
+    line-height:var(--lh-normal);
     list-style:none;
   }
   .steps li::before{
     content:counter(s);
     position:absolute;
-    left:0; top:.15em;
-    width:1.55rem; height:1.55rem;
-    border-radius:50%;
-    border:1.5px solid var(--amber);
-    color:var(--terra);
+    left:0; top:.12em;
+    width:1.5rem; height:1.5rem;
+    border-radius:var(--r-s);
+    background:var(--apricot);
+    color:var(--ink);
     font-family:var(--gothic);
-    font-size:.8rem;
+    font-size:var(--fs-8);
     display:flex; align-items:center; justify-content:center;
   }
-  .steps li b{color:var(--ink); font-weight:400;}
+  .steps li b{color:var(--ink); font-weight:var(--w-reg);}
 
-  .cta{margin-top:2.6rem; text-align:center;}
+  /* 신청 — 진테라코타 면. 크림 글자 5.13. 선릿모닝과 같은 꼴 */
+  .cta{margin-top:var(--sp-4); text-align:center;}
   .cta .btn{
     display:inline-block;
     background:var(--terra);
     color:var(--cream);
     font-family:var(--gothic);
-    font-size:.95rem;
+    font-size:var(--fs-6);
+    letter-spacing:var(--ls-md);
+    line-height:var(--lh-normal);
     text-decoration:none;
-    padding:.85rem 2.2rem;
-    border-radius:99px;
-    transition:transform .16s ease, box-shadow .16s ease;
+    padding:.8rem 2rem;
+    border-radius:var(--r-m);
+    box-shadow:none;
+    transition:background .2s ease;
   }
-  .cta .btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px -8px rgba(169,83,42,.55);}
+  .cta .btn:hover{background:#8E4322;}
   .cta .sub{
     font-family:var(--gothic);
-    font-size:.82rem;
+    font-size:var(--fs-7);
     color:var(--ink-faint);
-    line-height:1.8;
-    margin-top:.9rem;
+    line-height:var(--lh-normal);
+    margin-top:.85rem;
   }
-  .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.3);}
+  .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
 </style>
 </head>
 <body>

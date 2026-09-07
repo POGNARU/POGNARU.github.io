@@ -15,64 +15,52 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  .section-h{display:flex; align-items:baseline; gap:.6rem; margin:2.6rem 0 1rem; flex-wrap:wrap;}
-  .section-h .dot{width:9px; height:9px; border-radius:50%; background:var(--amber); flex:none; transform:translateY(-2px);}
-  .section-h h2{font-family:var(--logo); font-size:1.3rem; margin:0;}
-  .section-h .cnt{font-family:var(--gothic); font-size:.78rem; color:var(--ink-faint);}
-  .section-h .curr{margin-left:auto; font-family:var(--gothic); font-size:.8rem;}
-  .section-h .curr a{
-    color:var(--terra);
-    text-decoration:none;
-    border-bottom:1px solid rgba(169,83,42,.3);
-    padding-bottom:1px;
-    white-space:nowrap;
-  }
+  .section-h{display:flex;align-items:baseline;gap:.6rem;margin:var(--sp-5) 0 var(--sp-2);flex-wrap:wrap;}
+  /* 개인 기록 쪽 dot 에 붙어 있던 인라인 style="background:var(--apricot)" 은
+     지웠습니다. 살구 획은 크림 바탕에서 1.168이라 3px 폭으로는 보이지 않고,
+     구분은 바로 옆 섹션 제목이 이미 하고 있어 색으로 또 가를 이유가 없습니다. */
+  .section-h .dot{width:3px;height:1.1rem;border-radius:var(--r-s);
+    background:var(--amber);flex:none;align-self:center;}
+  .section-h h2{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);margin:0;}
+  .section-h .cnt{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-faint);}
+  .section-h .curr{margin-left:auto;font-family:var(--gothic);font-size:var(--fs-7);}
+  .section-h .curr a{color:var(--terra);text-decoration:none;
+    border-bottom:1px solid rgba(169,83,42,.35);padding-bottom:1px;white-space:nowrap;}
   .section-h .curr a:hover{border-bottom-color:var(--terra);}
 
-  .booklist{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:.9rem;}
+  /* 2열 고정 — auto-fill(250px)은 640px에서 칸 수가 폭 따라 흔들린다 */
+  .booklist{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;align-items:start;}
+  /* 카드가 하나뿐인 구역은 2열로 두면 오른쪽 절반이 통째로 빈다 */
+  .booklist:has(> .book:only-child){grid-template-columns:1fr;}
+  @media (max-width:560px){.booklist{grid-template-columns:1fr;}}
+
   .book{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-top:4px solid var(--amber);
-    border-radius:14px;
-    padding:1.25rem 1.3rem;
-    text-decoration:none;
-    color:var(--ink);
-    display:block;
-    box-shadow:0 1px 2px rgba(60,36,21,.03);
-    transition:transform .16s ease, box-shadow .16s ease;
+    background:var(--apricot);border:0;border-radius:var(--r-m);
+    padding:1.2rem 1.25rem;text-decoration:none;color:var(--ink);display:block;
+    box-shadow:none;transition:background .2s ease;
   }
-  .book:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(60,36,21,.09);}
-  .book .who{font-family:var(--gothic); font-size:.75rem; color:var(--terra); letter-spacing:.04em;}
-  .book .title{font-family:var(--logo); font-size:1.1rem; margin:.35rem 0 .45rem; line-height:1.4; color:var(--ink);}
-  .book .sub{font-family:var(--gothic); font-size:.82rem; color:var(--ink-faint); line-height:1.65;}
-  .book .meta{
-    font-family:var(--gothic);
-    font-size:.74rem;
-    color:var(--ink-faint);
-    margin-top:.7rem;
-    padding-top:.6rem;
-    border-top:1px solid var(--line-soft);
-  }
-  .book.personal{border-top-color:var(--apricot);}
+  .book:hover{background:var(--apricot-hi);}
+  /* 살구 면 위 — terra(4.39)·faint(4.71) 대신 ink-soft(7.46) */
+  .book .who{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);color:var(--ink-soft);}
+  .book .title{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
+    margin:.35rem 0 .4rem;line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);}
+  .book .sub{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-soft);line-height:var(--lh-normal);}
+  .book .meta{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);
+    color:var(--ink-soft);margin-top:.7rem;padding-top:.55rem;border-top:1px solid rgba(60,36,21,.14);}
+  /* .book.personal 의 호박 4px 띠는 뺐다 — 바로 위 섹션 제목이 이미 갈라주고 있어
+     같은 구분을 색으로 한 번 더 하면 종수만 는다 */
 
   .comingsoon{
-    grid-column:1 / -1;
-    background:transparent;
-    border:1px dashed rgba(233,163,58,.5);
-    border-radius:14px;
-    padding:1.4rem;
-    font-family:var(--gothic);
-    font-size:.84rem;
-    color:var(--ink-faint);
-    line-height:1.75;
-    text-align:center;
+    grid-column:1 / -1;background:transparent;border:1px dashed var(--line);
+    border-radius:var(--r-m);padding:1.4rem;font-family:var(--gothic);
+    font-size:var(--fs-7);color:var(--ink-faint);line-height:var(--lh-normal);text-align:center;
   }
 </style>
 </head>
@@ -115,7 +103,7 @@
 
   <!-- 개인 독서 기록 -->
   <div class="section-h fade">
-    <span class="dot" style="background:var(--apricot);"></span>
+    <span class="dot"></span>
     <h2>개인 독서 기록</h2>
     <span class="cnt">· 2</span>
   </div>

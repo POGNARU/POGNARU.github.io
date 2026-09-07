@@ -15,83 +15,95 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  .classlist{display:grid; gap:1.1rem; margin-top:1.6rem;}
+  /* 클래스 카드 — 살구 면 + 왼쪽 호박 획 하나.
+     테두리·그림자·들어올림을 걷었다. 경계는 면과 면의 색차(1.168)가 낸다.
+     호박 획은 정보를 나르지 않는 장식이라 살구 위(1.78)에 남길 수 있다. */
+  .classlist{display:grid; gap:.6rem; margin-top:var(--sp-3);}
 
   .cls{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-top:4px solid var(--amber);
-    border-radius:16px;
-    padding:1.5rem 1.55rem 1.4rem;
+    position:relative;
+    overflow:hidden;
+    background:var(--apricot);
+    border:0;
+    border-radius:var(--r-m);
+    box-shadow:none;
+    padding:1.4rem 1.45rem 1.3rem 1.7rem;
     text-decoration:none;
     color:var(--ink);
     display:block;
-    box-shadow:0 1px 2px rgba(60,36,21,.03);
-    transition:transform .16s ease, box-shadow .16s ease;
+    transition:background .2s ease;
   }
-  .cls:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(60,36,21,.09);}
+  .cls::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--amber);}
+  .cls:hover{background:var(--apricot-hi);}
 
   .cls .top{display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; margin-bottom:.5rem;}
-  .cls .name{font-family:var(--logo); font-weight:700; font-size:1.3rem; line-height:1.35; color:var(--ink);}
-  .cls .kind{font-family:var(--gothic); font-size:.76rem; color:var(--terra); letter-spacing:.04em;}
-  .cls .desc{font-family:var(--serif); font-size:.97rem; color:var(--ink-soft); line-height:1.8;}
+  .cls .name{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-3);
+    line-height:var(--lh-snug); letter-spacing:var(--ls-lg); color:var(--ink);}
+  /* 살구 면 위라 terra(4.39)를 쓰지 않는다 — ink-soft 7.46 */
+  .cls .kind{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); letter-spacing:var(--ls-md);}
+  .cls .desc{font-family:var(--serif); font-size:var(--fs-6); color:var(--ink-soft); line-height:var(--lh-normal);}
 
   .cls .facts{
     display:flex; flex-wrap:wrap; gap:.4rem;
     margin-top:1rem; padding-top:.95rem;
-    border-top:1px solid var(--line-soft);
+    border-top:1px solid rgba(60,36,21,.14);
   }
+  /* 알약(99px)을 눕히고, 살구 위 살구 칩이 안 보이므로 면을 걷어 괘선 칩으로 */
   .cls .facts span{
     font-family:var(--gothic);
-    font-size:.8rem;
+    font-size:var(--fs-7);
     color:var(--ink);
-    background:var(--apricot);
-    border-radius:99px;
-    padding:.3rem .8rem;
-    line-height:1.6;
+    background:transparent;
+    border:1px solid rgba(60,36,21,.2);
+    border-radius:var(--r-s);
+    padding:.24rem .7rem;
+    line-height:var(--lh-normal);
   }
   .cls .go{
     font-family:var(--gothic);
-    font-size:.84rem;
-    color:var(--terra);
+    font-size:var(--fs-7);
+    color:var(--ink);
     margin-top:1rem;
     display:inline-block;
+    border-bottom:1px solid rgba(60,36,21,.35);
   }
-  .cls:hover .go{text-decoration:underline;}
 
-  /* 준비 중 */
+  /* 준비 중 — 아직 못 채운 칸은 숨기지 말고 한 단 낮춘다 */
   .soon{
-    border:1px dashed rgba(233,163,58,.5);
-    border-radius:16px;
+    border:1px dashed var(--line);
+    border-radius:var(--r-m);
     padding:1.35rem 1.5rem;
     font-family:var(--gothic);
-    font-size:.86rem;
+    font-size:var(--fs-6);
     color:var(--ink-faint);
-    line-height:1.8;
+    line-height:var(--lh-normal);
   }
-  .soon b{font-family:var(--logo); font-weight:700; color:var(--ink-soft); font-size:.95rem;}
+  .soon b{font-family:var(--logo); font-weight:var(--w-bold); color:var(--ink-soft); font-size:var(--fs-5);}
 
+  /* 문의 — 면을 걷고 괘선 한 줄. 위의 살구 카드들과 힘을 겨루지 않는다 */
   .ask{
-    margin-top:2.8rem;
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-radius:16px;
-    padding:1.35rem 1.5rem;
+    margin-top:var(--sp-5);
+    background:transparent;
+    border:0;
+    border-top:1px solid var(--line-soft);
+    border-radius:0;
+    padding:var(--sp-3) 0 0;
     font-family:var(--gothic);
-    font-size:.87rem;
+    font-size:var(--fs-6);
     color:var(--ink-soft);
-    line-height:1.9;
+    line-height:var(--lh-normal);
   }
-  .ask .h{font-family:var(--logo); font-weight:700; font-size:1rem; color:var(--ink); margin-bottom:.45rem;}
-  .ask a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.3);}
+  .ask .h{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-4);
+    line-height:var(--lh-snug); letter-spacing:var(--ls-lg); color:var(--ink); margin-bottom:.5rem;}
+  .ask a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
   .ask a:hover{border-color:var(--terra);}
-  .ask .hours{color:var(--ink-faint); font-size:.82rem;}
+  .ask .hours{color:var(--ink-faint); font-size:var(--fs-7);}
 </style>
 </head>
 <body>
@@ -155,7 +167,7 @@
     <p style="margin-top:1rem;">
       <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
-        카카오톡으로 문의하기
+        카카오채널 문의하기
       </a>
     </p>
     <span class="hours">상담은 평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.</span>

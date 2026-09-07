@@ -15,191 +15,97 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* 한눈에 보기 */
+  /* 한눈에 보기 — 이 페이지에서 가장 먼저 읽어야 할 면 */
   .facts{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-left:4px solid var(--amber);
-    border-radius:16px;
-    padding:1.3rem 1.5rem;
-    margin:1.8rem 0 .6rem;
+    background:var(--apricot);border:0;border-radius:var(--r-m);
+    padding:1.3rem 1.45rem;margin:var(--sp-3) 0 var(--sp-1);
   }
-  .facts dl{display:grid; grid-template-columns:5.4rem 1fr; gap:.55rem 1rem;}
-  .facts dt{
-    font-family:var(--gothic);
-    font-size:.82rem;
-    color:var(--ink-faint);
-    line-height:1.75;
-  }
-  .facts dd{
-    font-family:var(--gothic);
-    font-size:.88rem;
-    color:var(--ink);
-    line-height:1.75;
-  }
-  .facts dd b{color:var(--terra); font-weight:400;}
+  .facts dl{display:grid;grid-template-columns:5rem 1fr;gap:.5rem 1rem;}
+  .facts dt{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-soft);line-height:var(--lh-normal);}
+  .facts dd{font-family:var(--gothic);font-size:var(--fs-6);color:var(--ink);line-height:var(--lh-normal);}
+  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 강조는 색이 아니라 굵기가 맡는다 */
+  .facts dd b{color:var(--ink);font-weight:var(--w-bold);}
 
   /* 본문 문단 */
-  .p{color:var(--ink-soft); font-size:1rem; line-height:1.95; margin-bottom:1.05rem;}
+  .p{color:var(--ink-soft);font-size:var(--fs-5);line-height:var(--lh-loose);
+    letter-spacing:var(--ls-md);margin-bottom:var(--sp-2);}
   .p:last-child{margin-bottom:0;}
-  .p b{color:var(--terra); font-weight:400;}
+  .p b{color:var(--terra);font-weight:var(--w-reg);}
 
   /* 목록 */
-  .plain{list-style:none; margin:.2rem 0 0;}
-  .plain li{
-    position:relative;
-    padding-left:1.05rem;
-    color:var(--ink-soft);
-    font-size:.97rem;
-    line-height:1.9;
-    margin-bottom:.4rem;
-  }
-  .plain li::before{
-    content:"";
-    position:absolute;
-    left:0; top:.85em;
-    width:5px; height:5px;
-    border-radius:50%;
-    background:var(--amber);
-  }
-  .plain li b{color:var(--ink); font-weight:400;}
+  .plain{list-style:none;margin:.2rem 0 0;}
+  .plain li{position:relative;padding-left:1rem;color:var(--ink-soft);
+    font-size:var(--fs-6);line-height:var(--lh-normal);margin-bottom:.55rem;}
+  .plain li::before{content:"";position:absolute;left:0;top:.72em;
+    width:4px;height:4px;border-radius:var(--r-s);background:var(--amber);}
+  .plain li b{color:var(--ink);font-weight:var(--w-reg);}
 
-  /* 처음 오시는 분께 */
-  .first{
-    background:var(--apricot);
-    border-radius:16px;
-    padding:1.4rem 1.55rem;
-  }
-  .first h3{margin-bottom:.9rem;}
-  .first .q{
-    font-family:var(--gothic);
-    font-size:.87rem;
-    color:var(--terra);
-    margin-top:1.1rem;
-    margin-bottom:.15rem;
-  }
+  /* 처음 오시는 분께 — 살구 면 */
+  .first{background:var(--apricot);border-radius:var(--r-m);padding:1.4rem 1.5rem;}
+  .first h3{margin-bottom:.85rem;}
+  .first .q{font-family:var(--gothic);font-size:var(--fs-6);font-weight:var(--w-bold);
+    color:var(--ink);margin-top:1.15rem;margin-bottom:.1rem;}
   .first .q:first-of-type{margin-top:0;}
-  .first .a{
-    font-size:.95rem;
-    color:var(--ink-soft);
-    line-height:1.85;
-  }
+  .first .a{font-size:var(--fs-6);color:var(--ink-soft);line-height:var(--lh-normal);}
+  .first .a b{color:var(--ink);font-weight:var(--w-bold);}
 
-  /* 신청 단계 */
-  .steps{counter-reset:s; margin-top:.4rem;}
-  .steps li{
-    counter-increment:s;
-    position:relative;
-    padding-left:2.2rem;
-    margin-bottom:1rem;
-    color:var(--ink-soft);
-    font-size:.97rem;
-    line-height:1.85;
-    list-style:none;
-  }
+  /* 신청 단계 — 번호를 원에서 각진 칩으로. 원 하나가 또 줄어든다 */
+  .steps{counter-reset:s;margin-top:.4rem;}
+  .steps li{counter-increment:s;position:relative;padding-left:2.1rem;
+    margin-bottom:var(--sp-2);color:var(--ink-soft);font-size:var(--fs-6);
+    line-height:var(--lh-normal);list-style:none;}
   .steps li::before{
-    content:counter(s);
-    position:absolute;
-    left:0; top:.15em;
-    width:1.55rem; height:1.55rem;
-    border-radius:50%;
-    border:1.5px solid var(--amber);
-    color:var(--terra);
-    font-family:var(--gothic);
-    font-size:.8rem;
-    display:flex; align-items:center; justify-content:center;
+    content:counter(s);position:absolute;left:0;top:.12em;
+    width:1.5rem;height:1.5rem;border-radius:var(--r-s);
+    background:var(--apricot);color:var(--ink);
+    font-family:var(--gothic);font-size:var(--fs-8);
+    display:flex;align-items:center;justify-content:center;
   }
-  .steps li b{color:var(--ink); font-weight:400;}
+  .steps li b{color:var(--ink);font-weight:var(--w-reg);}
 
   /* 자주 묻는 것 */
   .faq{border-top:1px solid var(--line-soft);}
   .faq details{border-bottom:1px solid var(--line-soft);}
   .faq summary{
-    cursor:pointer;
-    list-style:none;
-    padding:.95rem 1.8rem .95rem 0;
-    font-family:var(--logo);
-    font-weight:700;
-    font-size:1rem;
-    color:var(--ink);
-    position:relative;
+    cursor:pointer;list-style:none;padding:.95rem 1.8rem .95rem 0;
+    font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-5);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);position:relative;
   }
   .faq summary::-webkit-details-marker{display:none;}
-  .faq summary::after{
-    content:"+";
-    position:absolute;
-    right:.2rem; top:.85rem;
-    color:var(--amber);
-    font-family:var(--gothic);
-    font-size:1.2rem;
-    line-height:1;
-  }
-  .faq details[open] summary::after{content:"−";}
-  .faq .body{
-    padding:0 0 1.1rem;
-    color:var(--ink-soft);
-    font-size:.95rem;
-    line-height:1.9;
-  }
-  .faq .body b{color:var(--terra); font-weight:400;}
+  .faq summary::after{content:"+";position:absolute;right:.2rem;top:.82rem;
+    color:var(--terra);font-family:var(--gothic);font-size:var(--fs-4);line-height:1;}
+  .faq details[open] summary::after{content:"\2212";}
+  .faq .body{padding:0 0 1.1rem;color:var(--ink-soft);font-size:var(--fs-6);line-height:var(--lh-normal);}
+  .faq .body b{color:var(--terra);font-weight:var(--w-reg);}
 
-  /* 이번 달 */
-  .month{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-radius:16px;
-    padding:1.3rem 1.5rem;
-  }
-  .month .row{
-    display:flex; gap:1rem; align-items:baseline;
-    padding:.5rem 0;
-    border-bottom:1px solid var(--line-soft);
-    font-family:var(--gothic);
-    font-size:.89rem;
-  }
-  .month .row:last-child{border-bottom:none;}
-  .month .row .m{flex:0 0 3.2rem; color:var(--terra);}
-  .month .row .v{color:var(--ink-soft); line-height:1.7;}
-  .month .note{
-    font-family:var(--gothic);
-    font-size:.8rem;
-    color:var(--ink-faint);
-    line-height:1.75;
-    margin-top:.9rem;
-  }
+  /* 이번 달 — 면을 걷고 괘선 표로. 위의 .facts 면과 힘을 겨루지 않는다 */
+  .month{background:transparent;border:0;border-top:1px solid var(--line-soft);border-radius:0;padding:0;}
+  .month .row{display:flex;gap:1rem;align-items:baseline;padding:.75rem .2rem;
+    border-bottom:1px solid var(--line-soft);font-family:var(--gothic);font-size:var(--fs-6);}
+  .month .row .m{flex:0 0 3rem;color:var(--terra);letter-spacing:var(--ls-md);}
+  .month .row .v{color:var(--ink-soft);line-height:var(--lh-normal);}
+  .month .row .v b{color:var(--ink);font-weight:var(--w-reg);}
+  .month .note{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-faint);
+    line-height:var(--lh-normal);margin-top:.85rem;}
 
-  /* 신청 */
-  .cta{
-    margin-top:2.6rem;
-    text-align:center;
-  }
+  /* 신청 — 사이트에서 유일한 진테라코타 면. 크림 글자 5.13 */
+  .cta{margin-top:var(--sp-4);text-align:center;}
   .cta .btn{
-    display:inline-block;
-    background:var(--terra);
-    color:var(--cream);
-    font-family:var(--gothic);
-    font-size:.95rem;
-    letter-spacing:.02em;
-    text-decoration:none;
-    padding:.85rem 2.2rem;
-    border-radius:99px;
-    transition:transform .16s ease, box-shadow .16s ease;
+    display:inline-block;background:var(--terra);color:var(--cream);
+    font-family:var(--gothic);font-size:var(--fs-6);letter-spacing:var(--ls-md);
+    text-decoration:none;padding:.8rem 2rem;border-radius:var(--r-m);
+    transition:background .2s ease;
   }
-  .cta .btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px -8px rgba(169,83,42,.55);}
-  .cta .sub{
-    font-family:var(--gothic);
-    font-size:.82rem;
-    color:var(--ink-faint);
-    line-height:1.8;
-    margin-top:.9rem;
-  }
-  .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.3);}
+  .cta .btn:hover{background:#8E4322;}
+  .cta .sub{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-faint);
+    line-height:var(--lh-normal);margin-top:.85rem;}
+  .cta .sub a{color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(169,83,42,.35);}
 </style>
 </head>
 <body>

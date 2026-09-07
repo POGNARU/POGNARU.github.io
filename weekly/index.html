@@ -17,185 +17,87 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* ---------- 월 바로가기 ---------- */
-  .jump{
-    display:flex;
-    gap:.4rem;
-    margin-bottom:2.6rem;
-    padding-bottom:.3rem;
-  }
+  /* ---------- 월 바로가기 — 알약을 눕힌다 ---------- */
+  .jump{display:flex;gap:.5rem;margin-bottom:var(--sp-3);padding-bottom:.2rem;}
   .jump a{
-    flex:none;
-    font-family:var(--gothic);
-    font-size:.8rem;
-    color:var(--terra);
-    text-decoration:none;
-    background:var(--white);
-    border:1px solid rgba(233,163,58,.55);
-    border-radius:99px;
-    padding:.34rem .9rem;
-    white-space:nowrap;
-    transition:background .2s ease;
+    flex:none;font-family:var(--gothic);font-size:var(--fs-7);
+    letter-spacing:var(--ls-md);color:var(--terra);text-decoration:none;
+    background:transparent;border:1px solid var(--line);border-radius:var(--r-s);
+    padding:.28rem .8rem;white-space:nowrap;
+    transition:background .2s ease,border-color .2s ease;
   }
-  .jump a:hover{background:var(--apricot);}
+  .jump a:hover{background:var(--apricot);border-color:var(--terra);}
 
   /* ---------- 월 블록 ---------- */
-  .month{margin-bottom:2.8rem;scroll-margin-top:1.5rem;}
+  .month{margin-bottom:var(--sp-4);scroll-margin-top:1.5rem;}
   .month-label{
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    font-family:var(--gothic);
-    font-size:.82rem;
-    letter-spacing:.14em;
-    color:var(--terra);
-    margin-bottom:1rem;
+    display:flex;align-items:center;gap:.55rem;
+    font-family:var(--gothic);font-size:var(--fs-8);
+    letter-spacing:var(--ls-label);line-height:var(--lh-normal);
+    color:var(--terra);margin-bottom:var(--sp-2);
   }
-  .month-label::before{
-    content:"";
-    width:8px;height:8px;
-    border-radius:50%;
-    background:var(--amber);
-    flex:none;
-  }
-  .month-label::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:var(--line-soft);
-  }
+  .month-label::before{content:"";width:3px;height:.95em;border-radius:var(--r-s);background:var(--amber);flex:none;}
+  .month-label::after{content:"";flex:1;height:1px;background:var(--line-soft);}
 
-  /* ---------- 주간 카드 ---------- */
+  /* ---------- 주간 항목 — 카드를 행으로 눕힌다 ----------
+     열 장이 넘는 카드는 면·테두리·그림자·반경을 항목 수만큼 되풀이해 벽이 된다.
+     행 + 머리카락 괘선이면 되풀이가 0으로 떨어지고 눈은 제목만 따라간다.
+     이 목록에서 면을 가진 것은 월간 카드 하나뿐이라, 그 하나가 달의 매듭으로 읽힌다. */
   .rc{
-    display:flex;
-    align-items:center;
-    gap:.9rem;
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-left:3px solid var(--amber);
-    border-radius:14px;
-    padding:1.05rem 1.15rem;
-    margin-bottom:.7rem;
-    text-decoration:none;
-    color:inherit;
-    box-shadow:0 1px 2px rgba(60,36,21,.03);
-    transition:transform .25s ease, box-shadow .25s ease;
+    display:flex;align-items:baseline;gap:1rem;
+    background:transparent;border:0;border-bottom:1px solid var(--line-soft);
+    border-radius:0;box-shadow:none;
+    padding:.95rem .2rem;margin-bottom:0;
+    text-decoration:none;color:inherit;transition:background .2s ease;
   }
-  .rc:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(60,36,21,.35);}
+  .mc + .rc{border-top:1px solid var(--line-soft);}
+  .rc:hover{background:var(--apricot);}
   .rc .day{
-    flex:none;
-    width:46px;
-    text-align:center;
-    border-right:1px solid var(--line-soft);
-    padding-right:.7rem;
+    flex:none;width:3.6rem;text-align:left;border-right:0;padding-right:0;
+    display:flex;align-items:baseline;gap:.32rem;
   }
-  .rc .dd{
-    font-family:var(--logo);
-    font-weight:700;
-    font-size:1.55rem;
-    line-height:1;
-    color:var(--ink);
-  }
-  .rc .dm{
-    font-family:var(--gothic);
-    font-size:.66rem;
-    letter-spacing:.1em;
-    color:var(--terra);
-    margin-top:.3rem;
-  }
+  .rc .dd{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
+    line-height:var(--lh-tight);letter-spacing:var(--ls-lg);color:var(--ink);}
+  .rc .dm{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);
+    color:var(--terra);margin-top:0;}
   .rc .info{flex:1;min-width:0;}
-  .rc .t{
-    font-family:var(--logo);
-    font-weight:700;
-    font-size:1.05rem;
-    line-height:1.45;
-    color:var(--ink);
-    margin-bottom:.2rem;
-  }
-  .rc .d{
-    font-family:var(--gothic);
-    font-size:.79rem;
-    color:var(--ink-faint);
-    line-height:1.6;
-  }
-  .rc .arrow{flex:none;color:var(--terra);font-size:1.05rem;transition:transform .25s ease;}
-  .rc:hover .arrow{transform:translateX(4px);}
-
+  .rc .t{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.12rem;}
+  .rc .d{font-family:var(--gothic);font-size:var(--fs-7);line-height:var(--lh-normal);color:var(--ink-faint);}
+  .rc .arrow{flex:none;color:var(--terra);font-size:var(--fs-6);transition:transform .2s ease;}
+  .rc:hover .arrow{transform:translateX(3px);}
   /* 아직 옮기지 않은 기록 */
-  .rc.soon{border-left-color:var(--g-compare);}
-  .rc.soon .arrow{color:var(--ink-faint);}
+  .rc.soon .dd,.rc.soon .arrow{color:var(--ink-faint);}
 
-  /* ---------- 월간 카드 ---------- */
+  /* ---------- 월간 카드 — 이 페이지의 유일한 면 ---------- */
   .mc{
-    display:block;
-    background:var(--apricot);
-    border:1.5px solid var(--amber);
-    border-radius:16px;
-    padding:1.2rem 1.3rem;
-    margin-bottom:.9rem;
-    text-decoration:none;
-    color:inherit;
-    transition:transform .25s ease, box-shadow .25s ease;
+    display:block;background:var(--apricot);border:0;border-radius:var(--r-m);
+    padding:1.3rem 1.4rem;margin-bottom:var(--sp-2);
+    text-decoration:none;color:inherit;transition:background .2s ease;
   }
-  .mc:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(60,36,21,.35);}
-  .mc .top{
-    display:flex;
-    align-items:center;
-    gap:.55rem;
-    margin-bottom:.5rem;
-  }
-  .mc .badge{
-    font-family:var(--gothic);
-    font-size:.7rem;
-    letter-spacing:.1em;
-    color:var(--terra);
-    background:var(--white);
-    border-radius:99px;
-    padding:.2rem .7rem;
-    flex:none;
-  }
-  .mc .range{
-    font-family:var(--gothic);
-    font-size:.74rem;
-    color:var(--ink-faint);
-  }
-  .mc .t{
-    font-family:var(--logo);
-    font-weight:700;
-    font-size:1.2rem;
-    line-height:1.45;
-    color:var(--ink);
-    margin-bottom:.25rem;
-  }
-  .mc .d{
-    font-family:var(--gothic);
-    font-size:.8rem;
-    color:var(--ink-soft);
-    line-height:1.65;
-  }
-  .mc .meta{
-    display:flex;
-    align-items:center;
-    gap:.4rem;
-    font-family:var(--gothic);
-    font-size:.74rem;
-    color:var(--terra);
-    margin-top:.75rem;
-    padding-top:.6rem;
-    border-top:1px solid rgba(233,163,58,.45);
-  }
-  .mc .meta .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex:none;}
+  .mc:hover{background:var(--apricot-hi);}
+  .mc .top{display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem;}
+  /* 살구 면 위라 terra(4.39)를 쓰지 않는다 — 크림 칩에 잉크 글자 */
+  .mc .badge{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);
+    color:var(--ink);background:var(--cream);border-radius:var(--r-s);padding:.16rem .6rem;flex:none;}
+  .mc .range{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-soft);}
+  .mc .t{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.2rem;}
+  .mc .d{font-family:var(--gothic);font-size:var(--fs-7);line-height:var(--lh-normal);color:var(--ink-soft);}
+  .mc .meta{display:flex;align-items:center;gap:.4rem;font-family:var(--gothic);
+    font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-soft);
+    margin-top:.7rem;padding-top:.6rem;border-top:1px solid rgba(60,36,21,.14);}
+  .mc .meta .dot{width:5px;height:5px;border-radius:var(--r-s);background:var(--ink);flex:none;}
 
   @media (max-width:400px){
-    .rc{padding:.95rem 1rem;gap:.7rem;}
-    .rc .day{width:40px;padding-right:.55rem;}
-    .rc .dd{font-size:1.4rem;}
+    .rc{gap:.7rem;}
+    .rc .day{width:3.1rem;}
   }
 </style>
 </head>

@@ -17,8 +17,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
@@ -26,64 +26,99 @@
   .home-wrap{
     max-width:var(--measure);
     margin:0 auto;
-    padding:clamp(4rem,16vw,7rem) 1.25rem 3rem;
+    padding:clamp(4rem,16vw,7rem) 1.25rem var(--sp-3);
   }
-  .hero{text-align:center;margin-bottom:clamp(3rem,10vw,4.5rem);}
-  .logo{
+
+  /* ── 첫 화면 ─────────────────────────────────────
+     260902 확정안 「바탕에 눕다 + 첫 화면 살구 면」.
+     지금 현관에서 살구는 0회 쓰였고 흰색이 6면을 덮고 있었다.
+     그 여섯 면을 살구로 바꾸고, 첫 화면을 살구 전폭 면으로 깐다.
+     경계는 선이 아니라 면과 면의 색차(1.168)와 여백이 낸다. */
+  .hero{
+    text-align:center;
+    margin-bottom:var(--sp-5);
+    position:relative;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:50%; transform:translateX(-50%);
+    width:100vw;
+    top:-7rem; bottom:-3.2rem;
+    background:var(--apricot);
+    z-index:0;
+  }
+  .hero > *{position:relative;z-index:1;}
+
+  /* 워드마크가 곧 이 페이지의 h1 이다. 보이는 모습은 그대로 두고 뜻만 준다.
+     자간 .12em 은 4단 밖의 브랜드 자산값이라 토큰으로 접지 않는다. */
+  h1.logo{
     font-family:var(--logo);
-    font-weight:700;
-    font-size:clamp(2.3rem,10vw,3rem);
-    letter-spacing:.12em;
-    color:var(--ink);
-    line-height:1.2;
+    font-weight:var(--w-bold);
+    font-size:var(--fs-1);
+    letter-spacing:var(--ls-logo);
+    color:var(--ink);          /* 살구 위 11.94 */
+    line-height:var(--lh-tight);
+    margin-bottom:0;
   }
   .logo-en{
     font-family:var(--gothic);
-    font-size:.7rem;
-    letter-spacing:.34em;
-    color:var(--ink-faint);
-    margin-top:.9rem;
+    font-size:var(--fs-8);
+    letter-spacing:.34em;      /* 워드마크 짝 — 자산값 */
+    color:var(--ink-soft);     /* 살구 위 7.46 (ink-faint 4.71은 쓰지 않는다) */
+    margin-top:.85rem;
   }
+  .hero .amber-line{margin:1.6rem auto;}
   .tagline{
     font-family:var(--serif);
-    font-size:clamp(.98rem,3.6vw,1.06rem);
-    color:var(--ink-soft);
-    line-height:1.9;
-    margin-top:1.6rem;
+    font-size:var(--fs-5);
+    letter-spacing:var(--ls-md);
+    color:var(--ink);          /* 살구 위 11.94 */
+    line-height:var(--lh-loose);
+    margin-top:1.4rem;
   }
 
-  /* 「한 주의 새벽」이 무엇인지 알려주는 한 줄.
-     카드로 만들지 않는 이유: 현관에 누를 상자가 이미 넷이라
-     다섯째를 더하면 첫 화면이 '누를 것 목록'이 된다.
-     설명은 누를 것이 아니라 읽을 것이라 카드 바로 위에 눕힌다. */
+  /* ── 구역 ──────────────────────────────────────
+     지금까지 현관에는 h1도 h2도 하나 없었다. 크기가 12단이나 있는데도
+     평평했던 진짜 이유가 이것이다 — 눈이 붙잡을 층이 없었다. */
+  .home-sec{margin-top:var(--sp-5);}
+  .home-sec:first-of-type{margin-top:0;}
+  .home-sec .sec-title{margin-top:0;}
+
   .latest-note{
-    text-align:center;
     font-family:var(--gothic);
-    font-size:.87rem;
+    font-size:var(--fs-6);
     color:var(--ink-soft);
-    line-height:1.8;
-    margin-bottom:1rem;
-    /* 좁은 화면에서 '올립니다.' 한 마디만 둘째 줄에 떨어지던 것을 막는다.
-       (keep-all은 base.css의 body가 맡는다) */
+    line-height:var(--lh-normal);
+    margin:-.4rem 0 var(--sp-2);
     text-wrap:balance;
   }
 
-  /* 지난주의 새벽 카드 — 늘 끝난 한 주를 모아 올리므로 '이번 주'가 아니다 */
+  /* 지난주의 새벽 — 살구 면 + 왼쪽 호박 획 하나.
+     호박은 여기서 정보를 나르지 않는 장식이라 살구 위(1.78)에 남길 수 있다. */
   .latest{
     display:flex;
     align-items:center;
     gap:1rem;
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-left:4px solid var(--amber);
-    border-radius:16px;
-    padding:1.35rem 1.4rem;
+    position:relative;
+    overflow:hidden;
+    background:var(--apricot);
+    border:0;
+    border-radius:var(--r-m);
+    box-shadow:none;
+    padding:1.3rem 1.4rem 1.3rem 1.7rem;
     text-decoration:none;
     color:inherit;
-    box-shadow:0 1px 2px rgba(60,36,21,.03);
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:background .2s ease;
   }
-  .latest:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(60,36,21,.35);}
+  .latest::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--amber);
+  }
+  .latest:hover{background:var(--apricot-hi);}
   .latest .body{flex:1;min-width:0;}
   /* 셋 다 <span>이라 기본값이 inline이었다. 그대로 두면 날짜·제목·요약이
      한 문단으로 이어 붙고 아래 margin-bottom도 먹지 않는다. */
@@ -92,73 +127,50 @@
   .latest .d{display:block;}
   .latest .eyebrow{
     font-family:var(--gothic);
-    font-size:.74rem;
-    letter-spacing:.14em;
-    color:var(--terra);
-    margin-bottom:.35rem;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-label);
+    line-height:var(--lh-normal);
+    color:var(--ink-soft);     /* 살구 위라 terra(4.39)를 쓰지 않는다 */
+    margin-bottom:.3rem;
   }
   .latest .t{
     font-family:var(--logo);
-    font-weight:700;
-    font-size:1.16rem;
-    line-height:1.45;
+    font-weight:var(--w-bold);
+    font-size:var(--fs-3);
+    line-height:var(--lh-snug);
+    letter-spacing:var(--ls-lg);
     color:var(--ink);
-    margin-bottom:.25rem;
+    margin-bottom:.2rem;
   }
   .latest .d{
     font-family:var(--gothic);
-    font-size:.82rem;
-    color:var(--ink-faint);
-    line-height:1.65;
+    font-size:var(--fs-7);
+    line-height:var(--lh-normal);
+    color:var(--ink-soft);
   }
   .latest .arrow{
     flex:none;
-    color:var(--terra);
-    font-size:1.15rem;
-    transition:transform .25s ease;
+    color:var(--ink);
+    font-size:var(--fs-4);
+    transition:transform .2s ease;
   }
   .latest:hover .arrow{transform:translateX(4px);}
 
-  /* 목록으로 가는 길. 밑줄 링크(.textlink)로 두었더니 카드에 눌려
-     보이지 않았다. 처음 온 사람은 글 한 편보다 목록이 이해가 빠르므로
-     알약으로 세운다. 다만 위 카드보다는 한 단 낮게 둔다. */
-  .more{text-align:center;margin-top:1.6rem;}
+  /* 목록으로 가는 길 — 알약을 눕히고 면을 걷는다. 밑줄 링크 한 줄 */
+  .more{margin-top:var(--sp-2);}
   .more a{
-    display:inline-block;
     font-family:var(--gothic);
-    font-size:.87rem;
-    color:var(--terra);
-    background:var(--white);
-    border:1px solid rgba(233,163,58,.55);
-    border-radius:99px;
-    padding:.55rem 1.35rem;
+    font-size:var(--fs-7);
+    letter-spacing:var(--ls-md);
+    color:var(--terra);        /* 크림 바탕 5.13 */
     text-decoration:none;
-    line-height:1.5;
-    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+    border-bottom:1px solid rgba(169,83,42,.35);
+    padding-bottom:2px;
   }
-  .more a:hover{
-    background:var(--cream);
-    border-color:var(--terra);
-    transform:translateY(-1px);
-  }
+  .more a:hover{border-bottom-color:var(--terra);}
 
-  /* 앞으로 붙을 자리 */
-  .future{margin-top:clamp(3.5rem,11vw,5rem);}
-
-  /* 문의 — 대문에서 한 번만 크게 */
-  .askline{
-    text-align:center;
-    margin-top:clamp(2.8rem,9vw,3.6rem);
-    padding-top:2rem;
-    border-top:1px solid var(--line-soft);
-  }
-  .askline .h{
-    font-family:var(--logo);
-    font-weight:700;
-    font-size:1.02rem;
-    color:var(--ink);
-    margin-bottom:1rem;
-  }
+  .askline{text-align:center;}
+  .askline .sec-title{justify-content:center;}
 </style>
 </head>
 <body>
@@ -166,27 +178,35 @@
 <main class="home-wrap">
 
   <header class="hero fade">
-    <div class="logo">포근나루</div>
+    <h1 class="logo">포근나루</h1>
     <div class="logo-en">POGNARU STUDIO</div>
     <div class="amber-line center"></div>
     <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루입니다.</p>
   </header>
 
-  <!-- '한 주씩'·'그 결을'은 &nbsp;로 묶는다. 안 묶으면 좁은 화면에서 그 사이가 갈린다 -->
-  <p class="latest-note fade d1">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
+  <section class="home-sec fade d1">
+    <h2 class="sec-title">지난주의 새벽</h2>
+    <!-- '한 주씩'·'그 결을'은 &nbsp;로 묶는다. 안 묶으면 좁은 화면에서 그 사이가 갈린다 -->
+    <p class="latest-note">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
 
-  <a class="latest fade d1" href="/weekly/260830.html">
-    <span class="body">
-      <span class="eyebrow">지난주의 새벽 · 2026.08.24 — 08.30</span>
-      <span class="t">새 그릇에 맑은 물을</span>
-      <span class="d">구속이면서 힘이기도 한 시선을 닷새 내내 들여다본 한 주</span>
-    </span>
-    <span class="arrow" aria-hidden="true">→</span>
-  </a>
+    <a class="latest" href="/weekly/260830.html">
+      <span class="body">
+        <!-- 「지난주의 새벽」이 바로 위 h2 로 올라갔으므로 여기서는 날짜만 남긴다.
+             같은 말이 두 번 나오면 h2 가 제목으로 안 읽힌다. -->
+        <span class="eyebrow">2026.08.24 — 08.30</span>
+        <span class="t">새 그릇에 맑은 물을</span>
+        <span class="d">구속이면서 힘이기도 한 시선을 닷새 내내 들여다본 한 주</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
 
-  <p class="more fade d2"><a href="/weekly/">지난 새벽 모두 보기 →</a></p>
+    <p class="more"><a href="/weekly/">지난 새벽 모두 보기 →</a></p>
+  </section>
 
-  <section class="fade d3" style="margin-top:2.6rem;">
+  <section class="home-sec fade d2">
+    <!-- ⚠️ 「둘러보기」 세 글자만 이번에 새로 넣었습니다. 기존 문구가 아니라
+         다현씨 확인이 필요한 자리입니다. 빼거나 다른 말로 바꾸실 수 있습니다. -->
+    <h2 class="sec-title">둘러보기</h2>
     <div class="card-grid">
       <a class="info-card" href="/class/">
         <div class="it">클래스</div>
@@ -203,11 +223,12 @@
     </div>
   </section>
 
-  <section class="askline fade d4">
-    <div class="h">궁금한 것이 있으시면</div>
+  <section class="home-sec askline fade d3">
+    <!-- 기존 .askline .h 를 h2 로 올렸습니다. 문구는 그대로입니다. -->
+    <h2 class="sec-title">궁금한 것이 있으시면</h2>
     <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
-      카카오톡으로 문의하기
+      카카오채널 문의하기
     </a>
     <p class="kakao-hours">
       평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.
@@ -218,6 +239,8 @@
        앞으로 붙을 자리 — 소개(/about/)
        클래스는 2026-08-01에 열어 위 카드 그리드에 넣었다.
        소개를 열 때 아래 카드를 위 .card-grid 안으로 옮기면 된다.
+       ※ 카드가 넷이 되면 .card-grid 는 3열 고정이라 넷째가 홀로 둘째 줄에 선다.
+          그때 repeat(2,1fr) 2열로 바꾼다.
 
       <a class="info-card" href="/about/">
         <div class="it">소개</div>
@@ -225,7 +248,7 @@
       </a>
        ============================================================ -->
 
-  <footer class="sitefoot fade d3">
+  <footer class="sitefoot fade d4">
     <nav>
       <a href="/class/">클래스</a>
       <a href="/weekly/">한 주의 새벽</a>

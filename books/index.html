@@ -16,8 +16,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260825">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260906">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
@@ -28,119 +28,139 @@
     width:min(220px,56vw);
     aspect-ratio:720 / 1000;
     margin:0 auto 1.6rem;
-    border-radius:10px;
+    border-radius:var(--r-m);
     overflow:hidden;
-    box-shadow:0 10px 26px -14px rgba(60,36,21,.5);
+    box-shadow:none;
   }
   .cover img{width:100%;height:100%;object-fit:cover;display:block;}
 
   .bookhead{text-align:center;}
   .bookhead .series{
     font-family:var(--gothic);
-    font-size:.74rem;
-    letter-spacing:.2em;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-label);
+    line-height:var(--lh-normal);
     color:var(--terra);
     margin-bottom:.6rem;
   }
   .bookhead h1{margin-bottom:.55rem;}
   .bookhead .meta{
     font-family:var(--gothic);
-    font-size:.79rem;
+    font-size:var(--fs-7);
+    line-height:var(--lh-normal);
     color:var(--ink-faint);
   }
 
-  .intro{margin-top:2.2rem;}
+  .intro{margin-top:var(--sp-3);}
   .intro p{
     color:var(--ink-soft);
-    font-size:1rem;
-    line-height:1.95;
+    font-size:var(--fs-5);
+    line-height:var(--lh-loose);
   }
-  .intro p + p{margin-top:1rem;}
-  .intro b{color:var(--terra);font-weight:400;}
+  .intro p + p{margin-top:var(--sp-2);}
+  .intro b{color:var(--terra);font-weight:var(--w-reg);}
 
   .book-pull{
     font-family:var(--logo);
-    font-size:1.05rem;
-    line-height:1.9;
+    font-size:var(--fs-4);
+    line-height:var(--lh-loose);
+    letter-spacing:var(--ls-lg);
     color:var(--ink);
     text-align:center;
     padding:1.5rem 1rem;
-    margin:2.2rem 0 0;
+    margin:var(--sp-3) 0 0;
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
   }
   .book-pull .who{
     display:block;
     font-family:var(--gothic);
-    font-size:.73rem;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-md);
+    line-height:var(--lh-normal);
     color:var(--ink-faint);
     margin-top:.55rem;
   }
 
-  /* ---------- 구매 ---------- */
+  /* ---------- 구매 ----------
+     흰 카드는 크림과 1.035라 사실상 경계가 없다. 살구 면으로 바꾸고
+     테두리·그림자·호박 띠를 걷었다. 2열 고정 — auto-fit(250px)은
+     640px에서 칸 수가 폭 따라 흔들린다. */
   .buy-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:.9rem;
+    grid-template-columns:repeat(2,1fr);
+    gap:.6rem;
+    align-items:start;
   }
+  /* 칸이 하나뿐인 구역(종이책)은 2열로 두면 오른쪽 절반이 통째로 빈다.
+     auto-fit 이 해주던 일을 :has 로 명시한다. */
+  .buy-grid:has(> .buy:only-child){grid-template-columns:1fr;}
+  @media (max-width:560px){.buy-grid{grid-template-columns:1fr;}}
   .buy{
-    background:var(--white);
-    border:1px solid var(--line-soft);
-    border-top:3px solid var(--amber);
-    border-radius:16px;
-    padding:1.3rem 1.3rem 1rem;
-    box-shadow:0 1px 2px rgba(60,36,21,.03);
+    background:var(--apricot);
+    border:0;
+    border-radius:var(--r-m);
+    padding:1.25rem 1.25rem 1rem;
+    box-shadow:none;
     display:flex;
     flex-direction:column;
   }
+  /* 알약(99px)을 눕히고, 살구 위 살구 뱃지가 안 보이므로 괘선 칩으로 */
   .buy .badge{
     display:inline-block;
     align-self:flex-start;
     font-family:var(--gothic);
-    font-size:.72rem;
-    letter-spacing:.08em;
+    font-size:var(--fs-8);
+    letter-spacing:var(--ls-md);
+    line-height:var(--lh-normal);
     color:var(--ink);
-    background:var(--apricot);
-    border-radius:99px;
-    padding:.22rem .75rem;
+    background:transparent;
+    border:1px solid rgba(60,36,21,.2);
+    border-radius:var(--r-s);
+    padding:.22rem .7rem;
     margin-bottom:.75rem;
   }
   .buy h3{margin-bottom:.3rem;}
+  /* 살구 면 위라 terra(4.39)를 쓰지 않는다 — 값은 잉크로 세운다 */
   .buy .price{
     font-family:var(--gothic);
-    font-size:.86rem;
-    color:var(--terra);
+    font-size:var(--fs-6);
+    line-height:var(--lh-normal);
+    color:var(--ink);
     margin-bottom:.5rem;
   }
   .buy .note{
     font-family:var(--gothic);
-    font-size:.81rem;
-    color:var(--ink-faint);
-    line-height:1.75;
+    font-size:var(--fs-7);
+    color:var(--ink-soft);
+    line-height:var(--lh-normal);
     margin-bottom:1rem;
   }
-  .stores{margin-top:auto;border-top:1px solid var(--line-soft);}
+  .stores{margin-top:auto;border-top:1px solid rgba(60,36,21,.14);}
   .store{
     display:flex;
     align-items:center;
     gap:.6rem;
     padding:.62rem .1rem;
-    border-bottom:1px solid var(--line-soft);
+    border-bottom:1px solid rgba(60,36,21,.14);
     text-decoration:none;
     color:var(--ink);
     font-family:var(--gothic);
-    font-size:.87rem;
+    font-size:var(--fs-6);
+    line-height:var(--lh-normal);
   }
   .store:last-child{border-bottom:none;}
-  .store .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
-  .store .arrow{margin-left:auto;color:var(--terra);font-size:.8rem;flex:none;}
-  .store:hover{color:var(--terra);}
+  /* 서점 앞 점은 '뜻을 나르는' 표식이다 — 살구 위 호박 1.78 대신 잉크.
+     원(50%)도 각진 획으로 눕혀 사이트 전체의 결과 맞춘다 */
+  .store .dot{width:3px;height:.85em;border-radius:var(--r-s);background:var(--ink);flex:none;}
+  .store .arrow{margin-left:auto;color:var(--ink-soft);font-size:var(--fs-7);flex:none;}
+  .store:hover{text-decoration:underline;}
 
   .paper-note{
     font-family:var(--gothic);
-    font-size:.79rem;
+    font-size:var(--fs-7);
     color:var(--ink-faint);
-    line-height:1.8;
+    line-height:var(--lh-normal);
     margin-top:1.2rem;
     padding-left:.9rem;
     border-left:3px solid var(--apricot);
