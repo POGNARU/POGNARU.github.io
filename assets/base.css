@@ -1,105 +1,164 @@
 /* ============================================================
-   포근나루 공통 스타일 — 화면판 팔레트 · 「종수 정리」판
-   2026-09-06 · 나무🌳 (다현씨 확정 후 실적용)
+   포근나루 공통 스타일 — 「폭을 풀다」 전면 적용판
+   2026-09-12 · 나무🌳 (다현씨 전면 교체 확정 후 실서버 적용)
 
-   지난번 색만 갈아 얹었을 때 "크게 달라진 것 같지 않다"는 평을 받았다.
-   원인은 색이 아니라 종수였다 — 반경 13종·행간 19종·크기 12단(단계당 1.05배).
-   눈은 1.05배를 층으로 세지 못한다. 그래서 이번 판은 두 층을 함께 만진다.
+   ── 2026-09-12 전면 교체 ───────────────────────────
+     ① 바탕을 순백 #FFFFFF 로 확정 (#FEFDFA 에서 한 단 더)
+     ② 이 파일과 weekly.css / monthly.css 의 문법을 21장 전부에 적용
+     ③ 시안에 없던 클래스(.card-grid·.info-card·.timeline.eve·
+        .tl p b·.seed em·.kakao-hours b)는 쓰는 페이지가 있으므로 되살렸다
 
-     색  = 「포근나루답게」   (260902 확정안 그대로)
-     종수 = 「세련되게」       (이 파일이 하는 일)
+   ── 2차(2026-09-09)에서 바뀐 것 ────────────────────
+     ① 바탕 크림  #FFFBEF 에서 #FEFDFA 로 (순백과 크림 사이)
+     ② 아래 세 단을 끌어올림  14.1/12.5/11.2 를 15.5/14.2/13 으로
+        그리고 작은 글씨에서 ink-faint 를 걷어냄 (흐린 색은 큰 글씨에만)
+     ③ 화살표 전부 제거 — 호버 색 변화가 이미 「눌리는 자리」를 말한다
+     ④ 최신 회고는 블록 전체가 링크, 호버하면 블록 배경이 바뀐다
+     ⑤ 구역 안 명시적 링크는 「지난 새벽 모두 보기」 하나
+     ⑥ 01 구역 이름 「선릿모닝」
 
-   ── 이 파일이 정한 종수 ────────────────────────────
-     모서리 반경  13종 → 2종  (2px · 4px)   ※ 원 50%는 '점·뱃지' 형태로만 남김
-     행간         19종 → 4종  (1.35 / 1.55 / 1.75 / 1.95)
-     자간          제각각 → 4단 (−.03 / −.02 / −.01 / +.2em)  ※ 로고 .12em은 자산값
-     굵기         실질 2단 → 3단 (400 / 700 / 800)
-     글자 크기    12단(평균 1.05배) → 8단(평균 1.20배)
-     간격          6개 값이 42~60px에 몰림 → 5단 배수
+   ── 1차(2026-09-07)에서 한 것 ──────────────────────
+     ① 폭   640px 한 가지에서 세 겹으로 (1180 / 880 / 660)
+     ② 낙차 제목:본문 2.3배에서 4.25배로
+     ③ 면적 살구 전폭 면을 걷고, 살구를 점·판 두 자리로 줄이고
+             그 자리를 흰 여백과 머리카락 괘선이 대신한다
 
-   ── 대비 실측(260829·260902에 계산해 둔 값) ────────
-     살구 위  ink 11.94✅ / ink-soft 7.46✅ / ink-faint 4.71⚠️
-              terra 4.39❌ / 흰색 1.21❌ / amber 1.78❌(장식만)
-     크림 위  terra 5.13✅ / ink-soft 8.71✅ / ink-faint 5.50✅
-     잉크 위  크림 13.95✅ / 살구 11.94✅ / amber 6.71✅
-     면 대 면  살구:크림 1.168   (흰:크림은 1.035 — 사실상 경계가 없다)
-   → 살구 면 위에 진테라코타·호박·흰색을 글자로 쓰지 않는다.
+   ── 왜 폭인가 ────────────────────────────────────
+   260828에 이미 재 두었습니다 — 「밋밋하다」의 정체는 대개 색이 아니라
+   폭이 안 변하는 것입니다. 1440px 화면에서 좌우 400px씩이 통째로 비면
+   화면은 「모바일 한 벌로 PC까지 감당하는 구조」로 읽힙니다.
+   레퍼런스가 세련돼 보이는 이유도 색이 아니라 폭(뷰포트의 약 78%)과
+   낙차(약 4.3배)였습니다.
+
+   ── 왜 색을 줄이는가 ─────────────────────────────
+   색을 버리는 것이 아니라 면적을 줄입니다. 크림은 그대로 바탕에 남고,
+   살구·호박·진테라코타는 「넓은 면」에서 「점·획·판 하나」로 내려옵니다.
+   눈이 쉴 흰 여백이 생겨야 남은 색이 포인트로 읽힙니다.
+
+   ── 2026-09-12 2차 · 형광펜 계열로 (다현씨 확정) ──────────
+   마누엘 모레알레 사이트가 링크를 밑줄이 아니라 형광펜 색면으로 칠하는
+   데서 온 값입니다. 살구·살구-hi·호박·호버면 네 값만 바꿨습니다.
+     --apricot     #FBE7C9 → #FFF7B1
+     --apricot-hi  #F6DDB8 → #FFEE88
+     --amber       #E9A33A → #FFC61E
+     --tint        rgba(251,231,201,.6) → rgba(255,247,177,.7)
+   ⚠️ 형광펜은 좁게 쓰는 색입니다 — 글자 뒤에 깔리는 색이라 넓은 면으로
+      깔면 뜹니다. 지금 이 색이 가는 자리(날짜 칩·호버 면·작은 배지·
+      카드 하나)는 전부 좁습니다. 새로 넓은 띠를 만들지 마세요.
+
+   ── 대비 실측 · 2026-09-12 형광펜 계열로 전부 다시 쟀습니다
+        (WCAG 2.x 상대휘도 공식 그대로. 옛 값을 옮겨 적지 않았습니다)
+     순백 위     ink 14.43✅ / ink-soft 9.01✅ / terra 5.31✅
+                 ink-faint 5.69✅(단, 작은 글씨에는 쓰지 않습니다)
+                 amber 1.57❌(장식 전용 — 옛 호박 2.15보다 더 낮습니다)
+     살구 위     (#FFF7B1) ink 13.19✅ / ink-soft 8.24✅ / ink-faint 5.20✅
+                 terra 4.85✅ / amber 1.44❌(장식만) / 흰색 1.09❌
+     호버 면 위  (#FFF9C8) ink 13.49✅ / ink-soft 8.43✅ / terra 4.96✅
+     살구-hi 위  (#FFEE88) ink 12.26✅ / ink-soft 7.66✅ / terra 4.51✅
+     잉크 위     흰색 14.43✅ / 살구 13.19✅ / amber 9.17✅ / terra 2.72❌
+     면 대 면    살구:순백 1.094 (옛 살구는 1.209 — 형광펜은 흰 바탕에서
+                 덜 떨어집니다. 면으로 남긴 자리는 그만큼 조용해집니다)
+
+   ⚠️⚠️ 2026-08-29 이래의 「살구 면 위 진테라코타 금지(4.39)」 규칙은
+        이 색에서 풀립니다 — #FFF7B1 위 terra 는 4.85 로 AA 를 넘습니다.
+        살구-hi 위도 4.51 로 넘습니다. 다만 호박은 여전히 글자 금지입니다.
    ============================================================ */
 
 :root{
-  /* ── 색 · 화면판 (바꾸지 않는다) ───────────────── */
-  --cream:#FFFBEF;
+  /* ── 색 · 화면판 ───────────────────────────────
+     2026-09-12 다현씨: 바탕을 순백 #FFFFFF 로 확정.
+     나머지 다섯 색(살구·호박·진테라코타·잉크 3단)은 한 값도 바꾸지 않았습니다.
+     ⚠️ --cream 은 「바탕색」이라는 자리 이름이고 지금 값은 순백입니다.
+        잉크 면 위 글자에도 이 변수를 쓰므로 이름을 바꾸지 않았습니다. */
+  --cream:#FFFFFF;
   --white:#FFFFFF;
-  --apricot:#FBE7C9;
-  --apricot-hi:#F6DDB8;   /* 살구 면을 눌렀을 때 한 단 */
-  --amber:#E9A33A;        /* 선·점·아이콘 전용. 글자 금지 */
-  --terra:#A9532A;        /* 강조 글자·링크 — 크림 바탕에서만 */
+  --apricot:#FFF7B1;      /* 형광펜 노랑 · 2026-09-12 */
+  --apricot-hi:#FFEE88;   /* 살구 면이 한 단 진해지는 자리 */
+  --amber:#FFC61E;        /* 선·점·아이콘 전용. 글자 금지(순백 위 1.57) */
+  --terra:#A9532A;        /* 강조 글자·링크 — 순백 5.31 · 살구 면 위 4.85 */
   --ink:#3C2415;
   --ink-soft:#5C4433;
   --ink-faint:#7A6250;
-  --line:rgba(60,36,21,.14);
-  --line-soft:rgba(60,36,21,.08);
+  --line:rgba(60,36,21,.16);
+  --line-soft:rgba(60,36,21,.09);
 
-  /* 그래프 5단계 — 월간 회고 */
+  /* 호버 면 — 화살표를 걷어낸 자리를 이 색이 대신합니다.
+     「눌리는 자리」를 말하는 유일한 신호이므로 한 값으로 통일합니다.
+     이 면 위 대비(순백에 합성하면 #FFF9C8): ink 13.49 / ink-soft 8.43 / terra 4.96 */
+  --tint:rgba(255,247,177,.7);
+
   --g1:#F5D9A3; --g2:#E9A33A; --g3:#D97E33; --g4:#A9532A; --g5:#6E3318;
   --g-compare:#C7B49B;
 
-  /* ── 폰트 3종 (바꾸지 않는다) ──────────────────── */
+  /* ── 폰트 3종 (그대로) ────────────────────────── */
   --logo:"Gowun Batang", serif;
   --serif:"Nanum Myeongjo", serif;
   --gothic:"Gowun Dodum", sans-serif;
 
-  /* ── 본문 폭 (바꾸지 않는다) ───────────────────── */
-  --measure:640px;
+  /* ── ⓪ 폭 3겹 ─────────────────────────────────
+     640 한 겹으로는 「간판」과 「읽는 글」을 같은 자로 재게 됩니다.
+       page  1180px — 화면의 주인. 1440 화면에서 82%, 1280에서 92%
+       mid    880px — 제목 블록·인용·큰 사진. 본문보다 한 겹 넓게
+       read   660px — 실제로 읽는 줄. 한글 명조 17px에서 한 줄 약 37자
+     읽는 줄만 좁게 두고 나머지 층은 풀어 줍니다. */
+  --w-page:1180px;
+  --w-mid:880px;
+  --w-read:660px;
+  --gutter:clamp(1.25rem,4vw,3rem);
 
-  /* ── ① 모서리 반경 2종 ─────────────────────────
-     각진 결이 세련됨을 만든다. 알약(99px) 11자리와
-     16/14/20/12/10/8/3px 을 전부 이 둘로 접는다.
-     원(border-radius:50%)은 '모서리'가 아니라 '점·뱃지'라는
-     형태이므로 종수에 넣지 않고 그 용도로만 남긴다. */
-  --r-s:2px;   /* 칩·태그·라벨·짧은 획 */
-  --r-m:4px;   /* 카드·버튼·큰 면 */
+  /* ── ① 모서리 반경 2종 (그대로) ────────────────── */
+  --r-s:2px;
+  --r-m:4px;
 
-  /* ── ② 행간 4종 ───────────────────────────────── */
-  --lh-tight:1.35;    /* 큰 제목 */
-  --lh-snug:1.55;     /* 소제목·카드 제목 */
-  --lh-normal:1.75;   /* 라벨·메타·목록·고딕 */
-  --lh-loose:1.95;    /* 명조 본문 */
+  /* ── ② 행간 4종 (그대로) ──────────────────────── */
+  --lh-tight:1.28;    /* 큰 제목 — 68px에서 1.35는 줄이 뜬다 */
+  --lh-snug:1.55;
+  --lh-normal:1.75;
+  --lh-loose:1.95;
 
-  /* ── ③ 자간 4단 ───────────────────────────────── */
-  --ls-xl:-.03em;     /* 큰 제목 — 한글 명조는 크면 벌어져 보인다 */
-  --ls-lg:-.02em;     /* 소제목 */
-  --ls-md:-.01em;     /* 본문 */
-  --ls-label:.2em;    /* 라벨·영문 대문자 */
-  --ls-logo:.12em;    /* 워드마크 전용 자산값 — 4단 밖 */
+  /* ── ③ 자간 4단 (그대로) ──────────────────────── */
+  --ls-xl:-.035em;
+  --ls-lg:-.02em;
+  --ls-md:-.01em;
+  --ls-label:.2em;
+  --ls-logo:.1em;
 
-  /* ── ④ 굵기 3단 ───────────────────────────────
-     500을 쓰지 않는 이유: 세 웹폰트 어디에도 500 자소가 없어
-     화면에서 400과 똑같이 렌더된다(토큰만 3단, 눈은 2단).
-     실제로 셋으로 갈리는 조합은 400·700·800이다.
-     800은 Nanum Myeongjo에만 있으므로 명조 본문 안 강조에만 쓴다. */
+  /* ── ④ 굵기 3단 (그대로) ──────────────────────── */
   --w-reg:400;
   --w-bold:700;
   --w-heavy:800;
 
-  /* ── ⑤ 글자 크기 8단 (인접 배율 1.11~1.50, 평균 1.20) ─ */
-  --fs-1:clamp(2.3rem,10vw,3rem);      /* 워드마크 */
-  --fs-2:clamp(1.7rem,6.6vw,2rem);     /* h1 */
-  --fs-3:1.32rem;                      /* h2 */
-  --fs-4:1.1rem;                       /* h3 · 카드 제목 */
-  --fs-5:1rem;                         /* 본문 */
-  --fs-6:.88rem;                       /* 보조 본문 · 목록 · 버튼 */
-  --fs-7:.78rem;                       /* 캡션 · 메타 */
-  --fs-8:.7rem;                        /* 라벨 · 영문 */
+  /* ── ⑤ 글자 크기 — 8단 그대로, 바닥을 끌어올림 ──
+     1차판: 68 / 40 / 24 / 18.4 / 16   / 14.1 / 12.5 / 11.2
+     2차판: 68 / 40 / 24 / 19.2 / 17   / 15.5 / 14.2 / 13
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+     다현씨: 「60~70cm 거리에서 지난주의 새벽 아래 글씨는 아예 못 알아보겠어.」
+     12.5px·11.2px 는 화면 본문에서 쓸 크기가 아니었습니다. 13px 을 바닥으로
+     못 박고, 그 위 세 단을 1.09배씩 벌려 앉혔습니다.
 
-  /* ── ⑥ 간격 5단 (배수) ─────────────────────────
-     지금은 60/16/26/42/58/48px 여섯 값이 있는데
-     큰 값 넷(42·48·58·60)이 서로 비슷해 무엇이 큰 단위인지 안 읽힌다. */
-  --sp-1:.5rem;    /*  8px */
-  --sp-2:1rem;     /* 16px */
-  --sp-3:2rem;     /* 32px */
-  --sp-4:4rem;     /* 64px */
-  --sp-5:clamp(4.5rem,14vw,6.5rem);  /* 구역과 구역 사이 — 큰 단위는 하나뿐 */
+     단계 배율  1.70 / 1.67 / 1.25 / 1.13 / 1.097 / 1.092 / 1.092
+       위 세 단(디스플레이)은 크게 뛰고, 아래 네 단(글)은 고르게 걷습니다.
+       기하평균 1.27배 — 1차판 1.29배와 사실상 같은 낙차를 지켰습니다.
+     맨 위:본문 = 68:17 = 4.0배 (1차 4.25배 · 지금 사이트 2.3배).
+
+     ※ 본문을 16에서 17로 올린 이유: 아래 세 단만 올리면 fs-5(16)와
+       fs-6(15.5)이 붙어 층이 사라집니다. 바닥을 올리는 일은 본문까지
+       한 칸 올려야 끝납니다. 660px 읽는 폭에서 한 줄 약 37자 — 그대로 안전합니다. */
+  --fs-1:clamp(2.6rem,7.4vw,4.25rem);   /* 68px — 워드마크·글 제목 */
+  --fs-2:clamp(1.75rem,3.6vw,2.5rem);   /* 40px — 구역 제목 */
+  --fs-3:1.5rem;                        /* 24px — 카드·항목 제목 */
+  --fs-4:1.2rem;                        /* 19.2px — 리드·큰 본문 */
+  --fs-5:1.0625rem;                     /* 17px — 본문 */
+  --fs-6:.96875rem;                     /* 15.5px — 설명글·부연 */
+  --fs-7:.8875rem;                      /* 14.2px — 캡션·보조 */
+  --fs-8:.8125rem;                       /* 13px — 라벨(자간 .2em) · 바닥 */
+
+  /* ── ⑥ 간격 5단 (그대로 · 큰 단위 하나) ────────── */
+  --sp-1:.5rem;
+  --sp-2:1rem;
+  --sp-3:2rem;
+  --sp-4:4rem;
+  --sp-5:clamp(4.5rem,10vw,7.5rem);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -114,18 +173,29 @@ body{
   letter-spacing:var(--ls-md);
   min-height:100vh;
   overflow-x:hidden;
-  /* 한국어는 단어 중간에서 끊지 않는다. overflow-wrap은 그 짝 —
-     끊을 수 없는 긴 영문·URL이 화면을 밀어내지 않도록 받쳐준다. */
   word-break:keep-all;
   overflow-wrap:break-word;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
 
-.wrap{
-  max-width:var(--measure);
+/* ---------- 폭 세 겹 ----------
+   shell 이 화면의 주인, mid·read 는 그 안에서 좁혀 앉는다. */
+.shell{
+  width:100%;
+  max-width:calc(var(--w-page) + var(--gutter) * 2);
   margin:0 auto;
-  padding:var(--sp-3) 1.25rem var(--sp-4);
+  padding-inline:var(--gutter);
+}
+.mid{max-width:var(--w-mid);}
+.read{max-width:var(--w-read);}
+
+/* 옛 이름 호환 — 640 고정 대신 읽는 폭으로 */
+.wrap{
+  width:100%;
+  max-width:calc(var(--w-read) + var(--gutter) * 2);
+  margin:0 auto;
+  padding:var(--sp-3) var(--gutter) var(--sp-4);
 }
 
 /* ---------- 링크 ---------- */
@@ -134,7 +204,7 @@ a{color:var(--terra);}
 .textlink{
   display:inline-block;
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
   letter-spacing:var(--ls-md);
   color:var(--terra);
@@ -149,10 +219,35 @@ a{color:var(--terra);}
 }
 .textlink:hover{border-color:var(--terra);}
 
-/* ---------- 공통 타이포 ----------
-   라벨(kicker·datemark)은 크기를 8단의 맨 끝(.7rem)으로 내리고
-   자간을 .2em으로 벌린다. 작고 넓은 라벨과 큰 제목 사이의 낙차가
-   위계를 만든다 — 지금 사이트가 평평했던 자리다. */
+/* ---------- 구역 라벨 ----------
+   레퍼런스의 「01 / 함께하는 일」 자리. 우리 결로는 번호와 이름 사이를
+   가는 세로 획으로 가릅니다. 번호는 구조 기호이므로 새로 지은 말이 아닙니다.
+   이름은 전부 페이지에 이미 있던 말을 올린 것입니다. */
+.seclabel{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  font-family:var(--gothic);
+  font-size:var(--fs-8);
+  letter-spacing:var(--ls-label);
+  line-height:var(--lh-normal);
+  color:var(--terra);            /* 순백 위 5.31 */
+  margin-bottom:var(--sp-2);
+}
+.seclabel .n{
+  font-variant-numeric:tabular-nums;
+  color:var(--terra);
+}
+.seclabel .bar{
+  /* 번호 뒤로 뻗는 가는 호박 선. 세로 획 하나로 두면 「01 |」 처럼
+     끊긴 채 매달려 보입니다 — 선은 어딘가로 뻗을 때 선으로 읽힙니다. */
+  flex:1;
+  height:1px;
+  background:var(--amber);       /* 정보를 나르지 않는 장식 */
+  min-width:1.5rem;
+}
+
+/* ---------- 공통 타이포 ---------- */
 .kicker,
 .datemark{
   font-family:var(--gothic);
@@ -166,7 +261,7 @@ a{color:var(--terra);}
 h1{
   font-family:var(--logo);
   font-weight:var(--w-bold);
-  font-size:var(--fs-2);
+  font-size:var(--fs-1);
   line-height:var(--lh-tight);
   letter-spacing:var(--ls-xl);
   margin-bottom:var(--sp-2);
@@ -174,37 +269,47 @@ h1{
 h2{
   font-family:var(--logo);
   font-weight:var(--w-bold);
-  font-size:var(--fs-3);
-  line-height:var(--lh-snug);
-  letter-spacing:var(--ls-lg);
+  font-size:var(--fs-2);
+  line-height:var(--lh-tight);
+  letter-spacing:var(--ls-xl);
   margin-bottom:var(--sp-2);
 }
 h3{
   font-family:var(--logo);
   font-weight:var(--w-bold);
-  font-size:var(--fs-4);
+  font-size:var(--fs-3);
   line-height:var(--lh-snug);
   letter-spacing:var(--ls-lg);
 }
 
+/* 구역 제목 — 260906판의 호박 획을 seclabel 로 옮겼으므로
+   제목 자체는 획 없이 크게만 섭니다. */
+.sec-title{
+  font-family:var(--logo);
+  font-weight:var(--w-bold);
+  font-size:var(--fs-2);
+  line-height:var(--lh-tight);
+  letter-spacing:var(--ls-xl);
+  color:var(--ink);
+  margin:0 0 var(--sp-2);
+}
+
 .lead{
   color:var(--ink-soft);
-  font-size:var(--fs-5);
+  font-size:var(--fs-4);
   line-height:var(--lh-loose);
 }
 .lead b{color:var(--terra);font-weight:var(--w-reg);}
 
 .caption{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
   line-height:var(--lh-normal);
-  color:var(--ink-faint);
+  color:var(--ink-soft);          /* 순백 위 9.01 — 작은 글씨에 흐린 색을 겹치지 않는다 */
 }
 
-/* 명조 본문 안의 최상단 강조 — 굵기 3단의 셋째 자리 */
 strong{font-weight:var(--w-heavy);color:var(--ink);}
 
-/* 호박 짧은 선 — 페이지의 쉼표. 각진 결에 맞춰 반경을 --r-s 로 */
 .amber-line{
   width:40px;height:3px;
   background:var(--amber);
@@ -213,58 +318,37 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 }
 .amber-line.center{margin-left:auto;margin-right:auto;}
 
-/* 섹션 제목 — 앞의 호박 '원'을 세로 '획'으로 바꾼다.
-   원 하나가 줄고, 사이트 전체의 각진 결과 어긋나지 않는다. */
-.sec-title{
-  display:flex;
-  align-items:center;
-  gap:.6rem;
-  font-family:var(--logo);
-  font-weight:var(--w-bold);
-  font-size:var(--fs-3);
-  line-height:var(--lh-snug);
-  letter-spacing:var(--ls-lg);
-  color:var(--ink);
-  margin:var(--sp-5) 0 var(--sp-2);
-}
-.sec-title::before{
-  content:"";
-  width:3px;height:.92em;
-  border-radius:var(--r-s);
-  background:var(--amber);
-  flex:none;
-}
+/* ---------- 괘선 ----------
+   면(카드 배경)이 하던 일을 선이 대신합니다. 색을 쓰지 않고
+   구역을 가르는 가장 조용한 방법입니다. */
+.rule{border:0;border-top:1px solid var(--line);}
+.rule-soft{border:0;border-top:1px solid var(--line-soft);}
 
-/* ---------- 면(카드) ----------
-   흰 카드는 크림 바탕과 1.035라 사실상 경계가 없다. 살구는 1.168이고
-   채도차까지 붙는다. 그래서 면은 살구로 두고, 테두리와 그림자를 걷는다.
-   경계는 선이 아니라 색차와 여백이 낸다. */
+/* ---------- 면 ----------
+   면은 남기되 자리를 줄입니다. 목록·항목에는 쓰지 않고,
+   「여기 하나만은 눌러 주세요」 하는 자리에만 씁니다. */
 .card,
-.info-card,
 .panel{
   background:var(--apricot);
   border:0;
   border-radius:var(--r-m);
   box-shadow:none;
-  padding:1.35rem 1.4rem;
+  padding:1.6rem 1.7rem;
 }
 
-/* ---------- 알약을 눕힌다 ----------
-   99px 11자리 + 50% 11자리 = 22자리가 사이트를 '동글동글'하게 만들고 있었다.
-   태그·칩·뱃지는 --r-s, 버튼은 --r-m. */
 .taglist{display:flex;flex-wrap:wrap;gap:.4rem;}
 .tag{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
   letter-spacing:var(--ls-md);
   color:var(--ink);
-  background:var(--apricot);
+  background:transparent;
+  border:1px solid var(--line);
   border-radius:var(--r-s);
   padding:.24rem .7rem;
 }
 
-/* 주 버튼 — 잉크 채움. 살구 면 위에서도 크림 글자 13.95로 성립한다 */
 .btn{
   display:inline-block;
   font-family:var(--gothic);
@@ -281,7 +365,6 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 }
 .btn:hover{background:#54341E;}
 
-/* 부 버튼 — 면 없이 획 하나. 주 버튼과 힘을 겨루지 않는다 */
 .btn-quiet{
   display:inline-flex;
   align-items:center;
@@ -298,7 +381,7 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
   text-decoration:none;
   transition:border-color .2s ease, background .2s ease;
 }
-.btn-quiet:hover{border-color:var(--terra);background:var(--apricot);}
+.btn-quiet:hover{border-color:var(--terra);background:var(--tint);}
 
 /* ---------- 저자 블록 ---------- */
 .author{
@@ -306,77 +389,71 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
   padding-top:var(--sp-2);
   border-top:1px solid var(--line-soft);
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
-  color:var(--ink-faint);
+  color:var(--ink-soft);
 }
 .author .who{color:var(--ink-soft);}
 .author .who b{font-weight:var(--w-reg);color:var(--ink);}
 .author a{color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(169,83,42,.3);}
 .author a:hover{border-color:var(--terra);}
 
+/* ---------- 발치 어두운 층 ----------
+   레퍼런스가 가진 「어두운 섹션 하나」에 해당합니다.
+   호박은 어두운 면 위(9.17)에서만 제 몫을 하므로, 색을 줄인 만큼
+   남은 호박을 여기로 모읍니다. 페이지가 색으로 닫힙니다. */
+.darkband{
+  background:var(--ink);
+  color:var(--cream);
+  margin-top:var(--sp-5);
+  padding:var(--sp-5) 0 var(--sp-4);
+}
+.darkband .seclabel{color:var(--apricot);}          /* 잉크 위 13.19 */
+/* ⚠️ .seclabel .n 이 terra 를 직접 들고 있어 위 한 줄로는 번호가 안 바뀐다.
+   실측으로 잡았다 — 잉크 위 terra 는 2.72:1 이다. 번호는 순서를 나르는
+   「글자」이므로 여기서 반드시 살구(13.19)로 올린다. */
+.darkband .seclabel .n{color:var(--apricot);}
+/* 어두운 층 안의 본문 링크 — 기본 a 색(terra)은 잉크 위 2.72 라 못 쓴다 */
+.darkband a{color:var(--apricot);}
+.darkband .kakao-hours a,
+.darkband p a{color:var(--apricot);border-bottom-color:rgba(255,247,177,.5);}
+.darkband .seclabel .bar{background:var(--amber);}  /* 잉크 위 9.17 */
+.darkband .sec-title{color:var(--cream);}
+.darkband p{color:rgba(255,255,255,.82);}   /* 잉크 위 9.99 */
+
 /* ---------- 사이트 푸터 ---------- */
 .sitefoot{
-  margin-top:var(--sp-5);
-  padding-top:var(--sp-2);
-  border-top:1px solid var(--line-soft);
-  text-align:center;
+  padding-top:var(--sp-3);
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
   letter-spacing:var(--ls-md);
-  color:var(--ink-faint);
+  color:var(--ink-soft);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.6rem 1.4rem;
+  border-top:1px solid var(--line-soft);
+  margin-top:var(--sp-5);
 }
-.sitefoot nav{display:flex;justify-content:center;flex-wrap:wrap;gap:.2rem .9rem;margin-bottom:var(--sp-1);}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:.2rem 1.4rem;}
 .sitefoot nav a{color:var(--terra);text-decoration:none;}
 .sitefoot nav a:hover{text-decoration:underline;}
 .sitefoot .brand{
-  display:block;
   letter-spacing:var(--ls-label);
   font-size:var(--fs-8);
-  color:var(--ink-faint);
-  margin-top:.3rem;
-}
-
-/* ---------- 카드 그리드 ----------
-   240px 최소폭에 카드 3개는 640px에서 2열이 되어 셋째가 고아가 된다.
-   폰에서만 1열로 접고, 640px에서는 3열을 유지한다. */
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:.6rem;
-  align-items:start;
-}
-@media (max-width:560px){ .card-grid{grid-template-columns:1fr;} }
-
-.info-card{
-  padding:1.15rem 1.2rem;
-  text-decoration:none;
-  color:inherit;
-  display:block;
-  transition:background .2s ease;
-}
-.info-card:hover{background:var(--apricot-hi);}
-.info-card .it{
-  font-family:var(--logo);
-  font-weight:var(--w-bold);
-  font-size:var(--fs-4);
-  line-height:var(--lh-snug);
-  letter-spacing:var(--ls-lg);
-  margin-bottom:.25rem;
-}
-/* 살구 면 위라 ink-faint(4.71)를 쓰지 않고 ink-soft(7.46)로 올린다 */
-.info-card .id{
-  font-family:var(--gothic);
-  font-size:var(--fs-7);
-  line-height:var(--lh-normal);
   color:var(--ink-soft);
 }
+/* 어두운 층 안에 든 푸터 */
+.darkband .sitefoot{
+  border-top:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.68);   /* 잉크 위 7.35 (.6 이면 5.98) */
+}
+.darkband .sitefoot nav a{color:var(--apricot);}
+.darkband .sitefoot .brand{color:rgba(255,255,255,.65);}  /* 잉크 위 6.93 (.5 면 4.76 — 턱걸이였다) */
 
-/* ---------- 행 목록 ----------
-   목록은 카드로 쌓지 않는다. 열 개가 넘는 카드는 벽이 되고,
-   면·테두리·그림자·반경이 항목 수만큼 되풀이된다.
-   행 + 머리카락 괘선이면 종수가 0으로 떨어지고 눈은 제목만 따라간다. */
+/* ---------- 괘선 목록 ---------- */
 .rowlist{border-top:1px solid var(--line-soft);}
 .row-item{
   display:flex;
@@ -388,7 +465,7 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
   color:inherit;
   transition:background .2s ease;
 }
-.row-item:hover{background:var(--apricot);}
+.row-item:hover{background:var(--tint);}   /* 화살표 대신 이 면이 「눌리는 자리」를 말한다 */
 .row-item .stamp{
   flex:none;
   width:3.6rem;
@@ -410,12 +487,10 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 }
 .row-item .d{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
-  color:var(--ink-faint);
+  color:var(--ink-soft);
 }
-.row-item .arrow{flex:none;color:var(--terra);font-size:var(--fs-6);transition:transform .2s ease;}
-.row-item:hover .arrow{transform:translateX(3px);}
 
 /* ---------- 카카오채널 문의 ---------- */
 .kakao-btn{
@@ -434,19 +509,20 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
   text-decoration:none;
   transition:border-color .2s ease, background .2s ease;
 }
-.kakao-btn:hover{border-color:var(--terra);background:var(--apricot);}
-/* 말풍선은 '뜻을 나르는 아이콘'이다 — 크림 위 호박 2.08은 못 쓴다 */
+.kakao-btn:hover{border-color:var(--terra);background:var(--tint);}
 .kakao-btn svg{flex:none;width:16px;height:16px;fill:var(--terra);}
+/* 어두운 층 위에서는 크림 획·크림 글자 (잉크 위 13.95) */
+.darkband .kakao-btn{color:var(--cream);border-color:rgba(255,255,255,.35);}
+.darkband .kakao-btn svg{fill:var(--amber);}   /* 잉크 위 9.17 */
+.darkband .kakao-btn:hover{border-color:var(--amber);background:rgba(255,255,255,.06);}
 .kakao-hours{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
-  color:var(--ink-faint);
-  margin-top:var(--sp-1);
+  color:var(--ink-soft);
+  margin-top:var(--sp-2);
 }
-.kakao-hours b{font-weight:var(--w-reg);color:var(--ink-soft);}
 
-/* ---------- 넓은 요소 가로 스크롤 ---------- */
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 
 /* ---------- 등장 ---------- */
@@ -461,49 +537,128 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
   html{scroll-behavior:auto;}
 }
 
-/* ---------- 좁은 화면 ---------- */
-@media (max-width:400px){
-  .wrap{padding:var(--sp-3) 1.05rem var(--sp-4);}
-  .card,.info-card,.panel{padding:1.1rem 1.1rem;}
-}
-
 /* ---------- 페이지끼리 건너가는 다리 ---------- */
 .bridge{
   margin-top:var(--sp-4);
-  padding:1.25rem 1.4rem;
-  background:var(--apricot);
-  border-radius:var(--r-m);
-  text-align:center;
+  padding:1.5rem 0 0;
+  border-top:1px solid var(--line);
+  background:transparent;
+  border-radius:0;
 }
 .bridge p{
   font-family:var(--logo);
-  font-size:var(--fs-5);
+  font-size:var(--fs-4);
   line-height:var(--lh-snug);
   letter-spacing:var(--ls-lg);
   color:var(--ink);
   margin-bottom:var(--sp-1);
 }
-/* 살구 면 위 terra 는 4.39라 못 쓴다 — 잉크 글자 + 잉크 밑줄 */
 .bridge a{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);
   line-height:var(--lh-normal);
-  color:var(--ink);
+  color:var(--terra);
   text-decoration:none;
-  border-bottom:1px solid rgba(60,36,21,.35);
+  border-bottom:1px solid rgba(169,83,42,.35);
 }
-.bridge a:hover{border-bottom-color:var(--ink);}
+.bridge a:hover{border-bottom-color:var(--terra);}
 
-/* 식구 크레딧 — 대표 사이트에는 넣지 않는다(2026-08-29). 다른 사이트용으로만 남긴다 */
-.sitefoot .credit{
-  margin-top:.9rem;
-  padding-top:.85rem;
-  border-top:1px solid rgba(233,163,58,.4);
-  font-family:var(--gothic);
-  font-size:var(--fs-8);
-  line-height:var(--lh-normal);
-  color:var(--ink-faint);
+/* 푸터 태그라인 — 브랜드 영문과 한 덩어리로 오른쪽에 앉힌다 */
+.sitefoot .tag-en{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.5rem;
+  flex-wrap:wrap;
 }
-.sitefoot .credit .who{white-space:nowrap;}
-.sitefoot .credit .who b{font-weight:var(--w-reg); color:var(--terra);}
-.sitefoot .credit .sep{color:rgba(233,163,58,.75); margin:0 .45rem;}
+
+/* ============================================================
+   2026-09-12 전면 교체 때 되살린 것
+   시안은 현관·새벽글 두 장만 다뤘기 때문에 나머지 19장이 쓰는
+   클래스 몇 개가 시안 파일에서 빠져 있었다. 지우면 그 페이지가
+   깨지므로 되살리되, 전부 새 문법(면 대신 괘선·호버 tint)으로 옮겼다.
+   ============================================================ */
+
+/* ---------- 3열 링크 묶음 ----------
+   현관 「나루터」의 .cols 와 같은 문법. 클래스·독서·책 목록에서도 쓴다.
+   면·테두리·그림자 0, 세로 괘선과 호버 면만으로 가른다. */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  align-items:start;
+}
+/* 칸이 하나뿐인 구역에서 오른쪽이 통째로 비지 않게 (2026-09-06) */
+.card-grid:has(> .info-card:only-child){grid-template-columns:1fr;}
+.info-card{
+  display:block;
+  padding:.2rem clamp(1rem,2.4vw,1.8rem) 1.2rem;
+  border-left:1px solid var(--line);
+  background:transparent;
+  border-radius:0;
+  box-shadow:none;
+  text-decoration:none;
+  color:inherit;
+  transition:background .2s ease;
+}
+.card-grid > .info-card:first-child{padding-left:0;border-left:0;}
+.info-card:hover{background:var(--tint);}
+.info-card .it{
+  font-family:var(--logo);
+  font-weight:var(--w-bold);
+  font-size:var(--fs-3);          /* 24px */
+  line-height:var(--lh-snug);
+  letter-spacing:var(--ls-lg);
+  color:var(--ink);
+  margin-bottom:.55rem;
+}
+.info-card .id{
+  font-family:var(--gothic);
+  font-size:var(--fs-6);          /* 15.5px */
+  line-height:var(--lh-normal);
+  color:var(--ink-soft);          /* 순백 9.01 · 호버 면 위 8.08 */
+}
+@media (max-width:860px){
+  .card-grid{grid-template-columns:1fr;}
+  .info-card{border-left:0;border-top:1px solid var(--line);padding:1.3rem 0;}
+  .card-grid > .info-card:first-child{padding-top:1.3rem;}
+}
+
+/* ---------- 카카오 안내 한 줄 안의 강조 ---------- */
+.kakao-hours b{font-weight:var(--w-reg);color:var(--ink);}
+.darkband .kakao-hours{color:rgba(255,255,255,.82);}
+.darkband .kakao-hours b{color:var(--apricot);}
+
+/* ---------- 페이지 머리 ----------
+   weekly.css 의 .whead 와 같은 문법. 목록·안내 페이지에서 쓴다.
+   제목은 넓게, 읽는 줄은 좁게 — 640 상자를 벗는 자리다. */
+.pagehead{padding:var(--sp-3) 0 var(--sp-4);}
+.pagehead h1{max-width:14em;margin-bottom:var(--sp-3);}
+.pagehead .lead{max-width:32em;}
+
+/* ---------- 구역 틀 ----------
+   왼쪽은 라벨 칸(번호 + 구역 제목), 오른쪽이 내용.
+   현관·새벽글·목록·안내가 전부 이 한 문법을 쓴다. */
+.sec{
+  display:grid;
+  grid-template-columns:minmax(0,15.5rem) minmax(0,1fr);
+  gap:clamp(1.4rem,4vw,3.5rem);
+  padding:var(--sp-5) 0;
+  border-top:1px solid var(--line);
+}
+.sec > div{min-width:0;}
+.sec > .lead-col{position:relative;}
+.sec > .body-col{min-width:0;}
+
+/* 구역 이름 아래 한 줄 설명 — 12.5px + 흐린 색이었던 자리를 두 단 올렸다 */
+.secnote{
+  font-family:var(--gothic);
+  font-size:var(--fs-6);          /* 15.5px */
+  line-height:var(--lh-normal);
+  color:var(--ink-soft);          /* 순백 위 9.01 */
+  margin-top:var(--sp-2);
+  max-width:24em;
+}
+
+@media (max-width:860px){
+  .sec{grid-template-columns:1fr;gap:var(--sp-2);}
+}

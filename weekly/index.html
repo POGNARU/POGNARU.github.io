@@ -18,100 +18,97 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* ---------- 월 바로가기 — 알약을 눕힌다 ---------- */
-  .jump{display:flex;gap:.5rem;margin-bottom:var(--sp-3);padding-bottom:.2rem;}
+  /* ---------- 월 바로가기 ---------- */
+  .jump{display:flex;gap:.5rem;margin-bottom:var(--sp-3);padding-bottom:.2rem;flex-wrap:wrap;}
   .jump a{
-    flex:none;font-family:var(--gothic);font-size:var(--fs-7);
+    flex:none;font-family:var(--gothic);font-size:var(--fs-6);
     letter-spacing:var(--ls-md);color:var(--terra);text-decoration:none;
     background:transparent;border:1px solid var(--line);border-radius:var(--r-s);
-    padding:.28rem .8rem;white-space:nowrap;
+    padding:.3rem .85rem;white-space:nowrap;
     transition:background .2s ease,border-color .2s ease;
   }
-  .jump a:hover{background:var(--apricot);border-color:var(--terra);}
+  .jump a:hover{background:var(--tint);border-color:var(--terra);}
 
-  /* ---------- 월 블록 ---------- */
-  .month{margin-bottom:var(--sp-4);scroll-margin-top:1.5rem;}
-  .month-label{
-    display:flex;align-items:center;gap:.55rem;
-    font-family:var(--gothic);font-size:var(--fs-8);
-    letter-spacing:var(--ls-label);line-height:var(--lh-normal);
-    color:var(--terra);margin-bottom:var(--sp-2);
-  }
-  .month-label::before{content:"";width:3px;height:.95em;border-radius:var(--r-s);background:var(--amber);flex:none;}
-  .month-label::after{content:"";flex:1;height:1px;background:var(--line-soft);}
+  /* ---------- 월 라벨 ----------
+     연도를 라벨 칸 번호 자리로, 월을 h2 로 올렸습니다.
+     쓰인 말은 「2026 · 9월」 그대로이고 자리만 둘로 갈랐습니다. */
+  .monthname{margin:0;}
 
-  /* ---------- 주간 항목 — 카드를 행으로 눕힌다 ----------
-     열 장이 넘는 카드는 면·테두리·그림자·반경을 항목 수만큼 되풀이해 벽이 된다.
-     행 + 머리카락 괘선이면 되풀이가 0으로 떨어지고 눈은 제목만 따라간다.
-     이 목록에서 면을 가진 것은 월간 카드 하나뿐이라, 그 하나가 달의 매듭으로 읽힌다. */
+  /* ---------- 주간 항목 — 괘선 행 ----------
+     화살표를 걷고 호버 면(tint)이 「눌리는 자리」를 말합니다. */
   .rc{
-    display:flex;align-items:baseline;gap:1rem;
+    display:flex;align-items:baseline;gap:1.2rem;
     background:transparent;border:0;border-bottom:1px solid var(--line-soft);
     border-radius:0;box-shadow:none;
-    padding:.95rem .2rem;margin-bottom:0;
-    text-decoration:none;color:inherit;transition:background .2s ease;
+    padding:1.15rem .2rem;margin-bottom:0;
+    text-decoration:none;color:inherit;transition:background .2s ease,box-shadow .2s ease;
   }
+  .rc:first-child{border-top:1px solid var(--line-soft);}
   .mc + .rc{border-top:1px solid var(--line-soft);}
-  .rc:hover{background:var(--apricot);}
+  .rc:hover{background:var(--tint);box-shadow:0 0 0 .55rem var(--tint);}
   .rc .day{
-    flex:none;width:3.6rem;text-align:left;border-right:0;padding-right:0;
-    display:flex;align-items:baseline;gap:.32rem;
+    flex:none;width:4.2rem;text-align:left;border-right:0;padding-right:0;
+    display:flex;align-items:baseline;gap:.35rem;
   }
-  .rc .dd{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
+  .rc .dd{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
     line-height:var(--lh-tight);letter-spacing:var(--ls-lg);color:var(--ink);}
   .rc .dm{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);
     color:var(--terra);margin-top:0;}
   .rc .info{flex:1;min-width:0;}
-  .rc .t{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
-    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.12rem;}
-  .rc .d{font-family:var(--gothic);font-size:var(--fs-7);line-height:var(--lh-normal);color:var(--ink-faint);}
-  .rc .arrow{flex:none;color:var(--terra);font-size:var(--fs-6);transition:transform .2s ease;}
-  .rc:hover .arrow{transform:translateX(3px);}
+  .rc .t{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.28rem;}
+  .rc:hover .t{color:var(--terra);}
+  /* 순백 위 9.01 — 작은 글씨에 흐린 색(ink-faint)을 겹치지 않는다 */
+  .rc .d{font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--ink-soft);}
   /* 아직 옮기지 않은 기록 */
-  .rc.soon .dd,.rc.soon .arrow{color:var(--ink-faint);}
+  .rc.soon .dd{color:var(--ink-faint);}
 
-  /* ---------- 월간 카드 — 이 페이지의 유일한 면 ---------- */
+  /* ---------- 월간 카드 — 이 페이지의 유일한 면 ----------
+     항목이 열 장 넘는 목록이라 행은 전부 괘선으로 눕혔고,
+     달의 매듭인 월간 회고 하나만 면으로 남겼습니다(2026-09-06). */
   .mc{
     display:block;background:var(--apricot);border:0;border-radius:var(--r-m);
-    padding:1.3rem 1.4rem;margin-bottom:var(--sp-2);
+    padding:1.6rem 1.7rem;margin-bottom:var(--sp-2);
     text-decoration:none;color:inherit;transition:background .2s ease;
   }
   .mc:hover{background:var(--apricot-hi);}
-  .mc .top{display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem;}
-  /* 살구 면 위라 terra(4.39)를 쓰지 않는다 — 크림 칩에 잉크 글자 */
+  .mc .top{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem;flex-wrap:wrap;}
+  /* 살구 면 위 terra 는 4.85로 이제 쓸 수 있다(2026-09-12). 그래도 흰 칩에 잉크 글자 */
   .mc .badge{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);
-    color:var(--ink);background:var(--cream);border-radius:var(--r-s);padding:.16rem .6rem;flex:none;}
+    color:var(--ink);background:var(--cream);border-radius:var(--r-s);padding:.18rem .65rem;flex:none;}
   .mc .range{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-soft);}
   .mc .t{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
-    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.2rem;}
-  .mc .d{font-family:var(--gothic);font-size:var(--fs-7);line-height:var(--lh-normal);color:var(--ink-soft);}
-  .mc .meta{display:flex;align-items:center;gap:.4rem;font-family:var(--gothic);
+    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);margin-bottom:.3rem;}
+  /* 살구 위 ink-soft 8.24 */
+  .mc .d{font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--ink-soft);max-width:34em;}
+  .mc .meta{display:flex;align-items:center;gap:.45rem;font-family:var(--gothic);
     font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-soft);
-    margin-top:.7rem;padding-top:.6rem;border-top:1px solid rgba(60,36,21,.14);}
+    margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(60,36,21,.16);}
   .mc .meta .dot{width:5px;height:5px;border-radius:var(--r-s);background:var(--ink);flex:none;}
 
-  @media (max-width:400px){
-    .rc{gap:.7rem;}
-    .rc .day{width:3.1rem;}
+  @media (max-width:560px){
+    .rc{gap:.8rem;}
+    .rc .day{width:3.6rem;}
   }
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<main>
 
-  <a class="backlink" href="/">← 포근나루</a>
+  <div class="shell">
 
-  <header class="fade">
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
+
+    <header class="pagehead fade">
     <div class="kicker">WEEKLY REVIEW</div>
     <h1>한 주의 새벽을<br>가만히 모아 보는 자리</h1>
     <p class="lead">매주, 새벽에 쓴 글에서 그 주의 결을 길어 올립니다.<br>달이 끝나면 한 달을 <b>그래프와 글감</b>으로 한 번 더 엮습니다.</p>
-    <div class="amber-line"></div>
   </header>
 
   <nav class="jump fade d1" aria-label="월 바로가기">
@@ -122,8 +119,12 @@
   </nav>
 
   <!-- ================= 2026년 9월 ================= -->
-  <section class="month fade d2" id="m2026-09">
-    <div class="month-label">2026 · 9월</div>
+    <section class="sec fade d2" id="m2026-09">
+      <div>
+        <div class="seclabel"><span class="n">2026</span><span class="bar"></span></div>
+        <h2 class="sec-title monthname">9월</h2>
+      </div>
+      <div class="body-col">
 
     <a class="rc" href="/weekly/260906.html">
       <div class="day"><div class="dd">31</div><div class="dm">AUG</div></div>
@@ -131,14 +132,18 @@
         <div class="t">기교가 아니라 태도라면</div>
         <div class="d">8.31 — 9.6 · 남의 문장 앞에서 시작한 아침, 잠에게 놓은 자리, 컴맹이 만든 앱</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
-  </section>
+      </div>
+    </section>
 
   <!-- ================= 2026년 8월 ================= -->
-  <section class="month fade d2" id="m2026-08">
-    <div class="month-label">2026 · 8월</div>
+    <section class="sec fade d2" id="m2026-08">
+      <div>
+        <div class="seclabel"><span class="n">2026</span><span class="bar"></span></div>
+        <h2 class="sec-title monthname">8월</h2>
+      </div>
+      <div class="body-col">
 
     <a class="mc" href="/weekly/2608-monthly.html">
       <div class="top">
@@ -156,7 +161,6 @@
         <div class="t">새 그릇에 맑은 물을</div>
         <div class="d">8.24 — 8.30 · 구속이면서 힘인 시선, 멍하게 서 있던 자리, 떡과 우롱차</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260823.html">
@@ -165,7 +169,6 @@
         <div class="t">물으면서도 발은 나가 있었다</div>
         <div class="d">8.17 — 8.23 · 자격을 묻는 목소리, 먼저 나서는 발, 춘천까지의 사흘</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260816.html">
@@ -174,7 +177,6 @@
         <div class="t">간 자리를 세는 아침</div>
         <div class="d">8.10 — 8.16 · 못 간 자리의 목록, 퇴화라는 말, 스스로 쓴 연보</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260809.html">
@@ -183,14 +185,18 @@
         <div class="t">나를 위해서</div>
         <div class="d">8.3 — 8.9 · 첫 죽 한 술, 백일홍 길, 영정 속 미소</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
-  </section>
+      </div>
+    </section>
 
   <!-- ================= 2026년 7월 ================= -->
-  <section class="month fade d2" id="m2026-07">
-    <div class="month-label">2026 · 7월</div>
+    <section class="sec fade d2" id="m2026-07">
+      <div>
+        <div class="seclabel"><span class="n">2026</span><span class="bar"></span></div>
+        <h2 class="sec-title monthname">7월</h2>
+      </div>
+      <div class="body-col">
 
     <a class="mc" href="/weekly/2607-monthly.html">
       <div class="top">
@@ -208,7 +214,6 @@
         <div class="t">늘 그 자리에</div>
         <div class="d">7.27 — 8.2 · 가장 깊이 내려간 며칠, 밥 한 술, 변함없는 자리</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260726.html">
@@ -217,7 +222,6 @@
         <div class="t">지금은 그대로 있어</div>
         <div class="d">7.20 — 7.26 · 흔들린 믿음, 원인을 찾는 사람, 침잠의 허락</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260719.html">
@@ -226,7 +230,6 @@
         <div class="t">기다림 끝에, 응원이 왔다</div>
         <div class="d">7.13 — 7.19 · 홍보의 막막함, 쓰는 나에 대한 물음, 뒤집힌 토요일</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
 
     <a class="rc" href="/weekly/260712.html">
@@ -235,13 +238,17 @@
         <div class="t">아이에게 건넨 믿음, 나에게도</div>
         <div class="d">7.6 — 7.12 · 몸의 리듬, 아이를 향한 믿음, 새로운 역할 앞에서</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
-  </section>
+      </div>
+    </section>
 
   <!-- ================= 2026년 6월 ================= -->
-  <section class="month fade d3" id="m2026-06">
-    <div class="month-label">2026 · 6월</div>
+    <section class="sec fade d3" id="m2026-06">
+      <div>
+        <div class="seclabel"><span class="n">2026</span><span class="bar"></span></div>
+        <h2 class="sec-title monthname">6월</h2>
+      </div>
+      <div class="body-col">
 
     <a class="mc" href="/weekly/2606-monthly.html">
       <div class="top">
@@ -259,25 +266,26 @@
         <div class="t">질투를 캐묻다가, 용서 앞에 섰다</div>
         <div class="d">6.29 — 7.5 · 몸의 신호, 질투 글쓰기, 용서라는 질문</div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
     </a>
-  </section>
+      </div>
+    </section>
 
-  <aside class="bridge fade d4">
+    <aside class="bridge fade d4">
     <p>여기 쌓인 글은 새벽에 쓰인 것입니다. 평일 새벽에는 선릿모닝이 열려, 여럿이 같은 시간에 각자 앉습니다. 쓴 글을 나누지 않는 자리라, 여기 실리는 것도 원문이 아니라 그 주의 결입니다.</p>
-    <a href="/class/sunlit-morning.html">선릿모닝 &mdash; 월~금 새벽 5시 50분부터 30분, 줌에서 각자 자기 글을 씁니다 &rarr;</a>
+    <a href="/class/sunlit-morning.html">선릿모닝 &mdash; 월~금 새벽 5시 50분부터 30분, 줌에서 각자 자기 글을 씁니다</a>
   </aside>
 
-  <footer class="sitefoot fade d4">
+    <footer class="sitefoot fade d4">
     <nav>
       <a href="/">포근나루</a>
       <a href="/books/">책</a>
       <a href="/reading/">독서</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
     </nav>
-    고요히, 마음에 머무는 글을 전하는
-    <span class="brand">POGNARU STUDIO</span>
-  </footer>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+  </div>
 
 </main>
 

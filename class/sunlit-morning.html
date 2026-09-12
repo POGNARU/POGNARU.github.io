@@ -16,53 +16,63 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* 한눈에 보기 — 이 페이지에서 가장 먼저 읽어야 할 면 */
+  /* ---------- 첫 화면 — 현관과 같은 두 칸 ----------
+     왼쪽이 이름, 오른쪽이 「한눈에 보기」. 이 페이지에서 가장 먼저
+     읽어야 할 것이 시간·장소·참가비라서 그 판을 첫 화면에 올린다. */
+  .classhead{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:clamp(2rem,5vw,4.5rem);
+    align-items:center;
+    padding:var(--sp-3) 0 var(--sp-5);
+  }
   .facts{
     background:var(--apricot);border:0;border-radius:var(--r-m);
-    padding:1.3rem 1.45rem;margin:var(--sp-3) 0 var(--sp-1);
+    padding:clamp(1.4rem,2.6vw,1.9rem);margin:0;
   }
-  .facts dl{display:grid;grid-template-columns:5rem 1fr;gap:.5rem 1rem;}
-  .facts dt{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-soft);line-height:var(--lh-normal);}
+  .facts dl{display:grid;grid-template-columns:5.2rem 1fr;gap:.6rem 1rem;}
+  .facts dt{font-family:var(--gothic);font-size:var(--fs-6);color:var(--ink-soft);line-height:var(--lh-normal);}
   .facts dd{font-family:var(--gothic);font-size:var(--fs-6);color:var(--ink);line-height:var(--lh-normal);}
-  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 강조는 색이 아니라 굵기가 맡는다 */
+  /* 살구 면 위 terra 는 4.85라 이제 쓸 수 있다(2026-09-12). 그래도 강조는 굵기가 맡는다 */
   .facts dd b{color:var(--ink);font-weight:var(--w-bold);}
 
-  /* 본문 문단 */
+  /* 본문 문단 — 읽는 줄은 660px 로 좁힌다 */
   .p{color:var(--ink-soft);font-size:var(--fs-5);line-height:var(--lh-loose);
-    letter-spacing:var(--ls-md);margin-bottom:var(--sp-2);}
+    letter-spacing:var(--ls-md);margin-bottom:var(--sp-2);max-width:var(--w-read);}
   .p:last-child{margin-bottom:0;}
   .p b{color:var(--terra);font-weight:var(--w-reg);}
 
   /* 목록 */
-  .plain{list-style:none;margin:.2rem 0 0;}
-  .plain li{position:relative;padding-left:1rem;color:var(--ink-soft);
-    font-size:var(--fs-6);line-height:var(--lh-normal);margin-bottom:.55rem;}
-  .plain li::before{content:"";position:absolute;left:0;top:.72em;
+  .plain{list-style:none;margin:.2rem 0 0;max-width:var(--w-read);}
+  .plain li{position:relative;padding-left:1.1rem;color:var(--ink-soft);
+    font-size:var(--fs-5);line-height:var(--lh-loose);margin-bottom:.65rem;}
+  .plain li::before{content:"";position:absolute;left:0;top:.85em;
     width:4px;height:4px;border-radius:var(--r-s);background:var(--amber);}
   .plain li b{color:var(--ink);font-weight:var(--w-reg);}
 
-  /* 처음 오시는 분께 — 살구 면 */
-  .first{background:var(--apricot);border-radius:var(--r-m);padding:1.4rem 1.5rem;}
-  .first h3{margin-bottom:.85rem;}
-  .first .q{font-family:var(--gothic);font-size:var(--fs-6);font-weight:var(--w-bold);
-    color:var(--ink);margin-top:1.15rem;margin-bottom:.1rem;}
-  .first .q:first-of-type{margin-top:0;}
-  .first .a{font-size:var(--fs-6);color:var(--ink-soft);line-height:var(--lh-normal);}
-  .first .a b{color:var(--ink);font-weight:var(--w-bold);}
+  /* 처음 오시는 분께 — 면을 걷고 괘선 문답으로 */
+  .first{max-width:var(--w-read);}
+  .first .q{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
+    letter-spacing:var(--ls-lg);line-height:var(--lh-snug);
+    color:var(--ink);margin-top:var(--sp-3);margin-bottom:.4rem;
+    padding-top:var(--sp-2);border-top:1px solid var(--line-soft);}
+  .first .q:first-of-type{margin-top:0;padding-top:0;border-top:0;}
+  .first .a{font-size:var(--fs-5);color:var(--ink-soft);line-height:var(--lh-loose);}
+  .first .a b{color:var(--terra);font-weight:var(--w-reg);}
 
-  /* 신청 단계 — 번호를 원에서 각진 칩으로. 원 하나가 또 줄어든다 */
-  .steps{counter-reset:s;margin-top:.4rem;}
-  .steps li{counter-increment:s;position:relative;padding-left:2.1rem;
-    margin-bottom:var(--sp-2);color:var(--ink-soft);font-size:var(--fs-6);
-    line-height:var(--lh-normal);list-style:none;}
+  /* 신청 단계 — 번호는 각진 살구 칩 */
+  .steps{counter-reset:s;margin-top:.4rem;max-width:var(--w-read);}
+  .steps li{counter-increment:s;position:relative;padding-left:2.4rem;
+    margin-bottom:var(--sp-2);color:var(--ink-soft);font-size:var(--fs-5);
+    line-height:var(--lh-loose);list-style:none;}
   .steps li::before{
-    content:counter(s);position:absolute;left:0;top:.12em;
-    width:1.5rem;height:1.5rem;border-radius:var(--r-s);
+    content:counter(s);position:absolute;left:0;top:.28em;
+    width:1.7rem;height:1.7rem;border-radius:var(--r-s);
     background:var(--apricot);color:var(--ink);
     font-family:var(--gothic);font-size:var(--fs-8);
     display:flex;align-items:center;justify-content:center;
@@ -70,77 +80,98 @@
   .steps li b{color:var(--ink);font-weight:var(--w-reg);}
 
   /* 자주 묻는 것 */
-  .faq{border-top:1px solid var(--line-soft);}
+  .faq{border-top:1px solid var(--line-soft);max-width:var(--w-read);}
   .faq details{border-bottom:1px solid var(--line-soft);}
   .faq summary{
-    cursor:pointer;list-style:none;padding:.95rem 1.8rem .95rem 0;
-    font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-5);
+    cursor:pointer;list-style:none;padding:1.1rem 1.9rem 1.1rem 0;
+    font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
     line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);position:relative;
+    transition:color .2s ease;
   }
+  .faq summary:hover{color:var(--terra);}
   .faq summary::-webkit-details-marker{display:none;}
-  .faq summary::after{content:"+";position:absolute;right:.2rem;top:.82rem;
-    color:var(--terra);font-family:var(--gothic);font-size:var(--fs-4);line-height:1;}
+  .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;
+    color:var(--terra);font-family:var(--gothic);font-size:var(--fs-3);line-height:1;}
   .faq details[open] summary::after{content:"\2212";}
-  .faq .body{padding:0 0 1.1rem;color:var(--ink-soft);font-size:var(--fs-6);line-height:var(--lh-normal);}
+  .faq .body{padding:0 0 1.3rem;color:var(--ink-soft);font-size:var(--fs-5);line-height:var(--lh-loose);}
   .faq .body b{color:var(--terra);font-weight:var(--w-reg);}
 
-  /* 이번 달 — 면을 걷고 괘선 표로. 위의 .facts 면과 힘을 겨루지 않는다 */
-  .month{background:transparent;border:0;border-top:1px solid var(--line-soft);border-radius:0;padding:0;}
-  .month .row{display:flex;gap:1rem;align-items:baseline;padding:.75rem .2rem;
+  /* 이번 달 — 괘선 표 */
+  .month{background:transparent;border:0;border-top:1px solid var(--line-soft);border-radius:0;padding:0;max-width:var(--w-read);}
+  .month .row{display:flex;gap:1.2rem;align-items:baseline;padding:.9rem .2rem;
     border-bottom:1px solid var(--line-soft);font-family:var(--gothic);font-size:var(--fs-6);}
   .month .row .m{flex:0 0 3rem;color:var(--terra);letter-spacing:var(--ls-md);}
   .month .row .v{color:var(--ink-soft);line-height:var(--lh-normal);}
   .month .row .v b{color:var(--ink);font-weight:var(--w-reg);}
-  .month .note{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-faint);
-    line-height:var(--lh-normal);margin-top:.85rem;}
+  /* 순백 위 9.01 — 작은 글씨에 흐린 색을 겹치지 않는다 */
+  .month .note{font-family:var(--gothic);font-size:var(--fs-6);color:var(--ink-soft);
+    line-height:var(--lh-normal);margin-top:1rem;}
 
-  /* 신청 — 사이트에서 유일한 진테라코타 면. 크림 글자 5.13 */
-  .cta{margin-top:var(--sp-4);text-align:center;}
+  /* ---------- 신청 · 어두운 발치 ----------
+     현관과 같은 잉크 면. 페이지가 색으로 닫히고, 순백 위에서 못 쓰던
+     호박이 이 한 자리에서 등불이 된다(잉크 위 9.17). */
+  .cta{text-align:center;padding:var(--sp-5) 0 var(--sp-4);}
   .cta .btn{
-    display:inline-block;background:var(--terra);color:var(--cream);
-    font-family:var(--gothic);font-size:var(--fs-6);letter-spacing:var(--ls-md);
-    text-decoration:none;padding:.8rem 2rem;border-radius:var(--r-m);
+    display:inline-block;background:var(--apricot);color:var(--ink);
+    font-family:var(--gothic);font-size:var(--fs-5);letter-spacing:var(--ls-md);
+    text-decoration:none;padding:.9rem 2.2rem;border-radius:var(--r-m);
     transition:background .2s ease;
   }
-  .cta .btn:hover{background:#8E4322;}
-  .cta .sub{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-faint);
-    line-height:var(--lh-normal);margin-top:.85rem;}
-  .cta .sub a{color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(169,83,42,.35);}
+  .cta .btn:hover{background:var(--apricot-hi);}
+  .cta .sub{font-family:var(--gothic);font-size:var(--fs-6);
+    color:rgba(255,255,255,.82);
+    line-height:var(--lh-normal);margin-top:1.1rem;}
+  .cta .sub a{color:var(--apricot);text-decoration:none;border-bottom:1px solid rgba(255,247,177,.5);}
+  .cta .sub a:hover{border-bottom-color:var(--apricot);}
+
+  @media (max-width:860px){
+    .classhead{grid-template-columns:1fr;gap:var(--sp-3);}
+  }
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<main>
 
-  <a class="backlink" href="/class/">← 클래스</a>
+  <div class="shell">
 
-  <div class="kicker fade">SUNLIT MORNING</div>
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/class/">← 클래스</a></p>
 
-  <header class="fade">
-    <h1>선릿모닝</h1>
-    <p class="lead">월요일에서 금요일까지, 새벽 <b>5시 50분</b>에 줌을 열고 <b>6시 20분</b>에 마칩니다. 30분 동안 각자 자기 글을 씁니다.</p>
-    <div class="amber-line"></div>
-  </header>
-
-  <div class="facts fade d1">
-    <dl>
+    <header class="classhead fade">
+      <div>
+        <div class="kicker">SUNLIT MORNING</div>
+        <h1>선릿모닝</h1>
+        <p class="lead">월요일에서 금요일까지, 새벽 <b>5시 50분</b>에 줌을 열고 <b>6시 20분</b>에 마칩니다. 30분 동안 각자 자기 글을 씁니다.</p>
+      </div>
+      <div class="facts">
+        <dl>
       <dt>시간</dt><dd>월~금 새벽 <b>05:50 – 06:20</b></dd>
       <dt>쉬는 날</dt><dd>토요일 · 일요일 · 법정공휴일</dd>
       <dt>장소</dt><dd>Zoom (신청 후 링크를 보내드립니다)</dd>
       <dt>참가비</dt><dd><b>월 20,000원</b></dd>
       <dt>신청</dt><dd>상시 열려 있습니다. 마감일이 없습니다</dd>
-    </dl>
-  </div>
+        </dl>
+      </div>
+    </header>
 
-  <section class="fade d2">
-    <h2 class="sec-title">이런 시간입니다</h2>
+    <section class="sec fade d2">
+      <div>
+        <div class="seclabel"><span class="n">01</span><span class="bar"></span></div>
+        <h2 class="sec-title">이런 시간입니다</h2>
+      </div>
+      <div>
     <p class="p">새벽에 혼자 앉는 일은 어렵습니다. 알람을 끄고 다시 눕는 데는 이유가 필요 없지만, 일어나 앉는 데는 이유가 필요합니다. 선릿모닝은 그 이유를 <b>다른 사람의 기척</b>에 둡니다.</p>
     <p class="p">화면 너머에 누군가 쓰고 있는 것이 보이면, 이상하게도 나도 조금 더 앉아 있게 됩니다. 말을 걸지 않아도, 얼굴을 보지 않아도 그렇습니다. 그래서 이 시간에는 말이 거의 없습니다. 인사도 짧습니다.</p>
     <p class="p">무엇을 쓰든 괜찮습니다. 일기여도 되고, 쓰다 만 원고여도 되고, 아무것도 떠오르지 않는다고 적어도 됩니다. <b>잘 쓰는 것이 목표가 아니라 앉는 것이 목표입니다.</b></p>
-  </section>
+      </div>
+    </section>
 
-  <section class="fade">
-    <h2 class="sec-title">하지 않는 것</h2>
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
+        <h2 class="sec-title">하지 않는 것</h2>
+      </div>
+      <div>
     <ul class="plain">
       <li><b>글을 나누지 않습니다.</b> 쓴 것을 보여주지 않아도 됩니다</li>
       <li><b>첨삭하지 않습니다.</b> 고쳐주는 자리가 아닙니다</li>
@@ -148,10 +179,16 @@
       <li><b>진도가 없습니다.</b> 빠진 날을 따라잡을 것이 없습니다</li>
     </ul>
     <p class="p" style="margin-top:1rem;">가르치지 않고 함께 씁니다. 진행자도 같은 시간에 자기 글을 씁니다.</p>
-  </section>
+      </div>
+    </section>
 
-  <section class="first fade">
-    <h3>처음 오시는 분께</h3>
+    <!-- 「처음 오시는 분께」는 살구 카드 안의 h3 였습니다. 문구 그대로 h2 로 올렸습니다. -->
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">03</span><span class="bar"></span></div>
+        <h2 class="sec-title">처음 오시는 분께</h2>
+      </div>
+      <div class="first">
 
     <div class="q">카메라를 켜야 하나요?</div>
     <div class="a">화면은 켜주시길 부탁드립니다. 다만 <b>얼굴이 나오지 않아도 괜찮습니다.</b> 책상 위에 놓인 손이나 어깨쯤만 비추시면 돼요. 새벽이니 세수하지 않으셔도 되고, 불을 환히 켜지 않으셔도 됩니다.</div>
@@ -167,20 +204,30 @@
 
     <div class="q">이름은 어떻게 하나요?</div>
     <div class="a">신청하실 때 정하신 <b>필명</b>으로 줌 이름을 바꿔주세요. 새벽의 나로 살아가기 위해 스스로 붙이는 이름입니다.</div>
-  </section>
+      </div>
+    </section>
 
-  <section class="fade">
-    <h2 class="sec-title">신청하는 법</h2>
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <h2 class="sec-title">신청하는 법</h2>
+      </div>
+      <div>
     <ol class="steps">
       <li><b>신청서를 씁니다.</b> 아래 링크의 네이버 폼에서 실명·필명·연락처를 남겨주세요. 오래 걸리지 않습니다</li>
       <li><b>입금 안내를 문자로 받습니다.</b> 신청 당일이나 다음 날 안에 보내드려요</li>
       <li><b>참가비를 보냅니다.</b> 입금자명은 신청하실 때 적어주신 실명으로 해주세요</li>
       <li><b>줌 링크를 받습니다.</b> 입금이 확인되면 메일로 보내드립니다. 첫 새벽 전에 안내를 한 번 더 드려요</li>
     </ol>
-  </section>
+      </div>
+    </section>
 
-  <section class="fade">
-    <h2 class="sec-title">자주 묻는 것</h2>
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">05</span><span class="bar"></span></div>
+        <h2 class="sec-title">자주 묻는 것</h2>
+      </div>
+      <div>
     <div class="faq">
 
       <details>
@@ -209,24 +256,34 @@
       </details>
 
     </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
        달이 바뀌면 이 블록만 고칩니다.
        ⚠ 규칙에서 역산하지 마세요. 월 시작일은 1일도 아니고 월요일도 아닙니다.
          새 달 일정은 반드시 다현씨에게 확인하고 적습니다.
          (근거: 볼트 「선릿모닝 신청 안내」 현행 기준 표)
        ============================================================ -->
-  <section class="fade">
-    <h2 class="sec-title">이번 달 일정</h2>
-    <div class="month">
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">06</span><span class="bar"></span></div>
+        <h2 class="sec-title">이번 달 일정</h2>
+      </div>
+      <div>
+      <div class="month">
       <div class="row"><span class="m">9월</span><span class="v">1일(화) ~ 30일(수) · <b>24일(목)·25일(금)은 쉬어 갑니다</b></span></div>
       <div class="row"><span class="m">10월</span><span class="v">1일(목) ~ 30일(금) · <b>5일(월)·9일(금)은 쉬어 갑니다</b></span></div>
       <p class="note">토요일과 일요일, 법정공휴일은 쉬어 갑니다.</p>
-    </div>
-  </section>
+      </div>
+      </div>
+    </section>
 
-  <div class="cta fade">
+  </div>
+
+  <div class="darkband fade">
+    <div class="shell">
+    <div class="cta">
     <a class="btn" href="https://naver.me/GcAknJnT" target="_blank" rel="noopener">선릿모닝 신청하기</a>
     <p class="sub">
       새벽이 밝아오는 <a href="https://pognaru.com/sunlit-morning/" target="_blank" rel="noopener">선릿모닝 소개 페이지</a>도 있어요.
@@ -243,7 +300,7 @@
     </p>
   </div>
 
-  <footer class="sitefoot fade">
+    <footer class="sitefoot">
     <nav>
       <a href="/">포근나루</a>
       <a href="/class/">클래스</a>
@@ -251,9 +308,11 @@
       <a href="/books/">책</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
     </nav>
-    고요히, 마음에 머무는 글을 전하는
-    <span class="brand">POGNARU STUDIO</span>
-  </footer>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+    </div>
+  </div>
 
 </main>
 

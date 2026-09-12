@@ -16,93 +16,105 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
+  /* ---------- 첫 화면 — 현관과 같은 두 칸 ----------
+     왼쪽이 이름과 간판 한 줄, 오른쪽이 「한눈에 보기」. */
+  .classhead{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:clamp(2rem,5vw,4.5rem);
+    align-items:center;
+    padding:var(--sp-3) 0 var(--sp-5);
+  }
   /* 간판 한 줄 — 3초 안에 무엇을 파는 집인지 (2026-08-25) */
   .signboard{
     font-family:var(--logo);
     font-weight:var(--w-bold);
-    font-size:var(--fs-4);
+    font-size:var(--fs-3);
     letter-spacing:var(--ls-lg);
-    color:var(--terra);
+    color:var(--terra);            /* 순백 위 5.31 */
     line-height:var(--lh-snug);
-    margin:.5rem 0 .7rem;
+    margin:.6rem 0 .9rem;
   }
-
-  /* 한눈에 보기 — 이 페이지에서 가장 먼저 읽어야 할 면.
-     흰 카드는 크림과 1.035라 사실상 경계가 없다. 살구로 바꾸고
-     테두리·호박 띠를 걷었다. */
   .facts{
     background:var(--apricot);
     border:0;
     border-radius:var(--r-m);
-    padding:1.3rem 1.45rem;
-    margin:var(--sp-3) 0 var(--sp-1);
+    padding:clamp(1.4rem,2.6vw,1.9rem);
+    margin:0;
   }
-  .facts dl{display:grid; grid-template-columns:5rem 1fr; gap:.5rem 1rem;}
-  /* 살구 면 위 ink-faint(4.71) 대신 ink-soft(7.46) */
-  .facts dt{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); line-height:var(--lh-normal);}
+  .facts dl{display:grid; grid-template-columns:5.2rem 1fr; gap:.6rem 1rem;}
+  /* 살구 면 위 ink-faint(5.20) 대신 ink-soft(8.24) */
+  .facts dt{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft); line-height:var(--lh-normal);}
   .facts dd{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink); line-height:var(--lh-normal);}
-  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 강조는 색이 아니라 굵기가 맡는다 */
+  /* 살구 면 위 terra 는 4.85라 이제 쓸 수 있다(2026-09-12). 그래도 강조는 굵기가 맡는다 */
   .facts dd b{color:var(--ink); font-weight:var(--w-bold);}
 
   .p{color:var(--ink-soft); font-size:var(--fs-5); line-height:var(--lh-loose);
-     letter-spacing:var(--ls-md); margin-bottom:var(--sp-2);}
+     letter-spacing:var(--ls-md); margin-bottom:var(--sp-2); max-width:var(--w-read);}
   .p:last-child{margin-bottom:0;}
   .p b{color:var(--terra); font-weight:var(--w-reg);}
 
-  /* 올해의 질문 — 페이지의 유일한 어두운 층.
-     크림 본문 한복판에 시작·중간·끝을 만든다(잉크 위 크림 13.95) */
+  /* ---------- 올해의 질문 — 이 페이지의 유일한 어두운 층 ----------
+     전폭 잉크 면으로 풀어 페이지 한복판에 시작·중간·끝을 만든다.
+     호박은 어두운 면 위(9.17)에서만 제 몫을 한다. */
   .annual{
     background:var(--ink);
-    border-radius:var(--r-m);
-    padding:1.7rem 1.55rem;
+    border-radius:0;
+    padding:var(--sp-5) 0;
     text-align:center;
+    margin:var(--sp-5) 0 0;
   }
   .annual .yr{
     font-family:var(--gothic);
     font-size:var(--fs-8);
     letter-spacing:var(--ls-label);
     line-height:var(--lh-normal);
-    color:var(--amber);       /* 잉크 위 호박 6.71 — 어두운 면 위에서만 제 몫을 한다 */
-    margin-bottom:.7rem;
+    color:var(--amber);       /* 잉크 위 호박 9.17 */
+    margin-bottom:1rem;
   }
   .annual .q{
     font-family:var(--logo);
     font-weight:var(--w-bold);
-    font-size:var(--fs-3);
-    line-height:var(--lh-snug);
-    letter-spacing:var(--ls-lg);
-    color:var(--cream);
+    font-size:var(--fs-2);          /* 40px */
+    line-height:var(--lh-tight);
+    letter-spacing:var(--ls-xl);
+    color:var(--cream);             /* 잉크 위 14.43 */
   }
   .annual .sub{
     font-family:var(--gothic);
     font-size:var(--fs-6);
-    color:var(--apricot);     /* 잉크 위 살구 11.94 */
+    color:var(--apricot);           /* 잉크 위 살구 13.19 */
     line-height:var(--lh-normal);
-    margin-top:.9rem;
+    margin-top:1.2rem;
   }
 
-  /* 분기 카드 — 흰 면(크림 대비 1.035, 사실상 경계 없음)을 살구(1.168)로 바꾸고
-     테두리·호박 띠를 걷었다. 여기는 항목이 둘뿐이라 면을 걷지 않는다.
-     ('목록은 카드로 쌓지 않는다'는 열 장이 넘을 때의 규칙이다.)
-     지금 읽는 분기는 왼쪽 호박 획 하나로만 갈라, 다음 분기가 물러나지 않게 한다. */
+  /* ---------- 분기 카드 ----------
+     2026-09-12 다현씨 결정으로 면을 걷었다. 둘 다 형광 노랑 면이었을 때는
+     「지금 모집 중인 분기」가 표식으로 갈리지 않았다 — 호박 획이 형광 살구 위에서
+     1.44(게다가 둘 다 노랑)라 「한 단 진한 테두리」로만 남았기 때문이다.
+     이제 지나간 분기는 --line 1px 괘선으로 물러나고, 모집 중인 분기만
+     순백 위 호박 3px 획을 갖는다. 표식을 가진 칸은 페이지에 하나뿐이다. */
+  .qtrs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; align-items:start;}
   .qtr{
-    position:relative;
-    overflow:hidden;
-    background:var(--apricot);
+    background:transparent;
     border:0;
-    border-radius:var(--r-m);
-    padding:1.35rem 1.4rem 1.3rem;
-    margin-bottom:.6rem;
+    border-left:1px solid var(--line);
+    border-radius:0;
+    padding:.2rem clamp(1rem,2.4vw,1.8rem) 1.4rem;
+    margin-bottom:0;
   }
-  .qtr.now{padding-left:1.7rem;}
-  .qtr.now::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--amber);}
-  .qtr .head{display:flex; align-items:baseline; gap:.55rem; flex-wrap:wrap; margin-bottom:.45rem;}
-  /* 알약(99px)을 눕히고, 살구 면 위 살구 뱃지가 안 보이므로 괘선 칩으로 */
+  /* 표식은 「지금 읽는 분기」가 아니라 「지금 모집 중인 분기」에 붙인다 —
+     면이 있을 때는 둘 다 살구라 어느 쪽이 팔리는 것인지 구분이 없었고,
+     호박 획은 진행 중인 3분기에 붙어 있었다. 2026-09-06에 한 번 배운 자리다
+     (「정작 모집 중인 4분기가 물러나 보였다」). 면을 걷은 지금은 표식이
+     페이지에 하나뿐이므로, 그 하나는 팔리는 칸이 가져야 한다. */
+  .qtr.open{border-left:3px solid var(--amber);}
+  .qtr .head{display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; margin-bottom:.6rem;}
   .qtr .badge{
     font-family:var(--gothic);
     font-size:var(--fs-8);
@@ -110,67 +122,69 @@
     line-height:var(--lh-normal);
     color:var(--ink);
     background:transparent;
-    border:1px solid rgba(60,36,21,.25);
+    border:1px solid var(--line);
     border-radius:var(--r-s);
-    padding:.2rem .65rem;
+    padding:.22rem .7rem;
   }
-  /* 살구 면 위 — faint(4.71) 대신 soft(7.46) */
-  .qtr .when{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); line-height:var(--lh-normal);}
-  .qtr .bk{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-4);
+  /* 모집 중인 분기의 뱃지 하나만 살구 면 — 이 카드 묶음에 색을 남기는 자리.
+     살구 위 ink 13.19 */
+  .qtr.open .badge{background:var(--apricot); border-color:transparent;}
+  /* 면을 걷었으므로 바탕은 순백 — ink-soft 9.01 */
+  .qtr .when{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft); line-height:var(--lh-normal);}
+  .qtr .bk{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-3);
     letter-spacing:var(--ls-lg); color:var(--ink); line-height:var(--lh-snug);}
-  .qtr .by{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft);
-    line-height:var(--lh-normal); margin-top:.2rem;}
+  .qtr .by{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.25rem;}
   .qtr .ask{
     font-family:var(--serif);
-    font-size:var(--fs-6);
+    font-size:var(--fs-5);
     color:var(--ink-soft);
-    line-height:var(--lh-normal);
-    margin-top:.75rem;
+    line-height:var(--lh-loose);
+    margin-top:.9rem;
   }
   .qtr .rounds{
-    margin-top:.95rem;
-    padding-top:.85rem;
-    border-top:1px solid rgba(60,36,21,.14);
+    margin-top:1.1rem;
+    padding-top:1rem;
+    border-top:1px solid var(--line-soft);
   }
   .qtr .rd{
-    display:flex; gap:.8rem; align-items:baseline;
+    display:flex; gap:.9rem; align-items:baseline;
     font-family:var(--gothic);
     font-size:var(--fs-6);
     line-height:var(--lh-normal);
+    padding:.18rem 0;
   }
-  /* 살구 면 위 terra 는 4.39라 못 쓴다 — 날짜는 잉크로 세운다 */
-  .qtr .rd .d{flex:0 0 4.6rem; color:var(--ink);}
+  .qtr .rd .d{flex:0 0 4.9rem; color:var(--ink);}
   .qtr .rd .w{color:var(--ink-soft);}
-  /* 지나간 회차는 한 단 낮춘다 — 살구 위 soft(7.46)가 하한 */
-  .qtr .rd.done .d{color:var(--ink-soft);}
-  .qtr .rd.done .w{color:var(--ink-soft); opacity:.72;}
+  /* 지나간 회차는 한 단 낮춘다 — 순백 위 ink-faint 5.50 이 하한.
+     면을 걷으면서 opacity:.72(합성 4.2 근처)를 팔레트 값으로 바꿨다 */
+  .qtr .rd.done .d{color:var(--ink-faint);}
+  .qtr .rd.done .w{color:var(--ink-faint);}
 
-  /* ── 지금까지 함께 읽어온 책 (나무🌳 2026-08-25) ─────────
-     '지금 읽는 분기'는 면(현재), '지나온 책'은 호박 세로선 위의 항목(과거).
-     같은 팔레트·같은 타이포로 위계만 한 단 낮춥니다. */
+  /* ── 지금까지 함께 읽어온 책 (나무🌳 2026-08-25) ───────── */
   .past-lead{
     font-family:var(--gothic);
     font-size:var(--fs-6);
-    color:var(--ink-faint);
+    color:var(--ink-soft);          /* 순백 위 9.01 */
     line-height:var(--lh-normal);
-    margin:-.35rem 0 var(--sp-2);
+    margin:0 0 var(--sp-3);
+    max-width:var(--w-read);
   }
   .past{
     list-style:none;
     margin:0;
-    padding-left:1.5rem;
+    padding-left:1.6rem;
     background:linear-gradient(to bottom,
-                 rgba(233,163,58,.32) 0 78%,
-                 rgba(233,163,58,0) 100%) left top/2px 100% no-repeat;
+                 rgba(255,198,30,.42) 0 78%,
+                 rgba(255,198,30,0) 100%) left top/2px 100% no-repeat;
   }
-  .past-item{position:relative; padding-bottom:var(--sp-3);}
+  .past-item{position:relative; padding-bottom:var(--sp-4); max-width:var(--w-read);}
   .past-item:last-child{padding-bottom:0;}
-  /* 점을 각진 획으로 눕히고, 세로선(left:0, 폭 2px)의 한가운데에 앉힌다.
-     선과 점을 같은 left 에 두면 선이 점의 가장자리에 붙어 사라져 보인다. */
+  /* 점은 세로선(left:0, 폭 2px)의 한가운데에 앉힌다 — 같은 left 면 선이 사라져 보인다 */
   .past-item::before{
     content:"";
     position:absolute;
-    left:calc(-1.5rem - 3px);
+    left:calc(-1.6rem - 3px);
     top:.5rem;
     width:8px; height:8px;
     border-radius:var(--r-s);
@@ -178,8 +192,8 @@
     box-sizing:border-box;
   }
   .past-head{
-    display:flex; align-items:baseline; gap:.5rem;
-    flex-wrap:wrap; margin-bottom:.35rem;
+    display:flex; align-items:baseline; gap:.55rem;
+    flex-wrap:wrap; margin-bottom:.45rem;
   }
   .past-head .badge{
     font-family:var(--gothic);
@@ -188,90 +202,85 @@
     color:var(--ink);
     background:var(--apricot);
     border-radius:var(--r-s);
-    padding:.18rem .6rem;
+    padding:.2rem .65rem;
     line-height:var(--lh-normal);
   }
   .past-head .when{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
+    font-size:var(--fs-6);
     line-height:var(--lh-normal);
-    color:var(--ink-faint);
+    color:var(--ink-soft);          /* 순백 위 9.01 */
   }
   .past-bk{
     font-family:var(--logo);
     font-weight:var(--w-bold);
-    font-size:var(--fs-4);
+    font-size:var(--fs-3);
     letter-spacing:var(--ls-lg);
     color:var(--ink);
     line-height:var(--lh-snug);
   }
   .past-by{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
+    font-size:var(--fs-6);
     line-height:var(--lh-normal);
-    color:var(--ink-faint);
-    margin-top:.18rem;
+    color:var(--ink-soft);
+    margin-top:.22rem;
   }
   /* 그때 오간 질문 — 이 블록의 주인공 */
   .past-asks{
-    margin-top:.8rem;
-    padding-left:.95rem;
+    margin-top:1rem;
+    padding-left:1.1rem;
     border-left:2px solid var(--apricot);
   }
   .past-asks p{
     font-family:var(--serif);
-    font-size:var(--fs-6);
+    font-size:var(--fs-5);
     color:var(--ink-soft);
-    line-height:var(--lh-normal);
-    margin-bottom:.5rem;
+    line-height:var(--lh-loose);
+    margin-bottom:.6rem;
   }
   .past-asks p:last-child{margin-bottom:0;}
   /* 아직 질문을 옮기지 못한 칸 — 비어도 무너지지 않게 */
   .past-asks.pending{
     border-left-style:dashed;
-    border-left-color:rgba(233,163,58,.45);
+    border-left-color:rgba(255,198,30,.55);
   }
   .past-asks.pending p{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
-    color:var(--ink-faint);
+    font-size:var(--fs-6);
+    color:var(--ink-soft);
     line-height:var(--lh-normal);
   }
   .past-place{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
-    color:var(--ink-faint);
+    font-size:var(--fs-6);
+    color:var(--ink-soft);
     line-height:var(--lh-normal);
-    margin-top:.7rem;
-    padding-top:.6rem;
+    margin-top:.9rem;
+    padding-top:.75rem;
     border-top:1px solid var(--line-soft);
   }
   .past-place b{color:var(--terra); font-weight:var(--w-reg);}
-  .past-more{margin-top:.6rem;}
-  .past-more .textlink{font-size:var(--fs-7);}
-  @media (max-width:520px){
-    .past{padding-left:1.15rem;}
-    .past-item::before{left:calc(-1.15rem - 3px);}
-    .past-asks{padding-left:.8rem;}
-  }
+  .past-more{margin-top:.7rem;}
+  .past-more .textlink{font-size:var(--fs-6);}
 
-  /* 읽는 방식 — 번호를 원에서 각진 칩으로. 원 하나가 또 줄어든다 */
-  .steps{counter-reset:s; margin-top:.4rem;}
+  /* 읽는 방식 — 번호는 각진 살구 칩 */
+  .steps{counter-reset:s; margin-top:.4rem; max-width:var(--w-read);}
   .steps li{
     counter-increment:s;
     position:relative;
-    padding-left:2.1rem;
+    padding-left:2.4rem;
     margin-bottom:var(--sp-2);
     color:var(--ink-soft);
-    font-size:var(--fs-6);
-    line-height:var(--lh-normal);
+    font-size:var(--fs-5);
+    line-height:var(--lh-loose);
     list-style:none;
   }
   .steps li::before{
     content:counter(s);
     position:absolute;
-    left:0; top:.12em;
-    width:1.5rem; height:1.5rem;
+    left:0; top:.28em;
+    width:1.7rem; height:1.7rem;
     border-radius:var(--r-s);
     background:var(--apricot);
     color:var(--ink);
@@ -281,18 +290,18 @@
   }
   .steps li b{color:var(--ink); font-weight:var(--w-reg);}
 
-  /* 신청 — 진테라코타 면. 크림 글자 5.13. 선릿모닝과 같은 꼴 */
-  .cta{margin-top:var(--sp-4); text-align:center;}
+  /* 신청 — 진테라코타 면. 순백 위 5.31, 그 면 위 흰 글자 5.31 */
+  .cta{margin-top:var(--sp-5); padding-top:var(--sp-4); border-top:1px solid var(--line); text-align:center;}
   .cta .btn{
     display:inline-block;
     background:var(--terra);
     color:var(--cream);
     font-family:var(--gothic);
-    font-size:var(--fs-6);
+    font-size:var(--fs-5);
     letter-spacing:var(--ls-md);
     line-height:var(--lh-normal);
     text-decoration:none;
-    padding:.8rem 2rem;
+    padding:.9rem 2.2rem;
     border-radius:var(--r-m);
     box-shadow:none;
     transition:background .2s ease;
@@ -300,60 +309,91 @@
   .cta .btn:hover{background:#8E4322;}
   .cta .sub{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
-    color:var(--ink-faint);
+    font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
+    color:var(--ink-soft);          /* 순백 위 9.01 */
     line-height:var(--lh-normal);
-    margin-top:.85rem;
+    margin-top:1.1rem;
   }
+  .cta .sub b{color:var(--ink);font-weight:var(--w-reg);}
   .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
+
+  @media (max-width:860px){
+    .classhead{grid-template-columns:1fr;gap:var(--sp-3);}
+    /* 세로로 쌓이면 면이 없으므로 칸 사이에 숨을 준다 */
+    .qtrs{grid-template-columns:1fr; gap:var(--sp-3);}
+    .qtr{padding:.2rem 0 0 1.1rem;}
+  }
+  @media (max-width:520px){
+    .past{padding-left:1.15rem;}
+    .past-item::before{left:calc(-1.15rem - 3px);}
+    .past-asks{padding-left:.9rem;}
+  }
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<main>
 
-  <a class="backlink" href="/class/">← 클래스</a>
+  <div class="shell">
 
-  <div class="kicker fade">NARU NIGHT</div>
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/class/">← 클래스</a></p>
 
-  <header class="fade">
-    <h1>나루의 밤</h1>
-    <p class="signboard">한 권을 석 달 읽습니다.</p>
-    <p class="lead">좋은 소설은 철학을 품고, 좋은 철학은 소설처럼 읽힙니다. <b>문학으로 느끼고, 철학으로 깊어지는</b> 독서 토론입니다.</p>
-    <div class="amber-line"></div>
-  </header>
-
-  <div class="facts fade d1">
-    <dl>
+    <header class="classhead fade">
+      <div>
+        <div class="kicker">NARU NIGHT</div>
+        <h1>나루의 밤</h1>
+        <p class="signboard">한 권을 석 달 읽습니다.</p>
+        <p class="lead">좋은 소설은 철학을 품고, 좋은 철학은 소설처럼 읽힙니다. <b>문학으로 느끼고, 철학으로 깊어지는</b> 독서 토론입니다.</p>
+      </div>
+      <div class="facts">
+        <dl>
       <dt>모임</dt><dd>월 1회 · <b>화요일 밤 8시</b> · Zoom</dd>
       <dt>한 분기</dt><dd>3개월 3회 · 책 한 권을 나눠 읽습니다</dd>
       <dt>참가비</dt><dd>한 분기 <b>70,000원</b></dd>
       <dt>읽는 책</dt><dd>2026–2027 두 해에 걸쳐 문학 4권 × 철학·사상 4권</dd>
-    </dl>
-  </div>
+        </dl>
+      </div>
+    </header>
 
-  <section class="fade d2">
-    <h2 class="sec-title">정리하고 끝내지 않습니다</h2>
+    <section class="sec fade d2">
+      <div>
+        <div class="seclabel"><span class="n">01</span><span class="bar"></span></div>
+        <h2 class="sec-title">정리하고 끝내지 않습니다</h2>
+      </div>
+      <div>
     <p class="p">독서 토론의 가장 큰 위험은 <b>'정리'에 그치는 것</b>입니다. 줄거리를 확인하고 작가의 의도를 찾아내는 것으로 끝날 때, 책은 소비되고 맙니다.</p>
     <p class="p">나루의 밤은 다릅니다. 텍스트를 통해 참여자 스스로 질문을 발견하고, 그 질문 앞에 함께 머무르는 것을 목표로 합니다. 한 분기는 문학을 통해 인물의 감정과 선택을 따라가고, 다음 분기에는 철학 텍스트로 돌아와 그 경험에 언어와 개념을 부여합니다.</p>
-  </section>
+      </div>
+    </section>
 
+  </div>
+
+  <!-- 올해의 질문 — 페이지에서 유일한 어두운 층. 전폭으로 풉니다. -->
   <section class="annual fade">
+    <div class="shell">
     <div class="yr">2026 ANNUAL QUESTION</div>
     <div class="q">죄책감은 인간을<br>어떻게 만드는가</div>
     <p class="sub">『워더링 하이츠』의 히스클리프부터 베네딕트의 문화 구조까지 —<br>억압과 죄책감이 인간 내면을 빚는 방식을<br>문학 → 신학 → 문학 → 문화인류학의 언어로 건너갑니다.</p>
+    </div>
   </section>
+
+  <div class="shell">
 
   <!-- ============================================================
        분기가 바뀌면 이 블록을 고칩니다.
-       - .qtr.now 는 지금 읽는 분기 하나에만 붙입니다
+       - .qtr.open 은 「지금 모집 중인 분기」 하나에만 붙입니다(호박 획 + 살구 뱃지).
+         지금 읽는 분기가 아니라 팔리는 분기입니다 — 2026-09-12에 옮겼습니다.
        - 지나간 회차는 .rd.done 으로 흐리게
        - 전체 커리큘럼(2026–2027 8권)은 bamnaru 레포가 정본입니다
        ============================================================ -->
-  <section class="fade">
-    <h2 class="sec-title">지금 읽는 책</h2>
-
-    <div class="qtr now">
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
+        <h2 class="sec-title">지금 읽는 책</h2>
+      </div>
+      <div>
+      <div class="qtrs">
+      <div class="qtr">
       <div class="head">
         <span class="badge">3분기</span>
         <span class="when">2026년 7월 – 9월 · 문학</span>
@@ -368,7 +408,7 @@
       </div>
     </div>
 
-    <div class="qtr">
+    <div class="qtr open">
       <div class="head">
         <span class="badge">4분기</span>
         <span class="when">2026년 10월 – 12월 · 문화인류학</span>
@@ -383,10 +423,12 @@
       </div>
     </div>
 
-    <p class="p" style="margin-top:1.2rem;">
-      2026–2027 두 해의 여정 전체는 <a class="textlink" href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">나루의 밤 커리큘럼</a>에서 보실 수 있습니다.
-    </p>
-  </section>
+      </div>
+      <p class="p" style="margin-top:1.4rem;">
+        2026–2027 두 해의 여정 전체는 <a class="textlink" href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">나루의 밤 커리큘럼</a>에서 보실 수 있습니다.
+      </p>
+      </div>
+    </section>
 
   <!-- ============================================================
        지금까지 함께 읽어온 책 (2026-08-25 신설)
@@ -396,9 +438,13 @@
        - ⚠ 1·2분기는 생각학교ASK 고전 클래스입니다. 나루의 밤은 2026-07-21
          『마음』 상편이 1차예요. 자리를 반드시 정직하게 표기할 것.
        ============================================================ -->
-  <section class="fade">
-    <h2 class="sec-title">지금까지 함께 읽어온 책</h2>
-    <p class="past-lead">이 여정은 생각학교ASK의 고전 클래스에서 시작해, 2026년 7월부터 포근나루 나루의 밤으로 이어지고 있습니다. 아래는 지금까지 함께 읽은 책과, 그 자리에서 실제로 오갔던 질문들입니다.</p>
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">03</span><span class="bar"></span></div>
+        <h2 class="sec-title">지금까지 함께 읽어온 책</h2>
+      </div>
+      <div>
+      <p class="past-lead">이 여정은 생각학교ASK의 고전 클래스에서 시작해, 2026년 7월부터 포근나루 나루의 밤으로 이어지고 있습니다. 아래는 지금까지 함께 읽은 책과, 그 자리에서 실제로 오갔던 질문들입니다.</p>
 
     <ol class="past">
 
@@ -414,7 +460,7 @@
           <p>왜 사람은 언제나 곁에 있어줄 사람 앞에서 덜 두려운가.</p>
         </div>
         <p class="past-place">살아 있는 동안에는 끝내 <b>말하지 못한 자리</b>. 고백이 편지가 되고, 그 편지의 값이 자기 죽음이 되는 데까지 갑니다.</p>
-        <p class="past-more"><a class="textlink" href="/reading/">그날의 토론 자료 →</a></p>
+        <p class="past-more"><a class="textlink" href="/reading/">그날의 토론 자료</a></p>
       </li>
 
       <li class="past-item">
@@ -445,19 +491,25 @@
         <p class="past-place">한 해의 질문이 <b>시작된 자리</b>. 자기 잘못을 끝내 돌아보지 않은 사람들.</p>
       </li>
 
-    </ol>
-  </section>
+      </ol>
+      </div>
+    </section>
 
-  <section class="fade">
-    <h2 class="sec-title">이렇게 읽습니다</h2>
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <h2 class="sec-title">이렇게 읽습니다</h2>
+      </div>
+      <div>
     <ol class="steps">
       <li><b>먼저 한 번 통독합니다.</b> 이해하지 못해도 괜찮습니다</li>
       <li><b>모임 전, 해당 파트를 다시 읽습니다.</b> 밑줄을 긋고 메모를 남깁니다</li>
       <li><b>공감한 문장, 꺼내고 싶은 문장을 오픈 채팅방에 올립니다</b></li>
       <li><b>그렇게 준비된 마음으로 함께 앉아 이야기합니다</b></li>
     </ol>
-    <p class="p" style="margin-top:1rem;">한 번에 다 이해하려 하지 않아도 됩니다. 석 달에 걸쳐 한 권을 건너가는 속도입니다.</p>
-  </section>
+      <p class="p" style="margin-top:1rem;">한 번에 다 이해하려 하지 않아도 됩니다. 석 달에 걸쳐 한 권을 건너가는 속도입니다.</p>
+      </div>
+    </section>
 
   <!-- ⚠ 모집 안내: 분기가 바뀌면 아래 버튼의 폼 주소를 반드시 새 분기 폼으로 바꿉니다.
        2026-08-25 — 3분기(『마음』) 신청을 닫고 4분기(『국화와 칼』) 모집으로 전환.
@@ -478,12 +530,12 @@
     <p class="kakao-hours">카카오채널 <b>'포근나루'</b> 1:1 상담 · 평일 06시~18시에 답해드립니다.</p>
   </div>
 
-  <aside class="bridge fade">
+    <aside class="bridge fade">
     <p>새벽에는 쓰고, 밤에는 읽습니다.</p>
-    <a href="/class/sunlit-morning.html">선릿모닝 — 매일 새벽 5시 50분, 함께 쓰는 30분 &rarr;</a>
+    <a href="/class/sunlit-morning.html">선릿모닝 — 매일 새벽 5시 50분, 함께 쓰는 30분</a>
   </aside>
 
-  <footer class="sitefoot fade">
+    <footer class="sitefoot fade">
     <nav>
       <a href="/">포근나루</a>
       <a href="/class/">클래스</a>
@@ -491,13 +543,10 @@
       <a href="/books/">책</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
     </nav>
-    고요히, 마음에 머무는 글을 전하는
-    <span class="brand">POGNARU STUDIO</span>
-    <div class="credit">
-      이 페이지를 지은 식구 —
-      <span class="who">🌅 <b>새벽</b> 지나온 질문</span><span class="sep">·</span><span class="who">🌳 <b>나무</b> 화면</span><span class="sep">·</span><span class="who">🌊 <b>바다</b> 갈무리·발행</span>
-    </div>
-  </footer>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+  </div>
 
 </main>
 

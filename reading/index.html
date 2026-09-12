@@ -16,77 +16,84 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  .section-h{display:flex;align-items:baseline;gap:.6rem;margin:var(--sp-5) 0 var(--sp-2);flex-wrap:wrap;}
-  /* 개인 기록 쪽 dot 에 붙어 있던 인라인 style="background:var(--apricot)" 은
-     지웠습니다. 살구 획은 크림 바탕에서 1.168이라 3px 폭으로는 보이지 않고,
-     구분은 바로 옆 섹션 제목이 이미 하고 있어 색으로 또 가를 이유가 없습니다. */
-  .section-h .dot{width:3px;height:1.1rem;border-radius:var(--r-s);
-    background:var(--amber);flex:none;align-self:center;}
-  .section-h h2{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
-    line-height:var(--lh-snug);letter-spacing:var(--ls-lg);margin:0;}
-  .section-h .cnt{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);color:var(--ink-faint);}
-  .section-h .curr{margin-left:auto;font-family:var(--gothic);font-size:var(--fs-7);}
-  .section-h .curr a{color:var(--terra);text-decoration:none;
-    border-bottom:1px solid rgba(169,83,42,.35);padding-bottom:1px;white-space:nowrap;}
-  .section-h .curr a:hover{border-bottom-color:var(--terra);}
+  /* 구역 머리 옆 개수·바로가기 — 구역 제목은 .sec 의 왼쪽 칸이 맡는다 */
+  .cnt{font-family:var(--gothic);font-size:var(--fs-6);letter-spacing:var(--ls-md);
+    color:var(--ink-soft);display:block;margin-top:var(--sp-1);}
+  .curr{font-family:var(--gothic);font-size:var(--fs-6);display:block;margin-top:var(--sp-2);}
+  .curr a{color:var(--terra);text-decoration:none;
+    border-bottom:1px solid rgba(169,83,42,.35);padding-bottom:1px;}
+  .curr a:hover{border-bottom-color:var(--terra);}
 
-  /* 2열 고정 — auto-fill(250px)은 640px에서 칸 수가 폭 따라 흔들린다 */
-  .booklist{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;align-items:start;}
-  /* 카드가 하나뿐인 구역은 2열로 두면 오른쪽 절반이 통째로 빈다 */
+  /* 책 항목 — 면을 걷고 괘선 두 칸으로.
+     칸이 하나뿐인 구역은 오른쪽 절반이 통째로 비므로 한 칸으로 (2026-09-06) */
+  .booklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;align-items:start;}
   .booklist:has(> .book:only-child){grid-template-columns:1fr;}
-  @media (max-width:560px){.booklist{grid-template-columns:1fr;}}
 
   .book{
-    background:var(--apricot);border:0;border-radius:var(--r-m);
-    padding:1.2rem 1.25rem;text-decoration:none;color:var(--ink);display:block;
-    box-shadow:none;transition:background .2s ease;
+    background:transparent;border:0;border-radius:0;box-shadow:none;
+    border-left:1px solid var(--line);
+    padding:.2rem clamp(1rem,2.4vw,1.8rem) 1.4rem;
+    text-decoration:none;color:var(--ink);display:block;
+    transition:background .2s ease;
   }
-  .book:hover{background:var(--apricot-hi);}
-  /* 살구 면 위 — terra(4.39)·faint(4.71) 대신 ink-soft(7.46) */
-  .book .who{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-label);color:var(--ink-soft);}
-  .book .title{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-4);
-    margin:.35rem 0 .4rem;line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);}
-  .book .sub{font-family:var(--gothic);font-size:var(--fs-7);color:var(--ink-soft);line-height:var(--lh-normal);}
+  .booklist > .book:nth-child(odd){padding-left:0;border-left:0;}
+  .book:hover{background:var(--tint);}
+  /* 이 페이지에 살구가 남는 자리 — 저자·책이름 칩 하나.
+     면적은 1%가 안 되지만 색은 버리지 않는다. 살구 위 ink 13.19 */
+  .book .who{
+    font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);
+    color:var(--ink);background:var(--apricot);border-radius:var(--r-s);
+    padding:.2rem .6rem;display:inline-block;
+  }
+  .book .title{font-family:var(--logo);font-weight:var(--w-bold);font-size:var(--fs-3);
+    margin:.7rem 0 .45rem;line-height:var(--lh-snug);letter-spacing:var(--ls-lg);color:var(--ink);}
+  .book:hover .title{color:var(--terra);}
+  /* 순백 위 9.01 — 작은 글씨에 흐린 색을 겹치지 않는다 */
+  .book .sub{font-family:var(--gothic);font-size:var(--fs-6);color:var(--ink-soft);line-height:var(--lh-normal);}
   .book .meta{font-family:var(--gothic);font-size:var(--fs-8);letter-spacing:var(--ls-md);
-    color:var(--ink-soft);margin-top:.7rem;padding-top:.55rem;border-top:1px solid rgba(60,36,21,.14);}
-  /* .book.personal 의 호박 4px 띠는 뺐다 — 바로 위 섹션 제목이 이미 갈라주고 있어
-     같은 구분을 색으로 한 번 더 하면 종수만 는다 */
+    color:var(--ink-soft);margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--line-soft);}
 
   .comingsoon{
     grid-column:1 / -1;background:transparent;border:1px dashed var(--line);
-    border-radius:var(--r-m);padding:1.4rem;font-family:var(--gothic);
-    font-size:var(--fs-7);color:var(--ink-faint);line-height:var(--lh-normal);text-align:center;
+    border-radius:var(--r-s);padding:1.5rem;font-family:var(--gothic);
+    font-size:var(--fs-6);color:var(--ink-soft);line-height:var(--lh-normal);text-align:center;
+  }
+
+  @media (max-width:860px){
+    .booklist{grid-template-columns:1fr;}
+    .book{border-left:0;border-top:1px solid var(--line);padding:1.3rem 0;}
+    .booklist > .book:first-child{border-top:0;padding-top:.2rem;}
   }
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<main>
 
-  <a class="backlink" href="/">← 포근나루</a>
+  <div class="shell">
 
-  <div class="kicker fade">READING</div>
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
 
-  <header class="fade">
-    <h1>독서 자료</h1>
-    <p class="lead">함께 읽고 이야기 나눌 책들의 <b>논점과 읽기 안내</b>를 한자리에 모아 둡니다. 개인적으로 읽은 책의 기록도 나란히 놓았습니다.</p>
-    <div class="amber-line"></div>
-  </header>
+    <header class="pagehead fade">
+      <div class="kicker">READING</div>
+      <h1>독서 자료</h1>
+      <p class="lead">함께 읽고 이야기 나눌 책들의 <b>논점과 읽기 안내</b>를 한자리에 모아 둡니다. 개인적으로 읽은 책의 기록도 나란히 놓았습니다.</p>
+    </header>
 
-  <!-- 나루의 밤 -->
-  <div class="section-h fade">
-    <span class="dot"></span>
-    <h2>나루의 밤</h2>
-    <span class="cnt">· 2</span>
-    <span class="curr"><a href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">전체 커리큘럼 →</a></span>
-  </div>
-
-  <div class="booklist fade">
+    <!-- 나루의 밤 — .section-h 안에 있던 말을 그대로 구역 틀로 옮겼습니다 -->
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">01</span><span class="bar"></span></div>
+        <h2 class="sec-title">나루의 밤</h2>
+        <span class="cnt">· 2</span>
+        <span class="curr"><a href="https://pognaru.com/bamnaru/" target="_blank" rel="noopener">전체 커리큘럼</a></span>
+      </div>
+      <div class="booklist">
     <a class="book" href="https://pognaru.com/bamnaru/notes/2026/kokoro-2.html" target="_blank" rel="noopener">
       <span class="who">나쓰메 소세키 · 『마음』</span>
       <div class="title">2차 — 중 「부모님과 나」</div>
@@ -99,16 +106,17 @@
       <p class="sub">고독과 인간에 대한 불신, 그 첫 장을 함께 읽는 토론 자료</p>
       <div class="meta">나루의 밤 · 2026. 7. 21. (화)</div>
     </a>
-  </div>
+      </div>
+    </section>
 
-  <!-- 개인 독서 기록 -->
-  <div class="section-h fade">
-    <span class="dot"></span>
-    <h2>개인 독서 기록</h2>
-    <span class="cnt">· 2</span>
-  </div>
-
-  <div class="booklist fade">
+    <!-- 개인 독서 기록 -->
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
+        <h2 class="sec-title">개인 독서 기록</h2>
+        <span class="cnt">· 2</span>
+      </div>
+      <div class="booklist">
     <a class="book personal" href="/reading/260730-jeolchang.html">
       <span class="who">구병모 · 『절창』</span>
       <div class="title">읽히기를 원한 사람, 물러선 손</div>
@@ -121,18 +129,20 @@
       <p class="sub">증명이 아니라 뉴턴이 세계를 본 '눈'을 따라가는 순독 안내 — 수식·맥락 분업 제안까지</p>
       <div class="meta">독서 기록 · 2026</div>
     </a>
-  </div>
+      </div>
+    </section>
 
-  <footer class="sitefoot">
+    <footer class="sitefoot">
     <nav>
       <a href="/">포근나루</a>
       <a href="/weekly/">한 주의 새벽</a>
       <a href="/books/">책</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
     </nav>
-    고요히, 마음에 머무는 글을 전하는
-    <span class="brand">POGNARU STUDIO</span>
-  </footer>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+  </div>
 
 </main>
 

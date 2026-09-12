@@ -1,77 +1,94 @@
 /* ============================================================
-   weekly.css — 주간 회고 개별 페이지 공통 스타일 · 종수 정리판
-   2026-09-06 · 나무🌳 시안
-   base.css 뒤에 불러온다. 값은 전부 base.css 토큰에서 가져온다.
+   weekly.css — 「한 주의 새벽」 본문 · 「폭을 풀다」 시안 2차
+   2026-09-09 · 나무🌳 (시안)
 
-   ⚠️ 위임 프롬프트에는 「한 주의 새벽 12장은 자체 CSS 0줄」이라고 적혀 있었는데,
-      실측하니 인라인 <style>이 0줄인 것이고 이 파일(166줄)을 함께 불러온다.
-      그래서 12장을 한꺼번에 바꾸려면 base.css 와 이 파일 둘을 함께 고쳐야 한다.
+   현관과 같은 결이되 같은 폭은 아닙니다.
+   여기는 「간판」이 아니라 「읽는 글」이라 판단이 다릅니다.
+
+     제목·날짜·인용·씨앗   넓게 (1180 / 876)
+     실제로 읽는 문단       660px (한글 명조 17px에서 한 줄 약 37자)
+
+   페이지 전체를 640 상자에 가두지 않되, 줄 길이만은 지킵니다.
    ============================================================ */
 
-/* ---------- 기록 스트립 ---------- */
-.days{margin-bottom:var(--sp-1);}
-.days .row{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.7rem;}
+/* ---------- 구역 틀 ----------
+   왼쪽은 라벨 칸(번호 + 구역 제목), 오른쪽이 내용.
+   현관의 .sec 과 같은 문법입니다 — 두 장이 한 결로 읽히는 자리. */
+.wsec{
+  display:grid;
+  grid-template-columns:minmax(0,15.5rem) minmax(0,1fr);
+  gap:clamp(1.4rem,4vw,3.5rem);
+  padding:var(--sp-5) 0 0;
+  border-top:1px solid var(--line);
+  margin-top:var(--sp-5);
+}
+.wsec > div{min-width:0;}
+.wsec .read{max-width:var(--w-read);}
+
+/* ---------- 머리 ---------- */
+.whead{padding-bottom:var(--sp-4);}
+.whead h1{
+  font-size:var(--fs-1);          /* 68px — 본문(17px)의 4.0배 */
+  line-height:var(--lh-tight);
+  letter-spacing:var(--ls-xl);
+  max-width:14em;
+  margin-bottom:var(--sp-3);
+}
+.whead .lead{max-width:30em;}
+
+/* ---------- 기록 스트립 ----------
+   살구 면을 걷고 괘선 한 줄로 눕힙니다. */
+.days{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.9rem 1.6rem;
+  padding:1.1rem 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.days .row{display:flex;flex-wrap:wrap;gap:.35rem;}
 .days .chip{
   font-family:var(--gothic);
   font-size:var(--fs-7);
   line-height:var(--lh-normal);
   letter-spacing:var(--ls-md);
-  color:var(--ink);
-  background:var(--cream);
+  color:var(--ink);              /* 살구 위 13.19 */
+  background:var(--apricot);     /* 이 페이지에 살구가 남는 유일한 자리 —
+                                    면적은 0.14%지만 색은 버리지 않는다 */
+  border:0;
   border-radius:var(--r-s);
-  padding:.2rem .62rem;
+  padding:.24rem .68rem;
 }
-/* 한 줄 요약 — 문장이므로 flex로 쪼개지 않는다.
-   flex를 쓰면 텍스트 마디와 <b>가 각각 플렉스 아이템이 되어
-   좁은 화면에서 낱말이 흩어지고 줄이 어긋난다. (2026-08-04) */
 .days .count{
   font-family:var(--gothic);
-  font-size:var(--fs-7);
+  font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
   line-height:var(--lh-normal);
-  color:var(--ink-soft);          /* 살구 면 위 — faint(4.71) 대신 soft(7.46) */
-  padding-top:.65rem;
-  border-top:1px solid rgba(60,36,21,.14);
+  color:var(--ink-soft);          /* 순백 위 9.01 — 작은 글씨에 흐린 색을 겹치지 않는다 */
   word-break:keep-all;
-  overflow-wrap:anywhere;
-  padding-left:14px;
-  text-indent:-14px;
 }
 .days .count .dot{
   display:inline-block;
   width:6px;height:6px;
-  border-radius:var(--r-s);       /* 점도 각지게 — 원 하나를 줄인다 */
-  background:var(--ink);          /* 살구 위 호박 1.78 → 잉크 */
+  border-radius:var(--r-s);
+  background:var(--amber);        /* 크림 위 장식 — 정보를 나르지 않는다 */
   margin-right:8px;
   vertical-align:.16em;
 }
-.days .count b{color:var(--ink);font-weight:var(--w-reg);white-space:nowrap;}
+.days .count b{color:var(--ink-soft);font-weight:var(--w-reg);white-space:nowrap;}
 
-/* ---------- 타임라인 ----------
-   날짜별 카드 다섯 장이 면·테두리·그림자·반경을 다섯 번 되풀이하고 있었다.
-   면을 걷고 세로 획 하나로 묶으면, 읽는 눈은 날짜 라벨만 따라가면 된다. */
-.timeline{
-  position:relative;
-  padding-left:1.3rem;
-  margin-bottom:var(--sp-2);
-}
+/* ---------- 타임라인 ---------- */
+.timeline{position:relative;padding-left:1.3rem;}
 .timeline::before{
   content:"";
   position:absolute;
-  /* 점(8px)의 한가운데를 지나야 선으로 읽힌다 — 점 left:0, 폭 8 → 중심 4px */
   left:3px;top:.55rem;bottom:.55rem;
   width:2px;
   border-radius:var(--r-s);
-  /* 실선이면 마지막 항목 아래에서 선이 허공에 끊긴다 — 끝을 지운다 */
-  background:linear-gradient(180deg,var(--amber) 0%,var(--apricot) 78%,rgba(251,231,201,0) 100%);
+  background:linear-gradient(180deg,var(--amber) 0%,var(--apricot) 78%,rgba(255,247,177,0) 100%);
 }
-.tl{
-  position:relative;
-  background:transparent;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  padding:0 0 1.4rem;
-}
+.tl{position:relative;padding:0 0 var(--sp-3);}
 .tl:last-child{padding-bottom:0;}
 .tl::before{
   content:"";
@@ -88,7 +105,7 @@
   letter-spacing:var(--ls-label);
   line-height:var(--lh-normal);
   color:var(--terra);
-  margin-bottom:.3rem;
+  margin-bottom:.45rem;
 }
 .tl p{
   font-size:var(--fs-5);
@@ -96,25 +113,22 @@
   letter-spacing:var(--ls-md);
   color:var(--ink-soft);
 }
-.tl p b{color:var(--ink);font-weight:var(--w-reg);}
-
-/* 저녁 타임라인 — 같은 구조에 결만 다르게 */
-.timeline.eve::before{background:linear-gradient(180deg,var(--apricot),rgba(251,231,201,0));}
-.timeline.eve .tl::before{background:var(--apricot);}
 
 /* ---------- 인용 ----------
-   면도 테두리도 없이 왼쪽 획 하나. 인용은 상자가 아니라 여백이 만든다. */
+   읽는 문단보다 한 겹 넓게, 한 단 크게. 인용은 「멈추는 자리」이므로
+   본문과 같은 폭에 두면 그냥 이어 읽힙니다. */
+.quotes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(1.6rem,4vw,3rem);
+}
 .quote{
-  background:transparent;
-  border:0;
-  border-left:2px solid var(--amber);
-  border-radius:0;
-  padding:.15rem 0 .15rem 1.15rem;
-  margin-bottom:1.35rem;
+  border-top:1px solid var(--line-soft);
+  padding:1.5rem 0;
 }
 .quote p{
   font-family:var(--serif);
-  font-size:var(--fs-5);
+  font-size:var(--fs-4);          /* 19.2px — 본문 17px보다 한 단 위 */
   line-height:var(--lh-loose);
   letter-spacing:var(--ls-md);
   color:var(--ink);
@@ -124,19 +138,25 @@
   font-size:var(--fs-8);
   letter-spacing:var(--ls-label);
   line-height:var(--lh-normal);
-  color:var(--ink-faint);
-  margin-top:.4rem;
+  color:var(--terra);
+  margin-top:.6rem;
 }
 
-/* ---------- 씨앗 (어두운 면) ----------
-   밝기를 구조로 쓴다 — 크림 본문 한복판의 유일한 어두운 층.
-   호박은 어두운 면 위(6.71)에서만 제 몫을 한다. */
-.seed{
+/* ---------- 씨앗 · 어두운 층 ----------
+   현관의 발치와 같은 잉크 면입니다. 여기서는 페이지 한복판에 놓여
+   「이 한 칸만은 다른 층」이라고 말합니다. */
+.seedband{
   background:var(--ink);
-  border-radius:var(--r-m);
-  padding:1.7rem 1.5rem;
-  margin-top:var(--sp-1);
+  color:var(--cream);
+  margin-top:var(--sp-5);
+  padding:var(--sp-5) 0;
 }
+.seedband .seclabel{color:var(--apricot);}
+/* .seclabel .n 이 terra 를 직접 들고 있다 — 잉크 위 2.72 라 여기서 올린다 */
+.seedband .seclabel .n{color:var(--apricot);}
+.seedband a{color:var(--apricot);}
+.seedband .seclabel .bar{background:var(--amber);}
+.seedband .sec-title{color:var(--cream);}
 .seed .eyebrow{
   display:flex;
   align-items:center;
@@ -145,47 +165,78 @@
   font-size:var(--fs-8);
   letter-spacing:var(--ls-label);
   line-height:var(--lh-normal);
-  color:var(--amber);
-  margin-bottom:.85rem;
+  color:var(--amber);             /* 잉크 위 9.17 */
+  margin-bottom:.9rem;
 }
 .seed .eyebrow .dot{width:6px;height:6px;border-radius:var(--r-s);background:var(--amber);flex:none;}
 .seed h3{
   color:var(--cream);
-  font-size:var(--fs-4);
+  font-family:var(--logo);
+  font-weight:var(--w-bold);
+  font-size:var(--fs-3);          /* 24px */
   line-height:var(--lh-snug);
   letter-spacing:var(--ls-lg);
-  margin-bottom:.75rem;
+  margin-bottom:1rem;
 }
 .seed p{
   font-size:var(--fs-5);
   line-height:var(--lh-loose);
   letter-spacing:var(--ls-md);
-  color:rgba(255,251,239,.84);
+  color:rgba(255,255,255,.84);   /* 잉크 위 10.4 */
+  max-width:var(--w-read);
 }
-.seed p + p{margin-top:.85rem;}
+.seed p + p{margin-top:1rem;}
 .seed p b{color:var(--apricot);font-weight:var(--w-reg);}
-.seed em{font-style:normal;color:var(--apricot);}
 
-/* ---------- 핵심 문장 ---------- */
+/* ---------- 핵심 문장 ----------
+   페이지에서 가장 넓게 놓입니다. 폭이 곧 무게입니다. */
 .pull{
   font-family:var(--logo);
-  font-size:var(--fs-4);
-  line-height:var(--lh-loose);
-  letter-spacing:var(--ls-lg);
+  font-size:clamp(1.3rem,3vw,2rem);   /* 32px — 구역 제목 바로 아래 층 */
+  font-weight:var(--w-bold);
+  line-height:var(--lh-snug);
+  letter-spacing:var(--ls-xl);
   color:var(--ink);
   text-align:center;
-  padding:var(--sp-3) 1rem;
-  margin-top:var(--sp-4);
-  border-top:1px solid var(--line-soft);
-  border-bottom:1px solid var(--line-soft);
+  padding:var(--sp-5) 0;
+  margin-top:0;
+  border-top:1px solid var(--line);
 }
 .pull .who{
   display:block;
   font-family:var(--gothic);
+  font-weight:var(--w-reg);
   font-size:var(--fs-8);
   letter-spacing:var(--ls-label);
-  color:var(--ink-faint);
-  margin-top:.55rem;
+  color:var(--terra);
+  margin-top:1.1rem;
 }
 
 .foot-nav{margin-top:var(--sp-3);}
+
+/* ---------- 폰 ---------- */
+@media (max-width:860px){
+  .wsec{grid-template-columns:1fr;gap:var(--sp-2);}
+  .quotes{grid-template-columns:1fr;}
+  .whead h1{max-width:none;}
+}
+
+/* ============================================================
+   2026-09-12 전면 교체 때 되살린 것
+   ============================================================ */
+
+/* 저녁 타임라인 — 같은 구조에 결만 다르게.
+   회고 일곱 장이 쓰고 있어 지우면 새벽/저녁 구분이 사라진다. */
+.timeline.eve::before{background:linear-gradient(180deg,var(--apricot),rgba(255,247,177,0));}
+.timeline.eve .tl::before{background:var(--apricot);}
+
+/* 타임라인 본문 안의 강조 — 흐리게 두지 않는다 */
+.tl p b{color:var(--ink);font-weight:var(--w-reg);}
+
+/* 씨앗 문단 안의 강조 — 잉크 면 위 살구 13.19 */
+.seed em{font-style:normal;color:var(--apricot);}
+
+/* 「이번 주 결」 문단 — 살구 카드였던 자리. 면을 걷고 읽는 폭으로만 좁힌다. */
+.gist{max-width:var(--w-read);}
+.gist p{color:var(--ink-soft);}       /* 순백 위 9.01 */
+.gist p + p{margin-top:1rem;}

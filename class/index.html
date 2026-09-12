@@ -16,109 +16,122 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* 클래스 카드 — 살구 면 + 왼쪽 호박 획 하나.
-     테두리·그림자·들어올림을 걷었다. 경계는 면과 면의 색차(1.168)가 낸다.
-     호박 획은 정보를 나르지 않는 장식이라 살구 위(1.78)에 남길 수 있다. */
-  .classlist{display:grid; gap:.6rem; margin-top:var(--sp-3);}
+  /* 클래스 카드 — 면을 걷고 독서 목록과 같은 괘선 문법으로 (2026-09-12 다현씨 결정).
+     형광 노랑 면이 화면의 17.5%(폰 37.0%)를 덮어 A4에 형광펜을 칠한 꼴이었다.
+     「지금 모집 중인 것이 물러나면 안 된다」는 9/12 오전의 걱정은 그대로 유효하므로,
+     면 대신 왼쪽 호박 획 3px 하나로 살린다 — 순백 위 호박 획은 살구 면 위(1.44)와
+     달리 또렷하게 선다. 다른 괘선 목록(독서·회고)은 --line 1px 이라, 호박 3px 획을
+     가진 칸은 이 사이트에서 「지금 팔리는 것」뿐이다. */
+  .classlist{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+    margin:var(--sp-4) 0 var(--sp-3);
+    align-items:start;
+  }
 
   .cls{
-    position:relative;
-    overflow:hidden;
-    background:var(--apricot);
+    background:transparent;
     border:0;
-    border-radius:var(--r-m);
+    border-left:3px solid var(--amber);
+    border-radius:0;
     box-shadow:none;
-    padding:1.4rem 1.45rem 1.3rem 1.7rem;
+    padding:.2rem clamp(1rem,2.4vw,1.8rem) 1.4rem;
     text-decoration:none;
     color:var(--ink);
     display:block;
-    transition:background .2s ease;
+    transition:background .2s ease, color .2s ease;
   }
-  .cls::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--amber);}
-  .cls:hover{background:var(--apricot-hi);}
+  .cls:hover{background:var(--tint);}
+  .cls:hover .name{color:var(--terra);}   /* 순백 위 5.31 */
 
-  .cls .top{display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; margin-bottom:.5rem;}
-  .cls .name{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-3);
-    line-height:var(--lh-snug); letter-spacing:var(--ls-lg); color:var(--ink);}
-  /* 살구 면 위라 terra(4.39)를 쓰지 않는다 — ink-soft 7.46 */
-  .cls .kind{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft); letter-spacing:var(--ls-md);}
-  .cls .desc{font-family:var(--serif); font-size:var(--fs-6); color:var(--ink-soft); line-height:var(--lh-normal);}
+  .cls .top{display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap; margin-bottom:.6rem;}
+  .cls .name{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-2);
+    line-height:var(--lh-tight); letter-spacing:var(--ls-xl); color:var(--ink);}
+  /* 면을 걷었으므로 바탕은 순백 — ink-soft 9.01 */
+  .cls .kind{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft); letter-spacing:var(--ls-md);}
+  .cls .desc{font-family:var(--serif); font-size:var(--fs-5); color:var(--ink-soft); line-height:var(--lh-loose);}
 
   .cls .facts{
-    display:flex; flex-wrap:wrap; gap:.4rem;
-    margin-top:1rem; padding-top:.95rem;
-    border-top:1px solid rgba(60,36,21,.14);
+    display:flex; flex-wrap:wrap; gap:.45rem;
+    margin-top:1.2rem; padding-top:1.1rem;
+    border-top:1px solid var(--line-soft);
   }
-  /* 알약(99px)을 눕히고, 살구 위 살구 칩이 안 보이므로 면을 걷어 괘선 칩으로 */
   .cls .facts span{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
+    font-size:var(--fs-6);
     color:var(--ink);
     background:transparent;
-    border:1px solid rgba(60,36,21,.2);
+    border:1px solid var(--line);
     border-radius:var(--r-s);
-    padding:.24rem .7rem;
+    padding:.26rem .75rem;
     line-height:var(--lh-normal);
   }
+  /* 이 페이지에 살구가 남는 유일한 자리 — 각 카드의 마지막 칩(신청 상태) 하나.
+     면적은 1%가 안 되지만 색은 버리지 않는다(살구가 0%가 되면 포근나루가 아니게 된다).
+     살구 위 ink 13.19 */
+  .cls .facts span:last-child{background:var(--apricot); border-color:transparent;}
   .cls .go{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
+    font-size:var(--fs-6);
     color:var(--ink);
-    margin-top:1rem;
+    margin-top:1.2rem;
     display:inline-block;
     border-bottom:1px solid rgba(60,36,21,.35);
   }
+  .cls:hover .go{color:var(--terra); border-bottom-color:var(--terra);}
 
   /* 준비 중 — 아직 못 채운 칸은 숨기지 말고 한 단 낮춘다 */
   .soon{
     border:1px dashed var(--line);
     border-radius:var(--r-m);
-    padding:1.35rem 1.5rem;
-    font-family:var(--gothic);
-    font-size:var(--fs-6);
-    color:var(--ink-faint);
-    line-height:var(--lh-normal);
-  }
-  .soon b{font-family:var(--logo); font-weight:var(--w-bold); color:var(--ink-soft); font-size:var(--fs-5);}
-
-  /* 문의 — 면을 걷고 괘선 한 줄. 위의 살구 카드들과 힘을 겨루지 않는다 */
-  .ask{
-    margin-top:var(--sp-5);
-    background:transparent;
-    border:0;
-    border-top:1px solid var(--line-soft);
-    border-radius:0;
-    padding:var(--sp-3) 0 0;
+    padding:1.5rem 1.6rem;
     font-family:var(--gothic);
     font-size:var(--fs-6);
     color:var(--ink-soft);
     line-height:var(--lh-normal);
   }
-  .ask .h{font-family:var(--logo); font-weight:var(--w-bold); font-size:var(--fs-4);
-    line-height:var(--lh-snug); letter-spacing:var(--ls-lg); color:var(--ink); margin-bottom:.5rem;}
-  .ask a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
-  .ask a:hover{border-color:var(--terra);}
-  .ask .hours{color:var(--ink-faint); font-size:var(--fs-7);}
+  .soon b{font-family:var(--logo); font-weight:var(--w-bold); color:var(--ink); font-size:var(--fs-4);}
+
+  /* 문의 — 면 없이 구역 틀(.sec) 한 칸. 위의 살구 카드와 힘을 겨루지 않는다 */
+  .askbody{
+    font-family:var(--gothic);
+    font-size:var(--fs-6);
+    color:var(--ink-soft);          /* 순백 위 9.01 */
+    line-height:var(--lh-normal);
+    max-width:34em;
+  }
+  .askbody a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
+  .askbody a.kakao-btn{border-bottom:0;}
+  .askbody a:hover{border-color:var(--terra);}
+  .askbody .hours{color:var(--ink-soft); font-size:var(--fs-6); display:block; margin-top:var(--sp-2);}
+
+  /* 폰에서는 두 칸이 세로로 쌓인다 — 면이 없으므로 카드가 고아가 되지 않도록
+     칸 사이에 숨을 준다(호박 획은 그대로 두어 「모집 중」 표식을 잃지 않는다) */
+  @media (max-width:860px){
+    .classlist{grid-template-columns:1fr; gap:var(--sp-3);}
+    .cls{padding:.2rem 0 0 1.1rem;}
+  }
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<main>
 
-  <a class="backlink" href="/">← 포근나루</a>
+  <div class="shell">
 
-  <div class="kicker fade">CLASS</div>
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
 
-  <header class="fade">
-    <h1>클래스</h1>
-    <p class="lead">포근나루에서 함께 읽고 쓰는 자리입니다. <b>가르치지 않고 함께 씁니다.</b> 새벽에는 각자의 글을, 밤에는 함께 읽은 책을 사이에 둡니다.</p>
-    <div class="amber-line"></div>
-  </header>
+    <header class="pagehead fade">
+      <div class="kicker">CLASS</div>
+      <h1>클래스</h1>
+      <p class="lead">포근나루에서 함께 읽고 쓰는 자리입니다. <b>가르치지 않고 함께 씁니다.</b> 새벽에는 각자의 글을, 밤에는 함께 읽은 책을 사이에 둡니다.</p>
+    </header>
 
   <div class="classlist">
 
@@ -134,7 +147,7 @@
         <span>월 20,000원</span>
         <span>상시 신청</span>
       </div>
-      <span class="go">자세히 보기 →</span>
+      <span class="go">자세히 보기</span>
     </a>
 
     <a class="cls fade d2" href="/class/naru-night.html">
@@ -149,7 +162,7 @@
         <span>분기 70,000원</span>
         <span>10월 20일 시작 · 모집 중</span>
       </div>
-      <span class="go">자세히 보기 →</span>
+      <span class="go">자세히 보기</span>
     </a>
 
     <!-- 준비 중인 클래스(문장한줌 등)를 알릴 때 이 카드를 씁니다. 지금은 운영 중인 것만 둡니다.
@@ -161,19 +174,24 @@
 
   </div>
 
-  <section class="ask fade d3">
-    <div class="h">먼저 물어보고 싶으시면</div>
-    카카오채널 <b>'포근나루'</b> 1:1 상담이나 <a href="mailto:pognaru@naver.com">pognaru@naver.com</a>으로 편히 남겨주세요.<br>
-    <p style="margin-top:1rem;">
-      <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
-        카카오채널 문의하기
-      </a>
-    </p>
-    <span class="hours">상담은 평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.</span>
-  </section>
+    <!-- 문의 — 카드 안 .h 였던 말을 h2 로 올렸습니다(문구 그대로). -->
+    <section class="sec fade d3">
+      <div>
+        <h2 class="sec-title">먼저 물어보고 싶으시면</h2>
+      </div>
+      <div class="askbody">
+        카카오채널 <b>'포근나루'</b> 1:1 상담이나 <a href="mailto:pognaru@naver.com">pognaru@naver.com</a>으로 편히 남겨주세요.
+        <p style="margin-top:1.2rem;">
+          <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
+            카카오채널 문의하기
+          </a>
+        </p>
+        <span class="hours">상담은 평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.</span>
+      </div>
+    </section>
 
-  <footer class="sitefoot fade d4">
+    <footer class="sitefoot fade d4">
     <nav>
       <a href="/">포근나루</a>
       <a href="/weekly/">한 주의 새벽</a>
@@ -181,9 +199,10 @@
       <a href="/books/">책</a>
       <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
     </nav>
-    고요히, 마음에 머무는 글을 전하는
-    <span class="brand">POGNARU STUDIO</span>
-  </footer>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+  </div>
 
 </main>
 

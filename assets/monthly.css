@@ -6,17 +6,23 @@
    호박(--amber)은 선·점 전용, 글자는 진테라코타(--terra).
 
    2026-09-06 · 나무🌳 종수 정리 — 반경 4종(14/3/10/12px)을 2종(--r-s/--r-m)으로,
-   행간 4값을 4종 토큰으로 접었다. 그래프 카드의 흰 면은 크림 바탕과 1.035라
-   사실상 경계가 없어 살구(1.168)로 바꾸고 테두리를 걷었다.
+   행간 4값을 4종 토큰으로 접었다.
+   2026-09-12 · 「폭을 풀다」 전면 적용 — 그래프·고지·해설의 색면을 전부 걷고
+   괘선으로 눕혔다. 이 파일에 남은 면은 0이고 반경도 0이다.
    ============================================================ */
 
-/* ---------- 그래프 카드 ---------- */
+/* ---------- 그래프 블록 ----------
+   2026-09-12: 살구 면을 걷고 머리카락 괘선으로 눕혔다.
+   그래프가 넷씩 이어지는 페이지라 면이 넷이면 그것만으로 벽이 된다
+   (「목록은 카드로 쌓지 않는다」와 같은 이유). 그래프 자체가 이미
+   색을 가진 그림이므로 뒤에 면을 더 깔 필요가 없다. */
 .chart{
-  background:var(--apricot);
+  background:transparent;
   border:0;
-  border-radius:var(--r-m);
-  padding:1.2rem 1.25rem 1.05rem;
-  margin-bottom:.6rem;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  padding:1.4rem 0 1.6rem;
+  margin-bottom:0;
 }
 .chart .ct{
   font-family:var(--logo);
@@ -31,10 +37,15 @@
   font-family:var(--gothic);
   font-size:var(--fs-7);
   line-height:var(--lh-normal);
-  color:var(--ink-soft);        /* 살구 면 위 — faint(4.71) 대신 soft(7.46) */
+  color:var(--ink-soft);        /* 살구 면 위 — faint(5.20) 대신 soft(8.24) */
   margin-bottom:.9rem;
 }
 .chart svg{display:block;width:100%;height:auto;}
+
+/* 범례 조각(■) — 바랜 살구 #C7B49B 는 순백 위 2.01 이다. 글자였다면
+   못 썼을 값이지만 이건 막대의 색을 그대로 가리키는 표식이라 색을
+   바꿀 수 없다. 대신 가는 잉크 테를 둘러 형태가 보이게 한다. */
+.chart .cc span{-webkit-text-stroke:.4px rgba(60,36,21,.55);}
 
 /* 좁은 화면에서 그래프만 가로로 흐르게 — 본문은 절대 넘치지 않는다 */
 .chart .scroll-x > svg{min-width:440px;}
@@ -64,12 +75,19 @@
   font-size:var(--fs-6);
   line-height:var(--lh-normal);
   color:var(--ink-soft);
-  background:var(--cream);
-  border-radius:var(--r-m);
-  padding:.8rem .95rem;
-  margin-top:.85rem;
+  background:transparent;
+  border-radius:0;
+  /* 그래프 계열 색(--g3 #D97E33)으로 둔다 — 2026-09-12.
+     이 줄은 그래프 카드 바로 밑에 붙어서 범례의 --g2 #E9A33A 견본과 나란히 놓인다.
+     형광 호박 #FFC61E 는 그 주황 곁에서 같은 계열로 뭉쳐 「어느 쪽이 그래프 색인가」를
+     흐렸다. 그래프 단계 색 --g1~--g5 는 명도 단계라 한 칸도 건드리지 않고,
+     부딪히는 쪽인 이 획만 그래프 계열로 옮긴다. 선이라 대비는 따지지 않는다. */
+  border-left:2px solid var(--g3);
+  padding:.1rem 0 .1rem 1.1rem;
+  margin-top:1.1rem;
+  max-width:var(--w-read);
 }
-/* 크림 면으로 돌아온 자리라 terra(5.13)를 쓸 수 있다 */
+/* 순백 바탕이라 terra(5.31)를 쓸 수 있다 */
 .gnote b{color:var(--terra);font-weight:var(--w-reg);}
 
 /* ---------- 범위 고지 ---------- */
@@ -78,10 +96,12 @@
   font-size:var(--fs-6);
   line-height:var(--lh-normal);
   color:var(--ink-soft);
-  background:var(--apricot);
-  border-radius:var(--r-m);
-  padding:.9rem 1.05rem;
-  margin-bottom:var(--sp-2);
+  background:transparent;
+  border-radius:0;
+  border-left:2px solid var(--line);
+  padding:.1rem 0 .1rem 1.1rem;
+  margin-bottom:var(--sp-3);
+  max-width:var(--w-read);
 }
 
 /* ---------- 월간 타임라인 — 주차 라벨이 날짜보다 길어 한 톤 크게 ---------- */
@@ -95,10 +115,10 @@
 }
 .tl .wk em{
   font-style:normal;
-  color:var(--ink-faint);
+  color:var(--ink-soft);
   margin-left:.4rem;
 }
 
 @media(max-width:520px){
-  .chart{padding:1rem 1rem .9rem;}
+  .chart{padding:1.2rem 0 1.3rem;}
 }

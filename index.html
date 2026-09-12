@@ -18,246 +18,315 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=260906">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  .home-wrap{
-    max-width:var(--measure);
-    margin:0 auto;
-    padding:clamp(4rem,16vw,7rem) 1.25rem var(--sp-3);
-  }
+  /* ════════════════════════════════════════════════
+     3차 · 2026-09-12 (다현씨 확정 세 가지)
+       ① 첫 화면에서 책 표지를 뺐습니다 — 「글만 남기고 마누엘로 가자」
+       ② 팔레트를 형광펜 계열로 (값은 base.css 머리에)
+       ③ 02 구역 이름 「둘러보기」 → 「나루터」
+     그 밖의 문구는 한 자도 바꾸지 않았습니다.
 
-  /* ── 첫 화면 ─────────────────────────────────────
-     260902 확정안 「바탕에 눕다 + 첫 화면 살구 면」.
-     지금 현관에서 살구는 0회 쓰였고 흰색이 6면을 덮고 있었다.
-     그 여섯 면을 살구로 바꾸고, 첫 화면을 살구 전폭 면으로 깐다.
-     경계는 선이 아니라 면과 면의 색차(1.168)와 여백이 낸다. */
+     현관 — 「폭을 풀다」 시안 2차 · 2026-09-09
+     1차에서 바뀐 것은 여섯 가지입니다(다현씨 지시).
+       ① 바탕을 아주 연한 크림(#FEFDFA)으로
+       ② 아래 세 단을 끌어올림 — 작은 글씨에서 흐린 색(ink-faint)을 걷음
+       ③ 화살표 전부 제거 — 호버 색 변화가 이미 「눌리는 자리」를 말한다
+       ④ 「이 주의 새벽 읽기」를 없애고 최신 회고 블록 전체를 링크로
+       ⑤ 이 구역의 명시적 링크는 「지난 새벽 모두 보기」 하나
+       ⑥ 01 구역 이름을 「선릿모닝」으로
+     그 밖의 문구는 한 자도 바꾸지 않았습니다.
+     ════════════════════════════════════════════════ */
+
+  .home{padding-top:clamp(3rem,7vw,5.5rem);}
+
+  /* ── 첫 화면 ─────────────────────────────────
+     2026-09-12 다현씨: 「글만 남기고 마누엘로 가자」 —
+     오른쪽 칸의 책 표지를 뺐습니다. 책이 한 권인데 현관 절반을
+     표지가 차지하면 「이 출판사엔 이것뿐」으로 읽히기 때문입니다.
+     책으로 가는 길은 02 「나루터」의 '책' 칸 하나로 남습니다.
+
+     두 칸을 한 칸으로 돌리되 왼쪽에 몰리지 않게 --w-mid(880px)로
+     받칩니다. 1180px 폭 안에서 글줄이 이름-태그라인의 무게를
+     그대로 받아, 오른쪽이 「비어 있다」가 아니라 「열려 있다」가 됩니다. */
   .hero{
-    text-align:center;
-    margin-bottom:var(--sp-5);
-    position:relative;
+    display:block;
+    max-width:var(--w-mid);
+    padding-bottom:var(--sp-5);
   }
-  .hero::before{
-    content:"";
-    position:absolute;
-    left:50%; transform:translateX(-50%);
-    width:100vw;
-    top:-7rem; bottom:-3.2rem;
-    background:var(--apricot);
-    z-index:0;
-  }
-  .hero > *{position:relative;z-index:1;}
 
-  /* 워드마크가 곧 이 페이지의 h1 이다. 보이는 모습은 그대로 두고 뜻만 준다.
-     자간 .12em 은 4단 밖의 브랜드 자산값이라 토큰으로 접지 않는다. */
   h1.logo{
     font-family:var(--logo);
     font-weight:var(--w-bold);
-    font-size:var(--fs-1);
+    font-size:var(--fs-1);        /* 68px — 본문의 4.25배 */
     letter-spacing:var(--ls-logo);
-    color:var(--ink);          /* 살구 위 11.94 */
+    color:var(--ink);
     line-height:var(--lh-tight);
-    margin-bottom:0;
+    margin:0;
   }
   .logo-en{
     font-family:var(--gothic);
-    font-size:var(--fs-8);
-    letter-spacing:.34em;      /* 워드마크 짝 — 자산값 */
-    color:var(--ink-soft);     /* 살구 위 7.46 (ink-faint 4.71은 쓰지 않는다) */
-    margin-top:.85rem;
+    font-size:var(--fs-8);        /* 13px — 11.2px 였다 */
+    letter-spacing:.34em;         /* 워드마크 짝 — 자산값 */
+    color:var(--ink-soft);        /* 순백 위 9.01 — 작은 글씨에 흐린 색을 겹치지 않는다 */
+    margin-top:1rem;
   }
-  .hero .amber-line{margin:1.6rem auto;}
+  .hero .amber-line{margin:1.9rem 0;}
   .tagline{
     font-family:var(--serif);
-    font-size:var(--fs-5);
+    font-size:var(--fs-4);        /* 18.4px */
     letter-spacing:var(--ls-md);
-    color:var(--ink);          /* 살구 위 11.94 */
+    color:var(--ink-soft);        /* 순백 위 9.01 */
     line-height:var(--lh-loose);
-    margin-top:1.4rem;
+    max-width:24em;
   }
 
-  /* ── 구역 ──────────────────────────────────────
-     지금까지 현관에는 h1도 h2도 하나 없었다. 크기가 12단이나 있는데도
-     평평했던 진짜 이유가 이것이다 — 눈이 붙잡을 층이 없었다. */
-  .home-sec{margin-top:var(--sp-5);}
-  .home-sec:first-of-type{margin-top:0;}
-  .home-sec .sec-title{margin-top:0;}
+  /* ── 구역 공통 ─────────────────────────────
+     .sec / .secnote 는 base.css 로 올렸습니다(2026-09-12) —
+     목록·안내 페이지도 같은 문법을 쓰기 때문입니다. */
 
-  .latest-note{
-    font-family:var(--gothic);
-    font-size:var(--fs-6);
-    color:var(--ink-soft);
-    line-height:var(--lh-normal);
-    margin:-.4rem 0 var(--sp-2);
-    text-wrap:balance;
-  }
-
-  /* 지난주의 새벽 — 살구 면 + 왼쪽 호박 획 하나.
-     호박은 여기서 정보를 나르지 않는 장식이라 살구 위(1.78)에 남길 수 있다. */
+  /* ── 01 지난주의 새벽 ─────────────────────────
+     면을 걷고 제목만 크게 세웁니다(40px 급의 두 번째 층).
+     「이 주의 새벽 읽기」 줄은 없앴습니다. 대신 이 블록 전체가 링크이고,
+     마우스를 올리면 블록 배경이 살구로 바뀝니다.
+     box-shadow 로 면을 바깥으로 1rem 넓혀 두었습니다 — padding 을 주면
+     아래 「지난 새벽 모두 보기」와의 왼쪽 선이 어긋나기 때문입니다. */
   .latest{
-    display:flex;
-    align-items:center;
-    gap:1rem;
-    position:relative;
-    overflow:hidden;
-    background:var(--apricot);
-    border:0;
-    border-radius:var(--r-m);
-    box-shadow:none;
-    padding:1.3rem 1.4rem 1.3rem 1.7rem;
+    display:block;
     text-decoration:none;
     color:inherit;
-    transition:background .2s ease;
+    border-radius:var(--r-s);
+    margin-bottom:var(--sp-3);
+    transition:background .2s ease, box-shadow .2s ease;
   }
-  .latest::before{
-    content:"";
-    position:absolute;
-    left:0; top:0; bottom:0;
-    width:3px;
-    background:var(--amber);
+  .latest:hover{
+    background:var(--tint);
+    box-shadow:0 0 0 1rem var(--tint);
   }
-  .latest:hover{background:var(--apricot-hi);}
-  .latest .body{flex:1;min-width:0;}
-  /* 셋 다 <span>이라 기본값이 inline이었다. 그대로 두면 날짜·제목·요약이
-     한 문단으로 이어 붙고 아래 margin-bottom도 먹지 않는다. */
-  .latest .eyebrow,
-  .latest .t,
-  .latest .d{display:block;}
   .latest .eyebrow{
+    display:block;
     font-family:var(--gothic);
-    font-size:var(--fs-8);
+    font-size:var(--fs-8);        /* 13px — 11.2px 였다 */
     letter-spacing:var(--ls-label);
     line-height:var(--lh-normal);
-    color:var(--ink-soft);     /* 살구 위라 terra(4.39)를 쓰지 않는다 */
-    margin-bottom:.3rem;
+    color:var(--terra);           /* 순백 위 5.31 · 호버 면 위 4.96 */
+    margin-bottom:.7rem;
   }
   .latest .t{
+    display:block;
     font-family:var(--logo);
     font-weight:var(--w-bold);
-    font-size:var(--fs-3);
-    line-height:var(--lh-snug);
-    letter-spacing:var(--ls-lg);
+    font-size:var(--fs-2);        /* 40px */
+    line-height:var(--lh-tight);
+    letter-spacing:var(--ls-xl);
     color:var(--ink);
-    margin-bottom:.2rem;
+    margin-bottom:.7rem;
+    text-wrap:balance;
   }
   .latest .d{
-    font-family:var(--gothic);
-    font-size:var(--fs-7);
-    line-height:var(--lh-normal);
-    color:var(--ink-soft);
-  }
-  .latest .arrow{
-    flex:none;
-    color:var(--ink);
+    display:block;
+    font-family:var(--serif);
     font-size:var(--fs-4);
-    transition:transform .2s ease;
+    line-height:var(--lh-loose);
+    color:var(--ink-soft);
+    max-width:32em;
   }
-  .latest:hover .arrow{transform:translateX(4px);}
+  .latest:hover .t{color:var(--terra);}
 
-  /* 목록으로 가는 길 — 알약을 눕히고 면을 걷는다. 밑줄 링크 한 줄 */
-  .more{margin-top:var(--sp-2);}
+  /* 이 구역에 남은 단 하나의 명시적 링크 */
   .more a{
     font-family:var(--gothic);
-    font-size:var(--fs-7);
+    font-size:var(--fs-6);        /* 15.5px — 12.5px 였다 */
     letter-spacing:var(--ls-md);
-    color:var(--terra);        /* 크림 바탕 5.13 */
+    color:var(--terra);
     text-decoration:none;
     border-bottom:1px solid rgba(169,83,42,.35);
     padding-bottom:2px;
   }
   .more a:hover{border-bottom-color:var(--terra);}
 
-  .askline{text-align:center;}
-  .askline .sec-title{justify-content:center;}
+  /* ── 02 나루터 ─────────────────────────────
+     카드 면을 걷고 세로 괘선 3칸으로. 면·테두리·그림자 전부 0.
+     화살표를 지운 자리는 호버 살구 면이 대신합니다. */
+  .cols{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:0;
+  }
+  .cols > a{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    padding:.2rem clamp(1rem,2.4vw,1.8rem) 1.2rem;
+    border-left:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .cols > a:first-child{padding-left:0;border-left:0;}
+  .cols > a:hover{background:var(--tint);}
+  .cols .it{
+    font-family:var(--logo);
+    font-weight:var(--w-bold);
+    font-size:var(--fs-3);        /* 24px */
+    line-height:var(--lh-snug);
+    letter-spacing:var(--ls-lg);
+    color:var(--ink);
+    margin-bottom:.55rem;
+  }
+  .cols .id{
+    font-family:var(--gothic);
+    font-size:var(--fs-6);        /* 15.5px — 12.5px 였다 */
+    line-height:var(--lh-normal);
+    color:var(--ink-soft);        /* 순백 위 9.01 · 호버 면 위 8.43 */
+  }
+
+  /* ── 03 문의 · 어두운 발치 ────────────────────
+     크림에서 살구 판을 거쳐 잉크로. 밝기가 세 층으로 굽으면
+     색을 더 쓰지 않고도 페이지에 시작·중간·끝이 생깁니다. */
+  .ask{
+    display:grid;
+    grid-template-columns:minmax(0,15.5rem) minmax(0,1fr);
+    gap:clamp(1.4rem,4vw,3.5rem);
+  }
+  .ask .sec-title{color:var(--cream);}
+  .ask .kakao-btn{margin-bottom:1.4rem;}
+  .ask p{
+    font-family:var(--gothic);
+    font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
+    line-height:var(--lh-normal);
+    color:rgba(254,253,250,.82);    /* 잉크 위 10.00 (.7 이면 7.70) */
+    max-width:34em;
+  }
+
+  /* ── 폰 ──────────────────────────────────────
+     좁은 화면에서는 한 칸으로 접습니다. 접히는 차례는
+     이름, 01, 02, 03 차례로 PC와 같습니다.
+     (.hero 는 표지를 걷어낸 뒤로 폭마다 한 칸이라 여기서 손댈 것이 없습니다.) */
+  @media (max-width:860px){
+    .sec,.ask{grid-template-columns:1fr;gap:var(--sp-2);}
+    .cols{grid-template-columns:1fr;}
+    .cols > a{
+      border-left:0;
+      border-top:1px solid var(--line);
+      padding:1.3rem 0;
+    }
+    .cols > a:first-child{padding-top:1.3rem;}
+  }
 </style>
 </head>
 <body>
 
-<main class="home-wrap">
+<main class="home">
 
-  <header class="hero fade">
-    <h1 class="logo">포근나루</h1>
-    <div class="logo-en">POGNARU STUDIO</div>
-    <div class="amber-line center"></div>
-    <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루입니다.</p>
-  </header>
+  <div class="shell">
 
-  <section class="home-sec fade d1">
-    <h2 class="sec-title">지난주의 새벽</h2>
-    <!-- '한 주씩'·'그 결을'은 &nbsp;로 묶는다. 안 묶으면 좁은 화면에서 그 사이가 갈린다 -->
-    <p class="latest-note">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
+    <header class="hero fade">
+      <div>
+        <h1 class="logo">포근나루</h1>
+        <div class="logo-en">POGNARU STUDIO</div>
+        <div class="amber-line"></div>
+        <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루입니다.</p>
+      </div>
+      <!-- 2026-09-12 다현씨 확정: 책 표지 블록을 여기서 뺐습니다.
+           표지 파일(/assets/cover-sunlit-days-1.jpg)은 /books/ 가 쓰므로
+           지우지 않았습니다. -->
+    </header>
 
-    <a class="latest" href="/weekly/260906.html">
-      <span class="body">
-        <!-- 「지난주의 새벽」이 바로 위 h2 로 올라갔으므로 여기서는 날짜만 남긴다.
-             같은 말이 두 번 나오면 h2 가 제목으로 안 읽힌다. -->
-        <span class="eyebrow">2026.08.31 — 09.06</span>
-        <span class="t">기교가 아니라 태도라면</span>
-        <span class="d">붙들기를 그만두자 잠이, 문장이, 자랑이 돌아온 한 주</span>
-      </span>
-      <span class="arrow" aria-hidden="true">→</span>
-    </a>
+    <section class="sec fade d1">
+      <div class="lead-col">
+        <!-- 번호만 새로 넣었습니다(구조 기호). 이름은 h2가 맡습니다 — 같은 말을
+             라벨과 제목에 두 번 쓰면 h2가 제목으로 안 읽힙니다(260906에 배운 것). -->
+        <div class="seclabel"><span class="n">01</span><span class="bar"></span></div>
+        <!-- ⚠️ 2026-09-09 다현씨: 구역 이름을 「선릿모닝」으로 바꿉니다.
+             독자가 「그 시간에 쓴 글」이라는 것을 바로 알아채게 하기 위함입니다.
+             한글로 쓰는 근거 — 사이트 안 표기가 「선릿모닝」 41회 대
+             「SUNLIT MORNING」 1회이고, 클래스 안내판 h1도 한글입니다.
+             ⚠️ 클래스 안내판(/class/sunlit-morning.html)과 이름이 겹칩니다.
+             바로 아래 .secnote 가 성격을 밝히는 자리이므로 두 단 키웠습니다. -->
+        <h2 class="sec-title">선릿모닝</h2>
+        <!-- '한 주씩'·'그 결을'은 &nbsp;로 묶는다. 안 묶으면 좁은 화면에서 그 사이가 갈린다 -->
+        <p class="secnote">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
+      </div>
+      <div class="body-col">
+        <a class="latest" href="/weekly/260906.html">
+          <span class="eyebrow">2026.08.31 — 09.06</span>
+          <span class="t">기교가 아니라 태도라면</span>
+          <span class="d">붙들기를 그만두자 잠이, 문장이, 자랑이 돌아온 한 주</span>
+        </a>
+        <p class="more"><a href="/weekly/">지난 새벽 모두 보기</a></p>
+      </div>
+    </section>
 
-    <p class="more"><a href="/weekly/">지난 새벽 모두 보기 →</a></p>
-  </section>
+    <section class="sec fade d2">
+      <div class="lead-col">
+        <!-- ⚠️ 2026-09-12 다현씨: 260906에 새로 넣었던 「둘러보기」를
+             「나루터」로 바꿉니다. 브랜드 정의의 「나루: 쉬어가는 나루터 →
+             강을 건너는 곳」에서 온 말이고, 이 구역에 놓인 클래스·독서 자료·책이
+             전부 「건네는 것들」이라 이름과 내용이 한 몸입니다.
+             「나루의 밤」과도 계열이 맞습니다. -->
+        <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
+        <h2 class="sec-title">나루터</h2>
+      </div>
+      <div class="body-col">
+        <div class="cols">
+          <a href="/class/">
+            <div class="it">클래스</div>
+            <div class="id">선릿모닝 · 나루의 밤 — 함께 읽고 쓰는 자리</div>
+          </a>
+          <a href="/reading/">
+            <div class="it">독서 자료</div>
+            <div class="id">나루의 밤 토론 자료와 개인 독서 기록</div>
+          </a>
+          <a href="/books/">
+            <div class="it">책</div>
+            <div class="id">파도는 여전히 하얗다 — Sunlit Days 1</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <section class="home-sec fade d2">
-    <!-- ⚠️ 「둘러보기」 세 글자만 이번에 새로 넣었습니다. 기존 문구가 아니라
-         다현씨 확인이 필요한 자리입니다. 빼거나 다른 말로 바꾸실 수 있습니다. -->
-    <h2 class="sec-title">둘러보기</h2>
-    <div class="card-grid">
-      <a class="info-card" href="/class/">
-        <div class="it">클래스</div>
-        <div class="id">선릿모닝 · 나루의 밤 — 함께 읽고 쓰는 자리</div>
-      </a>
-      <a class="info-card" href="/reading/">
-        <div class="it">독서 자료</div>
-        <div class="id">나루의 밤 토론 자료와 개인 독서 기록</div>
-      </a>
-      <a class="info-card" href="/books/">
-        <div class="it">책</div>
-        <div class="id">파도는 여전히 하얗다 — Sunlit Days 1</div>
-      </a>
-    </div>
-  </section>
-
-  <section class="home-sec askline fade d3">
-    <!-- 기존 .askline .h 를 h2 로 올렸습니다. 문구는 그대로입니다. -->
-    <h2 class="sec-title">궁금한 것이 있으시면</h2>
-    <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
-      카카오채널 문의하기
-    </a>
-    <p class="kakao-hours">
-      평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.
-    </p>
-  </section>
+  </div>
 
   <!-- ============================================================
        앞으로 붙을 자리 — 소개(/about/)
-       클래스는 2026-08-01에 열어 위 카드 그리드에 넣었다.
-       소개를 열 때 아래 카드를 위 .card-grid 안으로 옮기면 된다.
-       ※ 카드가 넷이 되면 .card-grid 는 3열 고정이라 넷째가 홀로 둘째 줄에 선다.
-          그때 repeat(2,1fr) 2열로 바꾼다.
+       카드가 넷이 되면 .cols 를 repeat(2,1fr) 2열로 바꾼다.
 
-      <a class="info-card" href="/about/">
+      <a href="/about/">
         <div class="it">소개</div>
         <div class="id">먼저 건넌 사람이 아직 건너지 못한 사람에게 건네는 자리</div>
       </a>
        ============================================================ -->
 
-  <footer class="sitefoot fade d4">
-    <nav>
-      <a href="/class/">클래스</a>
-      <a href="/weekly/">한 주의 새벽</a>
-      <a href="/books/">책</a>
-      <a href="/reading/">독서</a>
-      <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
-    </nav>
-    <span class="brand">POGNARU STUDIO</span>
-  </footer>
+  <div class="darkband fade d3">
+    <div class="shell">
+      <section class="ask">
+        <div>
+          <div class="seclabel"><span class="n">03</span><span class="bar"></span></div>
+          <h2 class="sec-title">궁금한 것이 있으시면</h2>
+        </div>
+        <div>
+          <a class="kakao-btn" href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.5.5.1 1 .1 1.5.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3z"/></svg>
+            카카오채널 문의하기
+          </a>
+          <p>평일 06시~18시에 답해드립니다. 주말과 공휴일에 남기신 말씀은 다음 평일에 답장드려요.</p>
+        </div>
+      </section>
+
+      <footer class="sitefoot">
+        <nav>
+          <a href="/class/">클래스</a>
+          <a href="/weekly/">한 주의 새벽</a>
+          <a href="/books/">책</a>
+          <a href="/reading/">독서</a>
+          <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
+        </nav>
+        <span class="brand">POGNARU STUDIO</span>
+      </footer>
+    </div>
+  </div>
 
 </main>
 
