@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소식 · 포근나루</title>
+<meta name="description" content="포근나루의 소식. 클래스 모집, 새로 여는 자리, 연휴 안내를 한 줄씩 적어 둡니다.">
+<link rel="canonical" href="https://pognaru.com/news/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="소식 · 포근나루">
+<meta property="og:description" content="포근나루에 새로 생긴 일을 한 줄씩 적어 둡니다.">
+<meta property="og:url" content="https://pognaru.com/news/">
+<meta property="og:site_name" content="포근나루">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/base.css?v=260913">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+<style>
+  /* ════════════════════════════════════════════════
+     소식 — 2026-09-13 신설 · 나무🌳
+
+     🔴 이 페이지의 규칙 — 세부를 적지 않습니다.
+        정확히는 「다른 페이지에 이미 있는 세부는 적지 않고,
+        소식에만 있는 사실은 적는다」입니다.
+        날짜·가격·장소·시간·신청 방법은 클래스 목록과 각 안내판이
+        이미 가지고 있습니다. 여기에까지 적으면 같은 사실이 네 곳에
+        적히고, 하나를 고칠 때 넷을 고쳐야 합니다.
+        소식은 「변화」를 알리고, 안내판이 「상태」를 갖습니다.
+
+     한 건의 형태는 둘입니다.
+       ① 링크형 — 날짜 + 한 줄 + 안내판 링크  (<a class="row-item">)
+       ② 인사형 — 날짜 + 한 줄 (+ 소식에만 있는 사실 한 줄). 링크 없음
+                  (<div class="row-item note">)
+
+     골격은 base.css 의 .rowlist / .row-item 을 그대로 씁니다.
+     .row-item .t 는 19.2px 로 「한 주의 새벽」 목록의 행(24px)보다
+     한 단 아래입니다 — 소식은 더 가벼운 자리이기 때문입니다.
+     ════════════════════════════════════════════════ */
+
+  /* 날짜 칩 — base.css 의 .stamp 는 3.6rem 고정 폭 terra 글자입니다.
+     여기서는 연도까지 적으므로 폭을 풀고 살구 칩으로 둡니다(살구 위 ink 13.19).
+     이 페이지에 살구가 남는 유일한 자리입니다 — 면적은 1%가 안 되지만
+     「살구가 0%가 되면 포근나루가 아니다」를 지키는 자리입니다. */
+  .row-item .stamp{
+    width:auto;
+    color:var(--ink);
+    background:var(--apricot);
+    border-radius:var(--r-s);
+    padding:.2rem .6rem;
+  }
+
+  /* 인사형 — 갈 안내판이 없는 건입니다.
+     링크가 아니므로 호버 면(「눌리는 자리」 신호)을 걷습니다.
+     대신 글자·칩·괘선은 링크형과 한 값도 다르게 두지 않습니다 —
+     흐리게 하면 그 순간 「사소한 것」이 됩니다. */
+  .row-item.note{cursor:default;}
+  .row-item.note:hover{background:transparent;}
+
+  @media (max-width:560px){
+    .row-item{flex-wrap:wrap;gap:.55rem;}
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <div class="shell">
+
+    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
+
+    <header class="pagehead fade">
+      <div class="kicker">NEWS</div>
+      <h1>소식</h1>
+      <p class="lead">포근나루에 새로 생긴 일을 한 줄씩 적어 둡니다.<br>자세한 내용은 <b>각 안내 페이지</b>에 있습니다.</p>
+    </header>
+
+    <!-- 새 소식은 이 목록 맨 위에 넣습니다 (최신이 위) -->
+    <div class="rowlist fade d1">
+
+      <!-- ① 링크형 -->
+      <a class="row-item" href="/class/naru-night.html">
+        <div class="stamp">2026.09.13</div>
+        <div class="info">
+          <div class="t">나루의 밤 4분기 모집을 시작했습니다</div>
+          <div class="d">나루의 밤 안내</div>
+        </div>
+      </a>
+
+      <!-- ② 인사형 — 갈 안내판이 없어 링크를 걸지 않았습니다.
+           연휴 동안 답장이 늦어진다는 사실은 다른 어느 페이지에도 없으므로
+           여기 적습니다(중복이 아닙니다). -->
+      <div class="row-item note">
+        <div class="stamp">2026.09.13</div>
+        <div class="info">
+          <div class="t">추석 연휴, 고요한 며칠 보내시기를</div>
+          <div class="d">9월 24일(목)부터 27일(일)까지 카카오채널에 남기신 말씀은 연휴가 끝난 뒤에 답장드립니다.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 소식이 하나도 없으면 위 .rowlist 를 통째로 지우고
+         아래 한 줄을 살려 두세요. 빈 목록을 남기지 않습니다.
+    <p class="caption fade d1" style="padding:var(--sp-3) 0;">아직 전해드릴 소식이 없습니다.</p>
+    -->
+
+    <footer class="sitefoot fade d2">
+    <nav>
+      <a href="/">포근나루</a>
+      <a href="/class/">클래스</a>
+      <a href="/weekly/">한 주의 새벽</a>
+      <a href="/books/">책</a>
+      <a href="/reading/">독서</a>
+      <a href="https://pf.kakao.com/_AxbxmxhX/chat" target="_blank" rel="noopener">문의</a>
+    </nav>
+      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+    </footer>
+
+  </div>
+
+</main>
+
+</body>
+</html>
