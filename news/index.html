@@ -17,6 +17,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/base.css?v=260913">
+<!-- 댓글 API 배포 후 HTTPS 주소를 넣습니다. 관리자 토큰은 넣지 않습니다. -->
+<meta name="comments-api" content="https://pognaru-news-comments.pages.dev/api/comments">
+<link rel="stylesheet" href="/news/comments.css?v=260913">
+<script src="/news/comments.js?v=260913" defer></script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
@@ -84,24 +88,34 @@
     <div class="rowlist fade d1">
 
       <!-- ① 링크형 -->
-      <a class="row-item" href="/class/naru-night.html">
+      <a class="row-item" data-news-id="260913-narunight-q4" href="/class/naru-night.html">
         <div class="stamp">2026.09.13</div>
         <div class="info">
           <div class="t">나루의 밤 4분기 모집을 시작했습니다</div>
           <div class="d">나루의 밤 안내</div>
         </div>
       </a>
+      <details class="news-comments" data-news-id="260913-narunight-q4">
+        <summary>댓글 읽고 남기기<span class="comment-context"> · 나루의 밤 4분기 모집</span></summary>
+        <div class="comments-content"></div>
+        <noscript><p class="caption">댓글을 읽고 남기려면 자바스크립트를 켜 주세요.</p></noscript>
+      </details>
 
       <!-- ② 인사형 — 갈 안내판이 없어 링크를 걸지 않았습니다.
            연휴 동안 답장이 늦어진다는 사실은 다른 어느 페이지에도 없으므로
            여기 적습니다(중복이 아닙니다). -->
-      <div class="row-item note">
+      <div class="row-item note" data-news-id="260913-chuseok">
         <div class="stamp">2026.09.13</div>
         <div class="info">
-          <div class="t">반가운 얼굴들과 넘치는 한가위 보내세요</div>
+          <div class="t">반가운 얼굴과 넉넉한 한가위 보내세요</div>
           <div class="d">9월 24일(목)부터 27일(일)까지 카카오채널에 남기신 말씀은 연휴가 끝난 뒤에 답장드립니다.</div>
         </div>
       </div>
+      <details class="news-comments" data-news-id="260913-chuseok">
+        <summary>댓글 읽고 남기기<span class="comment-context"> · 한가위 인사</span></summary>
+        <div class="comments-content"></div>
+        <noscript><p class="caption">댓글을 읽고 남기려면 자바스크립트를 켜 주세요.</p></noscript>
+      </details>
 
     </div>
 

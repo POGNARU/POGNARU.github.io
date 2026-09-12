@@ -1,0 +1,26 @@
+/* 소식 전용. 공통 토큰을 그대로 이어 씁니다. */
+.news-comments{border-bottom:1px solid var(--line-soft);padding:var(--sp-1) 0 var(--sp-2);}
+.rowlist > .row-item{border-bottom:0;}
+.news-comments summary{cursor:pointer;font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--terra);padding:var(--sp-1);min-height:44px;}
+.news-comments summary:hover{background:var(--tint);}
+.comment-context{color:var(--ink-soft);}
+.comments-content{max-width:var(--w-read);padding:var(--sp-2) var(--sp-1) 0;}
+.comments-list{list-style:none;}
+.comment-item{padding:var(--sp-2) 0;border-bottom:1px solid var(--line-soft);}
+.comment-meta{display:flex;flex-wrap:wrap;gap:var(--sp-1) var(--sp-2);font-family:var(--gothic);font-size:var(--fs-7);line-height:var(--lh-normal);color:var(--ink-faint);}
+.comment-name{color:var(--ink);font-weight:var(--w-bold);}
+.comment-body{white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;color:var(--ink-soft);font-size:var(--fs-5);line-height:var(--lh-loose);margin-top:var(--sp-1);}
+.comment-form{margin-top:var(--sp-3);font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);}
+.comment-form label{display:block;margin-top:var(--sp-2);margin-bottom:var(--sp-1);}
+.comment-form input,.comment-form textarea{display:block;width:100%;max-width:100%;min-width:0;border:1px solid var(--ink-faint);border-radius:var(--r-s);background:var(--cream);color:var(--ink);font-family:var(--gothic);font-size:var(--fs-5);line-height:var(--lh-normal);padding:var(--sp-1) var(--sp-2);}
+.comment-form textarea{resize:vertical;min-height:8rem;}
+.comment-form fieldset{border:0;min-width:0;}
+.comment-form legend{font-family:var(--logo);font-size:var(--fs-4);font-weight:var(--w-bold);line-height:var(--lh-snug);}
+.comment-hint,.comment-status{font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--ink-soft);margin:var(--sp-1) 0;}
+.comment-status[data-error="true"]{color:var(--terra);}
+.comment-actions{display:flex;align-items:center;flex-wrap:wrap;gap:var(--sp-2);margin-top:var(--sp-2);}
+.news-comments button{cursor:pointer;min-height:44px;}
+.news-comments button:disabled{cursor:wait;}
+.news-comments :focus-visible{outline:2px solid var(--terra);outline-offset:3px;}
+.news-comments [hidden]{display:none!important;}
+.comment-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
