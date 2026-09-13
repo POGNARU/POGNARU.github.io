@@ -1,6 +1,9 @@
 /* 소식 전용. 공통 토큰을 그대로 이어 씁니다. */
 .news-comments{border-bottom:1px solid var(--line-soft);padding:var(--sp-1) 0 var(--sp-2);}
-.rowlist > .row-item{border-bottom:0;}
+/* 2026-09-13 — 소식 건별 댓글을 걷었으므로 `.rowlist > .row-item{border-bottom:0}`
+   규칙을 없앴습니다. 그 규칙은 행 아래 괘선을 바로 뒤에 오던 댓글 토글이
+   대신 그려 주던 시절의 것인데, 지금은 목록 안에 토글이 없어
+   그대로 두면 행들이 괘선 없이 붙어 버립니다. */
 .news-comments summary{cursor:pointer;font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--terra);padding:var(--sp-1);min-height:44px;}
 .news-comments summary:hover{background:var(--tint);}
 .comment-context{color:var(--ink-soft);}

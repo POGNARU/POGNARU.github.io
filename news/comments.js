@@ -124,5 +124,18 @@
       });
       load();
     });
+
+    // 주소에 조각(#)이 달려 이 자리로 건너온 경우에는 펼쳐 둔다.
+    // 현관 03 「묻고 남기기」의 버튼이 /news/#guestbook 으로 보내는데,
+    // 도착해서 접힌 줄 하나만 보이면 「댓글을 못 찾는다」는 문제가 그대로다.
+    // details.open 을 코드로 바꾸면 toggle 이 발화하므로 위 초기화가 그대로 돈다.
+    const openIfTargeted = () => {
+      const id = location.hash.slice(1);
+      if (!id) return;
+      const host = details.closest('[id]');
+      if ((host && host.id === id) || details.id === id) details.open = true;
+    };
+    openIfTargeted();
+    window.addEventListener('hashchange', openIfTargeted);
   });
 })();

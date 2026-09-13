@@ -362,7 +362,11 @@
          소식이 하나도 없으면 이 <div> 덩어리를 통째로 지웁니다. -->
     <div class="newsline fade">
       <a class="nl-label" href="/news/">소식</a>
-      <a class="nl-t" href="/class/naru-night.html">나루의 밤 4분기 모집을 시작했습니다</a>
+      <!-- 2026-09-13 다현씨: 「현관의 소식을 누르면 소식페이지로 가고, 글을
+           클릭해야 소식과 연관된 페이지로」. 칩도 문장도 통째로 /news/ 입니다.
+           문장은 가장 최근 소식의 제목(미리보기)이고, 연관 페이지로 가는 길은
+           소식 목록의 그 행이 가집니다. -->
+      <a class="nl-t" href="/news/">나루의 밤 4분기 모집을 시작했습니다</a>
     </div>
 
     <section class="sec fade d1">
@@ -381,10 +385,10 @@
         <p class="secnote">새벽에 손 가는 대로 쓴 글을 한&nbsp;주씩 모아, 그&nbsp;결을 길어 올립니다.</p>
       </div>
       <div class="body-col">
-        <a class="latest" href="/weekly/260906.html">
-          <span class="eyebrow">2026.08.31 — 09.06</span>
-          <span class="t">기교가 아니라 태도라면</span>
-          <span class="d">붙들기를 그만두자 잠이, 문장이, 자랑이 돌아온 한 주</span>
+        <a class="latest" href="/weekly/260913.html">
+          <span class="eyebrow">지난주의 새벽 · 2026.09.07 — 09.13</span>
+          <span class="t">옳다는 건 누가 정하는 걸까</span>
+          <span class="d">꿈도 기준도 흐릿한 한 주, 남이 세운 기준 앞에서 내 기준을 찾았습니다.</span>
         </a>
         <p class="more"><a href="/weekly/">지난 새벽 모두 보기</a></p>
       </div>
@@ -460,11 +464,17 @@
           <!-- 열린 길 — 살구를 채운 면. 소식 한 건마다 댓글이 접혀 있습니다 -->
           <div class="way">
             <span class="wl">함께 보는 자리</span>
-            <a class="open-btn" href="/news/">
+            <!-- 2026-09-13 다현씨: /news/ 목록이 아니라 「건네는 말」 자리로 바로
+                 닿게 합니다. 소식 건마다 달린 댓글창은 말이 그 소식의 맥락에
+                 묶여서, 무엇을 써야 할지 모르게 됩니다. 「건네는 말」은
+                 소식과 상관없이 아무 말이나 남기는 열린 자리입니다.
+                 (도착해서 접힌 줄만 보이지 않도록 comments.js 가 조각(#)을 보고
+                  그 자리를 펼칩니다.) -->
+            <a class="open-btn" href="/news/#guestbook">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c.6 0 1 .4 1 1v11c0 .6-.4 1-1 1H9l-4.3 3.4c-.4.3-1 0-1-.5V5c0-.6.4-1 1-1zm3 4.5h10V7H7v1.5zm0 3.5h10v-1.5H7V12zm0 3.5h6V14H7v1.5z"/></svg>
-              소식에 말씀 남기기
+              건네는 말 남기기
             </a>
-            <p>소식 한 건마다 댓글 자리가 있습니다. 남기신 말씀은 오시는 분들께 함께 보입니다.</p>
+            <p>소식과 상관없이 하고 싶은 말씀을 남기는 자리입니다. 남기신 말씀은 오시는 분들께 함께 보입니다.</p>
           </div>
 
         </div>
