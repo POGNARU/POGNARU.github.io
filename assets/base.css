@@ -425,6 +425,7 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 /* ---------- 사이트 푸터 ---------- */
 .sitefoot{
   padding-top:var(--sp-3);
+  padding-bottom:var(--sp-4);
   font-family:var(--gothic);
   font-size:var(--fs-6);
   line-height:var(--lh-normal);
@@ -448,6 +449,7 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 }
 /* 어두운 층 안에 든 푸터 */
 .darkband .sitefoot{
+  padding-bottom:0;
   border-top:1px solid rgba(255,255,255,.16);
   color:rgba(255,255,255,.68);   /* 잉크 위 7.35 (.6 이면 5.98) */
 }
