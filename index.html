@@ -113,7 +113,13 @@
      풀고, 글줄 쪽(.hero-body)이 880 을 이어받습니다. */
   .hero{max-width:none;}
   .hero-name{text-align:right;}
-  .hero-body{max-width:var(--w-mid);}
+  /* 글줄도 오른쪽으로. 폭(880)은 그대로 두되 상자를 오른끝에 붙여
+     글줄 끝이 이름과 같은 선에 서게 합니다. */
+  .hero-body{max-width:var(--w-mid); margin-left:auto; text-align:right;}
+  .hero .hero-body .amber-line{margin-left:auto;}
+  .hero-body .tagline{margin-left:auto;}
+  /* 차림표도 같은 선에 */
+  .home-nav{justify-content:flex-end;}
 
   h1.logo{
     font-family:var(--logo);
