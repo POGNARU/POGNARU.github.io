@@ -106,20 +106,19 @@
     padding-bottom:var(--sp-5);
   }
 
-  /* 2026-09-17 다현씨 지시 — 상호를 오른쪽으로 보냅니다.
-     이름(포근나루 · POGNARU STUDIO)과 그 앰버선만 오른끝에 서고,
-     태그라인·소개는 왼쪽 글줄 그대로 둡니다. 이름이 오른끝에 서면
-     글줄 폭(880)이 아니라 현관 폭 전체를 쓰게 되므로 .hero 의 폭 제한을
-     풀고, 글줄 쪽(.hero-body)이 880 을 이어받습니다. */
+  /* 2026-09-17 다현씨 지시 — 첫 화면을 가운데로 세웁니다.
+     왼쪽으로 무게가 쏠린다는 말씀에서 시작했습니다. 오른쪽으로 밀어 봤지만
+     빈 곳이 반대편으로 옮겨갈 뿐이라, 좌우가 같은 양만큼 비는 가운데 축으로
+     왔습니다. 차림표·이름·앰버선·태그라인·소개가 한 축에 섭니다.
+     이름이 현관 폭 전체를 쓰도록 .hero 의 880 제한을 풀고,
+     글줄 쪽(.hero-body)이 880 을 이어받아 가운데에 놓입니다.
+     01 구역부터는 지금 구조 그대로입니다 — 위 한 덩어리만 문패가 됩니다. */
   .hero{max-width:none;}
-  .hero-name{text-align:right;}
-  /* 글줄도 오른쪽으로. 폭(880)은 그대로 두되 상자를 오른끝에 붙여
-     글줄 끝이 이름과 같은 선에 서게 합니다. */
-  .hero-body{max-width:var(--w-mid); margin-left:auto; text-align:right;}
-  .hero .hero-body .amber-line{margin-left:auto;}
-  .hero-body .tagline{margin-left:auto;}
-  /* 차림표도 같은 선에 */
-  .home-nav{justify-content:flex-end;}
+  .hero-name{text-align:center;}
+  .hero-body{max-width:var(--w-mid); margin-left:auto; margin-right:auto; text-align:center;}
+  .hero .hero-body .amber-line{margin-left:auto; margin-right:auto;}
+  .hero-body .tagline{margin-left:auto; margin-right:auto;}
+  .home-nav{justify-content:center;}
 
   h1.logo{
     font-family:var(--logo);
