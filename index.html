@@ -106,6 +106,15 @@
     padding-bottom:var(--sp-5);
   }
 
+  /* 2026-09-17 다현씨 지시 — 상호를 오른쪽으로 보냅니다.
+     이름(포근나루 · POGNARU STUDIO)과 그 앰버선만 오른끝에 서고,
+     태그라인·소개는 왼쪽 글줄 그대로 둡니다. 이름이 오른끝에 서면
+     글줄 폭(880)이 아니라 현관 폭 전체를 쓰게 되므로 .hero 의 폭 제한을
+     풀고, 글줄 쪽(.hero-body)이 880 을 이어받습니다. */
+  .hero{max-width:none;}
+  .hero-name{text-align:right;}
+  .hero-body{max-width:var(--w-mid);}
+
   h1.logo{
     font-family:var(--logo);
     font-weight:var(--w-bold);
@@ -397,9 +406,11 @@
     </nav>
 
     <header class="hero fade">
-      <div>
+      <div class="hero-name">
         <h1 class="logo">포근나루</h1>
         <div class="logo-en">POGNARU STUDIO</div>
+      </div>
+      <div class="hero-body">
         <div class="amber-line"></div>
         <p class="tagline">고요히, 마음에 머무는 글을 전하는 포근나루입니다.</p>
         <p class="intro">책을 만들고, 함께 읽고 쓰는 자리를 엽니다.</p>
