@@ -146,16 +146,18 @@
     max-width:24em;
   }
 
-  /* ── 소식 한 줄 ─────────────────────────────
-     2026-09-13 신설. 구역 번호(01·02·03)를 흔들지 않도록 번호를
-     붙이지 않은 얇은 띠 한 줄로 둡니다 — 소식은 한 줄짜리라
-     번호 붙은 구역으로 세우면 무거워 보입니다.
+  /* ── 소식 세 줄 ─────────────────────────────
+     2026-09-13 신설, 2026-09-25 한 줄 → 최대 세 줄로 넓혔습니다.
+     구역 번호(01·02·03)를 흔들지 않도록 번호를 붙이지 않은
+     얇은 띠로 둡니다 — 번호 붙은 구역으로 세우면 무거워 보입니다.
      글자는 본문 단(17px)이라 바로 아래 01 제목(40px)과 부딪히지 않습니다.
 
      ⚠️ 소식이 하나도 없으면 아래 <div class="newsline"> 덩어리를
         통째로 지우세요. 빈 띠를 남기지 않습니다.
-     ⚠️ 여기 세우는 것은 /news/ 목록의 맨 위 한 건입니다.
-        맨 위가 링크 없는 인사형이면 .nl-t 를 <a> 대신 <span> 으로
+     ⚠️ 여기 세우는 것은 /news/ 목록의 맨 위 세 건입니다(최신이 위).
+        새 소식이 들어오면 맨 위에 <li> 하나를 넣고 맨 아래 하나를 뺍니다.
+        소식이 세 건보다 적으면 있는 만큼만 둡니다.
+        링크 없는 인사형이면 .nl-t 를 <a> 대신 <span> 으로
         바꿔 두세요(스타일은 그대로 걸립니다). */
   .newsline{
     display:flex;
@@ -191,6 +193,15 @@
     transition:color .2s ease;
   }
   a.nl-t:hover{color:var(--terra);}
+  .newsline .nl-list{
+    flex:1 1 16em;
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:.65rem;             /* 줄바꿈 간격보다 넓게 — 폰에서 두 줄로 접혀도 건이 갈려 보이게 */
+  }
 
   /* ── 구역 공통 ─────────────────────────────
      .sec / .secnote 는 base.css 로 올렸습니다(2026-09-12) —
@@ -430,7 +441,12 @@
     <div class="newsline fade">
       <a class="nl-label" href="/news/">소식</a>
       <!-- 2026-09-13 사용성 피드백 반영: 소식 칩은 목록, 모집 제목은 상세 안내로 연결합니다. -->
-      <a class="nl-t" href="https://pognaru.com/sunlit-morning/" target="_blank" rel="noopener">10월 선릿모닝, 함께 새벽을 여실 분을 모십니다</a>
+      <!-- 2026-09-25 다현씨: 소식 한 줄 → 최대 세 줄. /news/ 맨 위 세 건을 그대로 옮깁니다. -->
+      <ul class="nl-list">
+        <li><a class="nl-t" href="https://pognaru.com/sunlit-morning/" target="_blank" rel="noopener">10월 선릿모닝, 함께 새벽을 여실 분을 모십니다</a></li>
+        <li><a class="nl-t" href="https://pognaru.com/sunlit-morning/continue/" target="_blank" rel="noopener">10월 선릿모닝, 이어 가실 분께 드리는 안내</a></li>
+        <li><a class="nl-t" href="/class/naru-night.html">나루의 밤 4분기 모집을 시작했습니다</a></li>
+      </ul>
     </div>
 
     <section class="sec fade d1">
