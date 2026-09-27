@@ -61,12 +61,6 @@
   border-radius:var(--r-s);
   padding:.24rem .68rem;
 }
-.days .chip.off{
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--mid);
-  opacity:.55;
-}
 .days .count{
   font-family:var(--gothic);
   font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
