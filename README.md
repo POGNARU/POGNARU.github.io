@@ -51,7 +51,7 @@ reading/
 books/
   index.html        포근나루 서가 — 책등을 발행 순으로 세우고 누르면 그 책이 꺼내진다 (2026-09-29)
                     #pado #stm #geul #lemon #sd2 #coauthor 를 붙이면 그 책이 꺼내진 채 열린다
-  pado/index.html   『파도는 여전히 하얗다』 한 권 페이지 — 표지 + 전자책 3개 서점 + 종이책 (09-29 /books/ 에서 옮김)
+  pado/index.html   『파도는 여전히 하얗다』 한 권 페이지 — 표지 + 전자책 3개 서점 + 종이책 (09-29 /books/ 에서 옮김, 머리 「← 서가」)
 assets/
   base.css          사이트 공통 토큰·컴포넌트 (문의 버튼 .kakao-btn 포함)
   weekly.css        주간·월간 회고 개별 페이지 공통 (타임라인·인용·씨앗·핵심문장)
