@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>파도는 여전히 하얗다 · 포근나루의 책</title>
-<meta name="description" content="햇살(이다현) 에세이 『파도는 여전히 하얗다』 — Sunlit Days 1. 부서져도 여전히 하얀 파도처럼, 낫지 않았지만 살아가는 날들의 기록. 교보문고·YES24·알라딘 전자책.">
+<title>포근나루 서가</title>
+<meta name="description" content="포근나루에서 나온 책과 앞으로 꽂힐 자리. 『파도는 여전히 하얗다』 · 『스무하루의 빛』 · 『글은 있는데, 책은 아직이라면』.">
 <link rel="canonical" href="https://pognaru.com/books/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="파도는 여전히 하얗다 · 포근나루의 책">
-<meta property="og:description" content="부서져도 여전히 하얀 파도처럼. 햇살 에세이, Sunlit Days 1.">
+<meta property="og:title" content="포근나루 서가">
+<meta property="og:description" content="포근나루에서 나온 책과 앞으로 꽂힐 자리.">
 <meta property="og:url" content="https://pognaru.com/books/">
 <meta property="og:site_name" content="포근나루">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://pognaru.com/assets/cover-sunlit-days-1.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,275 +21,461 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <style>
-  /* ---------- 첫 화면 — 현관과 같은 두 칸 ----------
-     이 사이트가 가진 단 한 장의 이미지입니다. 가운데 정렬을 풀고
-     왼쪽에 책 이름, 오른쪽에 표지를 크게 놓습니다. */
-  .bookhead{
+/* ============================================================
+   포근나루 서가 — 시안 2026-09-29 · 나무🌳
+   생각: 판자 한 장이 곧 이 페이지의 뼈대다.
+     · 책등은 발행 순서로 왼쪽에서 오른쪽으로 선다.
+     · 포근나루에서 나온 책등은 발치에 같은 표식 「포근나루」를 단다.
+       같은 표식이 되풀이되는 것이 「여기서 책이 나온다」는 근거다.
+     · 앞으로 꽂힐 자리도 같은 표식을 점선으로 먼저 달고 서 있다.
+     · 판자는 끝까지 뻗는다 — 남은 판자가 곧 남은 자리다.
+   색: 페이지는 사이트 토큰 그대로(순백·잉크·형광 노랑·진테라코타).
+       책등만 각 책의 표지에서 뽑은 색을 입는다(독서 페이지 예외와 같은 결).
+   ============================================================ */
+
+:root{
+  /* 책등 — 표지에서 스포이드로 뽑은 값. 글자 대비는 옆에 적었다 */
+  --sp-pado:#A5BDD5;  --sp-pado-ink:#1E2A36;   /* 7.53 */
+  --sp-stm:#1B2844;   --sp-stm-ink:#FFFFFF;    /* 14.65 */
+  --sp-stm-mark:#F2D27A;                        /* 9.96 — 표지의 금빛 영문 */
+  --sp-geul:#CDB0AC;  --sp-geul-ink:#3C2415;   /* 7.15 */
+  --sp-lemon:#FFFFFF; --sp-lemon-ink:#3C2415;  /* 14.43 */
+
+  --shelf-h:250px;       /* 가장 큰 책등 높이 · 폰 */
+  --spine-fs:15px;
+  --spine-k:1;           /* 책등 폭 배율 */
+}
+@media (min-width:861px){
+  :root{--shelf-h:360px;--spine-fs:19px;--spine-k:1.55;}
+}
+
+.pagehead{padding-bottom:var(--sp-3);}
+.pagehead .lead{max-width:30em;}
+
+/* ---------- 서가 ---------- */
+.shelf-wrap{padding:var(--sp-2) 0 0;}
+.shelf{
+  display:flex;
+  align-items:flex-end;
+  gap:calc(4px * var(--spine-k));
+  height:calc(var(--shelf-h) + 18px);   /* 뽑혀 올라올 자리 */
+  padding-left:2px;
+}
+.spine{
+  --h:1; --w:40px;
+  position:relative;
+  flex:none;
+  width:calc(var(--w) * var(--spine-k));
+  height:calc(var(--shelf-h) * var(--h));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0 12px;
+  border-radius:2px 2px 0 0;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+  box-shadow:inset -3px 0 0 rgba(0,0,0,.06), inset 2px 0 0 rgba(255,255,255,.18);
+  -webkit-tap-highlight-color:transparent;
+}
+.spine:focus-visible{outline:2px solid var(--terra);outline-offset:3px;}
+.spine .st{
+  writing-mode:vertical-rl;
+  font-family:var(--logo);
+  font-weight:var(--w-bold);
+  font-size:var(--spine-fs);
+  line-height:1.2;
+  letter-spacing:.02em;
+  max-height:72%;
+  white-space:normal;
+}
+.spine .ft{
+  writing-mode:vertical-rl;
+  font-family:var(--gothic);
+  font-size:13px;
+  letter-spacing:.08em;
+  line-height:1;
+  padding-top:10px;
+  border-top:1px solid currentColor;
+}
+/* 꺼낸 책 — 한 칸 올라오고, 판자 위에 호박 점 하나 */
+.spine[aria-current="true"]{transform:translateY(-16px);}
+.spine::after{
+  content:"";
+  position:absolute;
+  left:50%; bottom:-19px;
+  width:8px;height:8px;margin-left:-4px;
+  border-radius:50%;
+  background:var(--amber);            /* 잉크 판자 위 9.17 */
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.spine[aria-current="true"]::after{opacity:1;bottom:-35px;}
+@media (hover:hover){
+  .spine:not([aria-current="true"]):hover{transform:translateY(-6px);}
+}
+
+/* 책마다 */
+.spine.lemon{--w:48px;--h:.9;background:var(--sp-lemon);color:var(--sp-lemon-ink);
+  box-shadow:inset 0 0 0 1px var(--line);}
+.spine.pado {--w:40px;--h:.84;background:var(--sp-pado);color:var(--sp-pado-ink);}
+.spine.pado .st{letter-spacing:.06em;}
+.spine.stm  {--w:32px;--h:1;background:var(--sp-stm);color:var(--sp-stm-ink);}
+.spine.stm .ft{color:var(--sp-stm-mark);}
+.spine.geul {--w:40px;--h:.88;background:var(--sp-geul);color:var(--sp-geul-ink);}
+/* 띠지 — 새로 나오는 책에 두르는 띠. 면이라 호박을 쓸 수 있다(잉크 글자 9.17) */
+.spine .band{
+  position:absolute;
+  left:0;right:0;bottom:34%;
+  background:var(--amber);
+  color:var(--ink);
+  font-family:var(--gothic);
+  font-size:13px;
+  line-height:1;
+  text-align:center;
+  padding:5px 0;
+  writing-mode:horizontal-tb;
+  letter-spacing:0;
+}
+/* 빈 자리 — 점선 책등. 발치 표식은 이미 「포근나루」 */
+.spine.empty{
+  --w:36px;
+  background:transparent;
+  color:var(--ink-soft);                 /* 순백 9.01 */
+  box-shadow:none;
+  border:1.5px dashed rgba(60,36,21,.42);
+  border-bottom:0;
+}
+.spine.empty .st{font-family:var(--gothic);font-weight:var(--w-reg);font-size:calc(var(--spine-fs) - 1px);}
+.spine.empty .ft{border-top-style:dashed;}
+.spine.e1{--h:.8;} .spine.e2{--h:.74;} .spine.e3{--h:.7;}
+
+/* 북엔드 — 다른 곳에서 나온 책과 포근나루 책을 가른다 */
+.bookend{
+  flex:none;
+  width:5px;
+  height:calc(var(--shelf-h) * .46);
+  background:var(--ink-faint);
+  border-radius:2px 2px 0 0;
+  margin:0 calc(6px * var(--spine-k));
+}
+
+/* 판자 — 끝까지 뻗는다 */
+.plank{
+  height:14px;
+  background:var(--ink);
+  border-radius:1px;
+  box-shadow:0 6px 0 -2px rgba(60,36,21,.12);
+}
+
+/* 판자 아래 이름표 — 책등 칸과 같은 폭으로 묶는다 */
+.shelf-labels{
+  display:flex;
+  gap:calc(4px * var(--spine-k));
+  padding:14px 0 0 2px;
+  font-family:var(--gothic);
+  font-size:var(--fs-8);
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+.shelf-labels span{
+  flex:none;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
+.shelf-labels .l-lemon{width:calc(48px * var(--spine-k));}
+.shelf-labels .l-gap{width:calc(5px + 12px * var(--spine-k));border-top:0;}
+.shelf-labels .l-ours{width:calc((40px + 32px + 40px) * var(--spine-k) + 8px * var(--spine-k));color:var(--ink);border-top:2px solid var(--ink);}
+.shelf-labels .l-next{width:calc(36px * 3 * var(--spine-k) + 8px * var(--spine-k));border-top:1.5px dashed rgba(60,36,21,.42);}
+
+.shelf-hint{
+  font-family:var(--gothic);
+  font-size:var(--fs-7);
+  color:var(--ink-soft);
+  margin-top:var(--sp-3);
+}
+
+/* ---------- 꺼낸 책 ---------- */
+.pulled{
+  margin-top:var(--sp-3);
+  border-top:1px solid var(--line);
+  padding-top:var(--sp-4);
+}
+.book{
+  display:grid;
+  grid-template-columns:minmax(0,15rem) minmax(0,1fr);
+  gap:clamp(1.4rem,4vw,3.5rem);
+  align-items:start;
+  scroll-margin-top:1rem;
+}
+.book + .book{margin-top:var(--sp-5);}           /* 스크립트가 없을 때 — 전부 차례로 */
+.js .book{display:none;}
+.js .book.on{display:grid;animation:rise .45s ease forwards;}
+.js .book + .book{margin-top:0;}
+.book{grid-template-rows:auto auto 1fr;}
+.book > .face{grid-column:1;grid-row:1 / span 3;}
+.book > .desc-wrap,.book > .desc,.book > .buyrows{grid-column:2;}
+
+.book .face img{
+  display:block;width:100%;height:auto;border-radius:var(--r-s);
+  box-shadow:0 1px 0 rgba(60,36,21,.08), 0 12px 28px -14px rgba(60,36,21,.35);
+}
+/* 표지가 없는 책 — 책등 색으로 판만 세운다 */
+.book .face .noimg{
+  aspect-ratio:7/10;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:1.2rem;
+  border-radius:var(--r-s);
+  font-family:var(--logo);font-weight:var(--w-bold);
+  font-size:var(--fs-4);line-height:var(--lh-snug);
+}
+.book .face .noimg small{font-family:var(--gothic);font-weight:var(--w-reg);font-size:var(--fs-8);}
+.noimg.lemon{background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);}
+.noimg.empty{border:1.5px dashed rgba(60,36,21,.42);color:var(--ink-soft);font-family:var(--gothic);font-weight:var(--w-reg);}
+
+.book .kicker{margin-bottom:.6rem;}
+.book h2{font-size:var(--fs-2b);margin-bottom:.7rem;}
+.book .meta{
+  font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--ink-soft);
+  margin-bottom:var(--sp-2);
+}
+.book .desc{max-width:var(--w-read);color:var(--ink-soft);line-height:var(--lh-loose);}
+.book .desc + .desc{margin-top:var(--sp-1);}
+.book .desc b{color:var(--terra);font-weight:var(--w-reg);}
+
+/* 구매처 — 한 줄에 판 이름 + 서점 칩 */
+.buyrows{margin-top:var(--sp-3);border-top:1px solid var(--line-soft);max-width:var(--w-read);}
+.buyrow{
+  display:grid;
+  grid-template-columns:minmax(0,11rem) minmax(0,1fr);
+  gap:.4rem 1rem;
+  align-items:baseline;
+  padding:.9rem 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.buyrow .what{font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);color:var(--ink);}
+.buyrow .what small{display:block;font-size:var(--fs-7);color:var(--ink-soft);}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip{
+  font-family:var(--gothic);font-size:var(--fs-6);line-height:var(--lh-normal);
+  color:var(--terra);text-decoration:none;
+  border:1px solid var(--line);border-radius:var(--r-m);
+  padding:.34rem .85rem;
+  transition:background .2s ease,border-color .2s ease;
+}
+.chip:hover{background:var(--tint);border-color:var(--terra);}
+.chip.wait{color:var(--ink-soft);border-style:dashed;cursor:default;}
+.chip.wait:hover{background:transparent;border-color:var(--line);}
+.chip.date{background:var(--apricot);border-color:transparent;color:var(--ink);cursor:default;}
+
+@media (max-width:860px){
+  .book{grid-template-columns:7.5rem minmax(0,1fr);gap:1.1rem;}
+  .book{grid-template-rows:auto;}
+  .book > .face{grid-row:1;}
+  .book > .desc-wrap{grid-column:2;align-self:end;}
+  .book > .desc,.book > .buyrows{grid-column:1 / -1;}
+  .book h2{font-size:var(--fs-3);}
+  .book .face .noimg{font-size:var(--fs-6);padding:.9rem;}
+  .buyrow{grid-template-columns:1fr;}
+}
+
+/* ---------- 넓은 화면 — 꺼낸 책을 같은 판자 위에 앞표지로 세운다 ----------
+   서점 매대의 「표지 보이게 꽂기」. 책등 무리 하나만 두면 판자 오른쪽이
+   통째로 비어 한쪽으로 쏠린다 — 덩어리를 둘로 만든다. 판자는 둘을 잇는다. */
+@media (min-width:861px){
+  .stage{
     display:grid;
-    grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
-    gap:clamp(2rem,5vw,4.5rem);
-    align-items:center;
-    padding:var(--sp-3) 0 var(--sp-5);
+    grid-template-columns:auto minmax(0,1fr);
+    column-gap:clamp(3rem,6vw,5.5rem);
+    position:relative;
   }
-  .bookhead .series{
-    font-family:var(--gothic);
-    font-size:var(--fs-8);
-    letter-spacing:var(--ls-label);
-    line-height:var(--lh-normal);
-    color:var(--terra);            /* 순백 위 5.31 */
-    margin-bottom:.8rem;
+  .stage::before{
+    content:"";
+    position:absolute;left:0;right:0;
+    top:calc(var(--sp-2) + var(--shelf-h) + 18px);
+    height:14px;background:var(--ink);border-radius:1px;
+    box-shadow:0 6px 0 -2px rgba(60,36,21,.12);
   }
-  .bookhead h1{margin-bottom:.8rem;}
-  .bookhead .meta{
-    font-family:var(--gothic);
-    font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
-    line-height:var(--lh-normal);
-    color:var(--ink-soft);          /* 순백 위 9.01 */
+  .shelf-wrap .plank{visibility:hidden;}
+  .pulled{grid-column:2;grid-row:1;margin:0;border-top:0;padding-top:var(--sp-2);}
+  .book,.js .book.on{display:block;}
+  .js .book{display:none;}
+  .js .book.on{display:block;}
+  .book + .book{margin-top:var(--sp-4);}
+  .js .book + .book{margin-top:0;}
+  .book > .face{
+    height:calc(var(--shelf-h) + 18px);
+    display:flex;align-items:flex-end;
   }
-
-  /* 표지 — 매트를 걷고 순백 위에 그대로 놓는다(2026-09-12 다현씨 결정).
-     현관에서 표지를 뺀 것과 같은 이유다: 파란 표지와 노란 면이 싸운다.
-     형광 노랑은 파랑의 정보색(보색 쪽)이라 옛 살구 #FBE7C9 보다 충돌이 세다.
-     표지는 이미 제 색을 가졌으므로 바탕이 거들 필요가 없다. */
-  .cover{
-    background:transparent;
-    border-radius:0;
-    padding:0;
-    max-width:26rem;
-    margin-left:auto;
-  }
-  .cover img{
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:720 / 1000;    /* 실제 표지 파일 비율. 다른 값이면 글자가 잘린다 */
-    object-fit:cover;
-    border-radius:var(--r-s);
-  }
-
-  .intro{max-width:var(--w-read);}
-  .intro p{
-    color:var(--ink-soft);
-    font-size:var(--fs-5);
-    line-height:var(--lh-loose);
-  }
-  .intro p + p{margin-top:var(--sp-2);}
-  .intro b{color:var(--terra);font-weight:var(--w-reg);}
-
-  /* 핵심 문장 — 페이지에서 가장 넓게 놓인다 */
-  .book-pull{
-    font-family:var(--logo);
-    font-size:clamp(1.3rem,3vw,2rem);
-    font-weight:var(--w-bold);
-    line-height:var(--lh-snug);
-    letter-spacing:var(--ls-xl);
-    color:var(--ink);
-    text-align:center;
-    padding:var(--sp-5) 0;
-    margin:0;
-    border-top:1px solid var(--line);
-  }
-  .book-pull .who{
-    display:block;
-    font-family:var(--gothic);
-    font-weight:var(--w-reg);
-    font-size:var(--fs-8);
-    letter-spacing:var(--ls-label);
-    line-height:var(--lh-normal);
-    color:var(--terra);            /* 순백 위 5.31 */
-    margin-top:1.1rem;
-  }
-
-  /* ---------- 구매 ----------
-     「여기 하나만은 눌러 주세요」 하는 자리라 면을 남긴다.
-     칸이 하나뿐인 구역(종이책)은 2열로 두면 오른쪽 절반이 통째로 빈다. */
-  .buy-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:clamp(1rem,2.5vw,1.6rem);
-    align-items:start;
-  }
-  .buy-grid:has(> .buy:only-child){grid-template-columns:1fr;max-width:30rem;}
-  .buy{
-    background:var(--apricot);
-    border:0;
-    border-radius:var(--r-m);
-    padding:1.6rem 1.7rem 1.4rem;
-    box-shadow:none;
-    display:flex;
-    flex-direction:column;
-  }
-  /* 살구 위 살구 뱃지는 안 보이므로 괘선 칩으로 */
-  .buy .badge{
-    display:inline-block;
-    align-self:flex-start;
-    font-family:var(--gothic);
-    font-size:var(--fs-8);
-    letter-spacing:var(--ls-md);
-    line-height:var(--lh-normal);
-    color:var(--ink);
-    background:transparent;
-    border:1px solid rgba(60,36,21,.22);
-    border-radius:var(--r-s);
-    padding:.24rem .75rem;
-    margin-bottom:.9rem;
-  }
-  .buy h3{margin-bottom:.35rem;}
-  /* 살구 면 위 terra 는 4.85로 이제 쓸 수 있다(2026-09-12 형광펜 전환).
-     그래도 값은 잉크로 세운다 — 색이 아니라 굵기가 강조를 맡는 편이기 때문 */
-  .buy .price{
-    font-family:var(--gothic);
-    font-size:var(--fs-5);
-    line-height:var(--lh-normal);
-    color:var(--ink);
-    margin-bottom:.6rem;
-  }
-  .buy .note{
-    font-family:var(--gothic);
-    font-size:var(--fs-6);          /* 15.5px — 12.5px 였다 */
-    color:var(--ink-soft);          /* 살구 위 8.24 */
-    line-height:var(--lh-normal);
-    margin-bottom:1.2rem;
-  }
-  .stores{margin-top:auto;border-top:1px solid rgba(60,36,21,.16);}
-  .store{
-    display:flex;
-    align-items:center;
-    gap:.6rem;
-    padding:.7rem .1rem;
-    border-bottom:1px solid rgba(60,36,21,.16);
-    text-decoration:none;
-    color:var(--ink);
-    font-family:var(--gothic);
-    font-size:var(--fs-6);
-    line-height:var(--lh-normal);
-  }
-  .store:last-child{border-bottom:none;}
-  /* 서점 앞 점은 '뜻을 나르는' 표식이다 — 살구 위 호박 1.44 대신 잉크 */
-  .store .dot{width:3px;height:.85em;border-radius:var(--r-s);background:var(--ink);flex:none;}
-  /* ↗ 는 「누를 수 있다」가 아니라 「새 창으로 나간다」는 방향 표시라 남긴다 */
-  .store .arrow{margin-left:auto;color:var(--ink-soft);font-size:var(--fs-7);flex:none;}
-  .store:hover{text-decoration:underline;}
-
-  .paper-note{
-    font-family:var(--gothic);
-    font-size:var(--fs-6);
-    color:var(--ink-soft);          /* 순백 위 9.01 */
-    line-height:var(--lh-normal);
-    margin-top:1.4rem;
-    padding-left:1.1rem;
-    border-left:2px solid var(--amber);   /* 선이라 호박을 쓸 수 있다 */
-    max-width:var(--w-read);
-  }
-
-  @media (max-width:860px){
-    .bookhead{grid-template-columns:1fr;gap:var(--sp-3);}
-    .cover{max-width:22rem;margin-left:0;order:-1;}
-    .buy-grid{grid-template-columns:1fr;}
-  }
+  .book > .face img{width:auto;height:calc(var(--shelf-h) * .96);}
+  .book > .face .noimg{height:calc(var(--shelf-h) * .96);width:auto;}
+  .book > .desc-wrap{margin-top:calc(14px + var(--sp-3));}
+  .book h2{font-size:var(--fs-2b);}
+  .buyrow{grid-template-columns:minmax(0,9rem) minmax(0,1fr);}
+}
+@media (max-width:360px){
+  :root{--spine-k:.92;}
+}
 </style>
 </head>
 <body>
 
 <main>
+<div class="shell">
 
-  <div class="shell">
+  <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
 
-    <p style="padding-top:var(--sp-3)"><a class="backlink" href="/">← 포근나루</a></p>
+  <header class="pagehead fade">
+    <div class="kicker">BOOKS</div>
+    <h1>포근나루 서가</h1>
+    <p class="lead">포근나루에서 나온 책과, 앞으로 꽂힐 자리입니다.<br>책등을 누르면 그 책을 꺼내 볼 수 있어요.</p>
+  </header>
 
-    <header class="bookhead fade">
-      <div>
-        <div class="kicker">BOOKS</div>
-        <div class="series">SUNLIT DAYS 1</div>
-        <h1>파도는 여전히 하얗다</h1>
-        <div class="meta">햇살(이다현) 에세이 · 포근나루</div>
-      </div>
-      <div class="cover">
-        <img src="/assets/cover-sunlit-days-1.jpg" width="720" height="1000"
-             alt="『파도는 여전히 하얗다』 표지 — 맑은 하늘 아래 하얗게 부서지는 바다">
-      </div>
-    </header>
-
-    <!-- TODO: 소개 문구 다현씨 확인 -->
-    <section class="intro fade d2">
-    <p>포근나루가 처음 내보낸 책입니다. 부산 바다를 무대로, 한 사람 안에 <b>짙은 남색과 주황이 함께 사는</b> 시간을 적었습니다. 달의 위상에, 마른 열매에, 일렁이는 물결에 마음을 나란히 놓아 보는 글들입니다.</p>
-    <p>우울을 미화하지도 부정하지도 않고 <b>가만히 관찰합니다.</b> 회복을 다 끝난 일로 선언하지 않습니다. 낫지 않았지만 살아가는 날들, 그 안에서도 바다와 사람과 글로 착지하는 마음을 담았습니다.</p>
+  <div class="stage">
+  <!-- ===== 서가 ===== -->
+  <section class="shelf-wrap fade d2" aria-label="서가">
+    <nav class="shelf" aria-label="책등">
+      <a class="spine lemon" href="#lemon" data-book="lemon" aria-label="삶이 레몬을 준다면 레모네이드를 만들어라 — 공저, 슬로어">
+        <span class="st">삶이 레몬을 준다면 레모네이드를 만들어라</span><span class="ft">슬로어</span>
+      </a>
+      <span class="bookend" aria-hidden="true"></span>
+      <a class="spine pado" href="#pado" data-book="pado" aria-label="파도는 여전히 하얗다">
+        <span class="st">파도는 여전히 하얗다</span><span class="ft">포근나루</span>
+      </a>
+      <a class="spine stm" href="#stm" data-book="stm" aria-label="스무하루의 빛">
+        <span class="st">스무하루의 빛</span><span class="ft">포근나루</span>
+      </a>
+      <a class="spine geul" href="#geul" data-book="geul" aria-label="글은 있는데, 책은 아직이라면 — 10월 8일 발행">
+        <span class="st">글은 있는데, 책은 아직이라면</span><span class="band">10.08</span><span class="ft">포근나루</span>
+      </a>
+      <a class="spine empty e1" href="#sd2" data-book="sd2" aria-label="꽂힐 자리 — Sunlit Days 2">
+        <span class="st">Sunlit Days 2</span><span class="ft">포근나루</span>
+      </a>
+      <a class="spine empty e2" href="#coauthor" data-book="coauthor" aria-label="꽂힐 자리 — 포근나루 공저 1호">
+        <span class="st">공저 1호</span><span class="ft">포근나루</span>
+      </a>
+    </nav>
+    <div class="plank" aria-hidden="true"></div>
+    <div class="shelf-labels" aria-hidden="true">
+      <span class="l-lemon">공저</span>
+      <span class="l-gap"></span>
+      <span class="l-ours">포근나루에서 나온 책</span>
+      <span class="l-next">꽂힐 자리</span>
+    </div>
+    <p class="shelf-hint">서가는 발행 순서대로 왼쪽부터 꽂습니다.<br>새 책이 나오면 점선 자리가 채워집니다.</p>
   </section>
 
-  <p class="book-pull fade d3">파도는 여전히 하얗다.<br>부서져 작아져도, 저 물방울 하나는 행복하다.<span class="who">— 「산산이 부서지는 것들」에서</span></p>
+  <!-- ===== 꺼낸 책 ===== -->
+  <section class="pulled" aria-live="polite">
 
-    <section class="sec fade">
-      <div>
-        <div class="seclabel"><span class="n">01</span><span class="bar"></span></div>
-        <h2 class="sec-title">전자책으로 읽기</h2>
+    <!-- 파도 -->
+    <article class="book" id="pado">
+      <div class="face"><img src="/assets/cover-sunlit-days-1.jpg" width="400" height="556" alt="『파도는 여전히 하얗다』 표지 — 맑은 하늘 아래 하얗게 부서지는 바다"></div>
+      <div class="desc-wrap">
+        <div class="kicker">SUNLIT DAYS 1 · 에세이</div>
+        <h2>파도는 여전히 하얗다</h2>
+        <div class="meta">햇살(이다현) · 포근나루 · 2026년 4월 29일 · 전자책·종이책</div>
       </div>
-      <div class="buy-grid">
+      <p class="desc">포근나루가 처음 내보낸 책입니다. 부산 바다를 무대로, 한 사람 안에 <b>짙은 남색과 주황이 함께 사는</b> 시간을 적었습니다. 회복을 다 끝난 일로 선언하지 않고, 낫지 않았지만 살아가는 날들을 가만히 봅니다.</p>
+      <div class="buyrows">
+        <div class="buyrow"><div class="what">책 소개<small>표지·차례·서점</small></div>
+          <div class="chips">
+            <a class="chip" href="/books/pado/">자세히 보기 →</a>
+          </div></div>
+        <div class="buyrow"><div class="what">전자책 정식판<small>7,800원</small></div>
+          <div class="chips">
+            <a class="chip" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771594" target="_blank" rel="noopener">교보문고 ↗</a>
+            <a class="chip" href="https://www.yes24.com/product/goods/184278291" target="_blank" rel="noopener">YES24 ↗</a>
+            <a class="chip" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060328" target="_blank" rel="noopener">알라딘 ↗</a>
+          </div></div>
+        <div class="buyrow"><div class="what">전자책 체험판<small>1,000원 · 앞머리만</small></div>
+          <div class="chips">
+            <a class="chip" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771124" target="_blank" rel="noopener">교보문고 ↗</a>
+            <a class="chip" href="https://www.yes24.com/product/goods/184278292" target="_blank" rel="noopener">YES24 ↗</a>
+            <a class="chip" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060305" target="_blank" rel="noopener">알라딘 ↗</a>
+          </div></div>
+        <div class="buyrow"><div class="what">종이책<small>초판 소량</small></div>
+          <div class="chips">
+            <a class="chip" href="https://smartstore.naver.com/pognaru" target="_blank" rel="noopener">스마트스토어 ↗</a>
+          </div></div>
+      </div>
+    </article>
 
-    <!-- 체험판 -->
-    <div class="buy">
-      <span class="badge">먼저 조금 읽어보기</span>
-      <h3>체험판</h3>
-      <div class="price">1,000원</div>
-      <p class="note">책의 앞머리를 미리 읽어볼 수 있습니다. 결이 맞는지 가볍게 확인해 보세요.</p>
-      <div class="stores">
-        <a class="store" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771124" target="_blank" rel="noopener">
-          <span class="dot"></span>교보문고<span class="arrow">열기 ↗</span>
-        </a>
-        <a class="store" href="https://www.yes24.com/product/goods/184278292" target="_blank" rel="noopener">
-          <span class="dot"></span>YES24<span class="arrow">열기 ↗</span>
-        </a>
-        <a class="store" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060305" target="_blank" rel="noopener">
-          <span class="dot"></span>알라딘<span class="arrow">열기 ↗</span>
-        </a>
+    <!-- 스무하루의 빛 -->
+    <article class="book" id="stm">
+      <div class="face"><img src="/assets/cover-seumuharu.jpg" width="400" height="566" alt="『스무하루의 빛』 표지 — 새벽 남색 바탕에 흰 제목"></div>
+      <div class="desc-wrap">
+        <div class="kicker">TWENTY-ONE DAWNS · 21일 습관 다이어리</div>
+        <h2>스무하루의 빛</h2>
+        <div class="meta">포근나루 · 2026년 7월부터 · 굿노트·아이패드 필기용 PDF</div>
       </div>
-    </div>
+      <p class="desc">새벽에 시작하는 어느 습관이든, 스무하루 동안 곁에 두고 쓰는 다이어리입니다. <b>새벽에 머무는 스무하루, 나에게로 돌아오는 연습.</b></p>
+      <div class="buyrows">
+        <div class="buyrow"><div class="what">다이어리 PDF<small>9,900원</small></div>
+          <div class="chips">
+            <a class="chip" href="https://smartstore.naver.com/pognaru" target="_blank" rel="noopener">스마트스토어 ↗</a>
+          </div></div>
+      </div>
+    </article>
 
-    <!-- 정식판 -->
-    <div class="buy">
-      <span class="badge">처음부터 끝까지</span>
-      <h3>정식판</h3>
-      <div class="price">7,800원</div>
-      <p class="note">여는 글부터 마지막 편까지, 한 권을 온전히 담았습니다.</p>
-      <div class="stores">
-        <a class="store" href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000012771594" target="_blank" rel="noopener">
-          <span class="dot"></span>교보문고<span class="arrow">열기 ↗</span>
-        </a>
-        <a class="store" href="https://www.yes24.com/product/goods/184278291" target="_blank" rel="noopener">
-          <span class="dot"></span>YES24<span class="arrow">열기 ↗</span>
-        </a>
-        <a class="store" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=390060328" target="_blank" rel="noopener">
-          <span class="dot"></span>알라딘<span class="arrow">열기 ↗</span>
-        </a>
+    <!-- 글은 있는데 -->
+    <article class="book" id="geul">
+      <div class="face"><img src="/assets/cover-geul.jpg" width="400" height="600" alt="『글은 있는데, 책은 아직이라면』 표지"></div>
+      <div class="desc-wrap">
+        <div class="kicker">포근나루 실용서 · 10월 8일 발행</div>
+        <h2>글은 있는데, 책은 아직이라면</h2>
+        <div class="meta">햇살 · 포근나루 · 전자책</div>
       </div>
-    </div>
+      <!-- TODO: 소개 문구 다현씨 확인 — 부제는 확정값, 둘째 문장은 나무가 부제에서 풀어 쓴 것 -->
+      <p class="desc"><b>써둔 글을 AI와 함께 엮어 첫 전자책을 내는 법.</b> 폴더에 글은 쌓였는데 아직 책이 되지 못했다면, 고르고 엮고 내보내는 순서를 따라가는 책입니다.</p>
+      <div class="buyrows">
+        <div class="buyrow"><div class="what">전자책<small>9,900원</small></div>
+          <div class="chips">
+            <span class="chip date">10월 8일 발행</span>
+            <span class="chip wait">서점 링크는 발행일에 열립니다</span>
+          </div></div>
+      </div>
+    </article>
 
+    <!-- 레몬 -->
+    <article class="book" id="lemon">
+      <div class="face"><div class="noimg lemon"><span>삶이 레몬을 준다면 레모네이드를 만들어라</span><small>슬로어 · 2025</small></div></div>
+      <div class="desc-wrap">
+        <div class="kicker">공저 · 슬로어 · 2025</div>
+        <h2>삶이 레몬을 준다면 레모네이드를 만들어라</h2>
+        <div class="meta">스물일곱 명이 한 꼭지씩 쓴 공저</div>
       </div>
-    </section>
+      <p class="desc">햇살의 이름이 <b>처음 책에 실린</b> 자리입니다. 포근나루보다 먼저 온 책이라 서가 맨 앞, 북엔드 바깥에 꽂아 두었습니다.</p>
+    </article>
 
-    <section class="sec fade">
-      <div>
-        <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
-        <h2 class="sec-title">종이책으로 읽기</h2>
+    <!-- 꽂힐 자리 셋 -->
+    <article class="book" id="sd2">
+      <div class="face"><div class="noimg empty"><span>Sunlit Days 2</span><small>포근나루</small></div></div>
+      <div class="desc-wrap">
+        <div class="kicker">꽂힐 자리 · 준비 중</div>
+        <h2>Sunlit Days 2</h2>
+        <div class="meta">햇살 에세이 · 포근나루</div>
       </div>
-      <div class="buy-grid">
-    <div class="buy paper">
-      <span class="badge">손에 쥐고 읽기</span>
-      <h3>종이책</h3>
-      <div class="price">포근나루 스마트스토어</div>
-      <p class="note">초판을 소량 가지고 있습니다. 남은 부수가 많지 않아, 다 나가면 재인쇄까지 시간이 걸립니다.</p>
-      <div class="stores">
-        <a class="store" href="https://smartstore.naver.com/pognaru" target="_blank" rel="noopener">
-          <span class="dot"></span>스마트스토어<span class="arrow">열기 ↗</span>
-        </a>
-      </div>
-    </div>
-      </div>
-    </section>
+      <p class="desc">『파도는 여전히 하얗다』에 이어지는 Sunlit Days 두 번째 권을 준비하고 있습니다.</p>
+    </article>
 
-    <!-- 재고 소진 시: 위 '종이책으로 읽기' 섹션(h2 + buy-grid)을 통째로 지운다.
-       재인쇄 후에는 note 문구만 바꿔서 되살린다. -->
+    <article class="book" id="coauthor">
+      <div class="face"><div class="noimg empty"><span>공저 1호</span><small>포근나루</small></div></div>
+      <div class="desc-wrap">
+        <div class="kicker">꽂힐 자리 · 2027년 초</div>
+        <h2>포근나루 공저 1호</h2>
+        <div class="meta">여러 사람이 함께 쓰는 책 · 포근나루</div>
+      </div>
+      <p class="desc">포근나루가 펴내는 첫 공저입니다. 2027년 초에 이 자리에 꽂힙니다.</p>
+    </article>
 
-    <footer class="sitefoot">
+  </section>
+  </div>
+
+
+  <!-- 대표 사이트는 식구 크레딧 예외 자리라(바다 CLAUDE.md) 푸터에 넣지 않았다. 시안 제작: 나무🌳 -->
+  <footer class="sitefoot">
     <nav>
       <a href="/">포근나루</a>
       <a href="/weekly/">한 주의 새벽</a>
@@ -298,12 +483,37 @@
       <a href="/news/">소식</a>
       <a href="/#ask">문의</a>
     </nav>
-      <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
-    </footer>
+    <span class="tag-en">고요히, 마음에 머무는 글을 전하는 <span class="brand">POGNARU STUDIO</span></span>
+  </footer>
 
-  </div>
-
+</div>
 </main>
 
+<script>
+/* 책등을 누르면 그 책 하나만 꺼낸다. 스크립트가 없으면 전부 차례로 보인다. */
+(function(){
+  document.documentElement.classList.add('js');
+  var spines=[].slice.call(document.querySelectorAll('.spine'));
+  var books=[].slice.call(document.querySelectorAll('.book'));
+  function pull(id,scroll){
+    spines.forEach(function(s){s.setAttribute('aria-current',s.dataset.book===id?'true':'false');});
+    books.forEach(function(b){b.classList.toggle('on',b.id===id);});
+    if(scroll){
+      var el=document.getElementById(id);
+      var r=el.getBoundingClientRect();
+      if(r.top>window.innerHeight*.75||r.top<0){el.scrollIntoView({behavior:'smooth',block:'start'});}
+    }
+  }
+  spines.forEach(function(s){
+    s.addEventListener('click',function(e){
+      e.preventDefault();
+      pull(s.dataset.book,true);
+      try{history.replaceState(null,'','#'+s.dataset.book);}catch(_){}
+    });
+  });
+  var start=(location.hash||'').slice(1);
+  pull(document.getElementById(start)&&start?start:'pado',false);
+})();
+</script>
 </body>
 </html>
