@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>클래스 · 포근나루</title>
-<meta name="description" content="포근나루에서 함께 읽고 쓰는 자리. 새벽 글쓰기 모임 선릿모닝과 문학·철학 독서 토론 나루의 밤을 안내합니다.">
+<meta name="description" content="포근나루에서 함께 읽고 쓰는 자리. 새벽 글쓰기 모임 선릿모닝, 문학·철학 독서 토론 나루의 밤, 써 둔 글로 전자책을 내는 살롱 드 나루를 안내합니다.">
 <link rel="canonical" href="https://pognaru.com/class/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="클래스 · 포근나루">
-<meta property="og:description" content="새벽 글쓰기 모임 선릿모닝과 문학·철학 독서 토론 나루의 밤.">
+<meta property="og:description" content="새벽 글쓰기 모임 선릿모닝, 독서 토론 나루의 밤, 전자책을 내는 살롱 드 나루.">
 <meta property="og:url" content="https://pognaru.com/class/">
 <meta property="og:site_name" content="포근나루">
 <meta property="og:locale" content="ko_KR">
@@ -113,6 +113,16 @@
 
   /* 폰에서는 두 칸이 세로로 쌓인다 — 면이 없으므로 카드가 고아가 되지 않도록
      칸 사이에 숨을 준다(호박 획은 그대로 두어 「모집 중」 표식을 잃지 않는다) */
+  /* 카드 셋 — 861px 이상 세 칸 (2026-09-30 살롱 드 나루 합류, 나무🌳 조각) */
+  @media (min-width:861px){
+    .classlist{grid-template-columns:repeat(3,minmax(0,1fr));}
+  }
+  /* 살롱 드 나루 — 이름만 밤물 잉크(순백 위 13.57 · 호버 면 위 12.69).
+     호버하면 다른 카드처럼 진테라코타로 바뀝니다. */
+  .cls.salon .name{color:#12323C;}
+  .cls.salon:hover .name{color:var(--terra);}
+  .cls.salon .top .sun{flex:none; width:26px; height:13px; align-self:center;}
+
   @media (max-width:860px){
     .classlist{grid-template-columns:1fr; gap:var(--sp-3);}
     .cls{padding:.2rem 0 0 1.1rem;}
@@ -161,6 +171,22 @@
         <span>분기당 3회</span>
         <span>분기 70,000원</span>
         <span>10월 21일 시작 · 모집 중</span>
+      </div>
+      <span class="go">자세히 보기</span>
+    </a>
+
+    <a class="cls salon fade d3" href="/class/salon-de-naru.html">
+      <div class="top">
+        <span class="name">살롱 드 나루</span>
+        <svg class="sun" viewBox="0 0 26 13" aria-hidden="true"><path d="M2 13 A11 11 0 0 1 24 13 Z" fill="#F4A27C"/></svg>
+        <span class="kind">전자책 내기 · 8주</span>
+      </div>
+      <p class="desc">써 둔 글은 있는데 책으로 가는 길을 모르는 분과 함께, 8주 동안 글을 고르고 다듬어 각자 자기 이름으로 전자책을 냅니다.</p>
+      <div class="facts">
+        <span>화요일 밤 8시 Zoom</span>
+        <span>8주</span>
+        <span>380,000원</span>
+        <span>10월 27일 시작 · 모집 중</span>
       </div>
       <span class="go">자세히 보기</span>
     </a>
