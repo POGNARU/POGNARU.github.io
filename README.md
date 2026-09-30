@@ -482,6 +482,12 @@ viewBox도 `640×250` → `420×210`으로 좁혔습니다. 원래 그림은 x�
 
 ---
 
+## 방문 통계 (2026-09-30)
+
+방문 통계는 **Cloudflare Web Analytics**로 봅니다(무료·쿠키 없음·동의 배너 불필요). 보는 곳은 Cloudflare 대시보드 → Analytics & Logs → Web Analytics → `pognaru.com`이고, 살롱 페이지만 보려면 경로 필터에 `/class/salon-de-naru.html`을 넣습니다. 비콘은 모든 HTML(28쪽)의 `</body>` 바로 앞에 한 줄로 들어가 있습니다(토큰은 공개 값). **새 페이지를 만들면 같은 줄을 넣어야 셉니다** — `클로드 에이전트\김리의 기록\pognaru-analytics-insert.sh <토큰>`을 다시 돌리면 빠진 쪽에만 넣습니다.
+
+---
+
 ## 도메인 (2026-07-31)
 
 `pognaru.com` — Cloudflare Registrar 등록. **레포가 전부 이 도메인 아래로 따라옵니다** (`pognaru.com/bamnaru/`, `/sunlit-morning/`, `/pognaru-writing/` …). 옛 `pognaru.github.io` 주소는 자동 리다이렉트되니 그동안 뿌린 링크는 안 깨집니다.
