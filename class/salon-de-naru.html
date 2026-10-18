@@ -8,13 +8,16 @@
      noindex 는 9/30 지웠습니다. 카드·소식·현관 소식줄에 걸려 있습니다.
      숫자·일정·환불 문장의 정본은 볼트 「살롱 드 나루/_지도.md」입니다.
      지도와 어긋나면 지도를 따라 고칩니다.
+     2026-10-18 손질(나무🌳) — 홍보 줄·한 줄 길·판매 화면·남는 것 여섯·기대와 다를 수 있는 분·
+     가운데 신청·폰 바닥 신청 띠·FAQ 둘. 디퍼 흔적을 걷었습니다. 손질 전 판은
+     볼트 「살롱 드 나루/_되돌릴 판/261018 살롱 페이지 (손질 전).html」.
      ============================================================ -->
 <title>살롱 드 나루 — 써 둔 글로 내 이름의 전자책을 내는 8주 · 포근나루</title>
 <meta name="description" content="써 둔 글은 있는데 책으로 가는 길을 모르는 분과 함께, 8주 동안 글을 고르고 다듬어 자기 이름으로 전자책을 냅니다. 매주 화요일 밤 8시, Zoom. 10월 27일 시작.">
 <link rel="canonical" href="https://pognaru.com/class/salon-de-naru.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="살롱 드 나루 — 써 둔 글로 내 이름의 전자책을 내는 8주">
-<meta property="og:description" content="매주 화요일 밤 8시, 8주. 마지막 날 각자 자기 이름으로 등록 버튼을 누릅니다.">
+<meta property="og:description" content="편집 실무부터 전자책 등록까지, 8주. 매주 화요일 밤 8시, 마지막 날 각자 자기 이름으로 등록 버튼을 누릅니다.">
 <meta property="og:url" content="https://pognaru.com/class/salon-de-naru.html">
 <meta property="og:site_name" content="포근나루">
 <meta property="og:locale" content="ko_KR">
@@ -261,6 +264,82 @@
   .cta .sub b{color:var(--ink); font-weight:var(--w-reg);}
   .cta .sub a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
 
+  /* ---------- 2026-10-18 손질(나무🌳) ---------- */
+  /* 첫 화면 부제 — 홍보 줄(10/15 확정)을 이름 바로 아래에 */
+  .subline{
+    font-family:var(--gothic);
+    font-size:var(--fs-4);
+    color:var(--ink);
+    letter-spacing:var(--ls-md);
+    line-height:var(--lh-snug);
+    margin:.5rem 0 0;
+  }
+  .subline span{background:linear-gradient(transparent 58%, var(--apricot) 58%);}
+  .classhead .signboard{margin-top:.35rem;}
+
+  /* 한 줄 길 — 02절 밤물 띠의 축소판. 폭은 주 수 그대로(2·4·1·1), 끝 칸만 첫빛 */
+  .flow{margin:1.4rem 0 1.6rem; max-width:var(--w-read);}
+  .flow-ends{display:flex; justify-content:space-between; align-items:flex-end; gap:.8rem;
+    font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-bottom:.45rem;}
+  .flow-ends .flow-end{display:inline-flex; align-items:flex-end; gap:.4rem; color:var(--night);}
+  .flow-ends .flow-end b{font-weight:var(--w-bold);}
+  .flow-ends .sun{width:30px; height:15px; margin-bottom:3px;}
+  .flow-bar{list-style:none; display:flex; gap:4px;}
+  .flow-bar li{flex:var(--w) 1 0; min-width:0;
+    font-family:var(--gothic); font-size:var(--fs-8); line-height:1.45; color:var(--ink);}
+  .flow-bar li::before{content:""; display:block; height:8px; border-radius:var(--r-s);
+    background:var(--night); margin-bottom:.5rem;}
+  .flow-bar li.last::before{background:var(--dawn);}
+  .flow-bar .wk2{display:block; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
+  .flow-more{display:inline-block; margin-top:.7rem; font-family:var(--gothic); font-size:var(--fs-7);
+    color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
+  .flow-more:hover{border-color:var(--terra);}
+
+  .facts dd a{color:var(--terra);}
+  .facts .after-btn{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.8rem;}
+
+  /* 결과물 화면 — 실제 판매 화면 한 장 + 저자 칸 동그라미 */
+  .proof{margin:0 0 var(--sp-3); max-width:var(--w-read);}
+  .proof-shot{position:relative; border:1px solid var(--line); border-radius:var(--r-m);
+    overflow:hidden; background:#fff; line-height:0;}
+  .proof-shot img{width:100%; height:auto; display:block;}
+  .proof-mark{position:absolute; left:62.2%; top:41.4%; width:8.4%; height:9.6%;
+    transform:translate(-50%,-50%); border:2.5px solid var(--dawn); border-radius:50%;
+    box-shadow:0 0 0 2px #fff;}
+  .proof figcaption{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.9rem;}
+  .proof figcaption b{color:var(--ink); font-weight:var(--w-bold);}
+  .proof figcaption a{color:var(--terra); text-decoration:none; border-bottom:1px solid rgba(169,83,42,.35);}
+  .gains-end{font-family:var(--serif); font-size:var(--fs-4); color:var(--ink);
+    line-height:var(--lh-snug); margin-top:var(--sp-3); max-width:var(--w-read);}
+  .gains-end span{background:linear-gradient(transparent 58%, var(--apricot) 58%);}
+
+  /* 가운데 신청 — 읽다가 마음이 선 자리에서 바로 */
+  .cta-mid{margin-top:var(--sp-4); text-align:center; max-width:var(--w-read);}
+  .cta-mid .btn{background:var(--terra); color:var(--cream); font-size:var(--fs-5); padding:.85rem 2rem;}
+  .cta-mid .btn:hover{background:#8E4322;}
+  .cta-mid p{font-family:var(--gothic); font-size:var(--fs-7); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.8rem;}
+
+  /* 폰 바닥 신청 띠 — 첫 버튼이 화면 밖으로 나가면 뜨고, 맨 아래 신청 칸이 보이면 숨는다 */
+  .applybar{display:none;}
+  @media (max-width:860px){
+    .applybar{display:flex; position:fixed; left:0; right:0; bottom:0; z-index:20;
+      align-items:center; justify-content:space-between; gap:.8rem;
+      padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom));
+      background:var(--night); color:var(--night-text);
+      transform:translateY(110%); transition:transform .25s ease;}
+    .applybar.on{transform:none;}
+    .applybar span{font-family:var(--gothic); font-size:var(--fs-7); line-height:1.4; color:var(--night-soft);}
+    .applybar span b{color:var(--night-text); font-weight:var(--w-reg);}
+    .applybar a{flex:none; font-family:var(--gothic); font-size:var(--fs-6); text-decoration:none;
+      background:var(--dawn-text); color:var(--night); padding:.6rem 1.1rem; border-radius:var(--r-m);}
+    body.has-applybar .sitefoot{padding-bottom:4.5rem;}
+  }
+  @media (prefers-reduced-motion:reduce){.applybar{transition:none;}}
+
   /* ---------- 폰 ----------
      8주 줄은 세로로 접습니다. 수평선이 왼쪽 세로선이 되고,
      단계 이름이 묶음 머리가 되며, 첫빛 해는 맨 아래 「내 이름의 전자책」 앞에 뜹니다. */
@@ -293,18 +372,32 @@
 
     <header class="classhead fade">
       <div>
-        <div class="kicker">DEEPER × POGNARU</div>
+        <div class="kicker">1기 모집 · 10월 25일(일) 마감</div>
         <h1>살롱 드 나루</h1>
+        <!-- 홍보 줄(2026-10-15 다현씨 확정 · 블로그 제목·카드 1·3장과 같은 말) -->
+        <p class="subline"><span>편집 실무부터 전자책 등록까지</span>, 8주.</p>
         <p class="signboard">써 둔 글로, 내 이름의 전자책 한 권.</p>
+        <!-- 한 줄 길(2026-10-18) — 02절 주차 표의 요약. 단계·주 수가 바뀌면 02절과 함께 고칩니다 -->
+        <figure class="flow" aria-label="써 둔 글에서 내 이름의 전자책까지 — 글 고르기 2주, 다듬기 4주, 점검 1주, 등록 1주">
+          <div class="flow-ends" aria-hidden="true">
+            <span>써 둔 글</span>
+            <span class="flow-end"><b>내 이름의 전자책</b><svg class="sun" viewBox="0 0 44 22"><path d="M4 22 A18 18 0 0 1 40 22 Z" fill="#F4A27C"/></svg></span>
+          </div>
+          <ol class="flow-bar" aria-hidden="true">
+            <li style="--w:2">글 고르기<span class="wk2">2주</span></li>
+            <li style="--w:4">다듬기<span class="wk2">4주</span></li>
+            <li style="--w:1">점검<span class="wk2">1주</span></li>
+            <li style="--w:1" class="last">등록<span class="wk2">1주</span></li>
+          </ol>
+          <a class="flow-more" href="#weeks">주차별로 보기 ↓</a>
+        </figure>
         <!-- 다현씨 소개말(2026-09-26 확정) — 문장을 고치지 않습니다 -->
         <p class="intro-words">살롱 드 나루는 함께 모여 이야기하고, 서로의 글에 기대어 생각을 다듬는 자리입니다. 제가 먼저 경험한 길을 나누지만, 그 길을 어떻게 건널지는 저마다의 몫입니다. 8주 뒤 나루를 떠나실 때, 각자의 모양으로 다듬어진 책 한 권을 안고 가시길 바랍니다.</p>
-        <!-- 「디퍼에서 출발한」 내력 — 지도: 모집문·신청 페이지에 싣는다.
-             디퍼 대표님과 상의(2026-09-30) 뒤 문구가 바뀌면 이 한 줄만 고칩니다. -->
-        <p class="origin">디퍼 언브랜딩 살롱에서 출발한 살롱입니다.</p>
+        <!-- 「디퍼에서 출발한」 내력 줄은 2026-10-18 뺐습니다(10/16 살롱 100% 포근나루 · 인스타 캡션과 같게). -->
       </div>
       <div class="facts">
         <dl>
-          <dt>이런 분께</dt><dd>그동안 써 둔 글로 직접 책으로 엮으실 분 (전자책 편집·발행 과정)</dd>
+          <dt>이런 분께</dt><dd>그동안 써 둔 글을 책으로 엮고 싶은 분 (전자책 편집·발행 과정)</dd>
           <dt>기간</dt><dd><b>8주</b> · 매주 화요일</dd>
           <dt>1기 시작</dt><dd><b>10월 27일 화요일</b></dd>
           <dt>시간</dt><dd>매주 <b>화요일 밤 8시 – 10시</b> · Zoom</dd>
@@ -312,10 +405,11 @@
           <dt>개강</dt><dd>3명이 모이면 엽니다</dd>
           <dt>신청 마감</dt><dd><b>10월 25일 일요일</b></dd>
           <dt>마치면</dt><dd>자기 이름으로 전자책을 등록합니다 (유페이퍼 · 작가와 플랫폼 중 선택)</dd>
-          <dt>도서번호</dt><dd>유페이퍼에서 펴낸곳을 「유페이퍼」로 두면 ISBN을 신청할 수 있습니다 (건당 1,000원, 약 일주일). ISBN은 국립중앙도서관 서지에 등록되는 정식 도서번호입니다</dd>
+          <dt>도서번호</dt><dd>원하시면 ISBN도 신청합니다 (유페이퍼, 건당 1,000원 · <a href="#isbn">자세히</a>)</dd>
         </dl>
         <!-- 본 강의 신청 설문 naver.me/GT43DHdX — 이 버튼과 아래 .cta 버튼, 두 곳입니다. -->
-        <a class="btn" href="https://naver.me/GT43DHdX" target="_blank" rel="noopener">살롱 드 나루 신청하기</a>
+        <a class="btn" id="apply-top" href="https://naver.me/GT43DHdX" target="_blank" rel="noopener">살롱 드 나루 신청하기</a>
+        <p class="after-btn">신청서를 보내셔도 바로 결제되지 않습니다. 이틀 안에 계좌를 안내드립니다.</p>
       </div>
     </header>
 
@@ -329,7 +423,7 @@
           <li><b>써 둔 글이 있는 분.</b> 모닝페이지, 블로그, 메모장, 일기 무엇이든 괜찮습니다. 양보다 「있다」가 먼저입니다</li>
           <li><b>책을 내고 싶은데 어디서부터 해야 할지 모르는 분.</b> 목차, 퇴고, 파일 만들기, 등록까지 한 번씩 같이 해 봅니다</li>
         </ul>
-        <p class="p">8주 동안 새 글을 쓰기보다 <b>이미 써 둔 글</b>을 골라 목차를 세우고, 다듬고, 점검합니다. 마지막 화요일에는 각자 직접 등록 버튼을 누릅니다. 책은 <b>참가하신 분 이름으로</b> 나옵니다.</p>
+        <p class="p">8주 동안 새 글을 쓰기보다 <b>이미 써 둔 글</b>을 골라 목차를 세우고, 다듬고, 점검합니다. 마지막 화요일에는 각자 등록 버튼을 누릅니다. 책은 <b>참가하신 분 이름으로</b> 나옵니다.</p>
       </div>
     </section>
 
@@ -338,7 +432,7 @@
   <!-- 8주 동안 하는 일 — 페이지에서 유일한 어두운 층(밤물). 전폭으로 풉니다.
        주차별 내용은 볼트 「살롱 드 나루/3 회차/260918 살롱 드 나루 8주 강의안.md」 §10을
        처음 오는 분이 읽을 말로 옮긴 것입니다. 강의안이 바뀌면 여기도 봅니다. -->
-  <section class="weeks-band fade">
+  <section class="weeks-band fade" id="weeks">
     <div class="shell">
       <div class="seclabel"><span class="n">02</span><span class="bar"></span></div>
       <h2 class="sec-title">8주 동안 하는 일</h2>
@@ -376,7 +470,7 @@
           <li class="stage">
             <div class="stage-name">등록<span>1주</span></div>
             <ol class="wks" style="--n:1">
-              <li class="wk"><div class="when">8주 · 12/15</div><div class="t">버튼을<br class="pc-br">누르는 날</div><p class="d">유페이퍼·작가와에 자기 이름으로 등록합니다</p></li>
+              <li class="wk"><div class="when">8주 · 12/15</div><div class="t">버튼을 <br class="pc-br">누르는 날</div><p class="d">유페이퍼·작가와에 자기 이름으로 등록합니다</p></li>
             </ol>
           </li>
         </ol>
@@ -386,28 +480,69 @@
 
   <div class="shell">
 
+    <!-- 03 · 8주 뒤에 남는 것 (2026-10-18) — 주어는 참가자. 맺음 문장은 모집 카드 7장(10/16 확정) 그대로.
+         판매 화면은 2026-10-18 salondenaru.upaper.kr/content/1226163 을 찍어 조회·판매 숫자 줄만 지웠습니다. -->
     <section class="sec fade">
       <div>
         <div class="seclabel"><span class="n">03</span><span class="bar"></span></div>
-        <h2 class="sec-title">하지 않는 것</h2>
+        <h2 class="sec-title">8주 뒤에 남는 것</h2>
+      </div>
+      <div>
+        <figure class="proof">
+          <div class="proof-shot">
+            <img src="/assets/salon-proof-upaper.jpg" width="1400" height="657"
+                 alt="유페이퍼에 등록된 『글은 있는데, 책은 아직이라면』 판매 화면. 표지, 제목, 저자 햇살, 9,900원 구매 단추가 보인다">
+            <span class="proof-mark" aria-hidden="true"></span>
+          </div>
+          <figcaption><b>마치면 이렇게 됩니다.</b> 2026년 10월 8일 유페이퍼에 올라간 『글은 있는데, 책은 아직이라면』의 판매 화면입니다. 동그라미 친 저자 칸에, 마지막 화요일에는 <b>참가하신 분의 이름</b>이 들어갑니다. <a href="https://salondenaru.upaper.kr/content/1226163" target="_blank" rel="noopener">이 화면 열어 보기 ↗</a></figcaption>
+        </figure>
+        <ul class="plain">
+          <li><b>AI와 함께 하는 편집 실무.</b> 글 고르기, 목차 세우기, 퇴고, 점검까지 편집자가 원고 앞에서 하는 일을 내 원고로 한 번씩 해 봅니다</li>
+          <li><b>내 이름의 전자책 한 권.</b> 여럿이 나눠 쓰는 공저가 아니라, 한 분이 한 권의 저자가 됩니다</li>
+          <li><b>원고를 전자책 파일로 만드는 법.</b> 워드나 한글 원고를 EPUB으로 바꾸는 도구 「뱃사공」을 내 컴퓨터에 심어 갑니다</li>
+          <li><b>서점 등록까지 가 본 경험.</b> 유페이퍼·작가와 중 한 곳에 자기 이름으로 올립니다. 원하시면 ISBN도 신청합니다</li>
+          <li><b>내 문장의 기준.</b> 내 글에서 바꾸지 않을 것 세 가지를 정하고, 그것을 지키며 고치는 법을 익힙니다</li>
+          <li><b>같이 읽은 사람들.</b> 화요일마다 서로의 글을 소리 내어 읽어 주고 걸리는 자리를 함께 짚습니다</li>
+        </ul>
+        <p class="gains-end">8주 뒤에 남는 것은 책 한 권과, <span>다음 책을 스스로 낼 수 있는 힘.</span></p>
+      </div>
+    </section>
+
+    <!-- 04 · 기대와 다를 수 있는 분 (2026-10-18) — 옛 03 「하지 않는 것」 세 줄을 사람 쪽에서 다시 씀.
+         녹화본 줄은 2026-10-03 다현씨 원칙(녹화본을 내지 않는다)입니다. -->
+    <section class="sec fade">
+      <div>
+        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <h2 class="sec-title">이런 분은 기대와 다를 수 있어요</h2>
       </div>
       <div>
         <ul class="plain">
-          <li><b>대신 내 드리지 않습니다.</b> 등록은 각자 자기 이름으로, 자기 손으로 합니다</li>
-          <li><b>종이책은 다루지 않습니다.</b> 전자책 한 권에 집중합니다</li>
-          <li><b>본문 그림은 다루지 않습니다.</b> 글로 짓는 책입니다</li>
+          <li><b>새 글을 쓰는 자리를 찾으시는 분.</b> 8주 동안 새로 쓰기보다 이미 써 둔 글을 고르고 다듬습니다</li>
+          <li><b>책을 대신 내 주길 바라시는 분.</b> 등록 버튼은 각자 자기 이름으로 누릅니다. 포근나루 이름으로 내 드리지 않습니다</li>
+          <li><b>종이책을 생각하시는 분.</b> 종이책은 다루지 않습니다. 전자책 한 권에 집중합니다</li>
+          <li><b>그림이 많은 책을 생각하시는 분.</b> 본문 그림은 다루지 않습니다. 글로 짓는 책입니다</li>
+          <li><b>녹화본으로 따라오시려는 분.</b> 화요일 밤에 함께 손을 움직이는 자리라 녹화본은 따로 드리지 않습니다. 결석한 회차는 자료로 대신합니다</li>
         </ul>
-        <p class="p">직접 한 번 내 보시면 다음 책은 혼자 내실 수 있습니다. 8주 뒤에 남는 것은 책 한 권과, <b>다음 책을 혼자 낼 줄 아는 경험</b>입니다.</p>
+        <div class="cta-mid">
+          <a class="btn" href="https://naver.me/GT43DHdX" target="_blank" rel="noopener">살롱 드 나루 신청하기</a>
+          <p>10월 25일(일)까지 받습니다 · 신청서를 보내셔도 바로 결제되지 않습니다</p>
+        </div>
       </div>
     </section>
 
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">05</span><span class="bar"></span></div>
         <h2 class="sec-title">자주 묻는 것</h2>
       </div>
       <div>
         <div class="faq">
+
+          <!-- 2026-10-18 더함 — 돈 걱정을 먼저 끕니다. 가입·등록 무료는 「1 기획·결정/260922 자가출판 플랫폼 3종 비교」 -->
+          <details>
+            <summary>참가비 말고 드는 돈이 있나요?</summary>
+            <div class="body">유페이퍼·작가와는 가입과 등록이 무료입니다. 다만 뱃사공을 쓰려면 <b>AI 유료 구독이 하나 필요합니다</b>(클로드 Pro 이상 또는 ChatGPT Plus 이상). 유페이퍼에서 ISBN을 신청하시면 건당 1,000원이 듭니다. 신청할지는 고르실 수 있습니다.</div>
+          </details>
 
           <details>
             <summary>포근나루에서 책을 내 주나요?</summary>
@@ -421,7 +556,13 @@
           <details>
             <summary>뱃사공은 뭔가요? 컴퓨터에 설치만 하면 되나요?</summary>
             <div class="body">뱃사공은 워드나 한글로 쓴 원고를 전자책 파일(EPUB)로 건네주는 작은 도우미입니다. 따로 여는 프로그램이 아니라 <b>클로드 코드(Claude Code)나 코덱스(Codex) 같은 AI 안에서</b> 돌아갑니다. 그래서 <b>유료 구독이 꼭 필요합니다</b> — 클로드는 Pro 이상, 코덱스는 ChatGPT Plus 이상이면 됩니다. 아직 계정이 없는 분은 5주차까지 하나 준비해 두시면 6주차에 함께 심습니다.<br><br>
-            AI를 처음 다뤄 보시는 분께는 <b>디퍼 살롱(Deeper)</b>을 권합니다. AI를 이해하고 내 일에 들이는 법을 처음부터 익히는 자리로, 문법·논리·수사 세 단계를 석 달에 걸쳐 갑니다. 살롱 드 나루도 그곳에서 시작했고, 저도 거기서 배운 것으로 이 살롱을 열었습니다.</div>
+            <b>AI를 처음 다뤄 보시는 분도 괜찮습니다.</b> 계정만 준비해 오시면 6주차에 함께 심고, 설치가 잘 안 되는 분도 붙여넣기판으로 끝까지 가실 수 있습니다.</div>
+          </details>
+
+          <!-- 첫 화면 도서번호 칸에 있던 문장을 그대로 옮겼습니다(2026-10-18) -->
+          <details id="isbn">
+            <summary>ISBN(도서번호)도 받을 수 있나요?</summary>
+            <div class="body">유페이퍼에서 펴낸곳을 「유페이퍼」로 두면 ISBN을 신청할 수 있습니다 (건당 1,000원, 약 일주일). ISBN은 국립중앙도서관 서지에 등록되는 정식 도서번호입니다.</div>
           </details>
 
           <details>
@@ -452,7 +593,7 @@
          한 글자라도 바꾸려면 지도를 먼저 고칩니다(공저 1호와 같은 문구). -->
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">05</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">06</span><span class="bar"></span></div>
         <h2 class="sec-title">환불</h2>
       </div>
       <div>
@@ -467,7 +608,7 @@
     <!-- 신청 설문 naver.me/GT43DHdX (2026-09-30) — 1·2번은 설문에 맞춘 문장입니다. -->
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">06</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">07</span><span class="bar"></span></div>
         <h2 class="sec-title">신청하는 법</h2>
       </div>
       <div>
@@ -481,7 +622,7 @@
     </section>
 
     <!-- 버튼은 신청 설문으로, 카카오는 「먼저 물어보기」 짝 (2026-09-30) -->
-    <div class="cta fade">
+    <div class="cta fade" id="apply-bottom">
       <a class="btn" href="https://naver.me/GT43DHdX" target="_blank" rel="noopener">살롱 드 나루 신청하기</a>
       <p class="sub">
         <b>10월 27일(화) 밤 8시</b>에 첫 화요일을 엽니다.<br>
@@ -505,6 +646,25 @@
   </div>
 
 </main>
+
+<!-- 폰 바닥 신청 띠(2026-10-18) — 860px 이하에서만. 빼려면 이 블록과 위 .applybar CSS를 지웁니다 -->
+<div class="applybar" id="applybar" aria-hidden="true">
+  <span><b>살롱 드 나루 1기</b><br>10월 25일(일) 마감</span>
+  <a href="https://naver.me/GT43DHdX" target="_blank" rel="noopener" tabindex="-1">신청하기</a>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('applybar'),
+      top=document.getElementById('apply-top'),
+      bottom=document.getElementById('apply-bottom');
+  if(!bar||!top||!bottom||!('IntersectionObserver' in window)) return;
+  document.body.classList.add('has-applybar');
+  var topSeen=true, bottomSeen=false;
+  function draw(){ var on=!topSeen&&!bottomSeen; bar.classList.toggle('on',on); bar.setAttribute('aria-hidden',on?'false':'true'); bar.querySelector('a').tabIndex=on?0:-1; }
+  new IntersectionObserver(function(e){ topSeen=e[0].isIntersecting||e[0].boundingClientRect.top>0; draw(); }).observe(top);
+  new IntersectionObserver(function(e){ bottomSeen=e[0].isIntersecting||e[0].boundingClientRect.top<0; draw(); }).observe(bottom);
+})();
+</script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ff13eb698b244cb4b5f13c0e007400ff"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
