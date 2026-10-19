@@ -337,6 +337,34 @@
   }
   @media (prefers-reduced-motion:reduce){.applybar{transition:none;}}
 
+  /* ---------- 04 진행자 (2026-10-19 나무🌳 · 문안 윤슬✨ · 다현씨 고르심: A · 긴 판 · 얼굴 · 표지 줄) ----------
+     이름 머리 + 얼굴 동그라미 하나 + 표지 줄. 표지는 낸 차례대로(공저 참여 → 펴낸 책 둘) —
+     「써 둔 글로 책을 낸 사람」이 글보다 먼저 보이게. 사진(/assets/host-haetsal.jpg)이 아직 없으면
+     img가 스스로 빠지고 살구 동그라미 안 첫빛 해가 자리를 지킨다. */
+  .host{display:flex; align-items:center; gap:1.25rem; margin:0 0 var(--sp-3); max-width:var(--w-read);}
+  .host-id{min-width:0;}
+  .host-name{font-family:var(--logo); font-weight:var(--w-bold); color:var(--night);
+    font-size:var(--fs-2); line-height:var(--lh-tight); letter-spacing:var(--ls-xl); margin:0;}
+  .host-name .real{font-family:var(--gothic); font-weight:var(--w-reg); font-size:var(--fs-4);
+    color:var(--ink-soft); letter-spacing:var(--ls-md); margin-left:.45rem;}
+  .host-role{font-family:var(--gothic); font-size:var(--fs-6); color:var(--ink-soft);
+    line-height:var(--lh-normal); margin-top:.35rem; display:flex; align-items:center; gap:.55rem;}
+  .host-role::before{content:""; width:1.4rem; height:2px; background:var(--dawn); flex:none;}
+  .host-photo{position:relative; flex:none; width:112px; height:112px; border-radius:50%; overflow:hidden;
+    background:var(--apricot); display:grid; place-items:center;}
+  .host-photo .sun{width:44px; height:22px;}
+  .host-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+  .shelf{list-style:none; display:flex; gap:1.1rem; margin:-.2rem 0 var(--sp-2); max-width:var(--w-read);}
+  .bk{width:92px; flex:none; display:flex; flex-direction:column;}
+  .bk img{width:92px; height:auto; aspect-ratio:2/3; object-fit:cover; display:block; border-radius:1px 3px 3px 1px;
+    box-shadow:0 6px 14px rgba(60,36,21,.18); margin-bottom:.55rem;}
+  .bk .y{font-family:var(--gothic); font-size:var(--fs-8); color:var(--terra); line-height:1.4; font-variant-numeric:tabular-nums;}
+  @media (max-width:860px){
+    .host-photo{width:88px; height:88px;}
+    .bk{width:84px;} .bk img{width:84px;}
+    .shelf{gap:.9rem;}
+  }
+
   /* ---------- 폰 ----------
      8주 줄은 세로로 접습니다. 수평선이 왼쪽 세로선이 되고,
      단계 이름이 묶음 머리가 되며, 첫빛 해는 맨 아래 「내 이름의 전자책」 앞에 뜹니다. */
@@ -395,6 +423,7 @@
       <div class="facts">
         <dl>
           <dt>이런 분께</dt><dd>그동안 써 둔 글을 책으로 엮고 싶은 분 (전자책 편집·발행 과정)</dd>
+          <dt>진행</dt><dd>햇살 (이다현) · <a href="#host">소개 보기 ↓</a></dd>
           <dt>기간</dt><dd><b>8주</b> · 매주 화요일</dd>
           <dt>1기 시작</dt><dd><b>10월 27일 화요일</b></dd>
           <dt>시간</dt><dd>매주 <b>화요일 밤 8시 – 10시</b> · Zoom</dd>
@@ -504,11 +533,41 @@
       </div>
     </section>
 
-    <!-- 04 · 기대와 다를 수 있는 분 (2026-10-18) — 옛 03 「하지 않는 것」 세 줄을 사람 쪽에서 다시 씀.
+    <!-- 04 · 진행자 (2026-10-19) — 문안 윤슬✨ · 다현씨 고르심(A · 긴 판 · 얼굴 · 표지 줄).
+         「위 판매 화면의 그 책입니다」는 03 바로 뒤일 때만 맞는 문장입니다. 이 절을 옮기면 「03절 판매 화면의 그 책입니다」로.
+         얼굴 사진은 /assets/host-haetsal.jpg(정사각) — 없으면 img가 빠지고 첫빛 해가 자리를 지킵니다. -->
+    <section class="sec fade" id="host">
+      <div>
+        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <h2 class="sec-title">8주 동안 곁에 있는 사람</h2>
+      </div>
+      <div>
+        <div class="host">
+          <figure class="host-photo">
+            <svg class="sun" viewBox="0 0 44 22" aria-hidden="true"><path d="M4 22 A18 18 0 0 1 40 22 Z" fill="#F4A27C"/></svg>
+            <img src="/assets/host-haetsal.jpg" width="640" height="640" alt="햇살(이다현)" onerror="this.remove()">
+          </figure>
+          <div class="host-id">
+            <p class="host-name">햇살<span class="real">(이다현)</span></p>
+            <p class="host-role">포근나루 · 살롱 드 나루 진행</p>
+          </div>
+        </div>
+        <p class="p">저는 계속 읽고 쓰는 사람을 곁에서 독려하고, 그렇게 쌓인 글을 한 권의 책으로 엮는 일을 합니다. 평일 새벽에는 「선릿모닝」에서 여러 분과 함께 글을 쓰고, 「나루의 밤」에서는 석 달에 책 한 권을 함께 읽습니다.</p>
+        <p class="p">제 이름이 처음 실린 책은 스물일곱 명이 한 꼭지씩 쓴 공저 『삶이 레몬을 준다면 레모네이드를 만들어라』(슬로어, 2025)였습니다. 그 뒤 써 둔 글을 골라 『파도는 여전히 하얗다』(2026년 봄)를 펴냈고, 원고를 고르는 데서 서점 등록까지의 과정을 『글은 있는데, 책은 아직이라면』(2026년 10월)에 담았습니다. 위 판매 화면의 그 책입니다. 슬로어 편집부에서는 다른 저자 세 분의 원고를 교정·교열했습니다.</p>
+        <ul class="shelf" aria-label="이름이 실린 책">
+            <li class="bk"><img src="/assets/cover-lemon.jpg" width="92" height="138" alt="삶이 레몬을 준다면 레모네이드를 만들어라"><span class="y">2025 · 공저&nbsp;참여</span></li>
+            <li class="bk"><img src="/assets/cover-pado.jpg" width="92" height="138" alt="파도는 여전히 하얗다"><span class="y">2026 봄</span></li>
+            <li class="bk"><img src="/assets/cover-geul.jpg" width="92" height="138" alt="글은 있는데, 책은 아직이라면"><span class="y">2026년 10월</span></li>
+        </ul>
+        <p class="p">8주 동안 화요일 밤마다 여러분이 써 둔 글을 함께 읽고, 책의 중심이 될 문장을 찾고, 목차를 세우고, 다듬은 원고를 다시 읽습니다. 마지막 화요일에 각자 등록 버튼을 누를 때까지 <b>곁에 있습니다</b>. 작문의 기술이나 문체 같은 틀에 갇힌 이론은 가르치지 않습니다. 모든 것은 작가의 고유성을 따릅니다. 재료는 이미 가지고 계십니다. 그 재료를 엮어 세상에 내는 방법을 보여 드릴게요.</p>
+      </div>
+    </section>
+
+    <!-- 05(옛 04) · 기대와 다를 수 있는 분 (2026-10-18) — 옛 03 「하지 않는 것」 세 줄을 사람 쪽에서 다시 씀.
          녹화본 줄은 2026-10-03 다현씨 원칙(녹화본을 내지 않는다)입니다. -->
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">04</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">05</span><span class="bar"></span></div>
         <h2 class="sec-title">이런 분은 기대와 다를 수 있어요</h2>
       </div>
       <div>
@@ -528,7 +587,7 @@
 
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">05</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">06</span><span class="bar"></span></div>
         <h2 class="sec-title">자주 묻는 것</h2>
       </div>
       <div>
@@ -589,7 +648,7 @@
          한 글자라도 바꾸려면 지도를 먼저 고칩니다(공저 1호와 같은 문구). -->
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">06</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">07</span><span class="bar"></span></div>
         <h2 class="sec-title">환불</h2>
       </div>
       <div>
@@ -604,7 +663,7 @@
     <!-- 신청 설문 naver.me/GT43DHdX (2026-09-30) — 1·2번은 설문에 맞춘 문장입니다. -->
     <section class="sec fade">
       <div>
-        <div class="seclabel"><span class="n">07</span><span class="bar"></span></div>
+        <div class="seclabel"><span class="n">08</span><span class="bar"></span></div>
         <h2 class="sec-title">신청하는 법</h2>
       </div>
       <div>
