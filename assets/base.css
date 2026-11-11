@@ -528,6 +528,26 @@ strong{font-weight:var(--w-heavy);color:var(--ink);}
 
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 
+/* ---------- 키보드 초점 ----------
+   2026-11-12 · 탭 키로 옮겨 다닐 때 지금 어디에 있는지 보이게 합니다.
+   현관(index.html)에만 있던 규칙을 공통으로 올렸습니다 — 값은 현관과 같습니다.
+   마우스로 누를 때는 나타나지 않습니다(:focus-visible).
+   잉크 면 위에서는 진테라코타가 묻히므로(2.72) 살구로 바꿉니다. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--terra);
+  outline-offset:4px;
+  border-radius:var(--r-s);
+}
+.darkband a:focus-visible,
+.darkband button:focus-visible,
+.darkband summary:focus-visible{outline-color:var(--apricot);}
+
 /* ---------- 등장 ---------- */
 .fade{opacity:0;animation:rise .7s ease forwards;}
 .d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}

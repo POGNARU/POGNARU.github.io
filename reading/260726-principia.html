@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FFFBEF;
@@ -292,6 +292,9 @@
     section{padding:20px 0;}
     .gate,.role,table{break-inside:avoid;}
   }
+  /* 2026-11-12 · 키보드 초점 — 탭 키로 옮길 때 지금 자리가 보이게 */
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--terra);outline-offset:4px;border-radius:2px;}
+  footer a:focus-visible{outline-color:var(--cream);}
 </style>
 </head>
 <body>
